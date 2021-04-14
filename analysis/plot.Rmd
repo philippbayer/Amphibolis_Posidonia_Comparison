@@ -1,0 +1,73 @@
+---
+title: "Untitled"
+author: "Philipp Bayer"
+date: "4 March 2021"
+output: html_document
+---
+
+
+
+```{r setup}
+library(tidyverse)
+library(cowplot)
+theme_set(theme_cowplot())
+library(RColorBrewer)
+library(patchwork)
+```
+
+```{r}
+# reps <- data.frame(
+#   stringsAsFactors = FALSE,
+#              Class = c("LINEs","LTRs","DNA",
+#                        "Unclassified","Non-repetitive","LINEs","LTRs","DNA","Unclassified",
+#                        "Non-repetitive","LINEs","LTRs","DNA","Unclassified",
+#                        "Non-repetitive","LINEs","LTRs","DNA","Unclassified","Non-repetitive"),
+#           Assembly = c("A. antarctica","A. antarctica",
+#                        "A. antarctica","A. antarctica","A. antarctica","P. australis",
+#                        "P. australis","P. australis","P. australis","P. australis","Z. marina",
+#                        "Z. marina","Z. marina","Z. marina","Z. marina","Z. muelleri",
+#                        "Z. muelleri","Z. muelleri","Z. muelleri","Z. muelleri"),
+#                 BP = c(805898L,45776664L,37822890L,
+#                        1546483L,158725395L,38319733L,611240734L,100034681L,
+#                        37142931L,428369702L,3103364L,123623579L,27390818L,
+#                        6060480L,96439714L,14331182L,164253396L,142828758L,
+#                        21922574L,274954485L),
+#            Percent = c(0.33,18.71,15.46,0.63,
+#                        64.87131,3.15,50.3,8.23,3.06,35.25364,1.19,47.46,10.52,
+#                        2.33,37.02,2.32,26.57,23.1,3.55,44.46)
+# )
+
+
+reps <- readxl::read_xlsx('data/Repeat_coding.xlsx')
+
+reps <- reps %>% dplyr::filter(Class != 'Total')
+reps$Class <- factor(reps$Class, levels = c('LINEs', 'LTRs', 'DNA', 'Unclassified', 'Total CDS', 'Non-repetitive'))
+reps
+```
+
+
+```{r}
+p1 <- reps %>% ggplot(aes(x=Assembly, fill=Class, y = BP/1000000)) + 
+geom_bar(position='stack', stat='identity') + ylab('Size (Mbp)') +
+  scale_fill_brewer(palette='Dark2') +
+  theme(axis.text.x =  element_text(face="italic"))
+  
+p1
+```
+
+```{r}
+p2 <- reps %>% ggplot(aes(x=Assembly, fill=Class, y = Percent)) + geom_bar(position='stack', stat='identity')+
+  scale_fill_brewer(palette='Dark2') +
+  theme(axis.text.x =  element_text(face="italic")) +
+  ylab('Percent\n of assembly')
+p2
+```
+```{r fig.width = 10, dpi=300}
+p1/p2 + plot_annotation(tag_levels = 'A')
+```
+
+```{r}
+reps %>% filter(Class=='Non-repetitive') %>% ggplot(aes(x=Assembly, fill=Class, y = BP)) + geom_bar(position='stack', stat='identity')
+
+```
+

@@ -1,7 +1,7 @@
 name: Amphibolis_Posidonia_Comparison
 output_dir: ../docs
 navbar:
-  title: Amphibolis_Posidonia_Comparison
+  title: Amphibolis Posidonia Comparison
   left:
   - text: Home
     href: index.html
