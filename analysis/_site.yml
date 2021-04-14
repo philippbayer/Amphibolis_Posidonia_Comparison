@@ -1,0 +1,17 @@
+name: "Amphibolis_Posidonia_Comparison"
+output_dir: ../docs
+navbar:
+  title: "Amphibolis_Posidonia_Comparison"
+  left:
+  - text: Home
+    href: index.html
+  - text: About
+    href: about.html
+  - text: License
+    href: license.html
+output:
+  workflowr::wflow_html:
+    toc: yes
+    toc_float: yes
+    theme: cosmo
+    highlight: textmate
