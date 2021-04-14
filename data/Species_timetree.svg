@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="867" viewBox="0 0 900 867">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="512" name="tree" y="0" viewBox="0 0 900 512">
+<g class="background" id="prunetree-background-colors" bg-colors="periods">
+<polyline points="20,512 104,512 104,20 20,20 20,512" class="background" fill="#FED99A" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="104,512 182,512 182,20 104,20 104,512" class="background" fill="#FEBF4E" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="182,512 298,512 298,20 182,20 182,512" class="background" fill="#FECC5C" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="298,512 344,512 344,20 298,20 298,512" class="background" fill="#FED96A" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="344,512 372,512 372,20 344,20 344,512" class="background" fill="#7FA056" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="372,512 395,512 395,20 372,20 372,512" class="background" fill="#009270" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="395,512 410,512 410,20 395,20 395,512" class="background" fill="#B3E152" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="410,512 440,512 440,20 410,20 410,512" class="background" fill="#CB8C37" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="440,512 461,512 461,20 440,20 440,512" class="background" fill="#678F66" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="461,512 471,512 471,20 461,20 461,512" class="background" fill="#99C2B5" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="471,512 496,512 496,20 471,20 471,512" class="background" fill="#F04028" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="496,512 523,512 523,20 496,20 496,512" class="background" fill="#812B92" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="523,512 552,512 552,20 523,20 523,512" class="background" fill="#34B2C9" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="552,512 594,512 594,20 552,20 552,512" class="background" fill="#7FC64E" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="594,512 616,512 616,20 594,20 594,512" class="background" fill="#FD9A52" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="616,512 628,512 628,20 616,20 616,512" class="background" fill="#FFE619" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+</g>
+<g id="prunetree-branches" class="branches" depth="unknown">
+<text x="646" y="64" font-style="italic"> Ostreococcus lucimarinus</text>
+<polyline points="20,69 20,59 628,59" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="628" cy="59" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<text x="646" y="88" font-style="italic"> Chlamydomonas reinhardtii</text>
+<polyline points="20,73 20,83 628,83" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="628" cy="83" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<text x="646" y="112" font-style="italic"> Physcomitrella patens</text>
+<polyline points="349,182 349,107 628,107" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="628" cy="107" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<text x="646" y="136" font-style="italic"> Selaginella moellendorffii</text>
+<polyline points="402,259 402,131 628,131" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="628" cy="131" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<text x="646" y="160" font-style="italic"> Oryza sativa</text>
+<polyline points="602,165 602,155 628,155" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="628" cy="155" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<text x="646" y="184" font-style="italic"> Brachypodium distachyon</text>
+<polyline points="602,169 602,179 628,179" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="628" cy="179" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<text x="646" y="208" font-style="italic"> Zea mays</text>
+<polyline points="602,181 602,203 628,203" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="628" cy="203" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<line x1="602" y1="155" x2="602" y2="177" stroke="#000000" stroke-width="2"/>
+<polyline points="561,234 561,179 602,179" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="602" cy="179" r="4" stroke="#000" stroke-width="1" fill="none"/>
+
+<text x="646" y="232" font-style="italic"> Posidonia australis</text>
+<polyline points="578,252 578,227 628,227" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="628" cy="227" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<text x="646" y="256" font-style="italic"> Zostera marina</text>
+<polyline points="618,261 618,251 628,251" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="628" cy="251" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<text x="646" y="280" font-style="italic"> Zostera muelleri</text>
+<polyline points="618,265 618,275 628,275" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="628" cy="275" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<polyline points="584,279 584,263 618,263" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="618" cy="263" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<text x="646" y="304" font-style="italic"> Amphibolis antarctica</text>
+<polyline points="584,283 584,299 628,299" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="628" cy="299" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<polyline points="578,256 578,281 584,281" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="584" cy="281" r="4" stroke="#000" stroke-width="1" fill="none"/>
+
+<polyline points="566,292 566,254 578,254" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="578" cy="254" r="4" stroke="#000" stroke-width="1" fill="none"/>
+
+<text x="646" y="328" font-style="italic"> Spirodela polyrhiza</text>
+<polyline points="593,333 593,323 628,323" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="628" cy="323" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<text x="646" y="352" font-style="italic"> Lemna gibba</text>
+<polyline points="593,337 593,347 628,347" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="628" cy="347" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<polyline points="566,296 566,335 593,335" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="593" cy="335" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<polyline points="561,238 561,294 566,294" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="566" cy="294" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<polyline points="544,315 544,236 561,236" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="561" cy="236" r="4" stroke="#000" stroke-width="1" fill="none"/>
+
+<text x="646" y="376" font-style="italic"> Vitis vinifera</text>
+<polyline points="570,396 570,371 628,371" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="628" cy="371" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<text x="646" y="400" font-style="italic"> Arabidopsis thaliana</text>
+<polyline points="615,405 615,395 628,395" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="628" cy="395" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<text x="646" y="424" font-style="italic"> Schrenkiella parvula</text>
+<polyline points="615,409 615,419 628,419" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="628" cy="419" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<polyline points="572,423 572,407 615,407" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="615" cy="407" r="4" stroke="#000" stroke-width="1" fill="none"/>
+
+<text x="646" y="448" font-style="italic"> Populus trichocarpa</text>
+<polyline points="572,427 572,443 628,443" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="628" cy="443" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<polyline points="570,400 570,425 572,425" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="572" cy="425" r="4" stroke="#000" stroke-width="1" fill="none"/>
+
+<polyline points="544,319 544,398 570,398" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="570" cy="398" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<polyline points="533,390 533,317 544,317" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="544" cy="317" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<text x="646" y="472" font-style="italic"> Amborella trichopoda</text>
+<polyline points="533,394 533,467 628,467" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="628" cy="467" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<polyline points="402,263 402,392 533,392" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="533" cy="392" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<polyline points="349,186 349,261 402,261" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="402" cy="261" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<polyline points="20,123 20,184 349,184" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="349" cy="184" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<line x1="20" y1="59" x2="20" y2="119" stroke="#000000" stroke-width="2"/>
+</g>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="60" name="timetree-geo-timescales" y="512" viewBox="0 0 900 60">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="20" name="periods" y="0" id="prunetree-periods" viewBox="0 0 900 20">
+<rect x="20" y="0" width="609" height="20" fill="none" stroke="#555555" stroke-width="1"/>
+<rect x="21" y="2" width="84" height="16" fill="#FED99A" stroke="#FED99A" stroke-width="3" full-name="Stenian" start="1200.00" end="1000.00" unit="Period" title="Stenian"/>
+<text x="34" y="16" full-name="Stenian" start="1200.00" end="1000.00" unit="Period" font-family="Helvetica">Stenian</text>
+<rect x="105" y="2" width="78" height="16" fill="#FEBF4E" stroke="#FEBF4E" stroke-width="3" full-name="Tonian" start="1000.00" end="850.00" unit="Period" title="Tonian"/>
+<text x="119" y="16" full-name="Tonian" start="1000.00" end="850.00" unit="Period" font-family="Helvetica">Tonian</text>
+<rect x="183" y="2" width="116" height="16" fill="#FECC5C" stroke="#FECC5C" stroke-width="3" full-name="Cryogenian" start="850.00" end="630.00" unit="Period" title="Cryogenian"/>
+<text x="200" y="16" full-name="Cryogenian" start="850.00" end="630.00" unit="Period" font-family="Helvetica">Cryogenian</text>
+<rect x="299" y="2" width="46" height="16" fill="#FED96A" stroke="#FED96A" stroke-width="3" full-name="Ediacaran" start="630.00" end="542.00" unit="Period" title="Ediacaran"/>
+<text x="309" y="16" full-name="Ediacaran" start="630.00" end="542.00" unit="Period" font-family="Helvetica">EDI</text>
+<rect x="345" y="2" width="28" height="16" fill="#7FA056" stroke="#7FA056" stroke-width="3" full-name="Cambrian" start="542.00" end="488.30" unit="Period" title="Cambrian"/>
+<text x="354" y="16" full-name="Cambrian" start="542.00" end="488.30" unit="Period" font-family="Helvetica">C</text>
+<rect x="373" y="2" width="23" height="16" fill="#009270" stroke="#009270" stroke-width="3" full-name="Ordovician" start="488.30" end="443.70" unit="Period" title="Ordovician"/>
+<rect x="396" y="2" width="15" height="16" fill="#B3E152" stroke="#B3E152" stroke-width="3" full-name="Silurian" start="443.70" end="416.00" unit="Period" title="Silurian"/>
+<rect x="411" y="2" width="30" height="16" fill="#CB8C37" stroke="#CB8C37" stroke-width="3" full-name="Devonian" start="416.00" end="359.20" unit="Period" title="Devonian"/>
+<text x="421" y="16" full-name="Devonian" start="416.00" end="359.20" unit="Period" font-family="Helvetica">D</text>
+<rect x="441" y="2" width="21" height="16" fill="#678F66" stroke="#678F66" stroke-width="3" full-name="Mississipian" start="359.20" end="318.10" unit="Period" title="Mississipian"/>
+<rect x="462" y="2" width="10" height="16" fill="#99C2B5" stroke="#99C2B5" stroke-width="3" full-name="Pennsylvanian" start="318.10" end="299.00" unit="Period" title="Pennsylvanian"/>
+<rect x="472" y="2" width="25" height="16" fill="#F04028" stroke="#F04028" stroke-width="3" full-name="Permian" start="299.00" end="251.00" unit="Period" title="Permian"/>
+<text x="479" y="16" full-name="Permian" start="299.00" end="251.00" unit="Period" font-family="Helvetica">P</text>
+<rect x="497" y="2" width="27" height="16" fill="#812B92" stroke="#812B92" stroke-width="3" full-name="Triassic" start="251.00" end="199.60" unit="Period" title="Triassic"/>
+<text x="502" y="16" full-name="Triassic" start="251.00" end="199.60" unit="Period" font-family="Helvetica">Tr</text>
+<rect x="524" y="2" width="29" height="16" fill="#34B2C9" stroke="#34B2C9" stroke-width="3" full-name="Jurassic" start="199.60" end="145.50" unit="Period" title="Jurassic"/>
+<text x="533" y="16" full-name="Jurassic" start="199.60" end="145.50" unit="Period" font-family="Helvetica">J</text>
+<rect x="553" y="2" width="42" height="16" fill="#7FC64E" stroke="#7FC64E" stroke-width="3" full-name="Cretaceous" start="145.50" end="65.50" unit="Period" title="Cretaceous"/>
+<text x="569" y="16" full-name="Cretaceous" start="145.50" end="65.50" unit="Period" font-family="Helvetica">K</text>
+<rect x="595" y="2" width="22" height="16" fill="#FD9A52" stroke="#FD9A52" stroke-width="3" full-name="Paleogene" start="65.50" end="23.03" unit="Period" title="Paleogene"/>
+<rect x="617" y="2" width="12" height="16" fill="#FFE619" stroke="#FFE619" stroke-width="3" full-name="Neogene" start="23.03" end="0.00" unit="Period" title="Neogene"/>
+<polyline points="19,0 19,20" fill="none" stroke="#555555" stroke-width="1" stroke-linecap="square"/>
+<polyline points="628,0 628,20" fill="none" stroke="#555555" stroke-width="1" stroke-linecap="square"/>
+<rect x="629" y="0" width="3" height="20" fill="white" stroke="white" stroke-width="1"/>
+<text x="633" y="16" fill="black" font-size="12" font-family="Helvetica">Periods</text>
+<polyline points="19,0 628,0" fill="none" stroke="#555555" stroke-width="1" stroke-linecap="square"/>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="20" name="eras" y="20" id="prunetree-eras" viewBox="0 0 900 20">
+<rect x="20" y="0" width="609" height="20" fill="none" stroke="#555555" stroke-width="1"/>
+<rect x="21" y="1" width="84" height="17" fill="#FDB462" stroke="#FDB462" stroke-width="3" full-name="Meso-Proterozoic" start="1600.00" end="1000.00" unit="Era" title="Meso-Proterozoic"/>
+<text x="58" y="16" full-name="Meso-Proterozoic" start="1600.00" end="1000.00" unit="Era" font-family="Helvetica">Y</text>
+<rect x="105" y="1" width="240" height="17" fill="#FEB342" stroke="#FEB342" stroke-width="3" full-name="Neo-Proterozoic" start="1000.00" end="542.00" unit="Era" title="Neo-Proterozoic"/>
+<text x="164" y="16" full-name="Neo-Proterozoic" start="1000.00" end="542.00" unit="Era" font-family="Helvetica">Neo-Proterozoic</text>
+<rect x="345" y="1" width="152" height="17" fill="#99C08D" stroke="#99C08D" stroke-width="3" full-name="Paleozoic" start="542.00" end="251.00" unit="Era" title="Paleozoic"/>
+<text x="384" y="16" full-name="Paleozoic" start="542.00" end="251.00" unit="Era" font-family="Helvetica">Paleozoic</text>
+<rect x="497" y="1" width="98" height="17" fill="#67C5CA" stroke="#67C5CA" stroke-width="3" full-name="Mesozoic" start="251.00" end="65.50" unit="Era" title="Mesozoic"/>
+<text x="513" y="16" full-name="Mesozoic" start="251.00" end="65.50" unit="Era" font-family="Helvetica">Mesozoic</text>
+<rect x="595" y="1" width="34" height="17" fill="#F2F91D" stroke="#F2F91D" stroke-width="3" full-name="Cenozoic" start="65.50" end="0.00" unit="Era" title="Cenozoic"/>
+<text x="603" y="16" full-name="Cenozoic" start="65.50" end="0.00" unit="Era" font-family="Helvetica">Cz</text>
+<polyline points="19,0 19,20" fill="none" stroke="#555555" stroke-width="1" stroke-linecap="square"/>
+<polyline points="628,0 628,20" fill="none" stroke="#555555" stroke-width="1" stroke-linecap="square"/>
+<rect x="629" y="-1" width="3" height="21" fill="white" stroke="white" stroke-width="1"/>
+<text x="633" y="15" fill="black" font-size="12" font-family="Helvetica">Eras</text>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="20" name="eons" y="40" id="prunetree-eons" viewBox="0 0 900 20">
+<rect x="20" y="0" width="609" height="20" fill="none" stroke="#555555" stroke-width="1"/>
+<rect x="21" y="1" width="324" height="17" fill="#F73563" stroke="#F73563" stroke-width="3" full-name="Proterozoic" start="2500.00" end="542.00" unit="Eon" title="Proterozoic"/>
+<text x="138" y="16" full-name="Proterozoic" start="2500.00" end="542.00" unit="Eon" font-family="Helvetica">Proterozoic</text>
+<rect x="345" y="1" width="284" height="17" fill="#9AD9DD" stroke="#9AD9DD" stroke-width="3" full-name="Phanerozoic" start="542.00" end="0.00" unit="Eon" title="Phanerozoic"/>
+<text x="442" y="16" full-name="Phanerozoic" start="542.00" end="0.00" unit="Eon" font-family="Helvetica">Phanerozoic</text>
+<polyline points="19,0 19,20" fill="none" stroke="#555555" stroke-width="1" stroke-linecap="square"/>
+<polyline points="628,0 628,20" fill="none" stroke="#555555" stroke-width="1" stroke-linecap="square"/>
+<polyline points="19,19 628,19" fill="none" stroke="#555555" stroke-width="1" stroke-linecap="square"/>
+<rect x="629" y="-1" width="3" height="21" fill="white" stroke="white" stroke-width="1"/>
+<text x="633" y="15" fill="black" font-size="12" font-family="Helvetica">Eons</text>
+</svg>
+<text x="688" y="36" font-height="16" fill="#1c6bc9" font-family="Helvetica">Geologic Timescale</text>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="35" name="timescale" y="572" viewBox="0 0 900 35">
+<g class="timescale">
+<polyline points="20,5 628,5" fill="none" stroke="#333" stroke-width="1" stroke-linecap="square"/>
+<polyline points="628,5 628,20" fill="none" stroke="#333" stroke-width="1" stroke-linecap="square"/>
+<polyline points="471,5 471,20" fill="none" stroke="#333" stroke-width="1" stroke-linecap="square"/>
+<polyline points="314,5 314,20" fill="none" stroke="#333" stroke-width="1" stroke-linecap="square"/>
+<polyline points="156,5 156,20" fill="none" stroke="#333" stroke-width="1" stroke-linecap="square"/>
+<polyline points="20,5 20,20" fill="none" stroke="#333" stroke-width="1" stroke-linecap="square"/>
+<text x="626" y="33" fill="#555555" font-size="12">0</text>
+<text x="463" y="33" fill="#555555" font-size="12">300</text>
+<text x="306" y="33" fill="#555555" font-size="12">600</text>
+<text x="148" y="33" fill="#555555" font-size="12">900</text>
+<text x="10" y="33" fill="#555555" font-size="12">1160</text>
+<text x="688" y="24" font-height="16" fill="#1c6bc9" font-family="Helvetica">Time (MYA)</text>
+</g>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="65" name="impacts" y="607" viewBox="0 0 900 65">
+<g class="earth-impacts">
+<polyline points="20,55 628,55 628,5" stroke="white" stroke-width="1" fill="white" stroke-linecap="square"/>
+<polyline points="20,30 628,30" fill="none" stroke-dasharray="5,5" stroke="orange" stroke-width="1" stroke-linecap="square"/>
+<g class="earth-impacts">
+<circle cx="594" cy="30" r="18" diam="150.00" age="65" lat="21.333" lon="-89.500" name="Chicxulub" loc="Yucatan, Mexico" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="609" cy="30" r="11" diam="90.00" age="36" lat="71.650" lon="111.183" name="Popigai" loc="Russia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="319" cy="30" r="11" diam="90.00" age="590" lat="-32.017" lon="135.450" name="Acraman" loc="South Australia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="516" cy="30" r="10" diam="85.00" age="214" lat="51.383" lon="-68.700" name="Manicouagan" loc="Quebec, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="552" cy="30" r="8" diam="70.00" age="145" lat="-26.467" lon="23.533" name="Morokweng" loc="South Africa" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="591" cy="30" r="8" diam="65.00" age="70" lat="69.100" lon="64.150" name="Kara" loc="Russia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="314" cy="30" r="7" diam="60.00" age="600" lat="44.600" lon="-113.000" name="Beaverhead" loc="Montana, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="561" cy="30" r="7" diam="55.00" age="128" lat="-27.117" lon="142.833" name="Tookoonoka" loc="Queensland" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="449" cy="30" r="6" diam="54.00" age="342" lat="47.533" lon="-70.300" name="Charlevoix" loc="Quebec, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="431" cy="30" r="6" diam="52.00" age="377" lat="61.033" lon="14.867" name="Siljan" loc="Sweden" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="625" cy="30" r="6" diam="52.00" age="5" lat="39.017" lon="73.450" name="Kara-Kul" loc="Tajikistan" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="602" cy="30" r="5" diam="45.00" age="50" lat="42.883" lon="-64.217" name="Montagnais" loc="Nova Scotia, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="437" cy="30" r="5" diam="40.00" age="364" lat="-26.050" lon="114.650" name="Woodleigh" loc="Western Australia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="540" cy="30" r="5" diam="40.00" age="167" lat="56.967" lon="43.717" name="Puchezh-Katunki" loc="Russia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="554" cy="30" r="5" diam="40.00" age="142" lat="73.800" lon="29.667" name="Mjolnir" loc="Norway" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="609" cy="30" r="5" diam="40.00" age="35" lat="37.283" lon="-76.017" name="Chesapeake Bay" loc="Virginia, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="495" cy="30" r="5" diam="40.00" age="255" lat="-16.783" lon="-52.983" name="Araguainha" loc="Brazil" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="513" cy="30" r="5" diam="40.00" age="220" lat="51.783" lon="-98.533" name="Saint Martin" loc="Manitoba, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="568" cy="30" r="5" diam="39.00" age="115" lat="58.450" lon="-109.500" name="Carswell" loc="Saskatchewan, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="476" cy="30" r="4" diam="36.00" age="290" lat="56.217" lon="-74.500" name="Clearwater West" loc="Quebec, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="589" cy="30" r="4" diam="35.00" age="74" lat="42.583" lon="-94.550" name="Manson" loc="Iowa, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="392" cy="30" r="4" diam="30.00" age="450" lat="48.667" lon="-87.000" name="Slate Islands" loc="Ontario, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="609" cy="30" r="3" diam="28.00" age="36" lat="55.883" lon="-63.300" name="Mistastin" loc="Newfoundland/Labrador, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="384" cy="30" r="3" diam="26.00" age="465" lat="56.083" lon="-74.117" name="Clearwater East" loc="Quebec, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="602" cy="30" r="3" diam="25.00" age="49" lat="48.350" lon="40.500" name="Kamensk" loc="Russia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="580" cy="30" r="3" diam="25.00" age="91" lat="59.500" lon="-117.633" name="Steen River" loc="Alberta, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="289" cy="30" r="3" diam="25.00" age="646" lat="-15.200" lon="133.583" name="Strangways" loc="Northern Territory" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="476" cy="30" r="3" diam="25.00" age="290" lat="72.467" lon="-113.967" name="Tunnunik (Prince Albert)" loc="Victoria Island, Arctic Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="366" cy="30" r="3" diam="24.00" age="500" lat="49.717" lon="-74.800" name="Presqu'ile" loc="Quebec, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="594" cy="30" r="3" diam="24.00" age="65" lat="48.750" lon="32.167" name="Boltysh" loc="Ukraine" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="620" cy="30" r="3" diam="24.00" age="15" lat="48.883" lon="10.617" name="Ries" loc="Germany" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="608" cy="30" r="3" diam="23.00" age="39" lat="75.367" lon="-89.683" name="Haughton" loc="Nunavut, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="588" cy="30" r="3" diam="23.00" age="76" lat="63.200" lon="23.700" name="Lappajarvi" loc="Finland" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="523" cy="30" r="3" diam="23.00" age="201" lat="45.833" lon="0.933" name="Rochechouart" loc="France" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="553" cy="30" r="3" diam="22.00" age="142" lat="-23.817" lon="132.317" name="Gosses Bluff" loc="Northern Territory" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="41" cy="30" r="2" diam="20.00" age="1120" lat="-20.917" lon="134.833" name="Amelia Creek" loc="Australia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="607" cy="30" r="2" diam="20.00" age="40" lat="65.517" lon="95.933" name="Logancha" loc="Russia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="539" cy="30" r="2" diam="20.00" age="169" lat="49.583" lon="32.917" name="Obolon" loc="Ukraine" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="362" cy="30" r="2" diam="19.00" age="508" lat="-23.983" lon="121.567" name="Glikson" loc="Australia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="581" cy="30" r="2" diam="19.00" age="89" lat="61.800" lon="16.800" name="Dellen" loc="Sweden" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="565" cy="30" r="2" diam="18.00" age="120" lat="24.583" lon="24.400" name="Oasis" loc="Libya" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="626" cy="30" r="2" diam="18.00" age="4" lat="67.500" lon="172.083" name="El'gygytgyn" loc="Russia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="358" cy="30" r="2" diam="18.00" age="515" lat="-18.667" lon="138.650" name="Lawn Hill" loc="Queensland" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="328" cy="30" r="2" diam="17.00" age="573" lat="-10.167" lon="28.000" name="Luizi" loc="Democratic Republic of Congo" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="382" cy="30" r="2" diam="16.00" age="470" lat="36.250" lon="-98.200" name="Ames" loc="Oklahoma, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="429" cy="30" r="2" diam="15.00" age="380" lat="54.500" lon="36.200" name="Kaluga" loc="Russia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="606" cy="30" r="2" diam="15.00" age="42" lat="54.200" lon="27.800" name="Logoisk" loc="Belarus" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="261" cy="30" r="2" diam="14.00" age="700" lat="61.967" lon="30.917" name="Janisjarvi" loc="Russia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="2" diam="14.00" age="9.000E-001" lat="48.400" lon="60.967" name="Zhamanshin" loc="Kazakhstan" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="447" cy="30" r="2" diam="14.00" age="345" lat="17.417" lon="21.750" name="Gweni-Fada" loc="Chad" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="329" cy="30" r="2" diam="13.00" age="570" lat="-16.733" lon="126.083" name="Spider" loc="Western Australia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="576" cy="30" r="2" diam="13.00" age="100" lat="30.600" lon="-102.917" name="Sierra Madera" loc="Texas, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="577" cy="30" r="2" diam="13.00" age="97" lat="40.750" lon="-87.400" name="Kentland" loc="Indiana, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="576" cy="30" r="2" diam="13.00" age="99" lat="56.400" lon="-102.983" name="Deep Bay" loc="Saskatchewan, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="598" cy="30" r="2" diam="12.70" age="58" lat="31.283" lon="-96.300" name="Marquez" loc="Texas, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="447" cy="30" r="2" diam="12.60" age="345" lat="19.100" lon="19.250" name="Aorounga" loc="Chad" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="418" cy="30" r="1" diam="12.50" age="400" lat="62.667" lon="-102.683" name="Nicholson" loc="Northwest Territories, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="471" cy="30" r="1" diam="12.00" age="300" lat="-8.083" lon="-46.867" name="Serra da Cangalha" loc="Brazil" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="602" cy="30" r="1" diam="12.00" age="49" lat="71.250" lon="-156.633" name="Avak" loc="Alaska, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="523" cy="30" r="1" diam="12.00" age="200" lat="36.383" lon="-87.667" name="Wells Creek" loc="Tennessee, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="564" cy="30" r="1" diam="12.00" age="123" lat="-26.833" lon="-52.117" name="Vargeao Dome" loc="Brazil" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="481" cy="30" r="1" diam="11.00" age="280" lat="48.133" lon="33.517" name="Ternovka" loc="Ukraine" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="627" cy="30" r="1" diam="10.50" age="1" lat="6.500" lon="-1.417" name="Bosumtwi" loc="Ghana" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="584" cy="30" r="1" diam="10.00" age="83" lat="-10.167" lon="-45.250" name="Santa Marta" loc="Brazil" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="539" cy="30" r="1" diam="10.00" age="170" lat="38.433" lon="-109.900" name="Upheaval Dome" loc="Utah, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="594" cy="30" r="1" diam="10.00" age="65" lat="49.700" lon="-110.500" name="Eagle Butte" loc="Alberta, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="340" cy="30" r="1" diam="10.00" age="550" lat="-19.933" lon="133.950" name="Kelly West" loc="Northern Territory" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="610" cy="30" r="1" diam="10.00" age="35" lat="-34.617" lon="139.067" name="Flaxman" loc="Australia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="625" cy="30" r="1" diam="10.00" age="5" lat="54.917" lon="48.033" name="Karla" loc="Russia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="594" cy="30" r="1" diam="9.50" age="65" lat="-25.950" lon="-52.683" name="Vista Alegre" loc="Brazil" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="597" cy="30" r="1" diam="9.00" age="60" lat="-23.533" lon="124.750" name="Connolly Basin" loc="Western Australia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="104" cy="30" r="1" diam="9.00" age="1000" lat="60.150" lon="20.100" name="Lumparn" loc="Finland" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="565" cy="30" r="1" diam="9.00" age="121" lat="56.417" lon="14.867" name="Mien" loc="Sweden" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="523" cy="30" r="1" diam="9.00" age="200" lat="47.600" lon="-103.550" name="Red Wing" loc="North Dakota, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="604" cy="30" r="1" diam="9.00" age="46" lat="58.733" lon="61.800" name="Ragozinka" loc="Russia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="430" cy="30" r="1" diam="8.50" age="378" lat="49.117" lon="29.100" name="Ilyinets" loc="Ukraine" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="610" cy="30" r="1" diam="8.50" age="35" lat="-34.717" lon="139.033" name="Crawford" loc="Australia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="391" cy="30" r="1" diam="8.50" age="453" lat="41.833" lon="-85.950" name="Brent" loc="Michigan, USA" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="392" cy="30" r="1" diam="8.50" age="450" lat="41.833" lon="-85.950" name="Calvin" loc="Michigan, USA" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="418" cy="30" r="1" diam="8.00" age="400" lat="57.433" lon="-66.617" name="La Moinerie" loc="Quebec, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="607" cy="30" r="1" diam="8.00" age="40" lat="71.000" lon="121.667" name="Beyenchime-Salaatin" loc="Russia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="421" cy="30" r="1" diam="8.00" age="395" lat="50.983" lon="-106.717" name="Elbow" loc="Saskatchewan, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="460" cy="30" r="1" diam="8.00" age="320" lat="39.033" lon="-83.400" name="Serpent Mound" loc="Ohio, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="481" cy="30" r="1" diam="8.00" age="280" lat="42.050" lon="-87.867" name="Des Plaines" loc="Illinois, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="366" cy="30" r="1" diam="8.00" age="500" lat="43.967" lon="-89.533" name="Glover Bluff" loc="Wisconsin, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="625" cy="30" r="1" diam="8.00" age="5" lat="48.567" lon="82.017" name="Bigach" loc="Kazakhstan" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="403" cy="30" r="1" diam="8.00" age="430" lat="60.133" lon="-75.333" name="Couture" loc="Quebec, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="348" cy="30" r="1" diam="8.00" age="535" lat="59.333" lon="23.667" name="Neugrund" loc="Estonia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="544" cy="30" r="1" diam="8.00" age="160" lat="55.083" lon="24.583" name="Vepriai" loc="Lithuania" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="388" cy="30" r="1" diam="7.50" age="458" lat="63.000" lon="14.817" name="Lockne" loc="Sweden" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="609" cy="30" r="1" diam="7.50" age="37" lat="46.750" lon="-80.750" name="Wanapitei" loc="Ontario, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="439" cy="30" r="1" diam="7.00" age="360" lat="-17.533" lon="128.417" name="Piccaninny" loc="Western Australia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="460" cy="30" r="1" diam="7.00" age="320" lat="37.833" lon="-91.383" name="Crooked Creek" loc="Missouri, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="528" cy="30" r="1" diam="7.00" age="190" lat="43.117" lon="-106.750" name="Cloud Creek" loc="Wyoming, USA" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="314" cy="30" r="1" diam="6.60" age="600" lat="63.033" lon="21.583" name="Soderfjarden" loc="Finland" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="586" cy="30" r="1" diam="6.50" age="81" lat="32.517" lon="-86.167" name="Wetumpka" loc="Alabama, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="363" cy="30" r="1" diam="6.00" age="505" lat="44.717" lon="-92.233" name="Rock Elm" loc="Wisconsin, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="342" cy="30" r="1" diam="6.00" age="545" lat="-16.667" lon="136.783" name="Foelsche" loc="Northern Territory" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="591" cy="30" r="1" diam="6.00" age="70" lat="75.700" lon="97.800" name="Chukcha" loc="Russia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="471" cy="30" r="1" diam="6.00" age="300" lat="36.617" lon="-83.733" name="Middlesboro" loc="Kentucky, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="471" cy="30" r="1" diam="6.00" age="300" lat="37.900" lon="-92.717" name="Decaturville" loc="Missouri, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="589" cy="30" r="1" diam="6.00" age="75" lat="49.800" lon="-109.100" name="Maple Creek" loc="Saskatchewan, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="334" cy="30" r="1" diam="6.00" age="560" lat="61.400" lon="22.400" name="Saaksjarvi" loc="Finland" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="395" cy="30" r="1" diam="6.00" age="445" lat="60.283" lon="-111.017" name="Pilot" loc="Northwest Territories, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="497" cy="30" r="1" diam="6.00" age="250" lat="51.700" lon="36.000" name="Kursk" loc="Russia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="591" cy="30" r="1" diam="6.00" age="70" lat="27.600" lon="5.117" name="Tin Bider" loc="Algeria" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="604" cy="30" r="1" diam="5.50" age="46" lat="49.167" lon="57.850" name="Chiyli" loc="Kazakhstan" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="604" cy="30" r="1" diam="5.50" age="46" lat="31.050" lon="36.800" name="Jebel Waqf as Suwwan" loc="Jordan" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="602" cy="30" r="1" diam="5.10" age="50" lat="-18.333" lon="126.667" name="Goat Paddock" loc="Western Australia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="366" cy="30" r="1" diam="5.00" age="500" lat="60.650" lon="9.000" name="Gardnos" loc="Norway" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="366" cy="30" r="1" diam="5.00" age="500" lat="54.017" lon="23.900" name="Mizarai" loc="Lithuania" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="497" cy="30" r="1" diam="5.00" age="250" lat="56.450" lon="-104.483" name="Gow" loc="Saskatchewan, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="523" cy="30" r="1" diam="4.50" age="200" lat="-7.717" lon="-46.650" name="Riachao Ring" loc="Brazil" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="4.50" age="1.000E-001" lat="-32.867" lon="-64.233" name="Rio Cuarto" loc="Argentina" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="476" cy="30" r="1" diam="4.50" age="290" lat="56.583" lon="23.250" name="Dobele" loc="Latvia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="104" cy="30" r="1" diam="4.00" age="1000" lat="62.700" lon="28.167" name="Suvasvesi N" loc="Finland" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="471" cy="30" r="1" diam="4.00" age="300" lat="50.683" lon="-73.883" name="Ile Rouleau" loc="Quebec, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="390" cy="30" r="1" diam="4.00" age="455" lat="59.017" lon="22.767" name="Kardla" loc="Estonia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="570" cy="30" r="1" diam="4.00" age="110" lat="-27.950" lon="135.367" name="Mount Toondina" loc="South Australia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="403" cy="30" r="1" diam="4.00" age="430" lat="40.600" lon="-89.783" name="Glasford" loc="Illinois, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="497" cy="30" r="1" diam="3.80" age="250" lat="62.600" lon="28.217" name="Suvasvesi S" loc="Finland" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="439" cy="30" r="1" diam="3.80" age="360" lat="36.283" lon="-85.667" name="Flynn Creek" loc="Tennessee, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="620" cy="30" r="1" diam="3.80" age="15" lat="48.683" lon="10.067" name="Steinheim" loc="Germany" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="617" cy="30" r="1" diam="3.60" age="20" lat="-23.867" lon="-46.717" name="Colonia" loc="Brazil" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="591" cy="30" r="1" diam="3.50" age="70" lat="29.000" lon="-7.550" name="Ouarkziz" loc="Algeria" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="586" cy="30" r="1" diam="3.50" age="80" lat="48.067" lon="32.750" name="Zeleny Gai" loc="Ukraine" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="534" cy="30" r="1" diam="3.50" age="180" lat="-22.483" lon="27.583" name="Kgagodi" loc="Botswana" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="627" cy="30" r="1" diam="3.44" age="1" lat="61.283" lon="-73.667" name="New Quebec" loc="Quebec, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="542" cy="30" r="1" diam="3.20" age="165" lat="49.733" lon="29.000" name="Zapadnaya" loc="Ukraine" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="366" cy="30" r="1" diam="3.20" age="500" lat="48.967" lon="-101.967" name="Newporte" loc="North Dakota, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="382" cy="30" r="1" diam="3.00" age="470" lat="58.417" lon="14.933" name="Granby" loc="Sweden" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="104" cy="30" r="1" diam="3.00" age="1000" lat="62.183" lon="27.150" name="Iso-Naakkima" loc="Finland" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="602" cy="30" r="1" diam="3.00" age="49" lat="48.433" lon="40.533" name="Gusev" loc="Russia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="604" cy="30" r="1" diam="2.80" age="45" lat="47.200" lon="72.700" name="Shunak" loc="Kazakhstan" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="355" cy="30" r="1" diam="2.70" age="520" lat="59.233" lon="6.433" name="Ritland" loc="Norway" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="565" cy="30" r="1" diam="2.70" age="120" lat="49.000" lon="32.000" name="Rotmistrovka" loc="Ukraine" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="471" cy="30" r="1" diam="2.50" age="300" lat="58.717" lon="28.050" name="Mishina Gora" loc="Russia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="626" cy="30" r="1" diam="2.50" age="4" lat="-27.767" lon="16.300" name="Roter Kamm" loc="Namibia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="528" cy="30" r="1" diam="2.50" age="190" lat="49.583" lon="-103.067" name="Viewfield" loc="Saskatchewan, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="444" cy="30" r="1" diam="2.44" age="351" lat="49.767" lon="-95.183" name="West Hawk" loc="Manitoba, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="340" cy="30" r="1" diam="2.35" age="550" lat="44.467" lon="-76.633" name="Holleford" loc="Ontario, Canada" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="390" cy="30" r="1" diam="2.00" age="455" lat="58.767" lon="17.417" name="Tvaren" loc="Sweden" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="565" cy="30" r="1" diam="2.00" age="120" lat="25.317" lon="24.333" name="B.P. Structure" loc="Libya" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="1.90" age="2.140E-002" lat="22.917" lon="-10.400" name="Tenoumer" loc="Mauritania" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="1.83" age="5.200E-002" lat="19.967" lon="76.517" name="Lonar" loc="India" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="626" cy="30" r="1" diam="1.75" age="3" lat="33.317" lon="4.033" name="Talemzane" loc="Algeria" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="549" cy="30" r="1" diam="1.60" age="150" lat="-12.400" lon="134.050" name="Liverpool" loc="Northern Territory" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="314" cy="30" r="1" diam="1.50" age="600" lat="65.283" lon="28.383" name="Saarijarvi" loc="Finland" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="507" cy="30" r="1" diam="1.50" age="230" lat="62.217" lon="25.250" name="Karikkoselka" loc="Finland" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="549" cy="30" r="1" diam="1.30" age="150" lat="44.117" lon="109.650" name="Tabun-Khara-Obo" loc="Mongolia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="1.18" age="4.900E-002" lat="35.033" lon="-111.017" name="Barringer" loc="Arizona, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="1.13" age="2.200E-001" lat="-25.400" lon="28.083" name="Tswaing" loc="South Africa" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="388" cy="30" r="1" diam="1.00" age="458" lat="62.917" lon="14.550" name="Malingen" loc="Sweden" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.87" age="3.000E-001" lat="-19.167" lon="127.800" name="Wolfe Creek" loc="Western Australia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.64" age="2.500E-001" lat="-32.717" lon="24.433" name="Kalkkop" loc="South Africa" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="627" cy="30" r="1" diam="0.46" age="1" lat="-23.933" lon="-68.283" name="Monturaqui" loc="Chile" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.45" age="1.000E-001" lat="26.083" lon="4.383" name="Amguid" loc="Algeria" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="626" cy="30" r="1" diam="0.39" age="3" lat="20.250" lon="-12.683" name="Aouelloul" loc="Mauritania" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.30" age="7.000E-003" lat="60.100" lon="117.583" name="Macha" loc="Russia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.17" age="5.400E-003" lat="-22.617" lon="135.200" name="Boxhole" loc="Northern Territory" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.16" age="5.000E-002" lat="31.750" lon="-102.483" name="Xiuyan" loc="Texas, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.16" age="6.350E-002" lat="31.750" lon="-102.483" name="Odessa" loc="Texas, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.15" age="4.200E-003" lat="-24.567" lon="133.133" name="Henbury" loc="Northern Territory" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.11" age="4.000E-003" lat="58.400" lon="22.667" name="Kaalijarv" loc="Estonia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.11" age="1.400E-004" lat="21.500" lon="50.467" name="Wabar" loc="Saudi Arabia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.10" age="1.000E-002" lat="52.483" lon="16.900" name="Morasko" loc="Poland" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.08" age="6.600E-003" lat="57.967" lon="27.417" name="Ilumetsa" loc="Estonia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="627" cy="30" r="1" diam="0.08" age="1" lat="-22.967" lon="125.367" name="Veevers" loc="Western Australia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.05" age="1.000E-003" lat="46.300" lon="137.867" name="Sobolev" loc="Russia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.05" age="4.000E-003" lat="-27.633" lon="-61.700" name="Campo Del Cielo" loc="Argentina" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.04" age="0.000E+000" lat="22.017" lon="26.083" name="Kamil" loc="Egypt" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.04" age="1.100E-003" lat="54.000" lon="-115.600" name="Whitecourt" loc="Alberta, Canada " stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.02" age="6.700E-005" lat="46.117" lon="134.667" name="Sikhote Alin" loc="Russia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.02" age="2.700E-001" lat="-27.633" lon="117.283" name="Dalgaranga" loc="Western Australia" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.01" age="7.000E-006" lat="-16.667" lon="-69.050" name="Carancas" loc="Peru" stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+<circle cx="628" cy="30" r="1" diam="0.01" age="1.000E-003" lat="37.583" lon="-99.167" name="Haviland" loc="Kansas, U.S.A." stroke="red" stroke-width="1" fill-opacity="0.4" fill="red"/>
+</g>
+<rect x="629" y="5" width="60" height="50" fill="white" stroke="white" stroke-width="2"/>
+<rect x="1" y="5" width="18" height="50" fill="white" stroke="white" stroke-width="2"/>
+<polyline points="630,5 635,5" fill="none" stroke="black" stroke-width="1" stroke-linecap="square"/>
+<text x="642" y="12" fill="black" font-size="12" font-family="Helvetica">200</text>
+<polyline points="630,30 635,30" fill="none" stroke="black" stroke-width="1" stroke-linecap="square"/>
+<text x="642" y="33" fill="black" font-size="12" font-family="Helvetica">0 km</text>
+<polyline points="630,55 635,55" fill="none" stroke="black" stroke-width="1" stroke-linecap="square"/>
+<text x="642" y="58" fill="black" font-size="12" font-family="Helvetica">200</text>
+<text x="688" y="33" font-height="16" fill="#1c6bc9" font-family="Helvetica">Earth Impacts</text>
+</g>
+<polyline points="20,55 628,55 628,5" fill="none" stroke="#aaaaaa" stroke-width="1" stroke-linecap="square"/>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="65" name="o2" y="672" viewBox="0 0 900 65">
+<g class="geo-data" name="o2">
+<polyline points="20,55 628,55 628,5" fill="none" stroke="#aaaaaa" stroke-width="1" stroke-linecap="square"/>
+<text x="688" y="34" font-height="16" fill="#1c6bc9" font-family="Helvetica">Oxygen</text>
+<polyline points="630,5 635,5" fill="none" stroke="#000" stroke-width="1" stroke-linecap="square"/>
+<text x="642" y="11" fill="black" font-size="12" font-family="Helvetica"> 33.22</text>
+<polyline points="630,30 635,30" fill="none" stroke="black" stroke-width="1" stroke-linecap="square"/>
+<text x="642" y="33" fill="black" font-size="12" font-family="Helvetica"> 17.08%</text>
+<polyline points="630,55 635,55" fill="none" stroke="black" stroke-width="1" stroke-linecap="square"/>
+<text x="642" y="58" fill="black" font-size="12" font-family="Helvetica">    0.94</text>
+<polygon points="628,54 628,25 625,25 622,25 618,25 615,24 611,24 608,23 605,23 601,22 598,22 594,22 591,22 588,22 584,22 581,22 577,23 574,23 571,23 567,23 564,24 560,24 557,25 554,25 550,26 547,26 543,26 540,26 537,26 533,26 530,26 526,26 523,25 519,25 516,25 513,24 509,23 506,22 502,20 499,18 496,16 492,15 489,13 485,11 482,10 479,8 475,7 472,6 468,6 465,6 462,7 458,8 455,9 451,10 448,11 445,12 441,14 438,15 434,16 431,18 427,19 424,21 421,22 417,23 414,25 410,26 407,26 404,27 400,28 397,29 393,30 390,30 387,31 383,31 380,31 376,31 373,31 370,31 366,31 363,31 359,32 356,32 352,32 349,32 346,32 342,32 339,32 335,32 332,32 329,33 325,33 322,33 318,33 315,33 312,34 308,34 305,34 301,34 298,35 295,35 291,36 288,37 284,37 281,38 278,38 274,39 271,40 267,40 264,41 260,41 257,42 254,42 250,43 247,43 243,44 240,44 237,45 233,45 230,45 226,46 223,46 220,46 216,47 213,47 209,47 206,47 203,48 199,48 196,48 192,48 189,49 186,49 182,49 179,49 175,49 172,50 168,50 165,50 162,50 158,50 155,50 151,50 148,50 145,50 141,50 138,51 134,51 131,51 128,51 124,51 121,51 117,51 114,51 111,51 107,51 104,51 100,51 97,51 93,51 90,51 87,51 83,51 80,51 76,51 73,51 70,51 66,51 63,51 59,51 56,51 53,51 49,51 46,51 42,51 39,51 36,51 32,51 29,51 25,51 22,51 20,51 20,54 628,54" fill="#ffc300" fill-opacity="0.75" stroke="#ffc300" stroke-width="1"/>
+</g>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="65" name="co2" y="737" viewBox="0 0 900 65">
+<g class="geo-data" name="co2">
+<polyline points="20,55 628,55 628,5" fill="none" stroke="#aaaaaa" stroke-width="1" stroke-linecap="square"/>
+<text x="688" y="34" font-height="16" fill="#1c6bc9" font-family="Helvetica">Carbon Dioxide</text>
+<polyline points="630,5 635,5" fill="none" stroke="#000" stroke-width="1" stroke-linecap="square"/>
+<text x="642" y="11" fill="black" font-size="12" font-family="Helvetica">  0.61</text>
+<polyline points="630,30 635,30" fill="none" stroke="black" stroke-width="1" stroke-linecap="square"/>
+<text x="642" y="33" fill="black" font-size="12" font-family="Helvetica">  0.32%</text>
+<polyline points="630,55 635,55" fill="none" stroke="black" stroke-width="1" stroke-linecap="square"/>
+<text x="642" y="58" fill="black" font-size="12" font-family="Helvetica">    0.02</text>
+<polygon points="628,54 628,52 627,53 626,53 625,53 624,53 623,53 622,53 621,53 620,54 619,52 618,53 617,53 616,53 615,53 614,52 613,52 612,52 611,50 610,48 609,49 608,49 607,50 606,48 605,48 604,47 603,47 602,47 601,47 600,49 599,50 598,50 597,50 596,50 595,49 594,49 593,48 592,48 591,48 590,47 589,47 588,46 587,46 586,45 585,45 584,45 583,45 582,45 581,45 580,45 579,44 578,44 577,44 576,43 575,43 574,42 573,41 572,41 571,40 570,40 569,39 568,39 567,39 566,39 565,39 564,40 563,41 562,42 561,43 560,44 559,45 558,45 557,46 556,46 555,47 554,47 553,46 552,45 551,45 550,44 549,44 548,43 547,43 546,43 545,42 544,43 543,43 542,43 541,43 540,43 539,43 538,43 537,44 536,44 535,44 534,44 533,44 532,45 531,45 530,45 529,45 528,45 527,45 526,45 525,45 524,45 523,44 522,44 521,44 520,44 519,44 518,44 517,44 516,44 515,44 514,44 513,44 512,45 511,46 510,47 509,48 508,48 507,49 506,49 505,49 504,50 503,50 502,50 501,50 500,50 499,50 498,51 497,51 496,51 495,51 494,51 493,51 492,51 491,51 490,52 489,52 488,52 487,52 486,52 485,53 484,53 483,53 482,53 481,53 480,53 479,53 478,53 477,53 476,53 475,53 474,53 473,53 472,53 471,53 470,53 469,53 468,53 467,52 466,52 465,52 464,52 463,52 462,52 461,51 460,51 459,51 458,50 457,50 456,50 455,48 454,46 453,43 452,42 451,40 450,38 449,36 448,35 447,34 446,32 445,31 444,30 443,30 442,29 441,29 440,28 439,28 438,27 437,27 436,27 435,27 434,27 433,28 432,28 431,29 430,29 429,30 428,30 427,31 426,31 425,32 424,32 423,32 422,31 421,31 420,31 419,30 418,29 417,28 416,27 415,26 414,26 413,25 412,24 411,24 410,23 409,22 408,22 407,21 406,21 405,20 404,20 403,19 402,19 401,19 400,18 399,18 398,18 397,17 396,17 395,17 394,16 393,16 392,15 391,15 390,14 389,14 388,13 387,13 386,14 385,14 384,14 383,14 382,15 381,15 380,15 379,15 378,16 377,16 376,16 375,16 374,16 373,16 372,16 371,16 370,15 369,15 368,15 367,15 366,14 365,14 364,13 363,12 362,11 361,10 360,10 359,8 358,8 357,7 356,6 355,6 354,8 353,10 352,12 351,14 350,16 349,18 348,20 347,21 346,23 345,24 344,26 343,28 342,30 341,33 340,35 339,36 338,36 337,36 336,37 335,37 334,37 333,38 332,39 331,39 330,40 329,40 326,40 321,40 316,40 311,40 306,40 301,40 296,39 290,39 286,42 282,40 277,41 273,41 268,42 264,43 259,44 255,45 251,46 246,47 242,48 237,48 233,49 228,49 224,50 219,50 215,50 211,50 206,50 202,50 197,50 193,50 188,49 184,49 180,48 175,48 171,47 166,45 162,44 157,42 153,40 148,38 144,36 140,34 135,31 131,29 126,28 122,26 117,26 113,25 109,26 104,27 100,28 95,30 91,32 86,34 82,37 77,39 73,41 69,44 64,45 60,47 55,48 51,49 46,49 42,50 38,51 33,51 29,51 24,51 20,51 20,54 628,54" fill="#ff5733" fill-opacity="0.75" stroke="#ff5733" stroke-width="1"/>
+</g>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="65" name="luminosity" y="802" viewBox="0 0 900 65">
+<g class="geo-data" name="luminosity">
+<polyline points="20,55 628,55 628,5" fill="none" stroke="#aaaaaa" stroke-width="1" stroke-linecap="square"/>
+<text x="688" y="34" font-height="16" fill="#1c6bc9" font-family="Helvetica">Solar Luminosity</text>
+<polyline points="630,5 635,5" fill="none" stroke="#000" stroke-width="1" stroke-linecap="square"/>
+<text x="642" y="11" fill="black" font-size="12" font-family="Helvetica">100.00</text>
+<polyline points="630,30 635,30" fill="none" stroke="black" stroke-width="1" stroke-linecap="square"/>
+<text x="642" y="33" fill="black" font-size="12" font-family="Helvetica"> 95.39L</text>
+<polyline points="630,55 635,55" fill="none" stroke="black" stroke-width="1" stroke-linecap="square"/>
+<text x="642" y="58" fill="black" font-size="12" font-family="Helvetica">   90.78</text>
+<polygon points="628,54 628,6 20,53 20,54 628,54" fill="#c70039" fill-opacity="0.75" stroke="#c70039" stroke-width="1"/>
+</g>
+</svg>
+</svg>
