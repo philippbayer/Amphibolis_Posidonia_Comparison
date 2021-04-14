@@ -1,0 +1,87 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Here I make a subtree from the Open Tree Of Life API for the species we have.
+```{r setup}
+library(rotl)
+library(ggtree)
+library(cowplot)
+library(ggplot2)
+library(tidyverse)
+```
+
+```{r}
+species <- c('Zostera marina', 'Zostera muelleri', 'Arabidopsis thaliana', 'Thellungiella parvula', 'Populus trichocarpa', 'Vitis vinifera', 'Amborella trichopoda', 'Oryza sativa', 'Zea mays', 'Brachypodium distachyon', 'Spirodela polyrhiza', 'Selaginella moellendorffi', 'Physcomitrella patens', 'Chlamydomonoas reinhardtii', 'Ostreococcus lucimarinus', 'Lemna gibba', 'Posidonia australis' ,'Amphibolis antarctica')
+```
+
+Let's call the API to get the OTT IDs for these species, and  to double-check we got the right names :) 
+
+We should get a tree for `r length(species)` species.
+
+```{r}
+taxon_search <- tnrs_match_names(names = species, context_name = "All life")
+```
+
+```{r}
+knitr::kable(taxon_search)
+```
+
+Let's write the species names out again for timetree.org
+```{r}
+cat(capture.output(cat(taxon_search$unique_name, sep='\n'), file="data/species.csv"))
+```
+
+That looks good to me!
+
+```{r}
+ott_in_tree <- ott_id(taxon_search)[is_in_tree(ott_id(taxon_search))]
+```
+
+```{r}
+tr <- tol_induced_subtree(ott_ids = ott_in_tree)
+```
+
+```{r}
+plot(tr)
+```
+
+Let's get rid of those OTT IDs from the tree, I don't like that. There's a helper function for that
+
+```{r}
+tr$tip.label <- strip_ott_ids(tr$tip.label, remove_underscores = TRUE)
+```
+
+```{r}
+ggtree(tr) + 
+  geom_tree() + 
+  geom_tiplab(size=3,
+              fontface='italic') +
+  theme_tree() +
+  xlim(0, 15)
+```
+
+Cool! I took the above species list and uploaded to timetree (see Species_timetree.svg)
+
+```{r fig.width=14}
+plot(ggdraw()+cowplot::draw_image('data/Species_timetree.svg'))
+```
+
+Timetree also lets you export the tree timed with MYA 
+
+```{r}
+tree <- read.tree('data/timetree_species.nwk')
+```
+
+```{r}
+tree$tip.label <- str_replace_all(tree$tip.label, '_', ' ')
+p <- ggplot(tree) + 
+  geom_tree() + 
+  theme_tree2() +
+  scale_x_continuous(labels = abs) + 
+  geom_tiplab(size=3,  fontface='italic')
+
+revts(p) + xlim(-1200, 300)
+```
+
