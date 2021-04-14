@@ -9,9 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Philipp Bayer" />
 
+<meta name="date" content="2021-03-04" />
 
-<title>R Notebook</title>
+<title>Untitled</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -384,7 +386,9 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">R Notebook</h1>
+<h1 class="title toc-ignore">Untitled</h1>
+<h4 class="author">Philipp Bayer</h4>
+<h4 class="date">4 March 2021</h4>
 
 </div>
 
@@ -539,7 +543,7 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/OTT.Rmd</code>) and HTML (<code>docs/OTT.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/plot.Rmd</code>) and HTML (<code>docs/plot.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -565,27 +569,10 @@ Message
 <tbody>
 <tr>
 <td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/1d42715fa5c6ab1bb2dcbded57076b3a86aa63cc/docs/OTT.html" target="_blank">1d42715</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2021-04-14
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
 Rmd
 </td>
 <td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/f3d40146f815c965feb7e08cd16577557e67e3d6/analysis/OTT.Rmd" target="_blank">f3d4014</a>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/fa3957251b2b9f8943b3d92f6ae38aa021d5a1f0/analysis/plot.Rmd" target="_blank">fa39572</a>
 </td>
 <td>
 Philipp Bayer
@@ -594,7 +581,7 @@ Philipp Bayer
 2021-04-14
 </td>
 <td>
-wflow_publish(“analysis/OTT.Rmd”)
+wflow_publish(c(“analysis/plot.Rmd”, &quot;analysis/_site.yml“,”analysis/index.Rmd&quot;),
 </td>
 </tr>
 </tbody>
@@ -604,19 +591,15 @@ wflow_publish(“analysis/OTT.Rmd”)
 </div>
 </div>
 </div>
-<p>Here I make a subtree from the Open Tree Of Life API for the species we have.</p>
-<pre class="r"><code>library(rotl)
-library(ggtree)</code></pre>
-<pre><code>Registered S3 method overwritten by &#39;treeio&#39;:
-  method     from
-  root.phylo ape </code></pre>
-<pre><code>ggtree v2.5.2  For help: https://yulab-smu.top/treedata-book/
-
-If you use ggtree in published research, please cite the most appropriate paper(s):
-
-1. Guangchuang Yu. Using ggtree to visualize data on tree-like structures. Current Protocols in Bioinformatics, 2020, 69:e96. doi:10.1002/cpbi.96
-2. Guangchuang Yu, Tommy Tsan-Yuk Lam, Huachen Zhu, Yi Guan. Two methods for mapping and visualizing associated data on phylogeny using ggtree. Molecular Biology and Evolution 2018, 35(12):3041-3043. doi:10.1093/molbev/msy194
-3. Guangchuang Yu, David Smith, Huachen Zhu, Yi Guan, Tommy Tsan-Yuk Lam. ggtree: an R package for visualization and annotation of phylogenetic trees with their covariates and other associated data. Methods in Ecology and Evolution 2017, 8(1):28-36. doi:10.1111/2041-210X.12628</code></pre>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>-- Attaching packages ------------------------------------------------------------------------------------------------------------------- tidyverse 1.3.0 --</code></pre>
+<pre><code>v ggplot2 3.3.2     v purrr   0.3.4
+v tibble  3.0.2     v dplyr   1.0.0
+v tidyr   1.1.0     v stringr 1.4.0
+v readr   1.3.1     v forcats 0.5.0</code></pre>
+<pre><code>-- Conflicts ---------------------------------------------------------------------------------------------------------------------- tidyverse_conflicts() --
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>library(cowplot)</code></pre>
 <pre><code>
 ********************************************************</code></pre>
@@ -625,312 +608,72 @@ If you use ggtree in published research, please cite the most appropriate paper(
 <pre><code>  behavior, execute:
   theme_set(theme_cowplot())</code></pre>
 <pre><code>********************************************************</code></pre>
-<pre class="r"><code>library(ggplot2)
-library(tidyverse)</code></pre>
-<pre><code>-- Attaching packages ------------------------------------------------------------------------------------------------------------------- tidyverse 1.3.0 --</code></pre>
-<pre><code>v tibble  3.0.2     v dplyr   1.0.0
-v tidyr   1.1.0     v stringr 1.4.0
-v readr   1.3.1     v forcats 0.5.0
-v purrr   0.3.4     </code></pre>
-<pre><code>-- Conflicts ---------------------------------------------------------------------------------------------------------------------- tidyverse_conflicts() --
-x tidyr::expand() masks ggtree::expand()
-x dplyr::filter() masks stats::filter()
-x dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>species &lt;- c(&#39;Zostera marina&#39;, &#39;Zostera muelleri&#39;, &#39;Arabidopsis thaliana&#39;, &#39;Thellungiella parvula&#39;, &#39;Populus trichocarpa&#39;, &#39;Vitis vinifera&#39;, &#39;Amborella trichopoda&#39;, &#39;Oryza sativa&#39;, &#39;Zea mays&#39;, &#39;Brachypodium distachyon&#39;, &#39;Spirodela polyrhiza&#39;, &#39;Selaginella moellendorffi&#39;, &#39;Physcomitrella patens&#39;, &#39;Chlamydomonoas reinhardtii&#39;, &#39;Ostreococcus lucimarinus&#39;, &#39;Lemna gibba&#39;, &#39;Posidonia australis&#39; ,&#39;Amphibolis antarctica&#39;)</code></pre>
-<p>Let’s call the API to get the OTT IDs for these species, and to double-check we got the right names :)</p>
-<p>We should get a tree for 18 species.</p>
-<pre class="r"><code>taxon_search &lt;- tnrs_match_names(names = species, context_name = &quot;All life&quot;)</code></pre>
-<pre class="r"><code>knitr::kable(taxon_search)</code></pre>
-<table style="width:100%;">
-<colgroup>
-<col width="20%" />
-<col width="23%" />
-<col width="13%" />
-<col width="5%" />
-<col width="8%" />
-<col width="18%" />
-<col width="11%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">search_string</th>
-<th align="left">unique_name</th>
-<th align="left">approximate_match</th>
-<th align="right">ott_id</th>
-<th align="left">is_synonym</th>
-<th align="left">flags</th>
-<th align="right">number_matches</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">zostera marina</td>
-<td align="left">Zostera marina</td>
-<td align="left">FALSE</td>
-<td align="right">814202</td>
-<td align="left">FALSE</td>
-<td align="left">sibling_higher</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">zostera muelleri</td>
-<td align="left">Zostera muelleri</td>
-<td align="left">FALSE</td>
-<td align="right">766348</td>
-<td align="left">FALSE</td>
-<td align="left">sibling_higher</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">arabidopsis thaliana</td>
-<td align="left">Arabidopsis thaliana</td>
-<td align="left">FALSE</td>
-<td align="right">309263</td>
-<td align="left">FALSE</td>
-<td align="left"></td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">thellungiella parvula</td>
-<td align="left">Schrenkiella parvula</td>
-<td align="left">FALSE</td>
-<td align="right">991614</td>
-<td align="left">TRUE</td>
-<td align="left">incertae_sedis_inherited</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">populus trichocarpa</td>
-<td align="left">Populus trichocarpa</td>
-<td align="left">FALSE</td>
-<td align="right">8861</td>
-<td align="left">FALSE</td>
-<td align="left"></td>
-<td align="right">2</td>
-</tr>
-<tr class="even">
-<td align="left">vitis vinifera</td>
-<td align="left">Vitis vinifera</td>
-<td align="left">FALSE</td>
-<td align="right">756728</td>
-<td align="left">FALSE</td>
-<td align="left"></td>
-<td align="right">2</td>
-</tr>
-<tr class="odd">
-<td align="left">amborella trichopoda</td>
-<td align="left">Amborella trichopoda</td>
-<td align="left">FALSE</td>
-<td align="right">303950</td>
-<td align="left">FALSE</td>
-<td align="left"></td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">oryza sativa</td>
-<td align="left">Oryza sativa</td>
-<td align="left">FALSE</td>
-<td align="right">709894</td>
-<td align="left">FALSE</td>
-<td align="left"></td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">zea mays</td>
-<td align="left">Zea mays</td>
-<td align="left">FALSE</td>
-<td align="right">605194</td>
-<td align="left">FALSE</td>
-<td align="left"></td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">brachypodium distachyon</td>
-<td align="left">Brachypodium distachyon</td>
-<td align="left">FALSE</td>
-<td align="right">413237</td>
-<td align="left">FALSE</td>
-<td align="left"></td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">spirodela polyrhiza</td>
-<td align="left">Spirodela polyrhiza</td>
-<td align="left">FALSE</td>
-<td align="right">814207</td>
-<td align="left">FALSE</td>
-<td align="left"></td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">selaginella moellendorffi</td>
-<td align="left">Selaginella moellendorffii</td>
-<td align="left">TRUE</td>
-<td align="right">799880</td>
-<td align="left">FALSE</td>
-<td align="left"></td>
-<td align="right">3</td>
-</tr>
-<tr class="odd">
-<td align="left">physcomitrella patens</td>
-<td align="left">Physcomitrella patens</td>
-<td align="left">FALSE</td>
-<td align="right">821359</td>
-<td align="left">FALSE</td>
-<td align="left"></td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">chlamydomonoas reinhardtii</td>
-<td align="left">Chlamydomonas reinhardtii</td>
-<td align="left">TRUE</td>
-<td align="right">33153</td>
-<td align="left">FALSE</td>
-<td align="left"></td>
-<td align="right">3</td>
-</tr>
-<tr class="odd">
-<td align="left">ostreococcus lucimarinus</td>
-<td align="left">Ostreococcus sp. ‘lucimarinus’</td>
-<td align="left">FALSE</td>
-<td align="right">851102</td>
-<td align="left">TRUE</td>
-<td align="left">incertae_sedis</td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">lemna gibba</td>
-<td align="left">Lemna gibba</td>
-<td align="left">FALSE</td>
-<td align="right">431383</td>
-<td align="left">FALSE</td>
-<td align="left"></td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="left">posidonia australis</td>
-<td align="left">Posidonia australis</td>
-<td align="left">FALSE</td>
-<td align="right">91976</td>
-<td align="left">FALSE</td>
-<td align="left"></td>
-<td align="right">1</td>
-</tr>
-<tr class="even">
-<td align="left">amphibolis antarctica</td>
-<td align="left">Amphibolis antarctica</td>
-<td align="left">FALSE</td>
-<td align="right">460583</td>
-<td align="left">FALSE</td>
-<td align="left"></td>
-<td align="right">1</td>
-</tr>
-</tbody>
-</table>
-<p>Let’s write the species names out again for timetree.org</p>
-<pre class="r"><code>cat(capture.output(cat(taxon_search$unique_name, sep=&#39;\n&#39;), file=&quot;data/species.csv&quot;))</code></pre>
-<p>That looks good to me!</p>
-<pre class="r"><code>ott_in_tree &lt;- ott_id(taxon_search)[is_in_tree(ott_id(taxon_search))]</code></pre>
-<pre class="r"><code>tr &lt;- tol_induced_subtree(ott_ids = ott_in_tree)</code></pre>
-<pre><code>Warning in collapse_single_cpp(ances = tree$edge[, 1], desc = tree$edge[, :
-printing of extremely long output is truncated</code></pre>
-<pre><code>Warning in collapse_single_cpp(ances = tree$edge[, 1], desc = tree$edge[, :
-printing of extremely long output is truncated</code></pre>
-<pre><code>Warning in collapse_singles(tr, show_progress): Dropping singleton nodes
-with labels: Streptophyta ott916750, mrcaott2ott50189, mrcaott2ott108668,
-mrcaott2ott59852, mrcaott2ott8171, mrcaott2ott70394, Euphyllophyta ott1007992,
-Spermatophyta ott10218, mrcaott2ott2645, mrcaott2ott35778, Mesangiospermae
-ott5298374, mrcaott2ott10930, mrcaott2ott2441, mrcaott2ott969, mrcaott2ott62529,
-mrcaott2ott8379, eudicotyledons ott431495, Gunneridae ott853757, Pentapetalae
-ott5316182, mrcaott2ott2464, fabids ott565281, mrcaott2ott371, mrcaott2ott1479,
-mrcaott2ott345, Malpighiales ott429482, mrcaott345ott3853, mrcaott3853ott8858,
-mrcaott8858ott33097, mrcaott8858ott12186, mrcaott8858ott98085, Salicaceae
-ott530183, mrcaott8858ott270454, mrcaott8858ott703490, mrcaott8858ott33085,
-mrcaott8858ott102531, mrcaott8858ott502530, mrcaott8858ott737360,
-mrcaott8858ott474976, Saliceae ott509390, Populus ott530178, mrcaott8858ott8861,
-mrcaott8861ott815941, mrcaott8861ott320722, mrcaott8861ott8867, malvids
-ott565277, mrcaott96ott14140, mrcaott96ott50744, mrcaott96ott378,
-mrcaott378ott29446, mrcaott378ott1697, Brassicales ott8844, mrcaott378ott307071,
-mrcaott378ott32461, mrcaott378ott509555, mrcaott378ott318175,
-mrcaott378ott9635, mrcaott378ott125843, mrcaott378ott509568, mrcaott378ott28763,
-mrcaott378ott83547, Brassicaceae ott309271, mrcaott378ott299734,
-mrcaott378ott4671, mrcaott4671ott58909, mrcaott4671ott6278, mrcaott6278ott15318,
-mrcaott6278ott158438, mrcaott6278ott10585, mrcaott6278ott34460,
-mrcaott6278ott9083, mrcaott9083ott19798, mrcaott19798ott31487,
-mrcaott31487ott88883, mrcaott31487ott152275, mrcaott11023ott24850,
-mrcaott11023ott56298, mrcaott11023ott95692, mrcaott11023ott25468,
-mrcaott11023ott25476, Schrenkiella (genus in kingdom Archaeplastida)
-ott5740975, Vitales ott1069308, mrcaott8384ott10050, mrcaott10050ott337881,
-mrcaott10050ott194302, mrcaott10050ott302228, mrcaott10050ott24244,
-mrcaott24244ott240260, mrcaott24244ott39768, mrcaott39768ott211705,
-mrcaott39768ott175159, mrcaott175159ott602495, mrcaott175159ott246514,
-mrcaott175159ott903683, mrcaott175159ott568892, mrcaott175159ott235835,
-mrcaott175159ott941927, mrcaott175159ott568880, mrcaott175159ott175164,
-mrcaott175159ott509603, mrcaott509603ott805071, Liliopsida ott1058517,
-Petrosaviidae ott5308424, mrcaott121ott4474, mrcaott121ott1439,
-mrcaott121ott334, commelinids ott225270, mrcaott252ott213153, Poales ott921871,
-mrcaott252ott128594, mrcaott252ott1477, mrcaott252ott7120, mrcaott252ott285512,
-mrcaott252ott3717, mrcaott252ott272812, mrcaott252ott334529,
-mrcaott252ott427739, Poaceae ott508090, mrcaott252ott196505, mrcaott252ott43427,
-mrcaott252ott751372, mrcaott252ott11561, Oryzoideae ott641467, Oryzeae
-ott415723, mrcaott36487ott890607, Oryzinae ott5744622, Oryza ott135764,
-mrcaott67120ott709900, mrcaott67120ott272949, mrcaott67120ott709898,
-mrcaott67120ott135756, mrcaott135756ott709892, mrcaott135756ott709887,
-mrcaott656ott1473, mrcaott1473ott33975, Brachypodieae ott693951,
-Brachypodium ott413242, mrcaott1787ott2051, mrcaott1787ott1985, Panicoideae
-ott641461, mrcaott6065ott9925, Andropogonodae ott5737327, Andropogoneae
-ott475213, Tripsacinae ott5759522, Zea ott605186, Araceae ott481972,
-mrcaott290ott3983, mrcaott290ott66494, Lemna ott1008186, mrcaott338992ott338994,
-mrcaott338994ott431388, mrcaott338994ott431383, Spirodela ott431386,
-mrcaott5202ott159280, mrcaott5202ott30666, mrcaott30666ott106181,
-mrcaott30666ott208913, mrcaott30666ott814198, mrcaott30666ott40117,
-Zosteraceae ott637476, mrcaott40117ott91951, mrcaott40117ott197961,
-mrcaott197961ott817762, mrcaott197961ott529863, mrcaott197961ott766348,
-mrcaott766348ott766350, mrcaott436201ott436206, mrcaott436201ott436203,
-mrcaott436201ott814202, mrcaott87589ott256106, mrcaott256106ott460583,
-mrcaott460583ott514367, mrcaott460583ott613178, Amphibolis ott460577,
-mrcaott91974ott351467, Posidoniaceae ott460581, Posidonia (genus in kingdom
-Archaeplastida) ott91949, mrcaott91976ott928713, Amborellales ott927960,
-Amborellaceae ott295910, Amborella ott303952, Lycopodiopsida ott144795,
-mrcaott3661ott18736, Selaginellales ott144821, Selaginellaceae ott144818,
-Selaginella ott144816, mrcaott10602ott10604, mrcaott10604ott10608,
-mrcaott10604ott78166, mrcaott10604ott10618, mrcaott101177ott144813,
-mrcaott532022ott583202, mrcaott532022ott799880, mrcaott541ott1066,
-Bryophyta ott246594, mrcaott1066ott204205, Bryophytina ott471195, Bryopsida
-ott821346, mrcaott1066ott86152, mrcaott1066ott1769, mrcaott1769ott7813,
-mrcaott7813ott148635, mrcaott7813ott86148, mrcaott7813ott454749,
-mrcaott7813ott86154, mrcaott7813ott31044, mrcaott31044ott844044,
-mrcaott31044ott1060862, Physcomitrella ott821349, Chlorophyta ott979501,
-mrcaott185ott42071, mrcaott185ott1426, mrcaott1426ott1544, mrcaott1544ott8659,
-mrcaott1544ott15345, mrcaott1544ott9282, mrcaott9389ott818260,
-mrcaott9389ott23557, mrcaott23557ott527099</code></pre>
-<pre class="r"><code>plot(tr)</code></pre>
-<p><img src="figure/OTT.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Let’s get rid of those OTT IDs from the tree, I don’t like that. There’s a helper function for that</p>
-<pre class="r"><code>tr$tip.label &lt;- strip_ott_ids(tr$tip.label, remove_underscores = TRUE)</code></pre>
-<pre class="r"><code>ggtree(tr) + 
-  geom_tree() + 
-  geom_tiplab(size=3,
-              fontface=&#39;italic&#39;) +
-  theme_tree() +
-  xlim(0, 15)</code></pre>
-<p><img src="figure/OTT.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Cool! I took the above species list and uploaded to timetree (see Species_timetree.svg)</p>
-<pre class="r"><code>plot(ggdraw()+cowplot::draw_image(&#39;data/Species_timetree.svg&#39;))</code></pre>
-<p><img src="figure/OTT.Rmd/unnamed-chunk-10-1.png" width="1344" style="display: block; margin: auto;" /></p>
-<p>Timetree also lets you export the tree timed with MYA</p>
-<pre class="r"><code>tree &lt;- read.tree(&#39;data/timetree_species.nwk&#39;)</code></pre>
-<pre class="r"><code>tree$tip.label &lt;- str_replace_all(tree$tip.label, &#39;_&#39;, &#39; &#39;)
-p &lt;- ggplot(tree) + 
-  geom_tree() + 
-  theme_tree2() +
-  scale_x_continuous(labels = abs) + 
-  geom_tiplab(size=3,  fontface=&#39;italic&#39;)
+<pre class="r"><code>theme_set(theme_cowplot())
+library(RColorBrewer)
+library(patchwork)</code></pre>
+<pre><code>
+Attaching package: &#39;patchwork&#39;</code></pre>
+<pre><code>The following object is masked from &#39;package:cowplot&#39;:
 
-revts(p) + xlim(-1200, 300)</code></pre>
-<pre><code>Scale for &#39;x&#39; is already present. Adding another scale for &#39;x&#39;, which will
-replace the existing scale.</code></pre>
-<p><img src="figure/OTT.Rmd/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+    align_plots</code></pre>
+<pre class="r"><code># reps &lt;- data.frame(
+#   stringsAsFactors = FALSE,
+#              Class = c(&quot;LINEs&quot;,&quot;LTRs&quot;,&quot;DNA&quot;,
+#                        &quot;Unclassified&quot;,&quot;Non-repetitive&quot;,&quot;LINEs&quot;,&quot;LTRs&quot;,&quot;DNA&quot;,&quot;Unclassified&quot;,
+#                        &quot;Non-repetitive&quot;,&quot;LINEs&quot;,&quot;LTRs&quot;,&quot;DNA&quot;,&quot;Unclassified&quot;,
+#                        &quot;Non-repetitive&quot;,&quot;LINEs&quot;,&quot;LTRs&quot;,&quot;DNA&quot;,&quot;Unclassified&quot;,&quot;Non-repetitive&quot;),
+#           Assembly = c(&quot;A. antarctica&quot;,&quot;A. antarctica&quot;,
+#                        &quot;A. antarctica&quot;,&quot;A. antarctica&quot;,&quot;A. antarctica&quot;,&quot;P. australis&quot;,
+#                        &quot;P. australis&quot;,&quot;P. australis&quot;,&quot;P. australis&quot;,&quot;P. australis&quot;,&quot;Z. marina&quot;,
+#                        &quot;Z. marina&quot;,&quot;Z. marina&quot;,&quot;Z. marina&quot;,&quot;Z. marina&quot;,&quot;Z. muelleri&quot;,
+#                        &quot;Z. muelleri&quot;,&quot;Z. muelleri&quot;,&quot;Z. muelleri&quot;,&quot;Z. muelleri&quot;),
+#                 BP = c(805898L,45776664L,37822890L,
+#                        1546483L,158725395L,38319733L,611240734L,100034681L,
+#                        37142931L,428369702L,3103364L,123623579L,27390818L,
+#                        6060480L,96439714L,14331182L,164253396L,142828758L,
+#                        21922574L,274954485L),
+#            Percent = c(0.33,18.71,15.46,0.63,
+#                        64.87131,3.15,50.3,8.23,3.06,35.25364,1.19,47.46,10.52,
+#                        2.33,37.02,2.32,26.57,23.1,3.55,44.46)
+# )
+
+
+reps &lt;- readxl::read_xlsx(&#39;data/Repeat_coding.xlsx&#39;)
+
+reps &lt;- reps %&gt;% dplyr::filter(Class != &#39;Total&#39;)
+reps$Class &lt;- factor(reps$Class, levels = c(&#39;LINEs&#39;, &#39;LTRs&#39;, &#39;DNA&#39;, &#39;Unclassified&#39;, &#39;Total CDS&#39;, &#39;Non-repetitive&#39;))
+reps</code></pre>
+<pre><code># A tibble: 24 x 4
+   Class          Assembly             BP Percent
+   &lt;fct&gt;          &lt;chr&gt;             &lt;dbl&gt;   &lt;dbl&gt;
+ 1 LINEs          A. antarctica    805898   0.329
+ 2 LTRs           A. antarctica  45776664  18.7  
+ 3 DNA            A. antarctica  37822890  15.5  
+ 4 Unclassified   A. antarctica   1546483   0.632
+ 5 Total CDS      A. antarctica  29544393  12.1  
+ 6 Non-repetitive A. antarctica 129181002  52.8  
+ 7 LINEs          P. australis   38319733   3.15 
+ 8 LTRs           P. australis  611240734  50.3  
+ 9 DNA            P. australis  100034681   8.23 
+10 Unclassified   P. australis   37142931   3.06 
+# ... with 14 more rows</code></pre>
+<pre class="r"><code>p1 &lt;- reps %&gt;% ggplot(aes(x=Assembly, fill=Class, y = BP/1000000)) + 
+geom_bar(position=&#39;stack&#39;, stat=&#39;identity&#39;) + ylab(&#39;Size (Mbp)&#39;) +
+  scale_fill_brewer(palette=&#39;Dark2&#39;) +
+  theme(axis.text.x =  element_text(face=&quot;italic&quot;))
+  
+p1</code></pre>
+<p><img src="figure/plot.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>p2 &lt;- reps %&gt;% ggplot(aes(x=Assembly, fill=Class, y = Percent)) + geom_bar(position=&#39;stack&#39;, stat=&#39;identity&#39;)+
+  scale_fill_brewer(palette=&#39;Dark2&#39;) +
+  theme(axis.text.x =  element_text(face=&quot;italic&quot;)) +
+  ylab(&#39;Percent\n of assembly&#39;)
+p2</code></pre>
+<p><img src="figure/plot.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>p1/p2 + plot_annotation(tag_levels = &#39;A&#39;)</code></pre>
+<p><img src="figure/plot.Rmd/unnamed-chunk-4-1.png" width="3000" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>reps %&gt;% filter(Class==&#39;Non-repetitive&#39;) %&gt;% ggplot(aes(x=Assembly, fill=Class, y = BP)) + geom_bar(position=&#39;stack&#39;, stat=&#39;identity&#39;)</code></pre>
+<p><img src="figure/plot.Rmd/unnamed-chunk-5-1.png" width="672" style="display: block; margin: auto;" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -954,40 +697,30 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] forcats_0.5.0        stringr_1.4.0        dplyr_1.0.0         
- [4] purrr_0.3.4          readr_1.3.1          tidyr_1.1.0         
- [7] tibble_3.0.2         tidyverse_1.3.0      ggplot2_3.3.2       
-[10] cowplot_1.0.0        ggtree_2.5.2         rotl_3.0.11         
+ [1] patchwork_1.0.0      RColorBrewer_1.1-2   cowplot_1.0.0       
+ [4] forcats_0.5.0        stringr_1.4.0        dplyr_1.0.0         
+ [7] purrr_0.3.4          readr_1.3.1          tidyr_1.1.0         
+[10] tibble_3.0.2         ggplot2_3.3.2        tidyverse_1.3.0     
 [13] workflowr_1.6.2.9000
 
 loaded via a namespace (and not attached):
- [1] nlme_3.1-148        fs_1.5.0.9000       lubridate_1.7.9    
- [4] progress_1.2.2      httr_1.4.2          rprojroot_1.3-2    
- [7] tools_3.6.3         backports_1.1.10    R6_2.4.1           
-[10] DBI_1.1.0           lazyeval_0.2.2      colorspace_1.4-1   
-[13] withr_2.2.0         tidyselect_1.1.0    prettyunits_1.1.1  
-[16] processx_3.4.4      curl_4.3            compiler_3.6.3     
-[19] git2r_0.27.1        cli_2.0.2           rvest_0.3.5        
-[22] xml2_1.3.2          labeling_0.3        scales_1.1.1       
-[25] callr_3.4.4         digest_0.6.25       rmarkdown_2.3      
-[28] rentrez_1.2.3       pkgconfig_2.0.3     htmltools_0.5.0    
-[31] dbplyr_1.4.4        highr_0.8           rlang_0.4.7        
-[34] readxl_1.3.1        rstudioapi_0.11     farver_2.0.3       
-[37] generics_0.0.2      jsonlite_1.7.1      magrittr_1.5       
-[40] patchwork_1.0.0     Rcpp_1.0.5          munsell_0.5.0      
-[43] fansi_0.4.1         ape_5.3             lifecycle_0.2.0    
-[46] stringi_1.5.3       whisker_0.4         yaml_2.2.1         
-[49] grid_3.6.3          blob_1.2.1          parallel_3.6.3     
-[52] promises_1.1.1      crayon_1.3.4        rncl_0.8.4         
-[55] lattice_0.20-41     haven_2.3.1         hms_0.5.3          
-[58] magick_2.3          knitr_1.29          ps_1.3.4           
-[61] pillar_1.4.4        reprex_0.3.0        XML_3.99-0.3       
-[64] glue_1.4.2          evaluate_0.14       getPass_0.2-2      
-[67] BiocManager_1.30.10 modelr_0.1.8        vctrs_0.3.1        
-[70] treeio_1.10.0       httpuv_1.5.4        cellranger_1.1.0   
-[73] gtable_0.3.0        assertthat_0.2.1    xfun_0.17          
-[76] broom_0.5.6         tidytree_0.3.3      later_1.1.0.1      
-[79] aplot_0.0.6         rvcheck_0.1.8       ellipsis_0.3.1     </code></pre>
+ [1] Rcpp_1.0.5       lubridate_1.7.9  lattice_0.20-41  getPass_0.2-2   
+ [5] ps_1.3.4         utf8_1.1.4       assertthat_0.2.1 rprojroot_1.3-2 
+ [9] digest_0.6.25    R6_2.4.1         cellranger_1.1.0 backports_1.1.10
+[13] reprex_0.3.0     evaluate_0.14    httr_1.4.2       pillar_1.4.4    
+[17] rlang_0.4.7      readxl_1.3.1     rstudioapi_0.11  whisker_0.4     
+[21] callr_3.4.4      blob_1.2.1       rmarkdown_2.3    labeling_0.3    
+[25] munsell_0.5.0    broom_0.5.6      compiler_3.6.3   httpuv_1.5.4    
+[29] modelr_0.1.8     xfun_0.17        pkgconfig_2.0.3  htmltools_0.5.0 
+[33] tidyselect_1.1.0 fansi_0.4.1      crayon_1.3.4     dbplyr_1.4.4    
+[37] withr_2.2.0      later_1.1.0.1    grid_3.6.3       nlme_3.1-148    
+[41] jsonlite_1.7.1   gtable_0.3.0     lifecycle_0.2.0  DBI_1.1.0       
+[45] git2r_0.27.1     magrittr_1.5     scales_1.1.1     cli_2.0.2       
+[49] stringi_1.5.3    farver_2.0.3     fs_1.5.0.9000    promises_1.1.1  
+[53] xml2_1.3.2       ellipsis_0.3.1   generics_0.0.2   vctrs_0.3.1     
+[57] tools_3.6.3      glue_1.4.2       hms_0.5.3        processx_3.4.4  
+[61] yaml_2.2.1       colorspace_1.4-1 rvest_0.3.5      knitr_1.29      
+[65] haven_2.3.1     </code></pre>
 </div>
 
 
