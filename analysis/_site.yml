@@ -1,7 +1,7 @@
-name: "Amphibolis_Posidonia_Comparison"
+name: Amphibolis_Posidonia_Comparison
 output_dir: ../docs
 navbar:
-  title: "Amphibolis_Posidonia_Comparison"
+  title: Amphibolis_Posidonia_Comparison
   left:
   - text: Home
     href: index.html
@@ -9,6 +9,10 @@ navbar:
     href: about.html
   - text: License
     href: license.html
+  right:
+  - icon: fa-github
+    text: Source code
+    href: https://github.com/philippbayer/Amphibolis_Posidonia_Comparison
 output:
   workflowr::wflow_html:
     toc: yes
