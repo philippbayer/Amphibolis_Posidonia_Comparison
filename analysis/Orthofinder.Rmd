@@ -1,0 +1,114 @@
+---
+title: "Clustering/Orthofinder analysis"
+author: "Philipp Bayer"
+date: "15 April 2021"
+output: html_document
+---
+
+
+```{r setup}
+library(tidyverse)
+library(cowplot)
+theme_set(theme_cowplot())
+library(RColorBrewer)
+library(patchwork)
+library(UpSetR)
+```
+
+```{r}
+groups <- read_tsv('data/Orthogroups.tsv') 
+
+names(groups) <- c('Orthogroup', 'A. antarctica', 'A. trichopada', 'B. distachyon', 'C. reinhardtii', 'L. gibba', 'O. sativa', 'P. australis', 'P. patens', 'P. trichocarpa', 'S. moellendorffii', 'S. polyrhiza', 'A. thaliana', 'T. parvula', 'V. vinifera', 'Z. mays', 'Z. muelleri', 'Z. marina', 'O. lucimarinus')
+```
+
+```{r}
+# for upsetr, we need to know only which OG-groups are shared between species, the actual genes don't matter
+per_spec <- groups %>% pivot_longer(-Orthogroup) %>% 
+  filter(!is.na(value)) %>% # species not in an orthogroup are still listed, they just have NA genes for this group
+  select(-value) # don't need all gene names, speed things up
+```
+
+```{r}
+# now I want the data in this format:
+# listInput <- list(one = c(1, 2, 3, 5, 7, 8, 11, 12, 13), two = c(1, 2, 4, 5, 
+#   10), three = c(1, 5, 6, 7, 8, 9, 10, 12, 13))
+x <- per_spec %>% 
+  select(name, Orthogroup) %>% # turn the table around
+  deframe() # convert to named vector
+```
+
+```{r}
+mylist <- lapply(split(x, names(x)), unname) # yuck - ugly code to convert the named vector to a list
+```
+
+```{r}
+x <- upset(fromList(mylist), order.by='freq', nsets = length(groups) - 1)
+```
+
+```{r fig.width=10}
+x
+```
+
+Let's get the species-only cluster numbers
+
+```{r}
+species_specific_orthos <- per_spec %>% 
+  group_by(Orthogroup) %>% 
+  summarise(counts = length(name)) %>%
+  filter(counts == 1)
+```
+
+```{r}
+per_spec %>% 
+  filter(Orthogroup %in% species_specific_orthos$Orthogroup) %>% 
+  group_by(name) %>% 
+  count() %>% 
+  arrange(n) %>% 
+  knitr::kable()
+```
+
+```{r}
+species_names <- per_spec %>% 
+  group_by(Orthogroup) %>% 
+  group_by(Orthogroup) %>% 
+  summarise(catty = paste0(sort(name), collapse = ', '))
+```
+
+How many orthogroups are shared between the four seagrasses?
+
+```{r}
+species_names %>% dplyr::filter(catty == 'A. antarctica, P. australis, Z. marina, Z. muelleri') %>% nrow()
+```
+
+
+```{r}
+species_names %>% dplyr::filter(catty == 'A. antarctica, P. australis') %>% nrow()
+
+```
+
+```{r}
+species_names %>% dplyr::filter(catty == 'A. antarctica, P. australis, Z. marina') %>% nrow()
+
+```
+```{r}
+species_names %>% dplyr::filter(catty == 'A. antarctica, P. australis, Z. muelleri') %>% nrow()
+```
+
+
+```{r}
+species_names %>% dplyr::filter(catty == 'P. australis, Z. marina, Z. muelleri') %>% nrow()
+```
+
+I should automate this.... and I can!
+
+```{r}
+newlist <- mylist[c('A. antarctica', 'Z. marina', 'P. australis', 'Z. muelleri')]
+
+x <- upset(fromList(newlist), order.by='freq', nsets = 4)
+
+```
+```{r}
+x
+```
+
+This can't be right, how are 6532 clusters suddenly shared.... that's less than the overall. Need to subset the original clusters, NOT the species.

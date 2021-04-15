@@ -1,5 +1,5 @@
 ---
-title: "Untitled"
+title: "Genomic comparison"
 author: "Philipp Bayer"
 date: "4 March 2021"
 output: html_document
