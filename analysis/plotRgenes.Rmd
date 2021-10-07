@@ -1,0 +1,45 @@
+---
+title: "R genes"
+output: html_notebook
+---
+```{r setup}
+library(tidyverse)
+library(wesanderson)
+```
+
+
+
+Visualising R-gene differences here
+
+```{r}
+pal <- wes_palette("Zissou1", 3, type = "continuous")
+
+df <- readxl::read_xlsx('./data/R_genes.xlsx')
+df %>% ggplot(aes(fill=Class, x=Genome, y=Count)) + geom_bar(stat='identity') +
+    scale_fill_manual(values=pal) +  
+ coord_flip() +  cowplot::theme_minimal_vgrid() +
+    theme(axis.text.y = element_text(face = "italic")) 
+
+```
+
+```{r}
+pal <- wes_palette("Zissou1", 4, type = "continuous")
+
+df2 <- df %>% mutate(Class2= case_when(str_detect(Subclass, pattern = 'TN') ~ 'NLR (TNL)',
+                                str_detect(Subclass, pattern = '^R') ~ Subclass,
+                                TRUE ~ 'NLR (CNL)'))
+df2 %>% ggplot(aes(fill=Class2, x=Genome, y=Count)) + geom_bar(stat='identity') +
+    scale_fill_manual(values=pal)  + coord_flip() +  cowplot::theme_minimal_vgrid() +
+    theme(axis.text.y = element_text(face = "italic")) 
+```
+
+```{r}
+df2 %>% dplyr::filter(Genome %in% c('P. australis', 'Z. marina', 'Z. muelleri', 'O. sativa', 'A. antarctica', 'A. thaliana')) %>% 
+  ggplot(aes(fill=Class2, x=factor(Genome, levels=c('Z. marina', 'Z. muelleri', 'P. australis', 'A. antarctica', 'O. sativa', 'A. thaliana' )), y=Count)) + 
+  geom_bar(stat='identity') +
+    scale_fill_manual(values=pal)  + coord_flip() +  cowplot::theme_minimal_vgrid() +
+    theme(axis.text.y = element_text(face = "italic")) +
+  xlab('Genome') +
+  labs(fill='Class')
+```
+

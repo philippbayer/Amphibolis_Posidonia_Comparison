@@ -13,12 +13,13 @@ theme_set(theme_cowplot())
 library(RColorBrewer)
 library(patchwork)
 library(UpSetR)
+
 ```
 
 ```{r}
-groups <- read_tsv('data/Orthogroups.tsv') 
+groups <- read_tsv('./data/Orthogroups.tsv') 
 
-names(groups) <- c('Orthogroup', 'A. antarctica', 'A. trichopada', 'B. distachyon', 'C. reinhardtii', 'L. gibba', 'O. sativa', 'P. australis', 'P. patens', 'P. trichocarpa', 'S. moellendorffii', 'S. polyrhiza', 'A. thaliana', 'T. parvula', 'V. vinifera', 'Z. mays', 'Z. muelleri', 'Z. marina', 'O. lucimarinus')
+names(groups) <- c('Orthogroup', 'A. antarctica', 'A. trichopada', 'B. distachyon', 'C. reinhardtii', 'L. gibba', 'O. sativa', 'P. australis', 'P. patens', 'P. trichocarpa', 'S. moellendorffii', 'S. polyrhiza', 'A. thaliana', 'T. parvula', 'V. vinifera', 'Z. mays', 'Z. muelleri', 'Z. marina', 'O. lucimarinus', 'W. australis')
 ```
 
 ```{r}
@@ -67,39 +68,8 @@ per_spec %>%
   knitr::kable()
 ```
 
-```{r}
-species_names <- per_spec %>% 
-  group_by(Orthogroup) %>% 
-  group_by(Orthogroup) %>% 
-  summarise(catty = paste0(sort(name), collapse = ', '))
-```
-
 How many orthogroups are shared between the four seagrasses?
 
-```{r}
-species_names %>% dplyr::filter(catty == 'A. antarctica, P. australis, Z. marina, Z. muelleri') %>% nrow()
-```
-
-
-```{r}
-species_names %>% dplyr::filter(catty == 'A. antarctica, P. australis') %>% nrow()
-
-```
-
-```{r}
-species_names %>% dplyr::filter(catty == 'A. antarctica, P. australis, Z. marina') %>% nrow()
-
-```
-```{r}
-species_names %>% dplyr::filter(catty == 'A. antarctica, P. australis, Z. muelleri') %>% nrow()
-```
-
-
-```{r}
-species_names %>% dplyr::filter(catty == 'P. australis, Z. marina, Z. muelleri') %>% nrow()
-```
-
-I should automate this.... and I can!
 
 ```{r}
 newlist <- mylist[c('A. antarctica', 'Z. marina', 'P. australis', 'Z. muelleri')]
@@ -111,4 +81,4 @@ x <- upset(fromList(newlist), order.by='freq', nsets = 4)
 x
 ```
 
-This can't be right, how are 6532 clusters suddenly shared.... that's less than the overall. Need to subset the original clusters, NOT the species.
+

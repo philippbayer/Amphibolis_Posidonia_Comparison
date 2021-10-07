@@ -13,7 +13,7 @@ library(tidyverse)
 ```
 
 ```{r}
-species <- c('Zostera marina', 'Zostera muelleri', 'Arabidopsis thaliana', 'Thellungiella parvula', 'Populus trichocarpa', 'Vitis vinifera', 'Amborella trichopoda', 'Oryza sativa', 'Zea mays', 'Brachypodium distachyon', 'Spirodela polyrhiza', 'Selaginella moellendorffi', 'Physcomitrella patens', 'Chlamydomonoas reinhardtii', 'Ostreococcus lucimarinus', 'Lemna gibba', 'Posidonia australis' ,'Amphibolis antarctica')
+species <- c('Zostera marina', 'Zostera muelleri', 'Arabidopsis thaliana', 'Thellungiella parvula', 'Populus trichocarpa', 'Vitis vinifera', 'Amborella trichopoda', 'Oryza sativa', 'Zea mays', 'Brachypodium distachyon', 'Spirodela polyrhiza', 'Selaginella moellendorffi', 'Physcomitrella patens', 'Chlamydomonoas reinhardtii', 'Ostreococcus lucimarinus', 'Lemna gibba', 'Posidonia australis' ,'Amphibolis antarctica', 'Wolffia australiana')
 ```
 
 Let's call the API to get the OTT IDs for these species, and  to double-check we got the right names :) 
@@ -65,13 +65,13 @@ ggtree(tr) +
 Cool! I took the above species list and uploaded to timetree (see Species_timetree.svg)
 
 ```{r fig.width=14}
-plot(ggdraw()+cowplot::draw_image('data/Species_timetree.svg'))
+plot(ggdraw()+cowplot::draw_image('./data/species_timetree.svg'))
 ```
 
 Timetree also lets you export the tree timed with MYA 
 
 ```{r}
-tree <- read.tree('data/timetree_species.nwk')
+tree <- read.tree('./data/timetree_species.nwk')
 ```
 
 ```{r}

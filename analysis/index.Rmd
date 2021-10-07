@@ -8,10 +8,16 @@ editor_options:
   chunk_output_type: console
 ---
 
-This website collects comparisons of Amphibolis and Posidonia comparative analyses.
+This website collects comparisons of *Amphibolis* and *Posidonia* comparative analyses.
 
 [Repeat comparison plots](plot.html)
 
 [Phylogenies](OTT.html)
 
 [Clustering results](Orthofinder.html)
+
+[R gene plotting](plotRgenes.html)
+
+[Gene count association](associateGenes.html)
+
+[GO enrichment](GOenrichment.html)

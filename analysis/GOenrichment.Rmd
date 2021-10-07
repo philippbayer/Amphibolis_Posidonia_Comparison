@@ -1,0 +1,371 @@
+---
+title: "GO enrichment"
+author: "Philipp Bayer"
+date: "01/10/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(topGO)
+library(tidyverse)
+library(rvest)
+library(wesanderson)
+library(httr)
+library(stringi)
+library(ggrepel)
+library(eulerr)
+library(UpSetR)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+# Lost in seagrasses
+
+The GO enrichment does not work well on my laptop so I'm setting this to eval=FALSE and run it on a remote server.
+The script which writes the input files is a Python script in the scripts/ folder: findClustersUniqueToAquatic.py. This script parses Orthofinder output to pull out genome-specific groups and genes.
+
+```{r eval=FALSE}
+# give properly formatted background in format: GO:0005838	GSBRNA2T00088508001;GSBRNA2T00088313001;GSBRNA2T00035842001 
+#annAT <- readMappings('BACKGROUND.txt', sep="\t", IDsep=";")
+#save(annAT, file='annAtObject.RData')
+
+load('annAtObject.RData')
+allgenes <- unique(unlist(annAT))
+
+compare <- function(genelistfile, outname, allgenes, annAT) {
+  # give file with your genes of interest, one gene_id per line
+  
+  mygenes <-scan(genelistfile ,what="")
+  geneList <- factor(as.integer(allgenes %in% mygenes))
+  names(geneList) <- allgenes
+  
+  GOdata <-new ("topGOdata", ontology = 'BP', allGenes = geneList, nodeSize = 5, annot=annFUN.GO2genes, GO2genes=annAT)
+  # using ClassicCount:
+  #test.stat <-new ("classicCount", testStatistic = GOFisherTest, name = "Fisher Test")
+  #resultsFisherC <-getSigGroups (GOdata, test.stat)
+  # using weight01:
+  weight01.fisher <- runTest(GOdata, statistic = "fisher")
+  # using ClassicCount:
+  # allRes <- GenTable(GOdata, classicFisher= resultsFisherC, topNodes = 30)
+  # using weight01:
+  allRes <- GenTable(GOdata, classicFisher=weight01.fisher,topNodes=30)#,topNodes=100)
+  names(allRes)[length(allRes)] <- "p.value"
+  p_values <- score(weight01.fisher)
+  adjusted_p <- p.adjust(p_values)
+  adjusted_p[adjusted_p < 0.05] %>% enframe() %>% write_csv('data/' + outname)
+
+}
+
+```
+
+# lost in seagrasses, each one uniquely vs all terrestrials
+```{r eval=FALSE}
+compare('lost_in_amphi_vs_all.txt', 'missing_amphi_vs_all_GO.txt', allgenes, annAT)
+compare('lost_in_posi_vs_all.txt', 'missing_posi_vs_all_GO.txt', allgenes, annAT)
+compare('lost_in_zmar_vs_all.txt', 'missing_zmar_vs_all_GO.txt', allgenes, annAT)
+compare('lost_in_zmuel_vs_all.txt', 'missing_zmuel_vs_all_GO.txt', allgenes, annAT)
+```
+
+# lost in seagrasses vs all terrestrials
+Here we compare GO terms for seagrasses and aquatics (seagrasses+duckweeds) vs all terrestrials
+
+```{r eval=FALSE}
+
+compare('lost_in_seagrasses.txt', 'missing_seagrasses_GO.txt', allgenes, annAT)
+compare('lost_in_aquatics.txt', 'missing_aquatics_GO.txt', allgenes, annAT)
+compare('only_in_seagrasses.txt', 'only_seagrasses_GO.txt', allgenes, annAT)
+
+```
+
+# Seagrass only comparisons
+
+Now we compare seagrasses within each other.
+
+For the seagrass-only comparisons, I'm using a Seagrass-only background as that makes more biological sense to me.s
+
+```{r eval=FALSE}
+# give properly formatted background in format: GO:0005838	GSBRNA2T00088508001;GSBRNA2T00088313001;GSBRNA2T00035842001 
+#sannAT <- readMappings('SEAGRASSBACKGROUND.txt', sep="\t", IDsep=";")
+#save(sannAT, file='sannAtObject.RData')
+
+load('annAtObject.RData')
+sallgenes <- unique(unlist(sannAT))
+
+compare('lost_in_amphi.txt', 'lost_in_amphi_vs_seagrasses_GO.txt', sallgenes, sannAT)
+compare('lost_in_posi.txt', 'lost_in_posi_vs_seagrasses_GO.txt', sallgenes, sannAT)
+compare('lost_in_zmar.txt', 'lost_in_zmar_vs_seagrasses_GO.txt', sallgenes, sannAT)
+compare('lost_in_zmuel.txt', 'lost_in_zmuel_vs_seagrasses_GO.txt', sallgenes, sannAT)
+```
+
+# Present in seagrasses
+
+The opposite - which GO-terms are present only in one of the four species?
+
+```{r eval=FALSE}
+compare('only_in_amphi.txt', 'only_in_amphi_vs_seagrasses_GO.txt', sallgenes, sannAT)
+compare('only_in_posi.txt', 'only_in_posi_vs_seagrasses_GO.txt', sallgenes, sannAT)
+compare('only_in_zmar.txt', 'only_in_zmar_vs_seagrasses_GO.txt', sallgenes, sannAT)
+compare('only_in_zmuel.txt', 'only_in_zmuel_vs_seagrasses_GO.txt', sallgenes, sannAT)
+```
+
+
+Alright now we have all these different GO terms in all these files - we can send them to revigo for visualiation and some deduplication!
+
+
+# Revigo
+
+This code is based on http://revigo.irb.hr/CodeExamples/revigo.R.txt
+
+
+```{r}
+results_list <- list()
+
+for (f in list.files('./data/', pattern='GO.txt')){
+  filename <- paste('./data/', f, sep='')
+  go_and_pvalues <- readChar(filename, file.info(filename)$size)
+  go_and_pvalues <- gsub(',', ' ', go_and_pvalues)
+  
+  httr::POST(
+    url = "http://revigo.irb.hr/StartJob.aspx",
+    body = list(
+      cutoff = "0.7",
+      valueType = "pvalue",
+     # speciesTaxon = "4577", # zea mays
+     #speciesTaxon = '39947', # japonica
+     speciesTaxon = '3702', # arabidopsis
+      measure = "SIMREL",
+      goList = go_and_pvalues
+    ),
+    # application/x-www-form-urlencoded
+    encode = "form"
+  ) -> res
+  
+  dat <- httr::content(res, encoding = "UTF-8")
+  
+  jobid <- jsonlite::fromJSON(dat,bigint_as_char=TRUE)$jobid
+  
+  # Check job status
+  running <- "1"
+  while (running != "0" ) {
+      httr::POST(
+        url = "http://revigo.irb.hr/QueryJobStatus.aspx",
+        query = list( jobid = jobid )
+      ) -> res2
+      dat2 <- httr::content(res2, encoding = "UTF-8")
+      running <- jsonlite::fromJSON(dat2)$running
+      Sys.sleep(1)
+  }
+  
+  # Fetch results
+  httr::POST(
+    url = "http://revigo.irb.hr/ExportJob.aspx",
+    query = list(
+      jobid = jobid, 
+      namespace = "1",
+      type = "CSVTable"
+    )
+  ) -> res3
+  
+  dat3 <- httr::content(res3, encoding = "UTF-8")
+  
+  dat3 <- stri_replace_all_fixed(dat3, "\r", "")
+  # Now we have a csv table in a string!
+
+  # read_csv does not like the ', ', it wants ','
+  dat <- read_csv(gsub(', ', ',', dat3), show_col_types = FALSE) 
+  
+  # do we even have results?
+  if(nrow(dat) == 0){next}
+  results_list[[f]] <- dat
+  
+}
+```
+
+OK we have a list with all results in a big list. Now we can plot!
+
+```{r warning=FALSE, echo=FALSE, message=FALSE}
+# lots of warnings and messages here so I'm hiding these
+plot_list <- list()
+for (f in names(results_list)) {
+  dat <- results_list[[f]]
+  if(nrow(dat) == 0) {next}
+  
+  names(dat) <- c("term_ID","description","frequency", 'plot_X', 'plot_Y', 'log_size', 'value', 'uniqueness', 'dispensability', 'eliminated', 'representative')
+  one.data <- dat
+  
+  one.data <- one.data [(one.data$plot_X != "null" & one.data$plot_Y != "null") & (! is.na(one.data$frequency)) & (one.data$value != 'null'), ];
+  one.data <- type_convert(one.data)
+  one.data$pvalue <- p.adjust(exp(one.data$value))
+  #one.data <- one.data %>% filter(pvalue < 0.05) # NO FILTERING OF P-VALUES - for now? 
+
+  p1 <-
+    ggplot(data = one.data, aes(plot_X, plot_Y, label = description)) +
+    geom_point(aes(colour = log(pvalue), size = log_size), alpha = I(0.6)) +
+    scale_size_area() +
+    scale_colour_gradientn(colours = rev(wes_palette("Zissou1", 100, type = "continuous")), 
+                           limits = c(min(log(one.data$pvalue)), 0)) +
+    geom_point(
+      aes(plot_X, plot_Y, size = log_size),
+      shape = 21,
+      fill = "transparent",
+      colour = I (alpha ("black", 0.6))
+    ) +
+    scale_size_area() +
+    geom_label_repel(max.overlaps = 5, box.padding = 0.5,
+                     aes(point.size = log_size)) +
+    theme_minimal() +
+    labs(y = "Semantic space x",
+         x = "Semantic space y",
+         color = 'Log(p-value)',
+         size = 'Frequency') +
+    theme(
+      axis.text.x = element_blank(),
+      axis.ticks.x = element_blank(),
+      axis.text.y = element_blank(),
+      axis.ticks.y = element_blank()
+    ) +
+    ggtitle(f)
+  
+  
+  plot_list[[f]] <- p1
+  
+}
+```
+
+
+# Venn diagram GO overlaps
+
+Let's also check which GO terms overlap between the 4 seagrasses!
+
+Let's have a look at all of these plots. Manually zooming in leads to ggrepel reloading labels, so on the small scale a lot of these plots don't have labels.
+```{r}
+plot_list
+```
+
+How many shared lost GO-terms are there? Hopefully, all four species will have lost the most GO-terms.
+```{r}
+a <- list(`P. australis` = results_list$missing_posi_vs_all_GO.txt$Name,
+          `A. antarctica` = results_list$missing_amphi_vs_all_GO.txt$Name,
+          `Z. marina` = results_list$missing_zmar_vs_all_GO.txt$Name,
+          `Z. muelleri` = results_list$missing_zmuel_vs_all_GO.txt$Name,
+          `A. thaliana` = results_list$missing_arabidopsis_vs_all_GO.txt$Name)
+
+a_go_ids <- list(`P. australis` = results_list$missing_posi_vs_all_GO.txt$TermID,
+          `A. antarctica` = results_list$missing_amphi_vs_all_GO.txt$TermID,
+          `Z. marina` = results_list$missing_zmar_vs_all_GO.txt$TermID,
+          `Z. muelleri` = results_list$missing_zmuel_vs_all_GO.txt$TermID,
+          `A. thaliana` = results_list$missing_arabidopsis_vs_all_GO.txt$TermID)
+```
+
+```{r}
+plot(euler(a), 
+     quantities = TRUE,
+     fill = rev(wes_palette("Zissou1", 15, type = 'continuous')),
+    alpha = 0.5,
+     labels = list(font = 4))
+```
+
+```{r}
+upset(fromList(a), order.by='freq', )
+```
+
+```{r}
+a_no_ara <- list(`P. australis` = results_list$missing_posi_vs_all_GO.txt$Name,
+          `A. antarctica` = results_list$missing_amphi_vs_all_GO.txt$Name,
+          `Z. marina` = results_list$missing_zmar_vs_all_GO.txt$Name,
+          `Z. muelleri` = results_list$missing_zmuel_vs_all_GO.txt$Name)
+```
+
+
+What are the shared GO-terms in seagrasses, WITHOUT the Ara loss??
+```{r}
+setdiff(Reduce(intersect, a_no_ara), Reduce(intersect, a)) %>% enframe() %>% writexl::write_xlsx('./data/shared_lost_genes.xlsx')
+```
+
+
+What if we remove Posidonia?
+
+```{r}
+b <- list(`A. antarctica` = results_list$missing_amphi_vs_all_GO.txt$Name,
+          `Z. marina` = results_list$missing_zmar_vs_all_GO.txt$Name,
+          `Z. muelleri` = results_list$missing_zmuel_vs_all_GO.txt$Name)
+intersections <- Reduce(intersect, b)
+intersections[grepl('ethylene', intersections)]
+```
+OK we need a big list of all GO-terms here - which GO-term is lost in which species. That will be a supplementary table.
+
+
+```{r}
+all_species <- c("P. australis","A. antarctica","Z. marina","Z. muelleri", 'A. thaliana')  
+all_go_terms <- Reduce(union, a)
+all_go_ids <- Reduce(union, a_go_ids)
+results_d <- data.frame('GOID' = character(),
+                        'GO' = character(),
+                        'P. australis' = character(),
+                        'A. antarctica' = character(),
+                        'Z. marina' = character(),
+                        'Z. muelleri' = character(),
+                        'A. thaliana' = character())
+
+
+for (index in seq_along(all_go_terms)){
+  go <- all_go_terms[index]
+  go_id <- all_go_ids[index]
+  specs <- c()
+  for (species in names(a)) {
+    if ( length(a[[species]][grep(paste('^', go, '$', sep=''), a[[species]])]) > 0 ) {
+      specs <- c(specs, species)
+    }
+  }
+  
+  results_d[index,] <- c(go_id, go, gsub('FALSE', 'Present', gsub('TRUE', 'Lost', all_species %in% specs)))
+}
+```
+
+```{r}
+writexl::write_xlsx(results_d, 'data/Lost_GO_terms_in_five_species.xlsx')
+```
+
+# after filtering for plant-specific GO-terms
+
+We will use the GO-terms that are plant-specific as identified by the GOMAP paper.
+See https://github.com/wkpalan/GOMAP-maize-analysis/blob/main/6.plantSpecific/1.getSppSpecific.R
+or https://plantmethods.biomedcentral.com/articles/10.1186/s13007-021-00754-1
+
+
+```{r}
+go_plant <- read_tsv('https://raw.githubusercontent.com/wkpalan/GOMAP-maize-analysis/main/data/go/speciesSpecificGOTerms.txt')
+```
+
+```{r}
+# taxon 33090 is Viridiplantae
+plantSpecificGO <- go_plant %>% dplyr::filter(`NCBITaxon:33090`==1) %>% pull(GOterm)
+plantSpecificGO <- c(plantSpecificGO,c("GO:0005575","GO:0008150","GO:0003674"))
+```
+
+```{r}
+results_d %>% filter(GOID %in% plantSpecificGO) %>% writexl::write_xlsx('data/Lost_GO_terms_in_five_species.PlantSpecific.xlsx')
+```
+
+Now let's redo the Venn diagram with those filtered GO-terms
+
+```{r}
+filters <- lapply(a_go_ids, function(ch) ch %in% plantSpecificGO)
+
+newa <- list()
+for (species in names(filters)) {
+  before <- a[[species]]
+  after <- before[filters[[species]]]
+  newa[[species]] <- after
+}
+
+```
+
+```{r}
+plot(euler(newa), 
+     quantities = TRUE,
+     fill = rev(wes_palette("Zissou1", 15, type = 'continuous')),
+    alpha = 0.5,
+     labels = list(font = 4))
+```
+
+Not much difference?

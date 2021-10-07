@@ -12,6 +12,7 @@ library(tidyverse)
 library(cowplot)
 theme_set(theme_cowplot())
 library(RColorBrewer)
+library(wesanderson)
 library(patchwork)
 ```
 
@@ -38,7 +39,7 @@ library(patchwork)
 # )
 
 
-reps <- readxl::read_xlsx('data/Repeat_coding.xlsx')
+reps <- readxl::read_xlsx('./data/Repeat_coding.xlsx')
 
 reps <- reps %>% dplyr::filter(Class != 'Total')
 reps$Class <- factor(reps$Class, levels = c('LINEs', 'LTRs', 'DNA', 'Unclassified', 'Total CDS', 'Non-repetitive'))
@@ -47,9 +48,11 @@ reps
 
 
 ```{r}
+pal <- wes_palette("Zissou1", 6, type = "continuous")
 p1 <- reps %>% ggplot(aes(x=Assembly, fill=Class, y = BP/1000000)) + 
 geom_bar(position='stack', stat='identity') + ylab('Size (Mbp)') +
-  scale_fill_brewer(palette='Dark2') +
+  #scale_fill_brewer(palette='Dark2') +
+  scale_fill_manual(values=pal) +  
   theme(axis.text.x =  element_text(face="italic"))
   
 p1
@@ -57,13 +60,19 @@ p1
 
 ```{r}
 p2 <- reps %>% ggplot(aes(x=Assembly, fill=Class, y = Percent)) + geom_bar(position='stack', stat='identity')+
-  scale_fill_brewer(palette='Dark2') +
+  #scale_fill_brewer(palette='Dark2') +
+    scale_fill_manual(values=pal) +  
   theme(axis.text.x =  element_text(face="italic")) +
   ylab('Percent\n of assembly')
 p2
 ```
 ```{r fig.width = 10, dpi=300}
-p1/p2 + plot_annotation(tag_levels = 'A')
+patch <- p1/p2 + plot_annotation(tag_levels = 'A')
+patch[[1]] = patch[[1]] + theme(axis.text.x = element_blank(),
+                                        axis.ticks.x = element_blank(),
+                                        axis.title.x = element_blank() )
+
+patch
 ```
 
 ```{r}
