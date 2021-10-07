@@ -25,7 +25,7 @@ The script which writes the input files is a Python script in the scripts/ folde
 
 ```{r eval=FALSE}
 # give properly formatted background in format: GO:0005838	GSBRNA2T00088508001;GSBRNA2T00088313001;GSBRNA2T00035842001 
-#annAT <- readMappings('BACKGROUND.txt', sep="\t", IDsep=";")
+#annAT <- readMappings('BACKGROUND.txt.gz', sep="\t", IDsep=";")
 #save(annAT, file='annAtObject.RData')
 
 load('annAtObject.RData')
