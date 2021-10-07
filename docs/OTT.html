@@ -13,12 +13,22 @@
 
 <title>Phylogenetics</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
@@ -36,12 +46,18 @@ div.section {
 }
 </style>
 
-<style type="text/css">code{white-space: pre;}</style>
+
+
 <style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -54,32 +70,7 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -89,10 +80,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -109,40 +96,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -170,7 +130,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -182,7 +142,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -193,10 +153,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -208,7 +181,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -334,7 +306,7 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -380,7 +352,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -409,7 +381,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-04-15
+<strong>Last updated:</strong> 2021-10-07
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -419,7 +391,7 @@ div.tocify {
 </p>
 <p>
 This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2.9000). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
 </p>
 <hr>
 </div>
@@ -457,7 +429,7 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 </div>
 <div id="strongSeedstrongcodesetseed20210414code" class="panel-collapse collapse">
 <div class="panel-body">
-<p>The command <code>set.seed(20210414)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+<p>The command <code>set.seed(20210414)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
 </div>
 </div>
 </div>
@@ -500,16 +472,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree49dcbb89ac6f0a14c0066977c3ac23fdc393b3ddtargetblank49dcbb8a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/49dcbb89ac6f0a14c0066977c3ac23fdc393b3dd" target="_blank">49dcbb8</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree08b28eacde8985a9d65405b6bc555c4c9d934f92targetblank08b28eaa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/08b28eacde8985a9d65405b6bc555c4c9d934f92" target="_blank">08b28ea</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree49dcbb89ac6f0a14c0066977c3ac23fdc393b3ddtargetblank49dcbb8a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree08b28eacde8985a9d65405b6bc555c4c9d934f92targetblank08b28eaa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/49dcbb89ac6f0a14c0066977c3ac23fdc393b3dd" target="_blank">49dcbb8</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/08b28eacde8985a9d65405b6bc555c4c9d934f92" target="_blank">08b28ea</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -519,9 +491,42 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    analysis/OTT.nb.html
+    Ignored:    analysis/plotGenes.nb.html
+    Ignored:    analysis/plotRgenes.nb.html
 
 Untracked files:
+    Untracked:  Lost_GO_terms_in_five_species.PlantSpecific.xlsx
+    Untracked:  Lost_GO_terms_in_five_species.xlsx
+    Untracked:  data/BACKGROUND.txt
+    Untracked:  data/Lost_GO_terms_in_five_species.PlantSpecific.xlsx
+    Untracked:  data/Lost_GO_terms_in_five_species.xlsx
+    Untracked:  data/R_genes.xlsx
+    Untracked:  data/lost_in_amphi_GO.txt
+    Untracked:  data/lost_in_posi_GO.txt
+    Untracked:  data/lost_in_zmar_GO.txt
+    Untracked:  data/lost_in_zmuel_GO.txt
+    Untracked:  data/missing_amphi_vs_all_GO.txt
+    Untracked:  data/missing_aquatics_GO.txt
+    Untracked:  data/missing_arabidopsis_vs_all_GO.txt
+    Untracked:  data/missing_posi_vs_all_GO.txt
+    Untracked:  data/missing_seagrasses_GO.txt
+    Untracked:  data/missing_zmar_vs_all_GO.txt
+    Untracked:  data/missing_zmuel_vs_all_GO.txt
+    Untracked:  data/only_in_amphi_GO.txt
+    Untracked:  data/only_in_posi_GO.txt
+    Untracked:  data/only_in_zmar_GO.txt
+    Untracked:  data/only_in_zmuel_GO.txt
+    Untracked:  data/only_seagrasses_GO.txt
+    Untracked:  data/shared_lost_genes.xlsx
+    Untracked:  data/species.txt
     Untracked:  species.csv
+    Untracked:  whatever/
+
+Unstaged changes:
+    Modified:   data/Orthogroups.tsv
+    Deleted:    data/Orthogroups_SpeciesOverlaps.tsv
+    Modified:   data/Species_timetree.svg
+    Modified:   data/species.csv
 
 </code></pre>
 <p>
@@ -565,6 +570,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/08b28eacde8985a9d65405b6bc555c4c9d934f92/analysis/OTT.Rmd" target="_blank">08b28ea</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-10-07
+</td>
+<td>
+wflow_publish(files = c("analysis/*"))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/76c8918c38098e7cd5dc2b843a040ee9a67e3238/docs/OTT.html" target="_blank">76c8918</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-04-15
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/49dcbb89ac6f0a14c0066977c3ac23fdc393b3dd/analysis/OTT.Rmd" target="_blank">49dcbb8</a>
 </td>
 <td>
@@ -574,7 +613,7 @@ Philipp Bayer
 2021-04-15
 </td>
 <td>
-wflow_publish(files = list.files(“analysis/”, pattern = &quot;*Rmd&quot;,
+wflow_publish(files = list.files("analysis/", pattern = "*Rmd",
 </td>
 </tr>
 <tr>
@@ -659,7 +698,7 @@ Philipp Bayer
 2021-04-14
 </td>
 <td>
-wflow_publish(“analysis/OTT.Rmd”)
+wflow_publish("analysis/OTT.Rmd")
 </td>
 </tr>
 </tbody>
@@ -672,44 +711,34 @@ wflow_publish(“analysis/OTT.Rmd”)
 <p>Here I make a subtree from the Open Tree Of Life API for the species we have.</p>
 <pre class="r"><code>library(rotl)
 library(ggtree)</code></pre>
-<pre><code>Registered S3 method overwritten by &#39;treeio&#39;:
-  method     from
-  root.phylo ape </code></pre>
-<pre><code>ggtree v2.5.2  For help: https://yulab-smu.top/treedata-book/
+<pre><code>ggtree v3.0.4  For help: https://yulab-smu.top/treedata-book/
 
 If you use ggtree in published research, please cite the most appropriate paper(s):
 
 1. Guangchuang Yu. Using ggtree to visualize data on tree-like structures. Current Protocols in Bioinformatics, 2020, 69:e96. doi:10.1002/cpbi.96
 2. Guangchuang Yu, Tommy Tsan-Yuk Lam, Huachen Zhu, Yi Guan. Two methods for mapping and visualizing associated data on phylogeny using ggtree. Molecular Biology and Evolution 2018, 35(12):3041-3043. doi:10.1093/molbev/msy194
 3. Guangchuang Yu, David Smith, Huachen Zhu, Yi Guan, Tommy Tsan-Yuk Lam. ggtree: an R package for visualization and annotation of phylogenetic trees with their covariates and other associated data. Methods in Ecology and Evolution 2017, 8(1):28-36. doi:10.1111/2041-210X.12628</code></pre>
-<pre class="r"><code>library(cowplot)</code></pre>
-<pre><code>
-********************************************************</code></pre>
-<pre><code>Note: As of version 1.0.0, cowplot does not change the</code></pre>
-<pre><code>  default ggplot2 theme anymore. To recover the previous</code></pre>
-<pre><code>  behavior, execute:
-  theme_set(theme_cowplot())</code></pre>
-<pre><code>********************************************************</code></pre>
-<pre class="r"><code>library(ggplot2)
+<pre class="r"><code>library(cowplot)
+library(ggplot2)
 library(tidyverse)</code></pre>
-<pre><code>-- Attaching packages ------------------------------------------------------------------------------------------------------------------- tidyverse 1.3.0 --</code></pre>
-<pre><code>v tibble  3.0.2     v dplyr   1.0.0
-v tidyr   1.1.0     v stringr 1.4.0
-v readr   1.3.1     v forcats 0.5.0
+<pre><code>-- Attaching packages --------------------------------------- tidyverse 1.3.1 --</code></pre>
+<pre><code>v tibble  3.1.5     v dplyr   1.0.7
+v tidyr   1.1.4     v stringr 1.4.0
+v readr   2.0.2     v forcats 0.5.1
 v purrr   0.3.4     </code></pre>
-<pre><code>-- Conflicts ---------------------------------------------------------------------------------------------------------------------- tidyverse_conflicts() --
+<pre><code>-- Conflicts ------------------------------------------ tidyverse_conflicts() --
 x tidyr::expand() masks ggtree::expand()
 x dplyr::filter() masks stats::filter()
 x dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>species &lt;- c(&#39;Zostera marina&#39;, &#39;Zostera muelleri&#39;, &#39;Arabidopsis thaliana&#39;, &#39;Thellungiella parvula&#39;, &#39;Populus trichocarpa&#39;, &#39;Vitis vinifera&#39;, &#39;Amborella trichopoda&#39;, &#39;Oryza sativa&#39;, &#39;Zea mays&#39;, &#39;Brachypodium distachyon&#39;, &#39;Spirodela polyrhiza&#39;, &#39;Selaginella moellendorffi&#39;, &#39;Physcomitrella patens&#39;, &#39;Chlamydomonoas reinhardtii&#39;, &#39;Ostreococcus lucimarinus&#39;, &#39;Lemna gibba&#39;, &#39;Posidonia australis&#39; ,&#39;Amphibolis antarctica&#39;)</code></pre>
+<pre class="r"><code>species &lt;- c(&#39;Zostera marina&#39;, &#39;Zostera muelleri&#39;, &#39;Arabidopsis thaliana&#39;, &#39;Thellungiella parvula&#39;, &#39;Populus trichocarpa&#39;, &#39;Vitis vinifera&#39;, &#39;Amborella trichopoda&#39;, &#39;Oryza sativa&#39;, &#39;Zea mays&#39;, &#39;Brachypodium distachyon&#39;, &#39;Spirodela polyrhiza&#39;, &#39;Selaginella moellendorffi&#39;, &#39;Physcomitrella patens&#39;, &#39;Chlamydomonoas reinhardtii&#39;, &#39;Ostreococcus lucimarinus&#39;, &#39;Lemna gibba&#39;, &#39;Posidonia australis&#39; ,&#39;Amphibolis antarctica&#39;, &#39;Wolffia australiana&#39;)</code></pre>
 <p>Let’s call the API to get the OTT IDs for these species, and to double-check we got the right names :)</p>
-<p>We should get a tree for 18 species.</p>
+<p>We should get a tree for 19 species.</p>
 <pre class="r"><code>taxon_search &lt;- tnrs_match_names(names = species, context_name = &quot;All life&quot;)</code></pre>
 <pre class="r"><code>knitr::kable(taxon_search)</code></pre>
-<table style="width:100%;">
+<table>
 <colgroup>
 <col width="20%" />
-<col width="23%" />
+<col width="22%" />
 <col width="13%" />
 <col width="5%" />
 <col width="8%" />
@@ -890,6 +919,15 @@ x dplyr::lag()    masks stats::lag()</code></pre>
 <td align="left"></td>
 <td align="right">1</td>
 </tr>
+<tr class="odd">
+<td align="left">wolffia australiana</td>
+<td align="left">Wolffia australiana</td>
+<td align="left">FALSE</td>
+<td align="right">1059895</td>
+<td align="left">FALSE</td>
+<td align="left"></td>
+<td align="right">1</td>
+</tr>
 </tbody>
 </table>
 <p>Let’s write the species names out again for timetree.org</p>
@@ -941,24 +979,25 @@ mrcaott252ott751372, mrcaott252ott11561, Oryzoideae ott641467, Oryzeae
 ott415723, mrcaott36487ott890607, Oryzinae ott5744622, Oryza ott135764,
 mrcaott67120ott709900, mrcaott67120ott272949, mrcaott67120ott709898,
 mrcaott67120ott135756, mrcaott135756ott709892, mrcaott135756ott709887,
-mrcaott656ott1473, mrcaott1473ott33975, Brachypodieae ott693951,
-Brachypodium ott413242, mrcaott1787ott2051, mrcaott1787ott1985, Panicoideae
-ott641461, mrcaott6065ott9925, Andropogonodae ott5737327, Andropogoneae
-ott475213, Tripsacinae ott5759522, Zea ott605186, Araceae ott481972,
-mrcaott290ott3983, mrcaott290ott66494, Lemna ott1008186, mrcaott338992ott338994,
-mrcaott338994ott431388, mrcaott338994ott431383, Spirodela ott431386,
-mrcaott5202ott159280, mrcaott5202ott30666, mrcaott30666ott106181,
-mrcaott30666ott208913, mrcaott30666ott814198, mrcaott30666ott40117,
-Zosteraceae ott637476, mrcaott40117ott91951, mrcaott40117ott197961,
-mrcaott197961ott817762, mrcaott197961ott529863, mrcaott197961ott766348,
-mrcaott766348ott766350, mrcaott436201ott436206, mrcaott436201ott436203,
-mrcaott436201ott814202, mrcaott87589ott256106, mrcaott256106ott460583,
-mrcaott460583ott514367, mrcaott460583ott613178, Amphibolis ott460577,
-mrcaott91974ott351467, Posidoniaceae ott460581, Posidonia (genus in kingdom
-Archaeplastida) ott91949, mrcaott91976ott928713, Amborellales ott927960,
-Amborellaceae ott295910, Amborella ott303952, Lycopodiopsida ott144795,
-mrcaott3661ott18736, Selaginellales ott144821, Selaginellaceae ott144818,
-Selaginella ott144816, mrcaott10602ott10604, mrcaott10604ott10608,
+mrcaott656ott1473, mrcaott1473ott33975, Brachypodieae ott693951, Brachypodium
+ott413242, mrcaott1787ott2051, mrcaott1787ott1985, Panicoideae ott641461,
+mrcaott6065ott9925, Andropogonodae ott5737327, Andropogoneae ott475213,
+Tripsacinae ott5759522, Zea ott605186, Araceae ott481972, mrcaott290ott3983,
+Lemna ott1008186, mrcaott338992ott338994, mrcaott338994ott431388,
+mrcaott338994ott431383, mrcaott66494ott407568, mrcaott407568ott432842,
+mrcaott407568ott1059896, mrcaott407568ott1059895, mrcaott1059895ott1059900,
+Spirodela ott431386, mrcaott5202ott159280, mrcaott5202ott30666,
+mrcaott30666ott106181, mrcaott30666ott208913, mrcaott30666ott814198,
+mrcaott30666ott40117, Zosteraceae ott637476, mrcaott40117ott91951,
+mrcaott40117ott197961, mrcaott197961ott817762, mrcaott197961ott529863,
+mrcaott197961ott766348, mrcaott766348ott766350, mrcaott436201ott436206,
+mrcaott436201ott436203, mrcaott436201ott814202, mrcaott87589ott256106,
+mrcaott256106ott460583, mrcaott460583ott514367, mrcaott460583ott613178,
+Amphibolis ott460577, mrcaott91974ott351467, Posidoniaceae ott460581, Posidonia
+(genus in kingdom Archaeplastida) ott91949, mrcaott91976ott928713, Amborellales
+ott927960, Amborellaceae ott295910, Amborella ott303952, Lycopodiopsida
+ott144795, mrcaott3661ott18736, Selaginellales ott144821, Selaginellaceae
+ott144818, Selaginella ott144816, mrcaott10602ott10604, mrcaott10604ott10608,
 mrcaott10604ott78166, mrcaott10604ott10618, mrcaott101177ott144813,
 mrcaott532022ott583202, mrcaott532022ott799880, mrcaott541ott1066,
 Bryophyta ott246594, mrcaott1066ott204205, Bryophytina ott471195, Bryopsida
@@ -981,10 +1020,11 @@ mrcaott9389ott23557, mrcaott23557ott527099</code></pre>
   xlim(0, 15)</code></pre>
 <p><img src="figure/OTT.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Cool! I took the above species list and uploaded to timetree (see Species_timetree.svg)</p>
-<pre class="r"><code>plot(ggdraw()+cowplot::draw_image(&#39;data/Species_timetree.svg&#39;))</code></pre>
+<pre class="r"><code>plot(ggdraw()+cowplot::draw_image(&#39;./data/species_timetree.svg&#39;))</code></pre>
+<pre><code>Warning: Package `magick` is required to draw images. Image not drawn.</code></pre>
 <p><img src="figure/OTT.Rmd/unnamed-chunk-10-1.png" width="1344" style="display: block; margin: auto;" /></p>
 <p>Timetree also lets you export the tree timed with MYA</p>
-<pre class="r"><code>tree &lt;- read.tree(&#39;data/timetree_species.nwk&#39;)</code></pre>
+<pre class="r"><code>tree &lt;- read.tree(&#39;./data/timetree_species.nwk&#39;)</code></pre>
 <pre class="r"><code>tree$tip.label &lt;- str_replace_all(tree$tip.label, &#39;_&#39;, &#39; &#39;)
 p &lt;- ggplot(tree) + 
   geom_tree() + 
@@ -1004,7 +1044,7 @@ replace the existing scale.</code></pre>
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
 <pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>R version 3.6.3 (2020-02-29)
+<pre><code>R version 4.1.1 (2021-08-10)
 Platform: x86_64-w64-mingw32/x64 (64-bit)
 Running under: Windows 10 x64 (build 17134)
 
@@ -1019,40 +1059,33 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] forcats_0.5.0        stringr_1.4.0        dplyr_1.0.0         
- [4] purrr_0.3.4          readr_1.3.1          tidyr_1.1.0         
- [7] tibble_3.0.2         tidyverse_1.3.0      ggplot2_3.3.2       
-[10] cowplot_1.0.0        ggtree_2.5.2         rotl_3.0.11         
-[13] workflowr_1.6.2.9000
+ [1] forcats_0.5.1   stringr_1.4.0   dplyr_1.0.7     purrr_0.3.4    
+ [5] readr_2.0.2     tidyr_1.1.4     tibble_3.1.5    tidyverse_1.3.1
+ [9] ggplot2_3.3.5   cowplot_1.1.1   ggtree_3.0.4    rotl_3.0.11    
+[13] workflowr_1.6.2
 
 loaded via a namespace (and not attached):
- [1] nlme_3.1-148        fs_1.5.0.9000       lubridate_1.7.9    
- [4] progress_1.2.2      httr_1.4.2          rprojroot_1.3-2    
- [7] tools_3.6.3         backports_1.1.10    R6_2.4.1           
-[10] DBI_1.1.0           lazyeval_0.2.2      colorspace_1.4-1   
-[13] withr_2.2.0         tidyselect_1.1.0    prettyunits_1.1.1  
-[16] processx_3.4.4      curl_4.3            compiler_3.6.3     
-[19] git2r_0.27.1        cli_2.0.2           rvest_0.3.5        
-[22] xml2_1.3.2          labeling_0.3        scales_1.1.1       
-[25] callr_3.4.4         digest_0.6.25       rmarkdown_2.3      
-[28] rentrez_1.2.3       pkgconfig_2.0.3     htmltools_0.5.0    
-[31] dbplyr_1.4.4        highr_0.8           rlang_0.4.7        
-[34] readxl_1.3.1        rstudioapi_0.11     farver_2.0.3       
-[37] generics_0.0.2      jsonlite_1.7.1      magrittr_1.5       
-[40] patchwork_1.0.0     Rcpp_1.0.5          munsell_0.5.0      
-[43] fansi_0.4.1         ape_5.3             lifecycle_0.2.0    
-[46] stringi_1.5.3       whisker_0.4         yaml_2.2.1         
-[49] grid_3.6.3          blob_1.2.1          parallel_3.6.3     
-[52] promises_1.1.1      crayon_1.3.4        rncl_0.8.4         
-[55] lattice_0.20-41     haven_2.3.1         hms_0.5.3          
-[58] magick_2.3          knitr_1.29          ps_1.3.4           
-[61] pillar_1.4.4        reprex_0.3.0        XML_3.99-0.3       
-[64] glue_1.4.2          evaluate_0.14       getPass_0.2-2      
-[67] BiocManager_1.30.10 modelr_0.1.8        vctrs_0.3.1        
-[70] treeio_1.10.0       httpuv_1.5.4        cellranger_1.1.0   
-[73] gtable_0.3.0        assertthat_0.2.1    xfun_0.17          
-[76] broom_0.5.6         tidytree_0.3.3      later_1.1.0.1      
-[79] aplot_0.0.6         rvcheck_0.1.8       ellipsis_0.3.1     </code></pre>
+ [1] nlme_3.1-152       fs_1.5.0           lubridate_1.7.10   progress_1.2.2    
+ [5] httr_1.4.2         rprojroot_2.0.2    tools_4.1.1        backports_1.2.1   
+ [9] utf8_1.2.2         R6_2.5.1           DBI_1.1.1          lazyeval_0.2.2    
+[13] colorspace_2.0-2   withr_2.4.2        tidyselect_1.1.1   prettyunits_1.1.1 
+[17] curl_4.3.2         compiler_4.1.1     git2r_0.28.0       cli_3.0.1         
+[21] rvest_1.0.1        xml2_1.3.2         labeling_0.4.2     scales_1.1.1      
+[25] digest_0.6.28      yulab.utils_0.0.2  rmarkdown_2.11     rentrez_1.2.3     
+[29] pkgconfig_2.0.3    htmltools_0.5.2    dbplyr_2.1.1       fastmap_1.1.0     
+[33] highr_0.9          rlang_0.4.11       readxl_1.3.1       rstudioapi_0.13   
+[37] farver_2.1.0       gridGraphics_0.5-1 jquerylib_0.1.4    generics_0.1.0    
+[41] jsonlite_1.7.2     magrittr_2.0.1     ggplotify_0.1.0    patchwork_1.1.1   
+[45] Rcpp_1.0.7         munsell_0.5.0      fansi_0.5.0        ape_5.5           
+[49] lifecycle_1.0.1    stringi_1.7.5      whisker_0.4        yaml_2.2.1        
+[53] grid_4.1.1         parallel_4.1.1     promises_1.2.0.1   crayon_1.4.1      
+[57] rncl_0.8.4         lattice_0.20-44    haven_2.4.3        hms_1.1.1         
+[61] knitr_1.36         pillar_1.6.3       reprex_2.0.1       XML_3.99-0.8      
+[65] glue_1.4.2         evaluate_0.14      ggfun_0.0.4        modelr_0.1.8      
+[69] vctrs_0.3.8        treeio_1.16.2      tzdb_0.1.2         httpuv_1.6.3      
+[73] cellranger_1.1.0   gtable_0.3.0       assertthat_0.2.1   xfun_0.26         
+[77] broom_0.7.9        tidytree_0.3.5     later_1.3.0        aplot_0.1.1       
+[81] ellipsis_0.3.2    </code></pre>
 </div>
 
 
@@ -1069,6 +1102,8 @@ footer is added to webpages before the MathJax javascript. -->
 </script>
 
 
+
+
 </div>
 </div>
 
@@ -1078,7 +1113,7 @@ footer is added to webpages before the MathJax javascript. -->
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
@@ -1096,7 +1131,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>
@@ -1105,6 +1140,9 @@ $(document).ready(function () {
 
 <script>
 $(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
 
     // move toc-ignore selectors from section div to header
     $('div.section.toc-ignore')
