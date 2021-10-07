@@ -1,23 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="867" viewBox="0 0 900 867">
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="512" name="tree" y="0" viewBox="0 0 900 512">
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="891" viewBox="0 0 900 891">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="536" name="tree" y="0" viewBox="0 0 900 536">
 <g class="background" id="prunetree-background-colors" bg-colors="periods">
-<polyline points="20,512 104,512 104,20 20,20 20,512" class="background" fill="#FED99A" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
-<polyline points="104,512 182,512 182,20 104,20 104,512" class="background" fill="#FEBF4E" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
-<polyline points="182,512 298,512 298,20 182,20 182,512" class="background" fill="#FECC5C" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
-<polyline points="298,512 344,512 344,20 298,20 298,512" class="background" fill="#FED96A" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
-<polyline points="344,512 372,512 372,20 344,20 344,512" class="background" fill="#7FA056" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
-<polyline points="372,512 395,512 395,20 372,20 372,512" class="background" fill="#009270" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
-<polyline points="395,512 410,512 410,20 395,20 395,512" class="background" fill="#B3E152" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
-<polyline points="410,512 440,512 440,20 410,20 410,512" class="background" fill="#CB8C37" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
-<polyline points="440,512 461,512 461,20 440,20 440,512" class="background" fill="#678F66" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
-<polyline points="461,512 471,512 471,20 461,20 461,512" class="background" fill="#99C2B5" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
-<polyline points="471,512 496,512 496,20 471,20 471,512" class="background" fill="#F04028" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
-<polyline points="496,512 523,512 523,20 496,20 496,512" class="background" fill="#812B92" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
-<polyline points="523,512 552,512 552,20 523,20 523,512" class="background" fill="#34B2C9" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
-<polyline points="552,512 594,512 594,20 552,20 552,512" class="background" fill="#7FC64E" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
-<polyline points="594,512 616,512 616,20 594,20 594,512" class="background" fill="#FD9A52" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
-<polyline points="616,512 628,512 628,20 616,20 616,512" class="background" fill="#FFE619" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="20,536 104,536 104,20 20,20 20,536" class="background" fill="#FED99A" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="104,536 182,536 182,20 104,20 104,536" class="background" fill="#FEBF4E" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="182,536 298,536 298,20 182,20 182,536" class="background" fill="#FECC5C" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="298,536 344,536 344,20 298,20 298,536" class="background" fill="#FED96A" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="344,536 372,536 372,20 344,20 344,536" class="background" fill="#7FA056" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="372,536 395,536 395,20 372,20 372,536" class="background" fill="#009270" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="395,536 410,536 410,20 395,20 395,536" class="background" fill="#B3E152" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="410,536 440,536 440,20 410,20 410,536" class="background" fill="#CB8C37" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="440,536 461,536 461,20 440,20 440,536" class="background" fill="#678F66" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="461,536 471,536 471,20 461,20 461,536" class="background" fill="#99C2B5" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="471,536 496,536 496,20 471,20 471,536" class="background" fill="#F04028" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="496,536 523,536 523,20 496,20 496,536" class="background" fill="#812B92" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="523,536 552,536 552,20 523,20 523,536" class="background" fill="#34B2C9" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="552,536 594,536 594,20 552,20 552,536" class="background" fill="#7FC64E" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="594,536 616,536 616,20 594,20 594,536" class="background" fill="#FD9A52" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
+<polyline points="616,536 628,536 628,20 616,20 616,536" class="background" fill="#FFE619" fill-opacity="0.2" stroke="#000000" stroke-width="0" stroke-linecap="square"/>
 </g>
 <g id="prunetree-branches" class="branches" depth="unknown">
 <text x="646" y="64" font-style="italic"> Ostreococcus lucimarinus</text>
@@ -29,11 +29,11 @@
 <circle cx="628" cy="83" r="4" stroke="#000" stroke-width="1" fill="#000"/>
 
 <text x="646" y="112" font-style="italic"> Physcomitrella patens</text>
-<polyline points="349,182 349,107 628,107" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<polyline points="349,186 349,107 628,107" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
 <circle cx="628" cy="107" r="4" stroke="#000" stroke-width="1" fill="#000"/>
 
 <text x="646" y="136" font-style="italic"> Selaginella moellendorffii</text>
-<polyline points="402,259 402,131 628,131" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<polyline points="402,268 402,131 628,131" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
 <circle cx="628" cy="131" r="4" stroke="#000" stroke-width="1" fill="#000"/>
 
 <text x="646" y="160" font-style="italic"> Oryza sativa</text>
@@ -49,7 +49,7 @@
 <circle cx="628" cy="203" r="4" stroke="#000" stroke-width="1" fill="#000"/>
 
 <line x1="602" y1="155" x2="602" y2="177" stroke="#000000" stroke-width="2"/>
-<polyline points="561,234 561,179 602,179" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<polyline points="561,236 561,179 602,179" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
 <circle cx="602" cy="179" r="4" stroke="#000" stroke-width="1" fill="none"/>
 
 <text x="646" y="232" font-style="italic"> Posidonia australis</text>
@@ -74,72 +74,79 @@
 <polyline points="578,256 578,281 584,281" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
 <circle cx="584" cy="281" r="4" stroke="#000" stroke-width="1" fill="none"/>
 
-<polyline points="566,292 566,254 578,254" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<polyline points="566,295 566,254 578,254" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
 <circle cx="578" cy="254" r="4" stroke="#000" stroke-width="1" fill="none"/>
 
 <text x="646" y="328" font-style="italic"> Spirodela polyrhiza</text>
-<polyline points="593,333 593,323 628,323" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<polyline points="593,339 593,323 628,323" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
 <circle cx="628" cy="323" r="4" stroke="#000" stroke-width="1" fill="#000"/>
 
-<text x="646" y="352" font-style="italic"> Lemna gibba</text>
-<polyline points="593,337 593,347 628,347" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<text x="646" y="352" font-style="italic"> Wolffia australiana</text>
+<polyline points="599,357 599,347 628,347" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
 <circle cx="628" cy="347" r="4" stroke="#000" stroke-width="1" fill="#000"/>
 
-<polyline points="566,296 566,335 593,335" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
-<circle cx="593" cy="335" r="4" stroke="#000" stroke-width="1" fill="#000"/>
-
-<polyline points="561,238 561,294 566,294" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
-<circle cx="566" cy="294" r="4" stroke="#000" stroke-width="1" fill="#000"/>
-
-<polyline points="544,315 544,236 561,236" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
-<circle cx="561" cy="236" r="4" stroke="#000" stroke-width="1" fill="none"/>
-
-<text x="646" y="376" font-style="italic"> Vitis vinifera</text>
-<polyline points="570,396 570,371 628,371" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<text x="646" y="376" font-style="italic"> Lemna gibba</text>
+<polyline points="599,361 599,371 628,371" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
 <circle cx="628" cy="371" r="4" stroke="#000" stroke-width="1" fill="#000"/>
 
-<text x="646" y="400" font-style="italic"> Arabidopsis thaliana</text>
-<polyline points="615,405 615,395 628,395" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<polyline points="593,343 593,359 599,359" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="599" cy="359" r="4" stroke="#000" stroke-width="1" fill="none"/>
+
+<polyline points="566,299 566,341 593,341" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="593" cy="341" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<polyline points="561,240 561,297 566,297" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="566" cy="297" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<polyline points="544,328 544,238 561,238" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="561" cy="238" r="4" stroke="#000" stroke-width="1" fill="none"/>
+
+<text x="646" y="400" font-style="italic"> Vitis vinifera</text>
+<polyline points="570,420 570,395 628,395" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
 <circle cx="628" cy="395" r="4" stroke="#000" stroke-width="1" fill="#000"/>
 
-<text x="646" y="424" font-style="italic"> Schrenkiella parvula</text>
-<polyline points="615,409 615,419 628,419" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<text x="646" y="424" font-style="italic"> Arabidopsis thaliana</text>
+<polyline points="615,429 615,419 628,419" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
 <circle cx="628" cy="419" r="4" stroke="#000" stroke-width="1" fill="#000"/>
 
-<polyline points="572,423 572,407 615,407" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
-<circle cx="615" cy="407" r="4" stroke="#000" stroke-width="1" fill="none"/>
-
-<text x="646" y="448" font-style="italic"> Populus trichocarpa</text>
-<polyline points="572,427 572,443 628,443" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<text x="646" y="448" font-style="italic"> Schrenkiella parvula</text>
+<polyline points="615,433 615,443 628,443" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
 <circle cx="628" cy="443" r="4" stroke="#000" stroke-width="1" fill="#000"/>
 
-<polyline points="570,400 570,425 572,425" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
-<circle cx="572" cy="425" r="4" stroke="#000" stroke-width="1" fill="none"/>
+<polyline points="572,447 572,431 615,431" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="615" cy="431" r="4" stroke="#000" stroke-width="1" fill="none"/>
 
-<polyline points="544,319 544,398 570,398" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
-<circle cx="570" cy="398" r="4" stroke="#000" stroke-width="1" fill="#000"/>
-
-<polyline points="533,390 533,317 544,317" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
-<circle cx="544" cy="317" r="4" stroke="#000" stroke-width="1" fill="#000"/>
-
-<text x="646" y="472" font-style="italic"> Amborella trichopoda</text>
-<polyline points="533,394 533,467 628,467" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<text x="646" y="472" font-style="italic"> Populus trichocarpa</text>
+<polyline points="572,451 572,467 628,467" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
 <circle cx="628" cy="467" r="4" stroke="#000" stroke-width="1" fill="#000"/>
 
-<polyline points="402,263 402,392 533,392" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
-<circle cx="533" cy="392" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+<polyline points="570,424 570,449 572,449" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="572" cy="449" r="4" stroke="#000" stroke-width="1" fill="none"/>
 
-<polyline points="349,186 349,261 402,261" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
-<circle cx="402" cy="261" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+<polyline points="544,332 544,422 570,422" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="570" cy="422" r="4" stroke="#000" stroke-width="1" fill="#000"/>
 
-<polyline points="20,123 20,184 349,184" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
-<circle cx="349" cy="184" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+<polyline points="533,408 533,330 544,330" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="544" cy="330" r="4" stroke="#000" stroke-width="1" fill="#000"/>
 
-<line x1="20" y1="59" x2="20" y2="119" stroke="#000000" stroke-width="2"/>
+<text x="646" y="496" font-style="italic"> Amborella trichopoda</text>
+<polyline points="533,412 533,491 628,491" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="628" cy="491" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<polyline points="402,272 402,410 533,410" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="533" cy="410" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<polyline points="349,190 349,270 402,270" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="402" cy="270" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<polyline points="20,125 20,188 349,188" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="square"/>
+<circle cx="349" cy="188" r="4" stroke="#000" stroke-width="1" fill="#000"/>
+
+<line x1="20" y1="59" x2="20" y2="121" stroke="#000000" stroke-width="2"/>
 </g>
 </svg>
 
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="60" name="timetree-geo-timescales" y="512" viewBox="0 0 900 60">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="60" name="timetree-geo-timescales" y="536" viewBox="0 0 900 60">
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="20" name="periods" y="0" id="prunetree-periods" viewBox="0 0 900 20">
 <rect x="20" y="0" width="609" height="20" fill="none" stroke="#555555" stroke-width="1"/>
 <rect x="21" y="2" width="84" height="16" fill="#FED99A" stroke="#FED99A" stroke-width="3" full-name="Stenian" start="1200.00" end="1000.00" unit="Period" title="Stenian"/>
@@ -206,7 +213,7 @@
 <text x="688" y="36" font-height="16" fill="#1c6bc9" font-family="Helvetica">Geologic Timescale</text>
 </svg>
 
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="35" name="timescale" y="572" viewBox="0 0 900 35">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="35" name="timescale" y="596" viewBox="0 0 900 35">
 <g class="timescale">
 <polyline points="20,5 628,5" fill="none" stroke="#333" stroke-width="1" stroke-linecap="square"/>
 <polyline points="628,5 628,20" fill="none" stroke="#333" stroke-width="1" stroke-linecap="square"/>
@@ -223,7 +230,7 @@
 </g>
 </svg>
 
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="65" name="impacts" y="607" viewBox="0 0 900 65">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="65" name="impacts" y="631" viewBox="0 0 900 65">
 <g class="earth-impacts">
 <polyline points="20,55 628,55 628,5" stroke="white" stroke-width="1" fill="white" stroke-linecap="square"/>
 <polyline points="20,30 628,30" fill="none" stroke-dasharray="5,5" stroke="orange" stroke-width="1" stroke-linecap="square"/>
@@ -418,7 +425,7 @@
 <polyline points="20,55 628,55 628,5" fill="none" stroke="#aaaaaa" stroke-width="1" stroke-linecap="square"/>
 </svg>
 
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="65" name="o2" y="672" viewBox="0 0 900 65">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="65" name="o2" y="696" viewBox="0 0 900 65">
 <g class="geo-data" name="o2">
 <polyline points="20,55 628,55 628,5" fill="none" stroke="#aaaaaa" stroke-width="1" stroke-linecap="square"/>
 <text x="688" y="34" font-height="16" fill="#1c6bc9" font-family="Helvetica">Oxygen</text>
@@ -432,7 +439,7 @@
 </g>
 </svg>
 
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="65" name="co2" y="737" viewBox="0 0 900 65">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="65" name="co2" y="761" viewBox="0 0 900 65">
 <g class="geo-data" name="co2">
 <polyline points="20,55 628,55 628,5" fill="none" stroke="#aaaaaa" stroke-width="1" stroke-linecap="square"/>
 <text x="688" y="34" font-height="16" fill="#1c6bc9" font-family="Helvetica">Carbon Dioxide</text>
@@ -446,7 +453,7 @@
 </g>
 </svg>
 
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="65" name="luminosity" y="802" viewBox="0 0 900 65">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="900" height="65" name="luminosity" y="826" viewBox="0 0 900 65">
 <g class="geo-data" name="luminosity">
 <polyline points="20,55 628,55 628,5" fill="none" stroke="#aaaaaa" stroke-width="1" stroke-linecap="square"/>
 <text x="688" y="34" font-height="16" fill="#1c6bc9" font-family="Helvetica">Solar Luminosity</text>
