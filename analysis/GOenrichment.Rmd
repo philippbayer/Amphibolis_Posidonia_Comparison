@@ -15,6 +15,7 @@ library(stringi)
 library(ggrepel)
 library(eulerr)
 library(UpSetR)
+library(rrvgo)
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 ```
 
@@ -191,18 +192,16 @@ for (f in names(results_list)) {
   
   names(dat) <- c("term_ID","description","frequency", 'plot_X', 'plot_Y', 'log_size', 'value', 'uniqueness', 'dispensability', 'eliminated', 'representative')
   one.data <- dat
-  
+  if (one.data[1,] == '<html>') {next} # some datasets result in error
   one.data <- one.data [(one.data$plot_X != "null" & one.data$plot_Y != "null") & (! is.na(one.data$frequency)) & (one.data$value != 'null'), ];
   one.data <- type_convert(one.data)
-  one.data$pvalue <- p.adjust(exp(one.data$value))
-  #one.data <- one.data %>% filter(pvalue < 0.05) # NO FILTERING OF P-VALUES - for now? 
-
+  
   p1 <-
     ggplot(data = one.data, aes(plot_X, plot_Y, label = description)) +
-    geom_point(aes(colour = log(pvalue), size = log_size), alpha = I(0.6)) +
+    geom_point(aes(colour = value, size = log_size), alpha = I(0.6)) +
     scale_size_area() +
     scale_colour_gradientn(colours = rev(wes_palette("Zissou1", 100, type = "continuous")), 
-                           limits = c(min(log(one.data$pvalue)), 0)) +
+                           limits = c(min(one.data$value), 0)) +
     geom_point(
       aes(plot_X, plot_Y, size = log_size),
       shape = 21,
