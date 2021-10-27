@@ -13,6 +13,7 @@ theme_set(theme_cowplot())
 library(RColorBrewer)
 library(patchwork)
 library(UpSetR)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 
 ```
 
@@ -81,4 +82,118 @@ x <- upset(fromList(newlist), order.by='freq', nsets = 4)
 x
 ```
 
+# Connect Orthofinder results with functional table of Arabidopsis genes
+
+File comes from https://www.arabidopsis.org/download_files/Genes/TAIR10_genome_release/TAIR10_functional_descriptions
+
+```{r eval=FALSE}
+download.file('https://www.arabidopsis.org/download_files/Genes/TAIR10_genome_release/TAIR10_functional_descriptions', 'data/TAIR10_functional_descriptions')
+```
+```{r}
+functions <- read_tsv('data/TAIR10_functional_descriptions')
+```
+I also downloaded the gene symbols:
+
+
+```{r eval=FALSE}
+esearch -db gene -query "Arabidopsis thaliana [ORGN]" | esummary | xtract -pattern DocumentSummary -element Name,OtherAliases |  awk -F "\t|," '{OFS="\t"}{print $2,$1}' > arabidopsis_gene_symbols.txt
+```
+
+```{r}
+symbols <- read_tsv('./data/arabidopsis_gene_symbols.txt', col_names = c('Gene','Symbol'))
+```
+
+
+OK now I need to flip the Orthofinder table to then join the functional table
+
+```{r}
+ara_groups <- groups %>% select(Orthogroup, `A. thaliana`) %>% filter(!is.na(`A. thaliana`)) %>% separate_rows(Orthogroup, `A. thaliana`, convert=T)
+ara_groups <- ara_groups %>% separate(`A. thaliana`, c('Gene','Number'), remove=FALSE)
+ara_groups <- left_join(ara_groups, symbols)
+ara_groups$Number <- NULL
+head(ara_groups)
+```
+
+```{r}
+ara_joined <- left_join(ara_groups, functions, by=c(`A. thaliana`='Model_name'))
+```
+
+You know what? we shouldn't directly compare a dicot (A. thaliana) with monocots (seagrasses), should also add another regular monocot (rice)
+
+```{r}
+posi_groups <- groups %>% select(Orthogroup, `P. australis`) %>% filter(!is.na(`P. australis`)) %>% separate_rows(Orthogroup, `P. australis`, convert=T, sep = ', ')
+amphi_groups <- groups %>% select(Orthogroup, `A. antarctica`) %>% filter(!is.na(`A. antarctica`)) %>% separate_rows(Orthogroup, `A. antarctica`, convert=T, sep = ', ')
+zmar_groups <- groups %>%  select(Orthogroup, `Z. marina`) %>% filter(!is.na(`Z. marina`)) %>% separate_rows(Orthogroup, `Z. marina`, convert=T, sep = ', ')
+zmuel_groups <- groups %>%  select(Orthogroup, `Z. muelleri`) %>% filter(!is.na(`Z. muelleri`)) %>% separate_rows(Orthogroup, `Z. muelleri`, convert=T, sep = ', ')
+w_australis_groups <- groups %>%  select(Orthogroup, `W. australis`) %>% filter(!is.na(`W. australis`)) %>% separate_rows(Orthogroup, `W. australis`, convert=T, sep = ', ')
+s_polyrhiza_groups <- groups %>%  select(Orthogroup, `S. polyrhiza`) %>% filter(!is.na(`S. polyrhiza`)) %>% separate_rows(Orthogroup, `S. polyrhiza`, convert=T, sep = ', ')
+l_gibba_groups <- groups %>%  select(Orthogroup, `L. gibba`) %>% filter(!is.na(`L. gibba`)) %>% separate_rows(Orthogroup, `L. gibba`, convert=T, sep = ', ')
+rice_groups<- groups %>%  select(Orthogroup, `O. sativa`) %>% filter(!is.na(`O. sativa`)) %>% separate_rows(Orthogroup, `O. sativa`, convert=T, sep = ', ')
+```
+
+```{r}
+big_joined <- ara_joined %>% mutate(
+  present_in_zmuel = case_when(Orthogroup %in% unique(zmuel_groups$Orthogroup) ~ T,
+                               TRUE ~ F),
+  present_in_zmar = case_when(Orthogroup %in% unique(zmar_groups$Orthogroup) ~ T,
+                              TRUE ~ F),
+  present_in_amphi = case_when(Orthogroup %in% unique(amphi_groups$Orthogroup) ~ T,
+                               TRUE ~ F),
+  present_in_posi = case_when(Orthogroup %in% unique(posi_groups$Orthogroup) ~ T,
+                              TRUE ~ F),
+  present_in_waustralis = case_when(Orthogroup %in% unique(w_australis_groups$Orthogroup) ~ T,
+                              TRUE ~ F),
+  present_in_spolyrhiza = case_when(Orthogroup %in% unique(s_polyrhiza_groups$Orthogroup) ~ T,
+                              TRUE ~ F),
+  present_in_lgibba = case_when(Orthogroup %in% unique(l_gibba_groups$Orthogroup) ~ T,
+                              TRUE ~ F),
+  present_in_rice = case_when(Orthogroup %in% unique(rice_groups$Orthogroup) ~ T,
+                              TRUE ~ F)
+  )
+```
+
+Done :) Now we have a big table with all *A. thaliana* gene functions and whether these genes are present in clusters of the four seagrasses and three duckweeds.
+
+Let's also add counts - how often is this gene lost?
+```{r}
+big_joined <- big_joined %>% mutate(Lost_in_Seagrasses = 4 - (present_in_posi + present_in_zmuel + present_in_zmar + present_in_amphi),
+                      Lost_in_duckweeds=3 - (present_in_lgibba + present_in_spolyrhiza + present_in_waustralis),
+                      Lost_in_both = (Lost_in_Seagrasses + Lost_in_duckweeds))
+```
+
+```{r}
+big_joined %>% writexl::write_xlsx('data/arabidopsis_gene_level_comparison.xlsx')
+big_joined %>% filter_at(vars(starts_with('present')), any_vars(. == FALSE)) %>% writexl::write_xlsx('data/arabidopsis_gene_level_comparison_only_losts.xlsx')
+```
+
+
+That was about loss - can we also check for gene family extension using the *A. thaliana* genes?
+
+# Gene family extension
+
+First, let's count how many members each of these orthogroups has per species.
+```{r}
+ara_count <- ara_joined %>% count(Orthogroup)
+posi_count <- posi_groups %>% count(Orthogroup)
+amphi_count <- amphi_groups %>% count(Orthogroup)
+zmar_count <- zmar_groups %>% count(Orthogroup)
+zmuel_count <- zmuel_groups %>% count(Orthogroup)
+lgibba_count <- l_gibba_groups %>% count(Orthogroup)
+s_polyrhi_count <- s_polyrhiza_groups %>% count(Orthogroup)
+w_aus_count <- w_australis_groups %>% count(Orthogroup)
+rice_count <- rice_groups %>% count(Orthogroup)
+```
+
+
+```{r}
+counts <- plyr::join_all(list(ara_count, posi_count, amphi_count, zmar_count, zmuel_count, lgibba_count, s_polyrhi_count, w_aus_count, rice_count), by='Orthogroup', type='left') 
+names(counts) <- c('Orthogroup', 'A. thaliana', 'P. australis', 'A. antarctica', 'Z. marina', 'Z. muelleri', 'L. gibba', 'S. polyrhiza', 'W. australis', 'O. sativa')
+counts
+```
+
+```{r}
+joined_counts <- left_join(big_joined, counts, by='Orthogroup') %>% select(-starts_with('present')) %>% 
+  select(-starts_with('Lost_i'))
+joined_counts %>% writexl::write_xlsx('data/arabidopsis_gene_level_counts.xlsx')
+```
 
