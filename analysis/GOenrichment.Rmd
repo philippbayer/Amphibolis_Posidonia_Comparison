@@ -236,12 +236,12 @@ for (f in names(results_list)) {
 
 # Making Supplementary Tables for the REVIGO results
 
-Let's also pull these terms out as tables
+Let's also pull these terms out as tables. `Value` is the unadjusted p-value.
 
 ```{r results='asis'}
 for( i in names(results_list)) {
   print(i)
-  print(knitr::kable(results_list[[i]] %>% filter(Eliminated == FALSE), label=i))
+  print(knitr::kable(results_list[[i]] %>% filter(Eliminated == FALSE) %>% select(TermID, Name, Value), label=i))
   cat("\n")
 }
 
