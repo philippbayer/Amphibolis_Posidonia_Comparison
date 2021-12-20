@@ -1,0 +1,548 @@
+##gff-version 3.2.1
+P.australis	Chloe	gene	127733	152983	.	-	.	ID=IR-2;Name=IR-2
+P.australis	Chloe	repeat_region	127733	152983	.	-	.	ID=IR-2/1/repeat_region/1;Parent=IR-2
+###
+P.australis	Chloe	gene	152740	152814	.	-	.	ID=trnH-GUG-2;Name=trnH-GUG
+P.australis	Chloe	tRNA	152740	152814	.	-	.	ID=trnH-GUG-2.tRNA;Parent=trnH-GUG-2
+P.australis	Chloe	exon	152740	152814	.	-	.	ID=trnH-GUG/2/tRNA/1;Parent=trnH-GUG-2.tRNA
+###
+P.australis	Chloe	gene	143809	150432	.	-	.	ID=ycf2-2;Name=ycf2
+P.australis	Chloe	mRNA	143809	150432	.	-	.	ID=ycf2-2.mRNA;Parent=ycf2-2
+P.australis	Chloe	CDS	143809	150432	.	-	0	ID=ycf2/2/CDS/1;Parent=ycf2-2.mRNA
+###
+P.australis	Chloe	gene	7989	8171	.	+	.	ID=psbK;Name=psbK
+P.australis	Chloe	mRNA	7989	8171	.	+	.	ID=psbK.mRNA;Parent=psbK
+P.australis	Chloe	CDS	7989	8171	.	+	0	ID=psbK/1/CDS/1;Parent=psbK.mRNA
+###
+P.australis	Chloe	gene	8605	8712	.	+	.	ID=psbI;Name=psbI
+P.australis	Chloe	mRNA	8605	8712	.	+	.	ID=psbI.mRNA;Parent=psbI
+P.australis	Chloe	CDS	8605	8712	.	+	0	ID=psbI/1/CDS/1;Parent=psbI.mRNA
+###
+P.australis	Chloe	gene	9796	10610	.	+	.	ID=trnG-UCC;Name=trnG-UCC
+P.australis	Chloe	tRNA	9796	10610	.	+	.	ID=trnG-UCC.tRNA;Parent=trnG-UCC
+P.australis	Chloe	exon	9796	9818	.	+	.	ID=trnG-UCC/1/tRNA/1;Parent=trnG-UCC.tRNA
+P.australis	Chloe	intron	9819	10562	.	+	.	ID=trnG-UCC/1/intron/2;Parent=trnG-UCC.tRNA
+P.australis	Chloe	exon	10563	10610	.	+	.	ID=trnG-UCC/1/tRNA/3;Parent=trnG-UCC.tRNA
+###
+P.australis	Chloe	gene	10780	10851	.	+	.	ID=trnR-UCU;Name=trnR-UCU
+P.australis	Chloe	tRNA	10780	10851	.	+	.	ID=trnR-UCU.tRNA;Parent=trnR-UCU
+P.australis	Chloe	exon	10780	10851	.	+	.	ID=trnR-UCU/1/tRNA/1;Parent=trnR-UCU.tRNA
+###
+P.australis	Chloe	gene	136647	136718	.	-	.	ID=trnV-GAC-2;Name=trnV-GAC
+P.australis	Chloe	tRNA	136647	136718	.	-	.	ID=trnV-GAC-2.tRNA;Parent=trnV-GAC-2
+P.australis	Chloe	exon	136647	136718	.	-	.	ID=trnV-GAC/2/tRNA/1;Parent=trnV-GAC-2.tRNA
+###
+P.australis	Chloe	gene	134929	136419	.	-	.	ID=rrn16-2;Name=rrn16
+P.australis	Chloe	rRNA	134929	136419	.	-	.	ID=rrn16-2.rRNA;Parent=rrn16-2
+P.australis	Chloe	exon	134929	136419	.	-	.	ID=rrn16/2/rRNA/1;Parent=rrn16-2.rRNA
+###
+P.australis	Chloe	gene	133604	134621	.	-	.	ID=trnI-GAU-2;Name=trnI-GAU
+P.australis	Chloe	tRNA	133604	134621	.	-	.	ID=trnI-GAU-2.tRNA;Parent=trnI-GAU-2
+P.australis	Chloe	exon	133604	133638	.	-	.	ID=trnI-GAU/2/tRNA/3;Parent=trnI-GAU-2.tRNA
+P.australis	Chloe	intron	133639	134584	.	-	.	ID=trnI-GAU/2/intron/2;Parent=trnI-GAU-2.tRNA
+P.australis	Chloe	exon	134585	134621	.	-	.	ID=trnI-GAU/2/tRNA/1;Parent=trnI-GAU-2.tRNA
+###
+P.australis	Chloe	gene	132651	133539	.	-	.	ID=trnA-UGC-2;Name=trnA-UGC
+P.australis	Chloe	tRNA	132651	133539	.	-	.	ID=trnA-UGC-2.tRNA;Parent=trnA-UGC-2
+P.australis	Chloe	exon	132651	132685	.	-	.	ID=trnA-UGC/2/tRNA/3;Parent=trnA-UGC-2.tRNA
+P.australis	Chloe	intron	132686	133501	.	-	.	ID=trnA-UGC/2/intron/2;Parent=trnA-UGC-2.tRNA
+P.australis	Chloe	exon	133502	133539	.	-	.	ID=trnA-UGC/2/tRNA/1;Parent=trnA-UGC-2.tRNA
+###
+P.australis	Chloe	gene	129704	132510	.	-	.	ID=rrn23-2;Name=rrn23
+P.australis	Chloe	rRNA	129704	132510	.	-	.	ID=rrn23-2.rRNA;Parent=rrn23-2
+P.australis	Chloe	exon	129704	132510	.	-	.	ID=rrn23/2/rRNA/1;Parent=rrn23-2.rRNA
+###
+P.australis	Chloe	gene	129503	129605	.	-	.	ID=rrn4.5-2;Name=rrn4.5
+P.australis	Chloe	rRNA	129503	129605	.	-	.	ID=rrn4.5-2.rRNA;Parent=rrn4.5-2
+P.australis	Chloe	exon	129503	129605	.	-	.	ID=rrn4.5/2/rRNA/1;Parent=rrn4.5-2.rRNA
+###
+P.australis	Chloe	gene	129155	129275	.	-	.	ID=rrn5-2;Name=rrn5
+P.australis	Chloe	rRNA	129155	129275	.	-	.	ID=rrn5-2.rRNA;Parent=rrn5-2
+P.australis	Chloe	exon	129155	129275	.	-	.	ID=rrn5/2/rRNA/1;Parent=rrn5-2.rRNA
+###
+P.australis	Chloe	gene	128827	128900	.	-	.	ID=trnR-ACG-2;Name=trnR-ACG
+P.australis	Chloe	tRNA	128827	128900	.	-	.	ID=trnR-ACG-2.tRNA;Parent=trnR-ACG-2
+P.australis	Chloe	exon	128827	128900	.	-	.	ID=trnR-ACG/2/tRNA/1;Parent=trnR-ACG-2.tRNA
+###
+P.australis	Chloe	gene	122309	127834	.	-	.	ID=ycf1;Name=ycf1
+P.australis	Chloe	mRNA	122309	127834	.	-	.	ID=ycf1.mRNA;Parent=ycf1
+P.australis	Chloe	CDS	122309	127834	.	-	0	ID=ycf1/1/CDS/1;Parent=ycf1.mRNA
+###
+P.australis	Chloe	gene	29263	29333	.	+	.	ID=trnC-GCA;Name=trnC-GCA
+P.australis	Chloe	tRNA	29263	29333	.	+	.	ID=trnC-GCA.tRNA;Parent=trnC-GCA
+P.australis	Chloe	exon	29263	29333	.	+	.	ID=trnC-GCA/1/tRNA/1;Parent=trnC-GCA.tRNA
+###
+P.australis	Chloe	gene	30153	30239	.	+	.	ID=petN;Name=petN
+P.australis	Chloe	mRNA	30153	30239	.	+	.	ID=petN.mRNA;Parent=petN
+P.australis	Chloe	CDS	30153	30239	.	+	0	ID=petN/1/CDS/1;Parent=petN.mRNA
+###
+P.australis	Chloe	gene	121616	121882	.	-	.	ID=rps15;Name=rps15
+P.australis	Chloe	mRNA	121616	121882	.	-	.	ID=rps15.mRNA;Parent=rps15
+P.australis	Chloe	CDS	121616	121882	.	-	0	ID=rps15/1/CDS/1;Parent=rps15.mRNA
+###
+P.australis	Chloe	gene	120572	121324	.	-	.	ID=ndhH;Name=ndhH
+P.australis	Chloe	mRNA	120572	121324	.	-	.	ID=ndhH.mRNA;Parent=ndhH
+P.australis	Chloe	CDS	120572	121324	.	-	0	ID=ndhH/1/CDS/1;Parent=ndhH.mRNA
+###
+P.australis	Chloe	gene	33917	33988	.	+	.	ID=trnT-GGU;Name=trnT-GGU
+P.australis	Chloe	tRNA	33917	33988	.	+	.	ID=trnT-GGU.tRNA;Parent=trnT-GGU
+P.australis	Chloe	exon	33917	33988	.	+	.	ID=trnT-GGU/1/tRNA/1;Parent=trnT-GGU.tRNA
+###
+P.australis	Chloe	gene	118495	118632	.	-	.	ID=ndhE;Name=ndhE
+P.australis	Chloe	mRNA	118495	118632	.	-	.	ID=ndhE.mRNA;Parent=ndhE
+P.australis	Chloe	CDS	118495	118632	.	-	0	ID=ndhE/1/CDS/1;Parent=ndhE.mRNA
+###
+P.australis	Chloe	gene	117751	117993	.	-	.	ID=psaC;Name=psaC
+P.australis	Chloe	mRNA	117751	117993	.	-	.	ID=psaC.mRNA;Parent=psaC
+P.australis	Chloe	CDS	117751	117993	.	-	0	ID=psaC/1/CDS/1;Parent=psaC.mRNA
+###
+P.australis	Chloe	gene	35248	36306	.	+	.	ID=psbD;Name=psbD
+P.australis	Chloe	mRNA	35248	36306	.	+	.	ID=psbD.mRNA;Parent=psbD
+P.australis	Chloe	CDS	35248	36306	.	+	0	ID=psbD/1/CDS/1;Parent=psbD.mRNA
+###
+P.australis	Chloe	gene	36293	37675	.	+	.	ID=psbC;Name=psbC
+P.australis	Chloe	mRNA	36293	37675	.	+	.	ID=psbC.mRNA;Parent=psbC
+P.australis	Chloe	CDS	36293	37675	.	+	0	ID=psbC/1/CDS/1;Parent=psbC.mRNA
+###
+P.australis	Chloe	gene	38248	38433	.	+	.	ID=psbZ;Name=psbZ
+P.australis	Chloe	mRNA	38248	38433	.	+	.	ID=psbZ.mRNA;Parent=psbZ
+P.australis	Chloe	CDS	38248	38433	.	+	0	ID=psbZ/1/CDS/1;Parent=psbZ.mRNA
+###
+P.australis	Chloe	gene	39021	39091	.	+	.	ID=trnG-GCC;Name=trnG-GCC
+P.australis	Chloe	tRNA	39021	39091	.	+	.	ID=trnG-GCC.tRNA;Parent=trnG-GCC
+P.australis	Chloe	exon	39021	39091	.	+	.	ID=trnG-GCC/1/tRNA/1;Parent=trnG-GCC.tRNA
+###
+P.australis	Chloe	gene	112532	112603	.	-	.	ID=trnN-GUU-2;Name=trnN-GUU
+P.australis	Chloe	tRNA	112532	112603	.	-	.	ID=trnN-GUU-2.tRNA;Parent=trnN-GUU-2
+P.australis	Chloe	exon	112532	112603	.	-	.	ID=trnN-GUU/2/tRNA/1;Parent=trnN-GUU-2.tRNA
+###
+P.australis	Chloe	gene	47503	47589	.	+	.	ID=trnS-GGA;Name=trnS-GGA
+P.australis	Chloe	tRNA	47503	47589	.	+	.	ID=trnS-GGA.tRNA;Parent=trnS-GGA
+P.australis	Chloe	exon	47503	47589	.	+	.	ID=trnS-GGA/1/tRNA/1;Parent=trnS-GGA.tRNA
+###
+P.australis	Chloe	gene	49790	50469	.	+	.	ID=trnL-UAA;Name=trnL-UAA
+P.australis	Chloe	tRNA	49790	50469	.	+	.	ID=trnL-UAA.tRNA;Parent=trnL-UAA
+P.australis	Chloe	exon	49790	49824	.	+	.	ID=trnL-UAA/1/tRNA/1;Parent=trnL-UAA.tRNA
+P.australis	Chloe	intron	49825	50419	.	+	.	ID=trnL-UAA/1/intron/2;Parent=trnL-UAA.tRNA
+P.australis	Chloe	exon	50420	50469	.	+	.	ID=trnL-UAA/1/tRNA/3;Parent=trnL-UAA.tRNA
+###
+P.australis	Chloe	gene	101723	103099	.	-	.	ID=rps12B-2;Name=rps12B
+P.australis	Chloe	CDS	101723	101745	.	-	2	ID=rps12B/2/CDS/4;Parent=rps12B-2
+P.australis	Chloe	intron	101746	102286	.	-	.	ID=rps12B/2/intron/3;Parent=rps12B-2
+P.australis	Chloe	CDS	102287	102518	.	-	0	ID=rps12B/2/CDS/2;Parent=rps12B-2
+P.australis	Chloe	intron	102519	103099	.	-	.	ID=rps12B/2/intron/1;Parent=rps12B-2
+###
+P.australis	Chloe	gene	50812	50884	.	+	.	ID=trnF-GAA;Name=trnF-GAA
+P.australis	Chloe	tRNA	50812	50884	.	+	.	ID=trnF-GAA.tRNA;Parent=trnF-GAA
+P.australis	Chloe	exon	50812	50884	.	+	.	ID=trnF-GAA/1/tRNA/1;Parent=trnF-GAA.tRNA
+###
+P.australis	Chloe	gene	101197	101661	.	-	.	ID=rps7-2;Name=rps7
+P.australis	Chloe	mRNA	101197	101661	.	-	.	ID=rps7-2.mRNA;Parent=rps7-2
+P.australis	Chloe	CDS	101197	101661	.	-	0	ID=rps7/2/CDS/1;Parent=rps7-2.mRNA
+###
+P.australis	Chloe	gene	97965	98045	.	-	.	ID=trnL-CAA-2;Name=trnL-CAA
+P.australis	Chloe	tRNA	97965	98045	.	-	.	ID=trnL-CAA-2.tRNA;Parent=trnL-CAA-2
+P.australis	Chloe	exon	97965	98045	.	-	.	ID=trnL-CAA/2/tRNA/1;Parent=trnL-CAA-2.tRNA
+###
+P.australis	Chloe	gene	56081	57553	.	+	.	ID=atpB;Name=atpB
+P.australis	Chloe	mRNA	56081	57553	.	+	.	ID=atpB.mRNA;Parent=atpB
+P.australis	Chloe	CDS	56081	57553	.	+	0	ID=atpB/1/CDS/1;Parent=atpB.mRNA
+###
+P.australis	Chloe	gene	57579	57977	.	+	.	ID=atpE;Name=atpE
+P.australis	Chloe	mRNA	57579	57977	.	+	.	ID=atpE.mRNA;Parent=atpE
+P.australis	Chloe	CDS	57579	57977	.	+	0	ID=atpE/1/CDS/1;Parent=atpE.mRNA
+###
+P.australis	Chloe	gene	58419	59108	.	+	.	ID=trnV-UAC;Name=trnV-UAC
+P.australis	Chloe	tRNA	58419	59108	.	+	.	ID=trnV-UAC.tRNA;Parent=trnV-UAC
+P.australis	Chloe	exon	58419	58457	.	+	.	ID=trnV-UAC/1/tRNA/1;Parent=trnV-UAC.tRNA
+P.australis	Chloe	intron	58458	59073	.	+	.	ID=trnV-UAC/1/intron/2;Parent=trnV-UAC.tRNA
+P.australis	Chloe	exon	59074	59108	.	+	.	ID=trnV-UAC/1/tRNA/3;Parent=trnV-UAC.tRNA
+###
+P.australis	Chloe	gene	59855	61318	.	+	.	ID=accD;Name=accD
+P.australis	Chloe	mRNA	59855	61318	.	+	.	ID=accD.mRNA;Parent=accD
+P.australis	Chloe	CDS	59855	61318	.	+	0	ID=accD/1/CDS/1;Parent=accD.mRNA
+###
+P.australis	Chloe	gene	62179	62286	.	+	.	ID=psaI;Name=psaI
+P.australis	Chloe	mRNA	62179	62286	.	+	.	ID=psaI.mRNA;Parent=psaI
+P.australis	Chloe	CDS	62179	62286	.	+	0	ID=psaI/1/CDS/1;Parent=psaI.mRNA
+###
+P.australis	Chloe	gene	62658	63209	.	+	.	ID=pafII;Name=pafII
+P.australis	Chloe	mRNA	62658	63209	.	+	.	ID=pafII.mRNA;Parent=pafII
+P.australis	Chloe	CDS	62658	63209	.	+	0	ID=pafII/1/CDS/1;Parent=pafII.mRNA
+###
+P.australis	Chloe	gene	90019	90092	.	-	.	ID=trnI-CAU-2;Name=trnI-CAU
+P.australis	Chloe	tRNA	90019	90092	.	-	.	ID=trnI-CAU-2.tRNA;Parent=trnI-CAU-2
+P.australis	Chloe	exon	90019	90092	.	-	.	ID=trnI-CAU/2/tRNA/1;Parent=trnI-CAU-2.tRNA
+###
+P.australis	Chloe	gene	89576	89854	.	-	.	ID=rpl23-2;Name=rpl23
+P.australis	Chloe	mRNA	89576	89854	.	-	.	ID=rpl23-2.mRNA;Parent=rpl23-2
+P.australis	Chloe	CDS	89576	89854	.	-	0	ID=rpl23/2/CDS/1;Parent=rpl23-2.mRNA
+###
+P.australis	Chloe	gene	88066	89548	.	-	.	ID=rpl2-2;Name=rpl2
+P.australis	Chloe	mRNA	88066	89548	.	-	.	ID=rpl2-2.mRNA;Parent=rpl2-2
+P.australis	Chloe	CDS	88066	88493	.	-	2	ID=rpl2/2/CDS/3;Parent=rpl2-2.mRNA
+P.australis	Chloe	intron	88494	89157	.	-	.	ID=rpl2/2/intron/2;Parent=rpl2-2.mRNA
+P.australis	Chloe	CDS	89158	89548	.	-	0	ID=rpl2/2/CDS/1;Parent=rpl2-2.mRNA
+###
+P.australis	Chloe	gene	64188	64874	.	+	.	ID=cemA;Name=cemA
+P.australis	Chloe	mRNA	64188	64874	.	+	.	ID=cemA.mRNA;Parent=cemA
+P.australis	Chloe	CDS	64188	64874	.	+	0	ID=cemA/1/CDS/1;Parent=cemA.mRNA
+###
+P.australis	Chloe	gene	65111	66070	.	+	.	ID=petA;Name=petA
+P.australis	Chloe	mRNA	65111	66070	.	+	.	ID=petA.mRNA;Parent=petA
+P.australis	Chloe	CDS	65111	66070	.	+	0	ID=petA/1/CDS/1;Parent=petA.mRNA
+###
+P.australis	Chloe	gene	87565	87840	.	-	.	ID=rps19;Name=rps19
+P.australis	Chloe	mRNA	87565	87840	.	-	.	ID=rps19.mRNA;Parent=rps19
+P.australis	Chloe	CDS	87565	87840	.	-	0	ID=rps19/1/CDS/1;Parent=rps19.mRNA
+###
+P.australis	Chloe	gene	86894	87259	.	-	.	ID=rpl22;Name=rpl22
+P.australis	Chloe	mRNA	86894	87259	.	-	.	ID=rpl22.mRNA;Parent=rpl22
+P.australis	Chloe	CDS	86894	87259	.	-	0	ID=rpl22/1/CDS/1;Parent=rpl22.mRNA
+###
+P.australis	Chloe	gene	86159	86815	.	-	.	ID=rps3;Name=rps3
+P.australis	Chloe	mRNA	86159	86815	.	-	.	ID=rps3.mRNA;Parent=rps3
+P.australis	Chloe	CDS	86159	86815	.	-	0	ID=rps3/1/CDS/1;Parent=rps3.mRNA
+###
+P.australis	Chloe	gene	84386	85944	.	-	.	ID=rpl16;Name=rpl16
+P.australis	Chloe	mRNA	84386	85944	.	-	.	ID=rpl16.mRNA;Parent=rpl16
+P.australis	Chloe	CDS	84386	84787	.	-	0	ID=rpl16/1/CDS/3;Parent=rpl16.mRNA
+P.australis	Chloe	intron	84788	85935	.	-	.	ID=rpl16/1/intron/2;Parent=rpl16.mRNA
+P.australis	Chloe	CDS	85936	85944	.	-	0	ID=rpl16/1/CDS/1;Parent=rpl16.mRNA
+###
+P.australis	Chloe	gene	83895	84260	.	-	.	ID=rpl14;Name=rpl14
+P.australis	Chloe	mRNA	83895	84260	.	-	.	ID=rpl14.mRNA;Parent=rpl14
+P.australis	Chloe	CDS	83895	84260	.	-	0	ID=rpl14/1/CDS/1;Parent=rpl14.mRNA
+###
+P.australis	Chloe	gene	69049	69141	.	+	.	ID=petL;Name=petL
+P.australis	Chloe	mRNA	69049	69141	.	+	.	ID=petL.mRNA;Parent=petL
+P.australis	Chloe	CDS	69049	69141	.	+	0	ID=petL/1/CDS/1;Parent=petL.mRNA
+###
+P.australis	Chloe	gene	83347	83742	.	-	.	ID=rps8;Name=rps8
+P.australis	Chloe	mRNA	83347	83742	.	-	.	ID=rps8.mRNA;Parent=rps8
+P.australis	Chloe	CDS	83347	83742	.	-	0	ID=rps8/1/CDS/1;Parent=rps8.mRNA
+###
+P.australis	Chloe	gene	69321	69431	.	+	.	ID=petG;Name=petG
+P.australis	Chloe	mRNA	69321	69431	.	+	.	ID=petG.mRNA;Parent=petG
+P.australis	Chloe	CDS	69321	69431	.	+	0	ID=petG/1/CDS/1;Parent=petG.mRNA
+###
+P.australis	Chloe	gene	83004	83234	.	-	.	ID=infA;Name=infA
+P.australis	Chloe	mRNA	83004	83234	.	-	.	ID=infA.mRNA;Parent=infA
+P.australis	Chloe	CDS	83004	83234	.	-	0	ID=infA/1/CDS/1;Parent=infA.mRNA
+###
+P.australis	Chloe	gene	82835	82945	.	-	.	ID=rpl36;Name=rpl36
+P.australis	Chloe	mRNA	82835	82945	.	-	.	ID=rpl36.mRNA;Parent=rpl36
+P.australis	Chloe	CDS	82835	82945	.	-	0	ID=rpl36/1/CDS/1;Parent=rpl36.mRNA
+###
+P.australis	Chloe	gene	70252	70377	.	+	.	ID=psaJ;Name=psaJ
+P.australis	Chloe	mRNA	70252	70377	.	+	.	ID=psaJ.mRNA;Parent=psaJ
+P.australis	Chloe	CDS	70252	70377	.	+	0	ID=psaJ/1/CDS/1;Parent=psaJ.mRNA
+###
+P.australis	Chloe	gene	82304	82717	.	-	.	ID=rps11;Name=rps11
+P.australis	Chloe	mRNA	82304	82717	.	-	.	ID=rps11.mRNA;Parent=rps11
+P.australis	Chloe	CDS	82304	82717	.	-	0	ID=rps11/1/CDS/1;Parent=rps11.mRNA
+###
+P.australis	Chloe	gene	81210	82226	.	-	.	ID=rpoA;Name=rpoA
+P.australis	Chloe	mRNA	81210	82226	.	-	.	ID=rpoA.mRNA;Parent=rpoA
+P.australis	Chloe	CDS	81210	82226	.	-	0	ID=rpoA/1/CDS/1;Parent=rpoA.mRNA
+###
+P.australis	Chloe	gene	70793	70990	.	+	.	ID=rpl33;Name=rpl33
+P.australis	Chloe	mRNA	70793	70990	.	+	.	ID=rpl33.mRNA;Parent=rpl33
+P.australis	Chloe	CDS	70793	70990	.	+	0	ID=rpl33/1/CDS/1;Parent=rpl33.mRNA
+###
+P.australis	Chloe	gene	71177	71479	.	+	.	ID=rps18;Name=rps18
+P.australis	Chloe	mRNA	71177	71479	.	+	.	ID=rps18.mRNA;Parent=rps18
+P.australis	Chloe	CDS	71177	71479	.	+	0	ID=rps18/1/CDS/1;Parent=rps18.mRNA
+###
+P.australis	Chloe	gene	77593	77721	.	-	.	ID=pbf1;Name=pbf1
+P.australis	Chloe	mRNA	77593	77721	.	-	.	ID=pbf1.mRNA;Parent=pbf1
+P.australis	Chloe	CDS	77593	77721	.	-	0	ID=pbf1/1/CDS/1;Parent=pbf1.mRNA
+###
+P.australis	Chloe	gene	75717	77240	.	+	.	ID=psbB;Name=psbB
+P.australis	Chloe	mRNA	75717	77240	.	+	.	ID=psbB.mRNA;Parent=psbB
+P.australis	Chloe	CDS	75717	77240	.	+	0	ID=psbB/1/CDS/1;Parent=psbB.mRNA
+###
+P.australis	Chloe	gene	77414	77512	.	+	.	ID=psbT;Name=psbT
+P.australis	Chloe	mRNA	77414	77512	.	+	.	ID=psbT.mRNA;Parent=psbT
+P.australis	Chloe	CDS	77414	77512	.	+	0	ID=psbT/1/CDS/1;Parent=psbT.mRNA
+###
+P.australis	Chloe	gene	73184	75229	.	-	.	ID=clpP1;Name=clpP1
+P.australis	Chloe	mRNA	73184	75229	.	-	.	ID=clpP1.mRNA;Parent=clpP1
+P.australis	Chloe	CDS	73184	73426	.	-	0	ID=clpP1/1/CDS/5;Parent=clpP1.mRNA
+P.australis	Chloe	intron	73427	74093	.	-	.	ID=clpP1/1/intron/4;Parent=clpP1.mRNA
+P.australis	Chloe	CDS	74094	74385	.	-	1	ID=clpP1/1/CDS/3;Parent=clpP1.mRNA
+P.australis	Chloe	intron	74386	75158	.	-	.	ID=clpP1/1/intron/2;Parent=clpP1.mRNA
+P.australis	Chloe	CDS	75159	75229	.	-	0	ID=clpP1/1/CDS/1;Parent=clpP1.mRNA
+###
+P.australis	Chloe	gene	77836	78054	.	+	.	ID=psbH;Name=psbH
+P.australis	Chloe	mRNA	77836	78054	.	+	.	ID=psbH.mRNA;Parent=psbH
+P.australis	Chloe	CDS	77836	78054	.	+	0	ID=psbH/1/CDS/1;Parent=psbH.mRNA
+###
+P.australis	Chloe	gene	78175	79582	.	+	.	ID=petB;Name=petB
+P.australis	Chloe	mRNA	78175	79582	.	+	.	ID=petB.mRNA;Parent=petB
+P.australis	Chloe	CDS	78175	78180	.	+	0	ID=petB/1/CDS/1;Parent=petB.mRNA
+P.australis	Chloe	intron	78181	78943	.	+	.	ID=petB/1/intron/2;Parent=petB.mRNA
+P.australis	Chloe	CDS	78944	79582	.	+	0	ID=petB/1/CDS/3;Parent=petB.mRNA
+###
+P.australis	Chloe	gene	79797	81019	.	+	.	ID=petD;Name=petD
+P.australis	Chloe	mRNA	79797	81019	.	+	.	ID=petD.mRNA;Parent=petD
+P.australis	Chloe	CDS	79797	79804	.	+	0	ID=petD/1/CDS/1;Parent=petD.mRNA
+P.australis	Chloe	intron	79805	80547	.	+	.	ID=petD/1/intron/2;Parent=petD.mRNA
+P.australis	Chloe	CDS	80548	81019	.	+	1	ID=petD/1/CDS/3;Parent=petD.mRNA
+###
+P.australis	Chloe	gene	72243	73017	.	-	.	ID=rps12A;Name=rps12A
+P.australis	Chloe	mRNA	72243	73017	.	-	.	ID=rps12A.mRNA;Parent=rps12A
+P.australis	Chloe	intron	72243	72903	.	-	.	ID=rps12A/1/intron/2;Parent=rps12A.mRNA
+P.australis	Chloe	CDS	72904	73017	.	-	0	ID=rps12A/1/CDS/1;Parent=rps12A.mRNA
+###
+P.australis	Chloe	gene	71780	72130	.	-	.	ID=rpl20;Name=rpl20
+P.australis	Chloe	mRNA	71780	72130	.	-	.	ID=rpl20.mRNA;Parent=rpl20
+P.australis	Chloe	CDS	71780	72130	.	-	0	ID=rpl20/1/CDS/1;Parent=rpl20.mRNA
+###
+P.australis	Chloe	gene	69800	69873	.	-	.	ID=trnP-UGG;Name=trnP-UGG
+P.australis	Chloe	tRNA	69800	69873	.	-	.	ID=trnP-UGG.tRNA;Parent=trnP-UGG
+P.australis	Chloe	exon	69800	69873	.	-	.	ID=trnP-UGG/1/tRNA/1;Parent=trnP-UGG.tRNA
+###
+P.australis	Chloe	gene	69542	69615	.	-	.	ID=trnW-CCA;Name=trnW-CCA
+P.australis	Chloe	tRNA	69542	69615	.	-	.	ID=trnW-CCA.tRNA;Parent=trnW-CCA
+P.australis	Chloe	exon	69542	69615	.	-	.	ID=trnW-CCA/1/tRNA/1;Parent=trnW-CCA.tRNA
+###
+P.australis	Chloe	gene	67629	67877	.	-	.	ID=psbE;Name=psbE
+P.australis	Chloe	mRNA	67629	67877	.	-	.	ID=psbE.mRNA;Parent=psbE
+P.australis	Chloe	CDS	67629	67877	.	-	0	ID=psbE/1/CDS/1;Parent=psbE.mRNA
+###
+P.australis	Chloe	gene	67499	67615	.	-	.	ID=psbF;Name=psbF
+P.australis	Chloe	mRNA	67499	67615	.	-	.	ID=psbF.mRNA;Parent=psbF
+P.australis	Chloe	CDS	67499	67615	.	-	0	ID=psbF/1/CDS/1;Parent=psbF.mRNA
+###
+P.australis	Chloe	gene	67360	67473	.	-	.	ID=psbL;Name=psbL
+P.australis	Chloe	mRNA	67360	67473	.	-	.	ID=psbL.mRNA;Parent=psbL
+P.australis	Chloe	CDS	67360	67473	.	-	0	ID=psbL/1/CDS/1;Parent=psbL.mRNA
+###
+P.australis	Chloe	gene	67108	67227	.	-	.	ID=psbJ;Name=psbJ
+P.australis	Chloe	mRNA	67108	67227	.	-	.	ID=psbJ.mRNA;Parent=psbJ
+P.australis	Chloe	CDS	67108	67227	.	-	0	ID=psbJ/1/CDS/1;Parent=psbJ.mRNA
+###
+P.australis	Chloe	gene	87785	113035	.	+	.	ID=IR-1;Name=IR-1
+P.australis	Chloe	repeat_region	87785	113035	.	+	.	ID=IR-1/1/repeat_region/1;Parent=IR-1
+###
+P.australis	Chloe	gene	87954	88028	.	+	.	ID=trnH-GUG;Name=trnH-GUG
+P.australis	Chloe	tRNA	87954	88028	.	+	.	ID=trnH-GUG.tRNA;Parent=trnH-GUG
+P.australis	Chloe	exon	87954	88028	.	+	.	ID=trnH-GUG/1/tRNA/1;Parent=trnH-GUG.tRNA
+###
+P.australis	Chloe	gene	90336	96959	.	+	.	ID=ycf2;Name=ycf2
+P.australis	Chloe	mRNA	90336	96959	.	+	.	ID=ycf2.mRNA;Parent=ycf2
+P.australis	Chloe	CDS	90336	96959	.	+	0	ID=ycf2/1/CDS/1;Parent=ycf2.mRNA
+###
+P.australis	Chloe	gene	58141	58213	.	-	.	ID=trnM-CAU;Name=trnM-CAU
+P.australis	Chloe	tRNA	58141	58213	.	-	.	ID=trnM-CAU.tRNA;Parent=trnM-CAU
+P.australis	Chloe	exon	58141	58213	.	-	.	ID=trnM-CAU/1/tRNA/1;Parent=trnM-CAU.tRNA
+###
+P.australis	Chloe	gene	53863	55287	.	-	.	ID=rbcL;Name=rbcL
+P.australis	Chloe	mRNA	53863	55287	.	-	.	ID=rbcL.mRNA;Parent=rbcL
+P.australis	Chloe	CDS	53863	55287	.	-	0	ID=rbcL/1/CDS/1;Parent=rbcL.mRNA
+###
+P.australis	Chloe	gene	51971	52330	.	-	.	ID=ndhC;Name=ndhC
+P.australis	Chloe	mRNA	51971	52330	.	-	.	ID=ndhC.mRNA;Parent=ndhC
+P.australis	Chloe	CDS	51971	52330	.	-	0	ID=ndhC/1/CDS/1;Parent=ndhC.mRNA
+###
+P.australis	Chloe	gene	51240	51977	.	-	.	ID=ndhK;Name=ndhK
+P.australis	Chloe	mRNA	51240	51977	.	-	.	ID=ndhK.mRNA;Parent=ndhK
+P.australis	Chloe	CDS	51240	51977	.	-	0	ID=ndhK/1/CDS/1;Parent=ndhK.mRNA
+###
+P.australis	Chloe	gene	48882	48954	.	-	.	ID=trnT-UGU;Name=trnT-UGU
+P.australis	Chloe	tRNA	48882	48954	.	-	.	ID=trnT-UGU.tRNA;Parent=trnT-UGU
+P.australis	Chloe	exon	48882	48954	.	-	.	ID=trnT-UGU/1/tRNA/1;Parent=trnT-UGU.tRNA
+###
+P.australis	Chloe	gene	104050	104121	.	+	.	ID=trnV-GAC;Name=trnV-GAC
+P.australis	Chloe	tRNA	104050	104121	.	+	.	ID=trnV-GAC.tRNA;Parent=trnV-GAC
+P.australis	Chloe	exon	104050	104121	.	+	.	ID=trnV-GAC/1/tRNA/1;Parent=trnV-GAC.tRNA
+###
+P.australis	Chloe	gene	104349	105839	.	+	.	ID=rrn16;Name=rrn16
+P.australis	Chloe	rRNA	104349	105839	.	+	.	ID=rrn16.rRNA;Parent=rrn16
+P.australis	Chloe	exon	104349	105839	.	+	.	ID=rrn16/1/rRNA/1;Parent=rrn16.rRNA
+###
+P.australis	Chloe	gene	47874	48476	.	-	.	ID=rps4;Name=rps4
+P.australis	Chloe	mRNA	47874	48476	.	-	.	ID=rps4.mRNA;Parent=rps4
+P.australis	Chloe	CDS	47874	48476	.	-	0	ID=rps4/1/CDS/1;Parent=rps4.mRNA
+###
+P.australis	Chloe	gene	45072	47037	.	-	.	ID=pafI;Name=pafI
+P.australis	Chloe	mRNA	45072	47037	.	-	.	ID=pafI.mRNA;Parent=pafI
+P.australis	Chloe	CDS	45072	45221	.	-	0	ID=pafI/1/CDS/5;Parent=pafI.mRNA
+P.australis	Chloe	intron	45222	45955	.	-	.	ID=pafI/1/intron/4;Parent=pafI.mRNA
+P.australis	Chloe	CDS	45956	46185	.	-	2	ID=pafI/1/CDS/3;Parent=pafI.mRNA
+P.australis	Chloe	intron	46186	46913	.	-	.	ID=pafI/1/intron/2;Parent=pafI.mRNA
+P.australis	Chloe	CDS	46914	47037	.	-	0	ID=pafI/1/CDS/1;Parent=pafI.mRNA
+###
+P.australis	Chloe	gene	106147	107164	.	+	.	ID=trnI-GAU;Name=trnI-GAU
+P.australis	Chloe	tRNA	106147	107164	.	+	.	ID=trnI-GAU.tRNA;Parent=trnI-GAU
+P.australis	Chloe	exon	106147	106183	.	+	.	ID=trnI-GAU/1/tRNA/1;Parent=trnI-GAU.tRNA
+P.australis	Chloe	intron	106184	107129	.	+	.	ID=trnI-GAU/1/intron/2;Parent=trnI-GAU.tRNA
+P.australis	Chloe	exon	107130	107164	.	+	.	ID=trnI-GAU/1/tRNA/3;Parent=trnI-GAU.tRNA
+###
+P.australis	Chloe	gene	107229	108117	.	+	.	ID=trnA-UGC;Name=trnA-UGC
+P.australis	Chloe	tRNA	107229	108117	.	+	.	ID=trnA-UGC.tRNA;Parent=trnA-UGC
+P.australis	Chloe	exon	107229	107266	.	+	.	ID=trnA-UGC/1/tRNA/1;Parent=trnA-UGC.tRNA
+P.australis	Chloe	intron	107267	108082	.	+	.	ID=trnA-UGC/1/intron/2;Parent=trnA-UGC.tRNA
+P.australis	Chloe	exon	108083	108117	.	+	.	ID=trnA-UGC/1/tRNA/3;Parent=trnA-UGC.tRNA
+###
+P.australis	Chloe	gene	108258	111064	.	+	.	ID=rrn23;Name=rrn23
+P.australis	Chloe	rRNA	108258	111064	.	+	.	ID=rrn23.rRNA;Parent=rrn23
+P.australis	Chloe	exon	108258	111064	.	+	.	ID=rrn23/1/rRNA/1;Parent=rrn23.rRNA
+###
+P.australis	Chloe	gene	42153	44402	.	-	.	ID=psaA;Name=psaA
+P.australis	Chloe	mRNA	42153	44402	.	-	.	ID=psaA.mRNA;Parent=psaA
+P.australis	Chloe	CDS	42153	44402	.	-	0	ID=psaA/1/CDS/1;Parent=psaA.mRNA
+###
+P.australis	Chloe	gene	39923	42124	.	-	.	ID=psaB;Name=psaB
+P.australis	Chloe	mRNA	39923	42124	.	-	.	ID=psaB.mRNA;Parent=psaB
+P.australis	Chloe	CDS	39923	42124	.	-	0	ID=psaB/1/CDS/1;Parent=psaB.mRNA
+###
+P.australis	Chloe	gene	111163	111265	.	+	.	ID=rrn4.5;Name=rrn4.5
+P.australis	Chloe	rRNA	111163	111265	.	+	.	ID=rrn4.5.rRNA;Parent=rrn4.5
+P.australis	Chloe	exon	111163	111265	.	+	.	ID=rrn4.5/1/rRNA/1;Parent=rrn4.5.rRNA
+###
+P.australis	Chloe	gene	111493	111613	.	+	.	ID=rrn5;Name=rrn5
+P.australis	Chloe	rRNA	111493	111613	.	+	.	ID=rrn5.rRNA;Parent=rrn5
+P.australis	Chloe	exon	111493	111613	.	+	.	ID=rrn5/1/rRNA/1;Parent=rrn5.rRNA
+###
+P.australis	Chloe	gene	111868	111941	.	+	.	ID=trnR-ACG;Name=trnR-ACG
+P.australis	Chloe	tRNA	111868	111941	.	+	.	ID=trnR-ACG.tRNA;Parent=trnR-ACG
+P.australis	Chloe	exon	111868	111941	.	+	.	ID=trnR-ACG/1/tRNA/1;Parent=trnR-ACG.tRNA
+###
+P.australis	Chloe	gene	39478	39777	.	-	.	ID=rps14;Name=rps14
+P.australis	Chloe	mRNA	39478	39777	.	-	.	ID=rps14.mRNA;Parent=rps14
+P.australis	Chloe	CDS	39478	39777	.	-	0	ID=rps14/1/CDS/1;Parent=rps14.mRNA
+###
+P.australis	Chloe	gene	39234	39307	.	-	.	ID=trnfM-CAU;Name=trnfM-CAU
+P.australis	Chloe	tRNA	39234	39307	.	-	.	ID=trnfM-CAU.tRNA;Parent=trnfM-CAU
+P.australis	Chloe	exon	39234	39307	.	-	.	ID=trnfM-CAU/1/tRNA/1;Parent=trnfM-CAU.tRNA
+###
+P.australis	Chloe	gene	114252	114410	.	+	.	ID=rpl32;Name=rpl32
+P.australis	Chloe	mRNA	114252	114410	.	+	.	ID=rpl32.mRNA;Parent=rpl32
+P.australis	Chloe	CDS	114252	114410	.	+	0	ID=rpl32/1/CDS/1;Parent=rpl32.mRNA
+###
+P.australis	Chloe	gene	115007	115086	.	+	.	ID=trnL-UAG;Name=trnL-UAG
+P.australis	Chloe	tRNA	115007	115086	.	+	.	ID=trnL-UAG.tRNA;Parent=trnL-UAG
+P.australis	Chloe	exon	115007	115086	.	+	.	ID=trnL-UAG/1/tRNA/1;Parent=trnL-UAG.tRNA
+###
+P.australis	Chloe	gene	37794	37886	.	-	.	ID=trnS-UGA;Name=trnS-UGA
+P.australis	Chloe	tRNA	37794	37886	.	-	.	ID=trnS-UGA.tRNA;Parent=trnS-UGA
+P.australis	Chloe	exon	37794	37886	.	-	.	ID=trnS-UGA/1/tRNA/1;Parent=trnS-UGA.tRNA
+###
+P.australis	Chloe	gene	115169	116134	.	+	.	ID=ccsA;Name=ccsA
+P.australis	Chloe	mRNA	115169	116134	.	+	.	ID=ccsA.mRNA;Parent=ccsA
+P.australis	Chloe	CDS	115169	116134	.	+	0	ID=ccsA/1/CDS/1;Parent=ccsA.mRNA
+###
+P.australis	Chloe	gene	33296	33368	.	-	.	ID=trnE-UUC;Name=trnE-UUC
+P.australis	Chloe	tRNA	33296	33368	.	-	.	ID=trnE-UUC.tRNA;Parent=trnE-UUC
+P.australis	Chloe	exon	33296	33368	.	-	.	ID=trnE-UUC/1/tRNA/1;Parent=trnE-UUC.tRNA
+###
+P.australis	Chloe	gene	33146	33229	.	-	.	ID=trnY-GUA;Name=trnY-GUA
+P.australis	Chloe	tRNA	33146	33229	.	-	.	ID=trnY-GUA.tRNA;Parent=trnY-GUA
+P.australis	Chloe	exon	33146	33229	.	-	.	ID=trnY-GUA/1/tRNA/1;Parent=trnY-GUA.tRNA
+###
+P.australis	Chloe	gene	32681	32754	.	-	.	ID=trnD-GUC;Name=trnD-GUC
+P.australis	Chloe	tRNA	32681	32754	.	-	.	ID=trnD-GUC.tRNA;Parent=trnD-GUC
+P.australis	Chloe	exon	32681	32754	.	-	.	ID=trnD-GUC/1/tRNA/1;Parent=trnD-GUC.tRNA
+###
+P.australis	Chloe	gene	31382	31483	.	-	.	ID=psbM;Name=psbM
+P.australis	Chloe	mRNA	31382	31483	.	-	.	ID=psbM.mRNA;Parent=psbM
+P.australis	Chloe	CDS	31382	31483	.	-	0	ID=psbM/1/CDS/1;Parent=psbM.mRNA
+###
+P.australis	Chloe	gene	24910	28125	.	-	.	ID=rpoB;Name=rpoB
+P.australis	Chloe	mRNA	24910	28125	.	-	.	ID=rpoB.mRNA;Parent=rpoB
+P.australis	Chloe	CDS	24910	28125	.	-	0	ID=rpoB/1/CDS/1;Parent=rpoB.mRNA
+###
+P.australis	Chloe	gene	22059	24880	.	-	.	ID=rpoC1;Name=rpoC1
+P.australis	Chloe	mRNA	22059	24880	.	-	.	ID=rpoC1.mRNA;Parent=rpoC1
+P.australis	Chloe	CDS	22059	23672	.	-	0	ID=rpoC1/1/CDS/3;Parent=rpoC1.mRNA
+P.australis	Chloe	intron	23673	24448	.	-	.	ID=rpoC1/1/intron/2;Parent=rpoC1.mRNA
+P.australis	Chloe	CDS	24449	24880	.	-	0	ID=rpoC1/1/CDS/1;Parent=rpoC1.mRNA
+###
+P.australis	Chloe	gene	128165	128236	.	+	.	ID=trnN-GUU;Name=trnN-GUU
+P.australis	Chloe	tRNA	128165	128236	.	+	.	ID=trnN-GUU.tRNA;Parent=trnN-GUU
+P.australis	Chloe	exon	128165	128236	.	+	.	ID=trnN-GUU/1/tRNA/1;Parent=trnN-GUU.tRNA
+###
+P.australis	Chloe	gene	17766	21884	.	-	.	ID=rpoC2;Name=rpoC2
+P.australis	Chloe	mRNA	17766	21884	.	-	.	ID=rpoC2.mRNA;Parent=rpoC2
+P.australis	Chloe	CDS	17766	21884	.	-	0	ID=rpoC2/1/CDS/1;Parent=rpoC2.mRNA
+###
+P.australis	Chloe	gene	16770	17477	.	-	.	ID=rps2;Name=rps2
+P.australis	Chloe	mRNA	16770	17477	.	-	.	ID=rps2.mRNA;Parent=rps2
+P.australis	Chloe	CDS	16770	17477	.	-	0	ID=rps2/1/CDS/1;Parent=rps2.mRNA
+###
+P.australis	Chloe	gene	15791	16531	.	-	.	ID=atpI;Name=atpI
+P.australis	Chloe	mRNA	15791	16531	.	-	.	ID=atpI.mRNA;Parent=atpI
+P.australis	Chloe	CDS	15791	16531	.	-	0	ID=atpI/1/CDS/1;Parent=atpI.mRNA
+###
+P.australis	Chloe	gene	137669	139045	.	+	.	ID=rps12B;Name=rps12B
+P.australis	Chloe	intron	137669	138249	.	+	.	ID=rps12B/1/intron/1;Parent=rps12B
+P.australis	Chloe	CDS	138250	138481	.	+	0	ID=rps12B/1/CDS/2;Parent=rps12B
+P.australis	Chloe	intron	138482	139022	.	+	.	ID=rps12B/1/intron/3;Parent=rps12B
+P.australis	Chloe	CDS	139023	139045	.	+	2	ID=rps12B/1/CDS/4;Parent=rps12B
+###
+P.australis	Chloe	gene	14706	14948	.	-	.	ID=atpH;Name=atpH
+P.australis	Chloe	mRNA	14706	14948	.	-	.	ID=atpH.mRNA;Parent=atpH
+P.australis	Chloe	CDS	14706	14948	.	-	0	ID=atpH/1/CDS/1;Parent=atpH.mRNA
+###
+P.australis	Chloe	gene	12592	14264	.	-	.	ID=atpF;Name=atpF
+P.australis	Chloe	mRNA	12592	14264	.	-	.	ID=atpF.mRNA;Parent=atpF
+P.australis	Chloe	CDS	12592	12998	.	-	2	ID=atpF/1/CDS/3;Parent=atpF.mRNA
+P.australis	Chloe	intron	12999	14119	.	-	.	ID=atpF/1/intron/2;Parent=atpF.mRNA
+P.australis	Chloe	CDS	14120	14264	.	-	0	ID=atpF/1/CDS/1;Parent=atpF.mRNA
+###
+P.australis	Chloe	gene	139107	139571	.	+	.	ID=rps7;Name=rps7
+P.australis	Chloe	mRNA	139107	139571	.	+	.	ID=rps7.mRNA;Parent=rps7
+P.australis	Chloe	CDS	139107	139571	.	+	0	ID=rps7/1/CDS/1;Parent=rps7.mRNA
+###
+P.australis	Chloe	gene	10989	12509	.	-	.	ID=atpA;Name=atpA
+P.australis	Chloe	mRNA	10989	12509	.	-	.	ID=atpA.mRNA;Parent=atpA
+P.australis	Chloe	CDS	10989	12509	.	-	0	ID=atpA/1/CDS/1;Parent=atpA.mRNA
+###
+P.australis	Chloe	gene	142723	142803	.	+	.	ID=trnL-CAA;Name=trnL-CAA
+P.australis	Chloe	tRNA	142723	142803	.	+	.	ID=trnL-CAA.tRNA;Parent=trnL-CAA
+P.australis	Chloe	exon	142723	142803	.	+	.	ID=trnL-CAA/1/tRNA/1;Parent=trnL-CAA.tRNA
+###
+P.australis	Chloe	gene	8836	8923	.	-	.	ID=trnS-GCU;Name=trnS-GCU
+P.australis	Chloe	tRNA	8836	8923	.	-	.	ID=trnS-GCU.tRNA;Parent=trnS-GCU
+P.australis	Chloe	exon	8836	8923	.	-	.	ID=trnS-GCU/1/tRNA/1;Parent=trnS-GCU.tRNA
+###
+P.australis	Chloe	gene	7480	7551	.	-	.	ID=trnQ-UUG;Name=trnQ-UUG
+P.australis	Chloe	tRNA	7480	7551	.	-	.	ID=trnQ-UUG.tRNA;Parent=trnQ-UUG
+P.australis	Chloe	exon	7480	7551	.	-	.	ID=trnQ-UUG/1/tRNA/1;Parent=trnQ-UUG.tRNA
+###
+P.australis	Chloe	gene	4708	5956	.	-	.	ID=rps16;Name=rps16
+P.australis	Chloe	mRNA	4708	5956	.	-	.	ID=rps16.mRNA;Parent=rps16
+P.australis	Chloe	CDS	4708	4961	.	-	0	ID=rps16/1/CDS/3;Parent=rps16.mRNA
+P.australis	Chloe	intron	4962	5916	.	-	.	ID=rps16/1/intron/2;Parent=rps16.mRNA
+P.australis	Chloe	CDS	5917	5956	.	-	0	ID=rps16/1/CDS/1;Parent=rps16.mRNA
+###
+P.australis	Chloe	gene	1390	3997	.	-	.	ID=trnK-UUU;Name=trnK-UUU
+P.australis	Chloe	tRNA	1390	3997	.	-	.	ID=trnK-UUU.tRNA;Parent=trnK-UUU
+P.australis	Chloe	exon	1390	1424	.	-	.	ID=trnK-UUU/1/tRNA/3;Parent=trnK-UUU.tRNA
+P.australis	Chloe	intron	1425	3960	.	-	.	ID=trnK-UUU/1/intron/2;Parent=trnK-UUU.tRNA
+P.australis	Chloe	exon	3961	3997	.	-	.	ID=trnK-UUU/1/tRNA/1;Parent=trnK-UUU.tRNA
+###
+P.australis	Chloe	gene	1687	3195	.	-	.	ID=matK;Name=matK
+P.australis	Chloe	mRNA	1687	3195	.	-	.	ID=matK.mRNA;Parent=matK
+P.australis	Chloe	CDS	1687	3195	.	-	0	ID=matK/1/CDS/1;Parent=matK.mRNA
+###
+P.australis	Chloe	gene	150676	150749	.	+	.	ID=trnI-CAU;Name=trnI-CAU
+P.australis	Chloe	tRNA	150676	150749	.	+	.	ID=trnI-CAU.tRNA;Parent=trnI-CAU
+P.australis	Chloe	exon	150676	150749	.	+	.	ID=trnI-CAU/1/tRNA/1;Parent=trnI-CAU.tRNA
+###
+P.australis	Chloe	gene	150914	151192	.	+	.	ID=rpl23;Name=rpl23
+P.australis	Chloe	mRNA	150914	151192	.	+	.	ID=rpl23.mRNA;Parent=rpl23
+P.australis	Chloe	CDS	150914	151192	.	+	0	ID=rpl23/1/CDS/1;Parent=rpl23.mRNA
+###
+P.australis	Chloe	gene	151220	152702	.	+	.	ID=rpl2;Name=rpl2
+P.australis	Chloe	mRNA	151220	152702	.	+	.	ID=rpl2.mRNA;Parent=rpl2
+P.australis	Chloe	CDS	151220	151610	.	+	0	ID=rpl2/1/CDS/1;Parent=rpl2.mRNA
+P.australis	Chloe	intron	151611	152274	.	+	.	ID=rpl2/1/intron/2;Parent=rpl2.mRNA
+P.australis	Chloe	CDS	152275	152702	.	+	2	ID=rpl2/1/CDS/3;Parent=rpl2.mRNA
+###
+P.australis	Chloe	gene	126	1184	.	-	.	ID=psbA;Name=psbA
+P.australis	Chloe	mRNA	126	1184	.	-	.	ID=psbA.mRNA;Parent=psbA
+P.australis	Chloe	CDS	126	1184	.	-	0	ID=psbA/1/CDS/1;Parent=psbA.mRNA
+###

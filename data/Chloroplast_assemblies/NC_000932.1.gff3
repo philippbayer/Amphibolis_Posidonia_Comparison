@@ -1,0 +1,578 @@
+##gff-version 3.2.1
+NC_000932.1	Chloe	gene	128215	154478	.	-	.	ID=IR-2;Name=IR-2
+NC_000932.1	Chloe	repeat_region	128215	154478	.	-	.	ID=IR-2/1/repeat_region/1;Parent=IR-2
+###
+NC_000932.1	Chloe	gene	145294	152175	.	-	.	ID=ycf2-2;Name=ycf2
+NC_000932.1	Chloe	mRNA	145294	152175	.	-	.	ID=ycf2-2.mRNA;Parent=ycf2-2
+NC_000932.1	Chloe	CDS	145294	152175	.	-	0	ID=ycf2/2/CDS/1;Parent=ycf2-2.mRNA
+###
+NC_000932.1	Chloe	gene	7017	7199	.	+	.	ID=psbK;Name=psbK
+NC_000932.1	Chloe	mRNA	7017	7199	.	+	.	ID=psbK.mRNA;Parent=psbK
+NC_000932.1	Chloe	CDS	7017	7199	.	+	0	ID=psbK/1/CDS/1;Parent=psbK.mRNA
+###
+NC_000932.1	Chloe	gene	7583	7690	.	+	.	ID=psbI;Name=psbI
+NC_000932.1	Chloe	mRNA	7583	7690	.	+	.	ID=psbI.mRNA;Parent=psbI
+NC_000932.1	Chloe	CDS	7583	7690	.	+	0	ID=psbI/1/CDS/1;Parent=psbI.mRNA
+###
+NC_000932.1	Chloe	gene	8646	9431	.	+	.	ID=trnG-UCC;Name=trnG-UCC
+NC_000932.1	Chloe	tRNA	8646	9431	.	+	.	ID=trnG-UCC.tRNA;Parent=trnG-UCC
+NC_000932.1	Chloe	exon	8646	8668	.	+	.	ID=trnG-UCC/1/tRNA/1;Parent=trnG-UCC.tRNA
+NC_000932.1	Chloe	intron	8669	9383	.	+	.	ID=trnG-UCC/1/intron/2;Parent=trnG-UCC.tRNA
+NC_000932.1	Chloe	exon	9384	9431	.	+	.	ID=trnG-UCC/1/tRNA/3;Parent=trnG-UCC.tRNA
+###
+NC_000932.1	Chloe	gene	9590	9661	.	+	.	ID=trnR-UCU;Name=trnR-UCU
+NC_000932.1	Chloe	tRNA	9590	9661	.	+	.	ID=trnR-UCU.tRNA;Parent=trnR-UCU
+NC_000932.1	Chloe	exon	9590	9661	.	+	.	ID=trnR-UCU/1/tRNA/1;Parent=trnR-UCU.tRNA
+###
+NC_000932.1	Chloe	gene	137869	137940	.	-	.	ID=trnV-GAC-2;Name=trnV-GAC
+NC_000932.1	Chloe	tRNA	137869	137940	.	-	.	ID=trnV-GAC-2.tRNA;Parent=trnV-GAC-2
+NC_000932.1	Chloe	exon	137869	137940	.	-	.	ID=trnV-GAC/2/tRNA/1;Parent=trnV-GAC-2.tRNA
+###
+NC_000932.1	Chloe	gene	136147	137637	.	-	.	ID=rrn16-2;Name=rrn16
+NC_000932.1	Chloe	rRNA	136147	137637	.	-	.	ID=rrn16-2.rRNA;Parent=rrn16-2
+NC_000932.1	Chloe	exon	136147	137637	.	-	.	ID=rrn16/2/rRNA/1;Parent=rrn16-2.rRNA
+###
+NC_000932.1	Chloe	gene	135048	135848	.	-	.	ID=trnI-GAU-2;Name=trnI-GAU
+NC_000932.1	Chloe	tRNA	135048	135848	.	-	.	ID=trnI-GAU-2.tRNA;Parent=trnI-GAU-2
+NC_000932.1	Chloe	exon	135048	135082	.	-	.	ID=trnI-GAU/2/tRNA/3;Parent=trnI-GAU-2.tRNA
+NC_000932.1	Chloe	intron	135083	135811	.	-	.	ID=trnI-GAU/2/intron/2;Parent=trnI-GAU-2.tRNA
+NC_000932.1	Chloe	exon	135812	135848	.	-	.	ID=trnI-GAU/2/tRNA/1;Parent=trnI-GAU-2.tRNA
+###
+NC_000932.1	Chloe	gene	134111	134984	.	-	.	ID=trnA-UGC-2;Name=trnA-UGC
+NC_000932.1	Chloe	tRNA	134111	134984	.	-	.	ID=trnA-UGC-2.tRNA;Parent=trnA-UGC-2
+NC_000932.1	Chloe	exon	134111	134145	.	-	.	ID=trnA-UGC/2/tRNA/3;Parent=trnA-UGC-2.tRNA
+NC_000932.1	Chloe	intron	134146	134946	.	-	.	ID=trnA-UGC/2/intron/2;Parent=trnA-UGC-2.tRNA
+NC_000932.1	Chloe	exon	134947	134984	.	-	.	ID=trnA-UGC/2/tRNA/1;Parent=trnA-UGC-2.tRNA
+###
+NC_000932.1	Chloe	gene	131149	133958	.	-	.	ID=rrn23-2;Name=rrn23
+NC_000932.1	Chloe	rRNA	131149	133958	.	-	.	ID=rrn23-2.rRNA;Parent=rrn23-2
+NC_000932.1	Chloe	exon	131149	133958	.	-	.	ID=rrn23/2/rRNA/1;Parent=rrn23-2.rRNA
+###
+NC_000932.1	Chloe	gene	130948	131050	.	-	.	ID=rrn4.5-2;Name=rrn4.5
+NC_000932.1	Chloe	rRNA	130948	131050	.	-	.	ID=rrn4.5-2.rRNA;Parent=rrn4.5-2
+NC_000932.1	Chloe	exon	130948	131050	.	-	.	ID=rrn4.5/2/rRNA/1;Parent=rrn4.5-2.rRNA
+###
+NC_000932.1	Chloe	gene	130580	130700	.	-	.	ID=rrn5-2;Name=rrn5
+NC_000932.1	Chloe	rRNA	130580	130700	.	-	.	ID=rrn5-2.rRNA;Parent=rrn5-2
+NC_000932.1	Chloe	exon	130580	130700	.	-	.	ID=rrn5/2/rRNA/1;Parent=rrn5-2.rRNA
+###
+NC_000932.1	Chloe	gene	130274	130347	.	-	.	ID=trnR-ACG-2;Name=trnR-ACG
+NC_000932.1	Chloe	tRNA	130274	130347	.	-	.	ID=trnR-ACG-2.tRNA;Parent=trnR-ACG-2
+NC_000932.1	Chloe	exon	130274	130347	.	-	.	ID=trnR-ACG/2/tRNA/1;Parent=trnR-ACG-2.tRNA
+###
+NC_000932.1	Chloe	gene	123887	129241	.	-	.	ID=ycf1;Name=ycf1
+NC_000932.1	Chloe	mRNA	123887	129241	.	-	.	ID=ycf1.mRNA;Parent=ycf1
+NC_000932.1	Chloe	CDS	123887	129241	.	-	0	ID=ycf1/1/CDS/1;Parent=ycf1.mRNA
+###
+NC_000932.1	Chloe	gene	27373	27443	.	+	.	ID=trnC-GCA;Name=trnC-GCA
+NC_000932.1	Chloe	tRNA	27373	27443	.	+	.	ID=trnC-GCA.tRNA;Parent=trnC-GCA
+NC_000932.1	Chloe	exon	27373	27443	.	+	.	ID=trnC-GCA/1/tRNA/1;Parent=trnC-GCA.tRNA
+###
+NC_000932.1	Chloe	gene	28089	28175	.	+	.	ID=petN;Name=petN
+NC_000932.1	Chloe	mRNA	28089	28175	.	+	.	ID=petN.mRNA;Parent=petN
+NC_000932.1	Chloe	CDS	28089	28175	.	+	0	ID=petN/1/CDS/1;Parent=petN.mRNA
+###
+NC_000932.1	Chloe	gene	123299	123562	.	-	.	ID=rps15;Name=rps15
+NC_000932.1	Chloe	mRNA	123299	123562	.	-	.	ID=rps15.mRNA;Parent=rps15
+NC_000932.1	Chloe	CDS	123299	123562	.	-	0	ID=rps15/1/CDS/1;Parent=rps15.mRNA
+###
+NC_000932.1	Chloe	gene	122014	123192	.	-	.	ID=ndhH;Name=ndhH
+NC_000932.1	Chloe	mRNA	122014	123192	.	-	.	ID=ndhH.mRNA;Parent=ndhH
+NC_000932.1	Chloe	CDS	122014	123192	.	-	0	ID=ndhH/1/CDS/1;Parent=ndhH.mRNA
+###
+NC_000932.1	Chloe	gene	31369	31440	.	+	.	ID=trnT-GGU;Name=trnT-GGU
+NC_000932.1	Chloe	tRNA	31369	31440	.	+	.	ID=trnT-GGU.tRNA;Parent=trnT-GGU
+NC_000932.1	Chloe	exon	31369	31440	.	+	.	ID=trnT-GGU/1/tRNA/1;Parent=trnT-GGU.tRNA
+###
+NC_000932.1	Chloe	gene	119850	122009	.	-	.	ID=ndhA;Name=ndhA
+NC_000932.1	Chloe	mRNA	119850	122009	.	-	.	ID=ndhA.mRNA;Parent=ndhA
+NC_000932.1	Chloe	CDS	119850	120376	.	-	2	ID=ndhA/1/CDS/3;Parent=ndhA.mRNA
+NC_000932.1	Chloe	intron	120377	121456	.	-	.	ID=ndhA/1/intron/2;Parent=ndhA.mRNA
+NC_000932.1	Chloe	CDS	121457	122009	.	-	0	ID=ndhA/1/CDS/1;Parent=ndhA.mRNA
+###
+NC_000932.1	Chloe	gene	32711	33769	.	+	.	ID=psbD;Name=psbD
+NC_000932.1	Chloe	mRNA	32711	33769	.	+	.	ID=psbD.mRNA;Parent=psbD
+NC_000932.1	Chloe	CDS	32711	33769	.	+	0	ID=psbD/1/CDS/1;Parent=psbD.mRNA
+###
+NC_000932.1	Chloe	gene	33756	35138	.	+	.	ID=psbC;Name=psbC
+NC_000932.1	Chloe	mRNA	33756	35138	.	+	.	ID=psbC.mRNA;Parent=psbC
+NC_000932.1	Chloe	CDS	33756	35138	.	+	0	ID=psbC/1/CDS/1;Parent=psbC.mRNA
+###
+NC_000932.1	Chloe	gene	119247	119762	.	-	.	ID=ndhI;Name=ndhI
+NC_000932.1	Chloe	mRNA	119247	119762	.	-	.	ID=ndhI.mRNA;Parent=ndhI
+NC_000932.1	Chloe	CDS	119247	119762	.	-	0	ID=ndhI/1/CDS/1;Parent=ndhI.mRNA
+###
+NC_000932.1	Chloe	gene	118380	118907	.	-	.	ID=ndhG;Name=ndhG
+NC_000932.1	Chloe	mRNA	118380	118907	.	-	.	ID=ndhG.mRNA;Parent=ndhG
+NC_000932.1	Chloe	CDS	118380	118907	.	-	0	ID=ndhG/1/CDS/1;Parent=ndhG.mRNA
+###
+NC_000932.1	Chloe	gene	35751	35936	.	+	.	ID=psbZ;Name=psbZ
+NC_000932.1	Chloe	mRNA	35751	35936	.	+	.	ID=psbZ.mRNA;Parent=psbZ
+NC_000932.1	Chloe	CDS	35751	35936	.	+	0	ID=psbZ/1/CDS/1;Parent=psbZ.mRNA
+###
+NC_000932.1	Chloe	gene	117807	118109	.	-	.	ID=ndhE;Name=ndhE
+NC_000932.1	Chloe	mRNA	117807	118109	.	-	.	ID=ndhE.mRNA;Parent=ndhE
+NC_000932.1	Chloe	CDS	117807	118109	.	-	0	ID=ndhE/1/CDS/1;Parent=ndhE.mRNA
+###
+NC_000932.1	Chloe	gene	36490	36560	.	+	.	ID=trnG-GCC;Name=trnG-GCC
+NC_000932.1	Chloe	tRNA	36490	36560	.	+	.	ID=trnG-GCC.tRNA;Parent=trnG-GCC
+NC_000932.1	Chloe	exon	36490	36560	.	+	.	ID=trnG-GCC/1/tRNA/1;Parent=trnG-GCC.tRNA
+###
+NC_000932.1	Chloe	gene	117321	117563	.	-	.	ID=psaC;Name=psaC
+NC_000932.1	Chloe	mRNA	117321	117563	.	-	.	ID=psaC.mRNA;Parent=psaC
+NC_000932.1	Chloe	CDS	117321	117563	.	-	0	ID=psaC/1/CDS/1;Parent=psaC.mRNA
+###
+NC_000932.1	Chloe	gene	115668	117167	.	-	.	ID=ndhD;Name=ndhD
+NC_000932.1	Chloe	mRNA	115668	117167	.	-	.	ID=ndhD.mRNA;Parent=ndhD
+NC_000932.1	Chloe	CDS	115668	117167	.	-	0	ID=ndhD/1/CDS/1;Parent=ndhD.mRNA
+###
+NC_000932.1	Chloe	gene	110401	112638	.	-	.	ID=ndhF;Name=ndhF
+NC_000932.1	Chloe	mRNA	110401	112638	.	-	.	ID=ndhF.mRNA;Parent=ndhF
+NC_000932.1	Chloe	CDS	110401	112638	.	-	0	ID=ndhF/1/CDS/1;Parent=ndhF.mRNA
+###
+NC_000932.1	Chloe	gene	44827	44913	.	+	.	ID=trnS-GGA;Name=trnS-GGA
+NC_000932.1	Chloe	tRNA	44827	44913	.	+	.	ID=trnS-GGA.tRNA;Parent=trnS-GGA
+NC_000932.1	Chloe	exon	44827	44913	.	+	.	ID=trnS-GGA/1/tRNA/1;Parent=trnS-GGA.tRNA
+###
+NC_000932.1	Chloe	gene	109013	109084	.	-	.	ID=trnN-GUU-2;Name=trnN-GUU
+NC_000932.1	Chloe	tRNA	109013	109084	.	-	.	ID=trnN-GUU-2.tRNA;Parent=trnN-GUU-2
+NC_000932.1	Chloe	exon	109013	109084	.	-	.	ID=trnN-GUU/2/tRNA/1;Parent=trnN-GUU-2.tRNA
+###
+NC_000932.1	Chloe	gene	46894	47490	.	+	.	ID=trnL-UAA;Name=trnL-UAA
+NC_000932.1	Chloe	tRNA	46894	47490	.	+	.	ID=trnL-UAA.tRNA;Parent=trnL-UAA
+NC_000932.1	Chloe	exon	46894	46928	.	+	.	ID=trnL-UAA/1/tRNA/1;Parent=trnL-UAA.tRNA
+NC_000932.1	Chloe	intron	46929	47440	.	+	.	ID=trnL-UAA/1/intron/2;Parent=trnL-UAA.tRNA
+NC_000932.1	Chloe	exon	47441	47490	.	+	.	ID=trnL-UAA/1/tRNA/3;Parent=trnL-UAA.tRNA
+###
+NC_000932.1	Chloe	gene	48175	48247	.	+	.	ID=trnF-GAA;Name=trnF-GAA
+NC_000932.1	Chloe	tRNA	48175	48247	.	+	.	ID=trnF-GAA.tRNA;Parent=trnF-GAA
+NC_000932.1	Chloe	exon	48175	48247	.	+	.	ID=trnF-GAA/1/tRNA/1;Parent=trnF-GAA.tRNA
+###
+NC_000932.1	Chloe	gene	52056	52128	.	+	.	ID=trnM-CAU;Name=trnM-CAU
+NC_000932.1	Chloe	tRNA	52056	52128	.	+	.	ID=trnM-CAU.tRNA;Parent=trnM-CAU
+NC_000932.1	Chloe	exon	52056	52128	.	+	.	ID=trnM-CAU/1/tRNA/1;Parent=trnM-CAU.tRNA
+###
+NC_000932.1	Chloe	gene	98002	99687	.	-	.	ID=rps12B-2;Name=rps12B
+NC_000932.1	Chloe	CDS	98002	98024	.	-	2	ID=rps12B/2/CDS/4;Parent=rps12B-2
+NC_000932.1	Chloe	intron	98025	98561	.	-	.	ID=rps12B/2/intron/3;Parent=rps12B-2
+NC_000932.1	Chloe	CDS	98562	98793	.	-	0	ID=rps12B/2/CDS/2;Parent=rps12B-2
+NC_000932.1	Chloe	intron	98794	99687	.	-	.	ID=rps12B/2/intron/1;Parent=rps12B-2
+###
+NC_000932.1	Chloe	gene	54958	56394	.	+	.	ID=rbcL;Name=rbcL
+NC_000932.1	Chloe	mRNA	54958	56394	.	+	.	ID=rbcL.mRNA;Parent=rbcL
+NC_000932.1	Chloe	CDS	54958	56394	.	+	0	ID=rbcL/1/CDS/1;Parent=rbcL.mRNA
+###
+NC_000932.1	Chloe	gene	97481	97945	.	-	.	ID=rps7-2;Name=rps7
+NC_000932.1	Chloe	mRNA	97481	97945	.	-	.	ID=rps7-2.mRNA;Parent=rps7-2
+NC_000932.1	Chloe	CDS	97481	97945	.	-	0	ID=rps7/2/CDS/1;Parent=rps7-2.mRNA
+###
+NC_000932.1	Chloe	gene	57075	58538	.	+	.	ID=accD;Name=accD
+NC_000932.1	Chloe	mRNA	57075	58538	.	+	.	ID=accD.mRNA;Parent=accD
+NC_000932.1	Chloe	CDS	57075	58538	.	+	0	ID=accD/1/CDS/1;Parent=accD.mRNA
+###
+NC_000932.1	Chloe	gene	94944	97110	.	-	.	ID=ndhB-2;Name=ndhB
+NC_000932.1	Chloe	mRNA	94944	97110	.	-	.	ID=ndhB-2.mRNA;Parent=ndhB-2
+NC_000932.1	Chloe	CDS	94944	95702	.	-	0	ID=ndhB/2/CDS/3;Parent=ndhB-2.mRNA
+NC_000932.1	Chloe	intron	95703	96387	.	-	.	ID=ndhB/2/intron/2;Parent=ndhB-2.mRNA
+NC_000932.1	Chloe	CDS	96388	97110	.	-	0	ID=ndhB/2/CDS/1;Parent=ndhB-2.mRNA
+###
+NC_000932.1	Chloe	gene	59247	59357	.	+	.	ID=psaI;Name=psaI
+NC_000932.1	Chloe	mRNA	59247	59357	.	+	.	ID=psaI.mRNA;Parent=psaI
+NC_000932.1	Chloe	CDS	59247	59357	.	+	0	ID=psaI/1/CDS/1;Parent=psaI.mRNA
+###
+NC_000932.1	Chloe	gene	59772	60323	.	+	.	ID=pafII;Name=pafII
+NC_000932.1	Chloe	mRNA	59772	60323	.	+	.	ID=pafII.mRNA;Parent=pafII
+NC_000932.1	Chloe	CDS	59772	60323	.	+	0	ID=pafII/1/CDS/1;Parent=pafII.mRNA
+###
+NC_000932.1	Chloe	gene	94276	94356	.	-	.	ID=trnL-CAA-2;Name=trnL-CAA
+NC_000932.1	Chloe	tRNA	94276	94356	.	-	.	ID=trnL-CAA-2.tRNA;Parent=trnL-CAA-2
+NC_000932.1	Chloe	exon	94276	94356	.	-	.	ID=trnL-CAA/2/tRNA/1;Parent=trnL-CAA-2.tRNA
+###
+NC_000932.1	Chloe	gene	60741	61427	.	+	.	ID=cemA;Name=cemA
+NC_000932.1	Chloe	mRNA	60741	61427	.	+	.	ID=cemA.mRNA;Parent=cemA
+NC_000932.1	Chloe	CDS	60741	61427	.	+	0	ID=cemA/1/CDS/1;Parent=cemA.mRNA
+###
+NC_000932.1	Chloe	gene	61657	62616	.	+	.	ID=petA;Name=petA
+NC_000932.1	Chloe	mRNA	61657	62616	.	+	.	ID=petA.mRNA;Parent=petA
+NC_000932.1	Chloe	CDS	61657	62616	.	+	0	ID=petA/1/CDS/1;Parent=petA.mRNA
+###
+NC_000932.1	Chloe	gene	65712	65804	.	+	.	ID=petL;Name=petL
+NC_000932.1	Chloe	mRNA	65712	65804	.	+	.	ID=petL.mRNA;Parent=petL
+NC_000932.1	Chloe	CDS	65712	65804	.	+	0	ID=petL/1/CDS/1;Parent=petL.mRNA
+###
+NC_000932.1	Chloe	gene	65998	66108	.	+	.	ID=petG;Name=petG
+NC_000932.1	Chloe	mRNA	65998	66108	.	+	.	ID=petG.mRNA;Parent=petG
+NC_000932.1	Chloe	CDS	65998	66108	.	+	0	ID=petG/1/CDS/1;Parent=petG.mRNA
+###
+NC_000932.1	Chloe	gene	66929	67060	.	+	.	ID=psaJ;Name=psaJ
+NC_000932.1	Chloe	mRNA	66929	67060	.	+	.	ID=psaJ.mRNA;Parent=psaJ
+NC_000932.1	Chloe	CDS	66929	67060	.	+	0	ID=psaJ/1/CDS/1;Parent=psaJ.mRNA
+###
+NC_000932.1	Chloe	gene	67488	67685	.	+	.	ID=rpl33;Name=rpl33
+NC_000932.1	Chloe	mRNA	67488	67685	.	+	.	ID=rpl33.mRNA;Parent=rpl33
+NC_000932.1	Chloe	CDS	67488	67685	.	+	0	ID=rpl33/1/CDS/1;Parent=rpl33.mRNA
+###
+NC_000932.1	Chloe	gene	67917	68219	.	+	.	ID=rps18;Name=rps18
+NC_000932.1	Chloe	mRNA	67917	68219	.	+	.	ID=rps18.mRNA;Parent=rps18
+NC_000932.1	Chloe	CDS	67917	68219	.	+	0	ID=rps18/1/CDS/1;Parent=rps18.mRNA
+###
+NC_000932.1	Chloe	gene	86312	86385	.	-	.	ID=trnI-CAU-2;Name=trnI-CAU
+NC_000932.1	Chloe	tRNA	86312	86385	.	-	.	ID=trnI-CAU-2.tRNA;Parent=trnI-CAU-2
+NC_000932.1	Chloe	exon	86312	86385	.	-	.	ID=trnI-CAU/2/tRNA/1;Parent=trnI-CAU-2.tRNA
+###
+NC_000932.1	Chloe	gene	85865	86143	.	-	.	ID=rpl23-2;Name=rpl23
+NC_000932.1	Chloe	mRNA	85865	86143	.	-	.	ID=rpl23-2.mRNA;Parent=rpl23-2
+NC_000932.1	Chloe	CDS	85865	86143	.	-	0	ID=rpl23/2/CDS/1;Parent=rpl23-2.mRNA
+###
+NC_000932.1	Chloe	gene	84340	85843	.	-	.	ID=rpl2-2;Name=rpl2
+NC_000932.1	Chloe	mRNA	84340	85843	.	-	.	ID=rpl2-2.mRNA;Parent=rpl2-2
+NC_000932.1	Chloe	CDS	84340	84770	.	-	2	ID=rpl2/2/CDS/3;Parent=rpl2-2.mRNA
+NC_000932.1	Chloe	intron	84771	85452	.	-	.	ID=rpl2/2/intron/2;Parent=rpl2-2.mRNA
+NC_000932.1	Chloe	CDS	85453	85843	.	-	0	ID=rpl2/2/CDS/1;Parent=rpl2-2.mRNA
+###
+NC_000932.1	Chloe	gene	84008	84283	.	-	.	ID=rps19;Name=rps19
+NC_000932.1	Chloe	mRNA	84008	84283	.	-	.	ID=rps19.mRNA;Parent=rps19
+NC_000932.1	Chloe	CDS	84008	84283	.	-	0	ID=rps19/1/CDS/1;Parent=rps19.mRNA
+###
+NC_000932.1	Chloe	gene	83470	83949	.	-	.	ID=rpl22;Name=rpl22
+NC_000932.1	Chloe	mRNA	83470	83949	.	-	.	ID=rpl22.mRNA;Parent=rpl22
+NC_000932.1	Chloe	CDS	83470	83949	.	-	0	ID=rpl22/1/CDS/1;Parent=rpl22.mRNA
+###
+NC_000932.1	Chloe	gene	82829	83482	.	-	.	ID=rps3;Name=rps3
+NC_000932.1	Chloe	mRNA	82829	83482	.	-	.	ID=rps3.mRNA;Parent=rps3
+NC_000932.1	Chloe	CDS	82829	83482	.	-	0	ID=rps3/1/CDS/1;Parent=rps3.mRNA
+###
+NC_000932.1	Chloe	gene	81192	82652	.	-	.	ID=rpl16;Name=rpl16
+NC_000932.1	Chloe	mRNA	81192	82652	.	-	.	ID=rpl16.mRNA;Parent=rpl16
+NC_000932.1	Chloe	CDS	81192	81587	.	-	0	ID=rpl16/1/CDS/3;Parent=rpl16.mRNA
+NC_000932.1	Chloe	intron	81588	82643	.	-	.	ID=rpl16/1/intron/2;Parent=rpl16.mRNA
+NC_000932.1	Chloe	CDS	82644	82652	.	-	0	ID=rpl16/1/CDS/1;Parent=rpl16.mRNA
+###
+NC_000932.1	Chloe	gene	72371	73894	.	+	.	ID=psbB;Name=psbB
+NC_000932.1	Chloe	mRNA	72371	73894	.	+	.	ID=psbB.mRNA;Parent=psbB
+NC_000932.1	Chloe	CDS	72371	73894	.	+	0	ID=psbB/1/CDS/1;Parent=psbB.mRNA
+###
+NC_000932.1	Chloe	gene	80699	81064	.	-	.	ID=rpl14;Name=rpl14
+NC_000932.1	Chloe	mRNA	80699	81064	.	-	.	ID=rpl14.mRNA;Parent=rpl14
+NC_000932.1	Chloe	CDS	80699	81064	.	-	0	ID=rpl14/1/CDS/1;Parent=rpl14.mRNA
+###
+NC_000932.1	Chloe	gene	80071	80472	.	-	.	ID=rps8;Name=rps8
+NC_000932.1	Chloe	mRNA	80071	80472	.	-	.	ID=rps8.mRNA;Parent=rps8
+NC_000932.1	Chloe	CDS	80071	80472	.	-	0	ID=rps8/1/CDS/1;Parent=rps8.mRNA
+###
+NC_000932.1	Chloe	gene	74082	74180	.	+	.	ID=psbT;Name=psbT
+NC_000932.1	Chloe	mRNA	74082	74180	.	+	.	ID=psbT.mRNA;Parent=psbT
+NC_000932.1	Chloe	CDS	74082	74180	.	+	0	ID=psbT/1/CDS/1;Parent=psbT.mRNA
+###
+NC_000932.1	Chloe	gene	74485	74703	.	+	.	ID=psbH;Name=psbH
+NC_000932.1	Chloe	mRNA	74485	74703	.	+	.	ID=psbH.mRNA;Parent=psbH
+NC_000932.1	Chloe	CDS	74485	74703	.	+	0	ID=psbH/1/CDS/1;Parent=psbH.mRNA
+###
+NC_000932.1	Chloe	gene	74841	76289	.	+	.	ID=petB;Name=petB
+NC_000932.1	Chloe	mRNA	74841	76289	.	+	.	ID=petB.mRNA;Parent=petB
+NC_000932.1	Chloe	CDS	74841	74846	.	+	0	ID=petB/1/CDS/1;Parent=petB.mRNA
+NC_000932.1	Chloe	intron	74847	75650	.	+	.	ID=petB/1/intron/2;Parent=petB.mRNA
+NC_000932.1	Chloe	CDS	75651	76289	.	+	0	ID=petB/1/CDS/3;Parent=petB.mRNA
+###
+NC_000932.1	Chloe	gene	79492	79602	.	-	.	ID=rpl36;Name=rpl36
+NC_000932.1	Chloe	mRNA	79492	79602	.	-	.	ID=rpl36.mRNA;Parent=rpl36
+NC_000932.1	Chloe	CDS	79492	79602	.	-	0	ID=rpl36/1/CDS/1;Parent=rpl36.mRNA
+###
+NC_000932.1	Chloe	gene	78963	79376	.	-	.	ID=rps11;Name=rps11
+NC_000932.1	Chloe	mRNA	78963	79376	.	-	.	ID=rps11.mRNA;Parent=rps11
+NC_000932.1	Chloe	CDS	78963	79376	.	-	0	ID=rps11/1/CDS/1;Parent=rps11.mRNA
+###
+NC_000932.1	Chloe	gene	77904	78890	.	-	.	ID=rpoA;Name=rpoA
+NC_000932.1	Chloe	mRNA	77904	78890	.	-	.	ID=rpoA.mRNA;Parent=rpoA
+NC_000932.1	Chloe	CDS	77904	78890	.	-	0	ID=rpoA/1/CDS/1;Parent=rpoA.mRNA
+###
+NC_000932.1	Chloe	gene	76481	77669	.	+	.	ID=petD;Name=petD
+NC_000932.1	Chloe	mRNA	76481	77669	.	+	.	ID=petD.mRNA;Parent=petD
+NC_000932.1	Chloe	CDS	76481	76488	.	+	0	ID=petD/1/CDS/1;Parent=petD.mRNA
+NC_000932.1	Chloe	intron	76489	77197	.	+	.	ID=petD/1/intron/2;Parent=petD.mRNA
+NC_000932.1	Chloe	CDS	77198	77669	.	+	1	ID=petD/1/CDS/3;Parent=petD.mRNA
+###
+NC_000932.1	Chloe	gene	74252	74380	.	-	.	ID=pbf1;Name=pbf1
+NC_000932.1	Chloe	mRNA	74252	74380	.	-	.	ID=pbf1.mRNA;Parent=pbf1
+NC_000932.1	Chloe	CDS	74252	74380	.	-	0	ID=pbf1/1/CDS/1;Parent=pbf1.mRNA
+###
+NC_000932.1	Chloe	gene	69913	71882	.	-	.	ID=clpP1;Name=clpP1
+NC_000932.1	Chloe	mRNA	69913	71882	.	-	.	ID=clpP1.mRNA;Parent=clpP1
+NC_000932.1	Chloe	CDS	69913	70137	.	-	0	ID=clpP1/1/CDS/5;Parent=clpP1.mRNA
+NC_000932.1	Chloe	intron	70138	70652	.	-	.	ID=clpP1/1/intron/4;Parent=clpP1.mRNA
+NC_000932.1	Chloe	CDS	70653	70944	.	-	1	ID=clpP1/1/CDS/3;Parent=clpP1.mRNA
+NC_000932.1	Chloe	intron	70945	71811	.	-	.	ID=clpP1/1/intron/2;Parent=clpP1.mRNA
+NC_000932.1	Chloe	CDS	71812	71882	.	-	0	ID=clpP1/1/CDS/1;Parent=clpP1.mRNA
+###
+NC_000932.1	Chloe	gene	84171	110434	.	+	.	ID=IR-1;Name=IR-1
+NC_000932.1	Chloe	repeat_region	84171	110434	.	+	.	ID=IR-1/1/repeat_region/1;Parent=IR-1
+###
+NC_000932.1	Chloe	gene	68968	69724	.	-	.	ID=rps12A;Name=rps12A
+NC_000932.1	Chloe	mRNA	68968	69724	.	-	.	ID=rps12A.mRNA;Parent=rps12A
+NC_000932.1	Chloe	intron	68968	69610	.	-	.	ID=rps12A/1/intron/2;Parent=rps12A.mRNA
+NC_000932.1	Chloe	CDS	69611	69724	.	-	0	ID=rps12A/1/CDS/1;Parent=rps12A.mRNA
+###
+NC_000932.1	Chloe	gene	68515	68865	.	-	.	ID=rpl20;Name=rpl20
+NC_000932.1	Chloe	mRNA	68515	68865	.	-	.	ID=rpl20.mRNA;Parent=rpl20
+NC_000932.1	Chloe	CDS	68515	68865	.	-	0	ID=rpl20/1/CDS/1;Parent=rpl20.mRNA
+###
+NC_000932.1	Chloe	gene	86474	93355	.	+	.	ID=ycf2;Name=ycf2
+NC_000932.1	Chloe	mRNA	86474	93355	.	+	.	ID=ycf2.mRNA;Parent=ycf2
+NC_000932.1	Chloe	CDS	86474	93355	.	+	0	ID=ycf2/1/CDS/1;Parent=ycf2.mRNA
+###
+NC_000932.1	Chloe	gene	66490	66563	.	-	.	ID=trnP-UGG;Name=trnP-UGG
+NC_000932.1	Chloe	tRNA	66490	66563	.	-	.	ID=trnP-UGG.tRNA;Parent=trnP-UGG
+NC_000932.1	Chloe	exon	66490	66563	.	-	.	ID=trnP-UGG/1/tRNA/1;Parent=trnP-UGG.tRNA
+###
+NC_000932.1	Chloe	gene	66229	66302	.	-	.	ID=trnW-CCA;Name=trnW-CCA
+NC_000932.1	Chloe	tRNA	66229	66302	.	-	.	ID=trnW-CCA.tRNA;Parent=trnW-CCA
+NC_000932.1	Chloe	exon	66229	66302	.	-	.	ID=trnW-CCA/1/tRNA/1;Parent=trnW-CCA.tRNA
+###
+NC_000932.1	Chloe	gene	64074	64322	.	-	.	ID=psbE;Name=psbE
+NC_000932.1	Chloe	mRNA	64074	64322	.	-	.	ID=psbE.mRNA;Parent=psbE
+NC_000932.1	Chloe	CDS	64074	64322	.	-	0	ID=psbE/1/CDS/1;Parent=psbE.mRNA
+###
+NC_000932.1	Chloe	gene	63945	64061	.	-	.	ID=psbF;Name=psbF
+NC_000932.1	Chloe	mRNA	63945	64061	.	-	.	ID=psbF.mRNA;Parent=psbF
+NC_000932.1	Chloe	CDS	63945	64061	.	-	0	ID=psbF/1/CDS/1;Parent=psbF.mRNA
+###
+NC_000932.1	Chloe	gene	63807	63920	.	-	.	ID=psbL;Name=psbL
+NC_000932.1	Chloe	mRNA	63807	63920	.	-	.	ID=psbL.mRNA;Parent=psbL
+NC_000932.1	Chloe	CDS	63807	63920	.	-	0	ID=psbL/1/CDS/1;Parent=psbL.mRNA
+###
+NC_000932.1	Chloe	gene	63541	63660	.	-	.	ID=psbJ;Name=psbJ
+NC_000932.1	Chloe	mRNA	63541	63660	.	-	.	ID=psbJ.mRNA;Parent=psbJ
+NC_000932.1	Chloe	CDS	63541	63660	.	-	0	ID=psbJ/1/CDS/1;Parent=psbJ.mRNA
+###
+NC_000932.1	Chloe	gene	52663	54156	.	-	.	ID=atpB;Name=atpB
+NC_000932.1	Chloe	mRNA	52663	54156	.	-	.	ID=atpB.mRNA;Parent=atpB
+NC_000932.1	Chloe	CDS	52663	54156	.	-	0	ID=atpB/1/CDS/1;Parent=atpB.mRNA
+###
+NC_000932.1	Chloe	gene	100709	100780	.	+	.	ID=trnV-GAC;Name=trnV-GAC
+NC_000932.1	Chloe	tRNA	100709	100780	.	+	.	ID=trnV-GAC.tRNA;Parent=trnV-GAC
+NC_000932.1	Chloe	exon	100709	100780	.	+	.	ID=trnV-GAC/1/tRNA/1;Parent=trnV-GAC.tRNA
+###
+NC_000932.1	Chloe	gene	101012	102502	.	+	.	ID=rrn16;Name=rrn16
+NC_000932.1	Chloe	rRNA	101012	102502	.	+	.	ID=rrn16.rRNA;Parent=rrn16
+NC_000932.1	Chloe	exon	101012	102502	.	+	.	ID=rrn16/1/rRNA/1;Parent=rrn16.rRNA
+###
+NC_000932.1	Chloe	gene	52268	52663	.	-	.	ID=atpE;Name=atpE
+NC_000932.1	Chloe	mRNA	52268	52663	.	-	.	ID=atpE.mRNA;Parent=atpE
+NC_000932.1	Chloe	CDS	52268	52663	.	-	0	ID=atpE/1/CDS/1;Parent=atpE.mRNA
+###
+NC_000932.1	Chloe	gene	51199	51871	.	-	.	ID=trnV-UAC;Name=trnV-UAC
+NC_000932.1	Chloe	tRNA	51199	51871	.	-	.	ID=trnV-UAC.tRNA;Parent=trnV-UAC
+NC_000932.1	Chloe	exon	51199	51233	.	-	.	ID=trnV-UAC/1/tRNA/3;Parent=trnV-UAC.tRNA
+NC_000932.1	Chloe	intron	51234	51832	.	-	.	ID=trnV-UAC/1/intron/2;Parent=trnV-UAC.tRNA
+NC_000932.1	Chloe	exon	51833	51871	.	-	.	ID=trnV-UAC/1/tRNA/1;Parent=trnV-UAC.tRNA
+###
+NC_000932.1	Chloe	gene	102801	103601	.	+	.	ID=trnI-GAU;Name=trnI-GAU
+NC_000932.1	Chloe	tRNA	102801	103601	.	+	.	ID=trnI-GAU.tRNA;Parent=trnI-GAU
+NC_000932.1	Chloe	exon	102801	102837	.	+	.	ID=trnI-GAU/1/tRNA/1;Parent=trnI-GAU.tRNA
+NC_000932.1	Chloe	intron	102838	103566	.	+	.	ID=trnI-GAU/1/intron/2;Parent=trnI-GAU.tRNA
+NC_000932.1	Chloe	exon	103567	103601	.	+	.	ID=trnI-GAU/1/tRNA/3;Parent=trnI-GAU.tRNA
+###
+NC_000932.1	Chloe	gene	103665	104538	.	+	.	ID=trnA-UGC;Name=trnA-UGC
+NC_000932.1	Chloe	tRNA	103665	104538	.	+	.	ID=trnA-UGC.tRNA;Parent=trnA-UGC
+NC_000932.1	Chloe	exon	103665	103702	.	+	.	ID=trnA-UGC/1/tRNA/1;Parent=trnA-UGC.tRNA
+NC_000932.1	Chloe	intron	103703	104503	.	+	.	ID=trnA-UGC/1/intron/2;Parent=trnA-UGC.tRNA
+NC_000932.1	Chloe	exon	104504	104538	.	+	.	ID=trnA-UGC/1/tRNA/3;Parent=trnA-UGC.tRNA
+###
+NC_000932.1	Chloe	gene	50004	50363	.	-	.	ID=ndhC;Name=ndhC
+NC_000932.1	Chloe	mRNA	50004	50363	.	-	.	ID=ndhC.mRNA;Parent=ndhC
+NC_000932.1	Chloe	CDS	50004	50363	.	-	0	ID=ndhC/1/CDS/1;Parent=ndhC.mRNA
+###
+NC_000932.1	Chloe	gene	49260	49934	.	-	.	ID=ndhK;Name=ndhK
+NC_000932.1	Chloe	mRNA	49260	49934	.	-	.	ID=ndhK.mRNA;Parent=ndhK
+NC_000932.1	Chloe	CDS	49260	49934	.	-	0	ID=ndhK/1/CDS/1;Parent=ndhK.mRNA
+###
+NC_000932.1	Chloe	gene	104691	107500	.	+	.	ID=rrn23;Name=rrn23
+NC_000932.1	Chloe	rRNA	104691	107500	.	+	.	ID=rrn23.rRNA;Parent=rrn23
+NC_000932.1	Chloe	exon	104691	107500	.	+	.	ID=rrn23/1/rRNA/1;Parent=rrn23.rRNA
+###
+NC_000932.1	Chloe	gene	48680	49153	.	-	.	ID=ndhJ;Name=ndhJ
+NC_000932.1	Chloe	mRNA	48680	49153	.	-	.	ID=ndhJ.mRNA;Parent=ndhJ
+NC_000932.1	Chloe	CDS	48680	49153	.	-	0	ID=ndhJ/1/CDS/1;Parent=ndhJ.mRNA
+###
+NC_000932.1	Chloe	gene	107599	107701	.	+	.	ID=rrn4.5;Name=rrn4.5
+NC_000932.1	Chloe	rRNA	107599	107701	.	+	.	ID=rrn4.5.rRNA;Parent=rrn4.5
+NC_000932.1	Chloe	exon	107599	107701	.	+	.	ID=rrn4.5/1/rRNA/1;Parent=rrn4.5.rRNA
+###
+NC_000932.1	Chloe	gene	107949	108069	.	+	.	ID=rrn5;Name=rrn5
+NC_000932.1	Chloe	rRNA	107949	108069	.	+	.	ID=rrn5.rRNA;Parent=rrn5
+NC_000932.1	Chloe	exon	107949	108069	.	+	.	ID=rrn5/1/rRNA/1;Parent=rrn5.rRNA
+###
+NC_000932.1	Chloe	gene	46213	46285	.	-	.	ID=trnT-UGU;Name=trnT-UGU
+NC_000932.1	Chloe	tRNA	46213	46285	.	-	.	ID=trnT-UGU.tRNA;Parent=trnT-UGU
+NC_000932.1	Chloe	exon	46213	46285	.	-	.	ID=trnT-UGU/1/tRNA/1;Parent=trnT-UGU.tRNA
+###
+NC_000932.1	Chloe	gene	108302	108375	.	+	.	ID=trnR-ACG;Name=trnR-ACG
+NC_000932.1	Chloe	tRNA	108302	108375	.	+	.	ID=trnR-ACG.tRNA;Parent=trnR-ACG
+NC_000932.1	Chloe	exon	108302	108375	.	+	.	ID=trnR-ACG/1/tRNA/1;Parent=trnR-ACG.tRNA
+###
+NC_000932.1	Chloe	gene	45226	45828	.	-	.	ID=rps4;Name=rps4
+NC_000932.1	Chloe	mRNA	45226	45828	.	-	.	ID=rps4.mRNA;Parent=rps4
+NC_000932.1	Chloe	CDS	45226	45828	.	-	0	ID=rps4/1/CDS/1;Parent=rps4.mRNA
+###
+NC_000932.1	Chloe	gene	42587	44591	.	-	.	ID=pafI;Name=pafI
+NC_000932.1	Chloe	mRNA	42587	44591	.	-	.	ID=pafI.mRNA;Parent=pafI
+NC_000932.1	Chloe	CDS	42587	42736	.	-	0	ID=pafI/1/CDS/5;Parent=pafI.mRNA
+NC_000932.1	Chloe	intron	42737	43523	.	-	.	ID=pafI/1/intron/4;Parent=pafI.mRNA
+NC_000932.1	Chloe	CDS	43524	43753	.	-	2	ID=pafI/1/CDS/3;Parent=pafI.mRNA
+NC_000932.1	Chloe	intron	43754	44467	.	-	.	ID=pafI/1/intron/2;Parent=pafI.mRNA
+NC_000932.1	Chloe	CDS	44468	44591	.	-	0	ID=pafI/1/CDS/1;Parent=pafI.mRNA
+###
+NC_000932.1	Chloe	gene	39608	41857	.	-	.	ID=psaA;Name=psaA
+NC_000932.1	Chloe	mRNA	39608	41857	.	-	.	ID=psaA.mRNA;Parent=psaA
+NC_000932.1	Chloe	CDS	39608	41857	.	-	0	ID=psaA/1/CDS/1;Parent=psaA.mRNA
+###
+NC_000932.1	Chloe	gene	113449	113604	.	+	.	ID=rpl32;Name=rpl32
+NC_000932.1	Chloe	mRNA	113449	113604	.	+	.	ID=rpl32.mRNA;Parent=rpl32
+NC_000932.1	Chloe	CDS	113449	113604	.	+	0	ID=rpl32/1/CDS/1;Parent=rpl32.mRNA
+###
+NC_000932.1	Chloe	gene	114270	114349	.	+	.	ID=trnL-UAG;Name=trnL-UAG
+NC_000932.1	Chloe	tRNA	114270	114349	.	+	.	ID=trnL-UAG.tRNA;Parent=trnL-UAG
+NC_000932.1	Chloe	exon	114270	114349	.	+	.	ID=trnL-UAG/1/tRNA/1;Parent=trnL-UAG.tRNA
+###
+NC_000932.1	Chloe	gene	114461	115444	.	+	.	ID=ccsA;Name=ccsA
+NC_000932.1	Chloe	mRNA	114461	115444	.	+	.	ID=ccsA.mRNA;Parent=ccsA
+NC_000932.1	Chloe	CDS	114461	115444	.	+	0	ID=ccsA/1/CDS/1;Parent=ccsA.mRNA
+###
+NC_000932.1	Chloe	gene	37378	39579	.	-	.	ID=psaB;Name=psaB
+NC_000932.1	Chloe	mRNA	37378	39579	.	-	.	ID=psaB.mRNA;Parent=psaB
+NC_000932.1	Chloe	CDS	37378	39579	.	-	0	ID=psaB/1/CDS/1;Parent=psaB.mRNA
+###
+NC_000932.1	Chloe	gene	36941	37240	.	-	.	ID=rps14;Name=rps14
+NC_000932.1	Chloe	mRNA	36941	37240	.	-	.	ID=rps14.mRNA;Parent=rps14
+NC_000932.1	Chloe	CDS	36941	37240	.	-	0	ID=rps14/1/CDS/1;Parent=rps14.mRNA
+###
+NC_000932.1	Chloe	gene	36704	36777	.	-	.	ID=trnfM-CAU;Name=trnfM-CAU
+NC_000932.1	Chloe	tRNA	36704	36777	.	-	.	ID=trnfM-CAU.tRNA;Parent=trnfM-CAU
+NC_000932.1	Chloe	exon	36704	36777	.	-	.	ID=trnfM-CAU/1/tRNA/1;Parent=trnfM-CAU.tRNA
+###
+NC_000932.1	Chloe	gene	35312	35403	.	-	.	ID=trnS-UGA;Name=trnS-UGA
+NC_000932.1	Chloe	tRNA	35312	35403	.	-	.	ID=trnS-UGA.tRNA;Parent=trnS-UGA
+NC_000932.1	Chloe	exon	35312	35403	.	-	.	ID=trnS-UGA/1/tRNA/1;Parent=trnS-UGA.tRNA
+###
+NC_000932.1	Chloe	gene	30466	30538	.	-	.	ID=trnE-UUC;Name=trnE-UUC
+NC_000932.1	Chloe	tRNA	30466	30538	.	-	.	ID=trnE-UUC.tRNA;Parent=trnE-UUC
+NC_000932.1	Chloe	exon	30466	30538	.	-	.	ID=trnE-UUC/1/tRNA/1;Parent=trnE-UUC.tRNA
+###
+NC_000932.1	Chloe	gene	30323	30406	.	-	.	ID=trnY-GUA;Name=trnY-GUA
+NC_000932.1	Chloe	tRNA	30323	30406	.	-	.	ID=trnY-GUA.tRNA;Parent=trnY-GUA
+NC_000932.1	Chloe	exon	30323	30406	.	-	.	ID=trnY-GUA/1/tRNA/1;Parent=trnY-GUA.tRNA
+###
+NC_000932.1	Chloe	gene	29801	29874	.	-	.	ID=trnD-GUC;Name=trnD-GUC
+NC_000932.1	Chloe	tRNA	29801	29874	.	-	.	ID=trnD-GUC.tRNA;Parent=trnD-GUC
+NC_000932.1	Chloe	exon	29801	29874	.	-	.	ID=trnD-GUC/1/tRNA/1;Parent=trnD-GUC.tRNA
+###
+NC_000932.1	Chloe	gene	28710	28811	.	-	.	ID=psbM;Name=psbM
+NC_000932.1	Chloe	mRNA	28710	28811	.	-	.	ID=psbM.mRNA;Parent=psbM
+NC_000932.1	Chloe	CDS	28710	28811	.	-	0	ID=psbM/1/CDS/1;Parent=psbM.mRNA
+###
+NC_000932.1	Chloe	gene	23114	26329	.	-	.	ID=rpoB;Name=rpoB
+NC_000932.1	Chloe	mRNA	23114	26329	.	-	.	ID=rpoB.mRNA;Parent=rpoB
+NC_000932.1	Chloe	CDS	23114	26329	.	-	0	ID=rpoB/1/CDS/1;Parent=rpoB.mRNA
+###
+NC_000932.1	Chloe	gene	129565	129636	.	+	.	ID=trnN-GUU;Name=trnN-GUU
+NC_000932.1	Chloe	tRNA	129565	129636	.	+	.	ID=trnN-GUU.tRNA;Parent=trnN-GUU
+NC_000932.1	Chloe	exon	129565	129636	.	+	.	ID=trnN-GUU/1/tRNA/1;Parent=trnN-GUU.tRNA
+###
+NC_000932.1	Chloe	gene	20254	23084	.	-	.	ID=rpoC1;Name=rpoC1
+NC_000932.1	Chloe	mRNA	20254	23084	.	-	.	ID=rpoC1.mRNA;Parent=rpoC1
+NC_000932.1	Chloe	CDS	20254	21861	.	-	0	ID=rpoC1/1/CDS/3;Parent=rpoC1.mRNA
+NC_000932.1	Chloe	intron	21862	22652	.	-	.	ID=rpoC1/1/intron/2;Parent=rpoC1.mRNA
+NC_000932.1	Chloe	CDS	22653	23084	.	-	0	ID=rpoC1/1/CDS/1;Parent=rpoC1.mRNA
+###
+NC_000932.1	Chloe	gene	15941	20068	.	-	.	ID=rpoC2;Name=rpoC2
+NC_000932.1	Chloe	mRNA	15941	20068	.	-	.	ID=rpoC2.mRNA;Parent=rpoC2
+NC_000932.1	Chloe	CDS	15941	20068	.	-	0	ID=rpoC2/1/CDS/1;Parent=rpoC2.mRNA
+###
+NC_000932.1	Chloe	gene	15016	15723	.	-	.	ID=rps2;Name=rps2
+NC_000932.1	Chloe	mRNA	15016	15723	.	-	.	ID=rps2.mRNA;Parent=rps2
+NC_000932.1	Chloe	CDS	15016	15723	.	-	0	ID=rps2/1/CDS/1;Parent=rps2.mRNA
+###
+NC_000932.1	Chloe	gene	138962	140647	.	+	.	ID=rps12B;Name=rps12B
+NC_000932.1	Chloe	intron	138962	139855	.	+	.	ID=rps12B/1/intron/1;Parent=rps12B
+NC_000932.1	Chloe	CDS	139856	140087	.	+	0	ID=rps12B/1/CDS/2;Parent=rps12B
+NC_000932.1	Chloe	intron	140088	140624	.	+	.	ID=rps12B/1/intron/3;Parent=rps12B
+NC_000932.1	Chloe	CDS	140625	140647	.	+	2	ID=rps12B/1/CDS/4;Parent=rps12B
+###
+NC_000932.1	Chloe	gene	14024	14770	.	-	.	ID=atpI;Name=atpI
+NC_000932.1	Chloe	mRNA	14024	14770	.	-	.	ID=atpI.mRNA;Parent=atpI
+NC_000932.1	Chloe	CDS	14024	14770	.	-	0	ID=atpI/1/CDS/1;Parent=atpI.mRNA
+###
+NC_000932.1	Chloe	gene	140704	141168	.	+	.	ID=rps7;Name=rps7
+NC_000932.1	Chloe	mRNA	140704	141168	.	+	.	ID=rps7.mRNA;Parent=rps7
+NC_000932.1	Chloe	CDS	140704	141168	.	+	0	ID=rps7/1/CDS/1;Parent=rps7.mRNA
+###
+NC_000932.1	Chloe	gene	13265	13507	.	-	.	ID=atpH;Name=atpH
+NC_000932.1	Chloe	mRNA	13265	13507	.	-	.	ID=atpH.mRNA;Parent=atpH
+NC_000932.1	Chloe	CDS	13265	13507	.	-	0	ID=atpH/1/CDS/1;Parent=atpH.mRNA
+###
+NC_000932.1	Chloe	gene	141539	143705	.	+	.	ID=ndhB;Name=ndhB
+NC_000932.1	Chloe	mRNA	141539	143705	.	+	.	ID=ndhB.mRNA;Parent=ndhB
+NC_000932.1	Chloe	CDS	141539	142261	.	+	0	ID=ndhB/1/CDS/1;Parent=ndhB.mRNA
+NC_000932.1	Chloe	intron	142262	142946	.	+	.	ID=ndhB/1/intron/2;Parent=ndhB.mRNA
+NC_000932.1	Chloe	CDS	142947	143705	.	+	0	ID=ndhB/1/CDS/3;Parent=ndhB.mRNA
+###
+NC_000932.1	Chloe	gene	11532	12798	.	-	.	ID=atpF;Name=atpF
+NC_000932.1	Chloe	mRNA	11532	12798	.	-	.	ID=atpF.mRNA;Parent=atpF
+NC_000932.1	Chloe	CDS	11532	11938	.	-	2	ID=atpF/1/CDS/3;Parent=atpF.mRNA
+NC_000932.1	Chloe	intron	11939	12653	.	-	.	ID=atpF/1/intron/2;Parent=atpF.mRNA
+NC_000932.1	Chloe	CDS	12654	12798	.	-	0	ID=atpF/1/CDS/1;Parent=atpF.mRNA
+###
+NC_000932.1	Chloe	gene	9941	11461	.	-	.	ID=atpA;Name=atpA
+NC_000932.1	Chloe	mRNA	9941	11461	.	-	.	ID=atpA.mRNA;Parent=atpA
+NC_000932.1	Chloe	CDS	9941	11461	.	-	0	ID=atpA/1/CDS/1;Parent=atpA.mRNA
+###
+NC_000932.1	Chloe	gene	144293	144373	.	+	.	ID=trnL-CAA;Name=trnL-CAA
+NC_000932.1	Chloe	tRNA	144293	144373	.	+	.	ID=trnL-CAA.tRNA;Parent=trnL-CAA
+NC_000932.1	Chloe	exon	144293	144373	.	+	.	ID=trnL-CAA/1/tRNA/1;Parent=trnL-CAA.tRNA
+###
+NC_000932.1	Chloe	gene	7785	7872	.	-	.	ID=trnS-GCU;Name=trnS-GCU
+NC_000932.1	Chloe	tRNA	7785	7872	.	-	.	ID=trnS-GCU.tRNA;Parent=trnS-GCU
+NC_000932.1	Chloe	exon	7785	7872	.	-	.	ID=trnS-GCU/1/tRNA/1;Parent=trnS-GCU.tRNA
+###
+NC_000932.1	Chloe	gene	6616	6687	.	-	.	ID=trnQ-UUG;Name=trnQ-UUG
+NC_000932.1	Chloe	tRNA	6616	6687	.	-	.	ID=trnQ-UUG.tRNA;Parent=trnQ-UUG
+NC_000932.1	Chloe	exon	6616	6687	.	-	.	ID=trnQ-UUG/1/tRNA/1;Parent=trnQ-UUG.tRNA
+###
+NC_000932.1	Chloe	gene	5087	6188	.	-	.	ID=rps16;Name=rps16
+NC_000932.1	Chloe	mRNA	5087	6188	.	-	.	ID=rps16.mRNA;Parent=rps16
+NC_000932.1	Chloe	CDS	5087	5283	.	-	2	ID=rps16/1/CDS/3;Parent=rps16.mRNA
+NC_000932.1	Chloe	intron	5284	6148	.	-	.	ID=rps16/1/intron/2;Parent=rps16.mRNA
+NC_000932.1	Chloe	CDS	6149	6188	.	-	0	ID=rps16/1/CDS/1;Parent=rps16.mRNA
+###
+NC_000932.1	Chloe	gene	1717	4347	.	-	.	ID=trnK-UUU;Name=trnK-UUU
+NC_000932.1	Chloe	tRNA	1717	4347	.	-	.	ID=trnK-UUU.tRNA;Parent=trnK-UUU
+NC_000932.1	Chloe	exon	1717	1751	.	-	.	ID=trnK-UUU/1/tRNA/3;Parent=trnK-UUU.tRNA
+NC_000932.1	Chloe	intron	1752	4310	.	-	.	ID=trnK-UUU/1/intron/2;Parent=trnK-UUU.tRNA
+NC_000932.1	Chloe	exon	4311	4347	.	-	.	ID=trnK-UUU/1/tRNA/1;Parent=trnK-UUU.tRNA
+###
+NC_000932.1	Chloe	gene	2059	3570	.	-	.	ID=matK;Name=matK
+NC_000932.1	Chloe	mRNA	2059	3570	.	-	.	ID=matK.mRNA;Parent=matK
+NC_000932.1	Chloe	CDS	2059	3570	.	-	0	ID=matK/1/CDS/1;Parent=matK.mRNA
+###
+NC_000932.1	Chloe	gene	152264	152337	.	+	.	ID=trnI-CAU;Name=trnI-CAU
+NC_000932.1	Chloe	tRNA	152264	152337	.	+	.	ID=trnI-CAU.tRNA;Parent=trnI-CAU
+NC_000932.1	Chloe	exon	152264	152337	.	+	.	ID=trnI-CAU/1/tRNA/1;Parent=trnI-CAU.tRNA
+###
+NC_000932.1	Chloe	gene	152506	152784	.	+	.	ID=rpl23;Name=rpl23
+NC_000932.1	Chloe	mRNA	152506	152784	.	+	.	ID=rpl23.mRNA;Parent=rpl23
+NC_000932.1	Chloe	CDS	152506	152784	.	+	0	ID=rpl23/1/CDS/1;Parent=rpl23.mRNA
+###
+NC_000932.1	Chloe	gene	152806	154309	.	+	.	ID=rpl2;Name=rpl2
+NC_000932.1	Chloe	mRNA	152806	154309	.	+	.	ID=rpl2.mRNA;Parent=rpl2
+NC_000932.1	Chloe	CDS	152806	153196	.	+	0	ID=rpl2/1/CDS/1;Parent=rpl2.mRNA
+NC_000932.1	Chloe	intron	153197	153878	.	+	.	ID=rpl2/1/intron/2;Parent=rpl2.mRNA
+NC_000932.1	Chloe	CDS	153879	154309	.	+	2	ID=rpl2/1/CDS/3;Parent=rpl2.mRNA
+###
+NC_000932.1	Chloe	gene	386	1444	.	-	.	ID=psbA;Name=psbA
+NC_000932.1	Chloe	mRNA	386	1444	.	-	.	ID=psbA.mRNA;Parent=psbA
+NC_000932.1	Chloe	CDS	386	1444	.	-	0	ID=psbA/1/CDS/1;Parent=psbA.mRNA
+###
+NC_000932.1	Chloe	gene	4	77	.	-	.	ID=trnH-GUG;Name=trnH-GUG
+NC_000932.1	Chloe	tRNA	4	77	.	-	.	ID=trnH-GUG.tRNA;Parent=trnH-GUG
+NC_000932.1	Chloe	exon	4	77	.	-	.	ID=trnH-GUG/1/tRNA/1;Parent=trnH-GUG.tRNA
+###

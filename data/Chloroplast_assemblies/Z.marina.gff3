@@ -1,0 +1,568 @@
+##gff-version 3.2.1
+Z.marina	Chloe	gene	2105	2197	.	+	.	ID=petL;Name=petL
+Z.marina	Chloe	mRNA	2105	2197	.	+	.	ID=petL.mRNA;Parent=petL
+Z.marina	Chloe	CDS	2105	2197	.	+	0	ID=petL/1/CDS/1;Parent=petL.mRNA
+###
+Z.marina	Chloe	gene	2377	2487	.	+	.	ID=petG;Name=petG
+Z.marina	Chloe	mRNA	2377	2487	.	+	.	ID=petG.mRNA;Parent=petG
+Z.marina	Chloe	CDS	2377	2487	.	+	0	ID=petG/1/CDS/1;Parent=petG.mRNA
+###
+Z.marina	Chloe	gene	3306	3431	.	+	.	ID=psaJ;Name=psaJ
+Z.marina	Chloe	mRNA	3306	3431	.	+	.	ID=psaJ.mRNA;Parent=psaJ
+Z.marina	Chloe	CDS	3306	3431	.	+	0	ID=psaJ/1/CDS/1;Parent=psaJ.mRNA
+###
+Z.marina	Chloe	gene	3831	4028	.	+	.	ID=rpl33;Name=rpl33
+Z.marina	Chloe	mRNA	3831	4028	.	+	.	ID=rpl33.mRNA;Parent=rpl33
+Z.marina	Chloe	CDS	3831	4028	.	+	0	ID=rpl33/1/CDS/1;Parent=rpl33.mRNA
+###
+Z.marina	Chloe	gene	4252	4554	.	+	.	ID=rps18;Name=rps18
+Z.marina	Chloe	mRNA	4252	4554	.	+	.	ID=rps18.mRNA;Parent=rps18
+Z.marina	Chloe	CDS	4252	4554	.	+	0	ID=rps18/1/CDS/1;Parent=rps18.mRNA
+###
+Z.marina	Chloe	gene	136268	136340	.	-	.	ID=trnM-CAU;Name=trnM-CAU
+Z.marina	Chloe	tRNA	136268	136340	.	-	.	ID=trnM-CAU.tRNA;Parent=trnM-CAU
+Z.marina	Chloe	exon	136268	136340	.	-	.	ID=trnM-CAU/1/tRNA/1;Parent=trnM-CAU.tRNA
+###
+Z.marina	Chloe	gene	8676	10199	.	+	.	ID=psbB;Name=psbB
+Z.marina	Chloe	mRNA	8676	10199	.	+	.	ID=psbB.mRNA;Parent=psbB
+Z.marina	Chloe	CDS	8676	10199	.	+	0	ID=psbB/1/CDS/1;Parent=psbB.mRNA
+###
+Z.marina	Chloe	gene	10336	10434	.	+	.	ID=psbT;Name=psbT
+Z.marina	Chloe	mRNA	10336	10434	.	+	.	ID=psbT.mRNA;Parent=psbT
+Z.marina	Chloe	CDS	10336	10434	.	+	0	ID=psbT/1/CDS/1;Parent=psbT.mRNA
+###
+Z.marina	Chloe	gene	131936	133363	.	-	.	ID=rbcL;Name=rbcL
+Z.marina	Chloe	mRNA	131936	133363	.	-	.	ID=rbcL.mRNA;Parent=rbcL
+Z.marina	Chloe	CDS	131936	133363	.	-	0	ID=rbcL/1/CDS/1;Parent=rbcL.mRNA
+###
+Z.marina	Chloe	gene	10759	10977	.	+	.	ID=psbH;Name=psbH
+Z.marina	Chloe	mRNA	10759	10977	.	+	.	ID=psbH.mRNA;Parent=psbH
+Z.marina	Chloe	CDS	10759	10977	.	+	0	ID=psbH/1/CDS/1;Parent=psbH.mRNA
+###
+Z.marina	Chloe	gene	11082	12461	.	+	.	ID=petB;Name=petB
+Z.marina	Chloe	mRNA	11082	12461	.	+	.	ID=petB.mRNA;Parent=petB
+Z.marina	Chloe	CDS	11082	11087	.	+	0	ID=petB/1/CDS/1;Parent=petB.mRNA
+Z.marina	Chloe	intron	11088	11822	.	+	.	ID=petB/1/intron/2;Parent=petB.mRNA
+Z.marina	Chloe	CDS	11823	12461	.	+	0	ID=petB/1/CDS/3;Parent=petB.mRNA
+###
+Z.marina	Chloe	gene	12683	13876	.	+	.	ID=petD;Name=petD
+Z.marina	Chloe	mRNA	12683	13876	.	+	.	ID=petD.mRNA;Parent=petD
+Z.marina	Chloe	CDS	12683	12690	.	+	0	ID=petD/1/CDS/1;Parent=petD.mRNA
+Z.marina	Chloe	intron	12691	13404	.	+	.	ID=petD/1/intron/2;Parent=petD.mRNA
+Z.marina	Chloe	CDS	13405	13876	.	+	1	ID=petD/1/CDS/3;Parent=petD.mRNA
+###
+Z.marina	Chloe	gene	130357	130716	.	-	.	ID=ndhC;Name=ndhC
+Z.marina	Chloe	mRNA	130357	130716	.	-	.	ID=ndhC.mRNA;Parent=ndhC
+Z.marina	Chloe	CDS	130357	130716	.	-	0	ID=ndhC/1/CDS/1;Parent=ndhC.mRNA
+###
+Z.marina	Chloe	gene	129623	130363	.	-	.	ID=ndhK;Name=ndhK
+Z.marina	Chloe	mRNA	129623	130363	.	-	.	ID=ndhK.mRNA;Parent=ndhK
+Z.marina	Chloe	CDS	129623	130363	.	-	0	ID=ndhK/1/CDS/1;Parent=ndhK.mRNA
+###
+Z.marina	Chloe	gene	129046	129519	.	-	.	ID=ndhJ;Name=ndhJ
+Z.marina	Chloe	mRNA	129046	129519	.	-	.	ID=ndhJ.mRNA;Parent=ndhJ
+Z.marina	Chloe	CDS	129046	129519	.	-	0	ID=ndhJ/1/CDS/1;Parent=ndhJ.mRNA
+###
+Z.marina	Chloe	gene	126475	126547	.	-	.	ID=trnT-UGU;Name=trnT-UGU
+Z.marina	Chloe	tRNA	126475	126547	.	-	.	ID=trnT-UGU.tRNA;Parent=trnT-UGU
+Z.marina	Chloe	exon	126475	126547	.	-	.	ID=trnT-UGU/1/tRNA/1;Parent=trnT-UGU.tRNA
+###
+Z.marina	Chloe	gene	125476	126078	.	-	.	ID=rps4;Name=rps4
+Z.marina	Chloe	mRNA	125476	126078	.	-	.	ID=rps4.mRNA;Parent=rps4
+Z.marina	Chloe	CDS	125476	126078	.	-	0	ID=rps4/1/CDS/1;Parent=rps4.mRNA
+###
+Z.marina	Chloe	gene	122720	124683	.	-	.	ID=pafI;Name=pafI
+Z.marina	Chloe	mRNA	122720	124683	.	-	.	ID=pafI.mRNA;Parent=pafI
+Z.marina	Chloe	CDS	122720	122875	.	-	0	ID=pafI/1/CDS/5;Parent=pafI.mRNA
+Z.marina	Chloe	intron	122876	123617	.	-	.	ID=pafI/1/intron/4;Parent=pafI.mRNA
+Z.marina	Chloe	CDS	123618	123847	.	-	2	ID=pafI/1/CDS/3;Parent=pafI.mRNA
+Z.marina	Chloe	intron	123848	124559	.	-	.	ID=pafI/1/intron/2;Parent=pafI.mRNA
+Z.marina	Chloe	CDS	124560	124683	.	-	0	ID=pafI/1/CDS/1;Parent=pafI.mRNA
+###
+Z.marina	Chloe	gene	20020	44146	.	+	.	ID=IR-1;Name=IR-1
+Z.marina	Chloe	repeat_region	20020	44146	.	+	.	ID=IR-1/1/repeat_region/1;Parent=IR-1
+###
+Z.marina	Chloe	gene	20316	20390	.	+	.	ID=trnH-GUG;Name=trnH-GUG
+Z.marina	Chloe	tRNA	20316	20390	.	+	.	ID=trnH-GUG.tRNA;Parent=trnH-GUG
+Z.marina	Chloe	exon	20316	20390	.	+	.	ID=trnH-GUG/1/tRNA/1;Parent=trnH-GUG.tRNA
+###
+Z.marina	Chloe	gene	119828	122077	.	-	.	ID=psaA;Name=psaA
+Z.marina	Chloe	mRNA	119828	122077	.	-	.	ID=psaA.mRNA;Parent=psaA
+Z.marina	Chloe	CDS	119828	122077	.	-	0	ID=psaA/1/CDS/1;Parent=psaA.mRNA
+###
+Z.marina	Chloe	gene	22547	28066	.	+	.	ID=ycf2;Name=ycf2
+Z.marina	Chloe	mRNA	22547	28066	.	+	.	ID=ycf2.mRNA;Parent=ycf2
+Z.marina	Chloe	CDS	22547	28066	.	+	0	ID=ycf2/1/CDS/1;Parent=ycf2.mRNA
+###
+Z.marina	Chloe	gene	117598	119799	.	-	.	ID=psaB;Name=psaB
+Z.marina	Chloe	mRNA	117598	119799	.	-	.	ID=psaB.mRNA;Parent=psaB
+Z.marina	Chloe	CDS	117598	119799	.	-	0	ID=psaB/1/CDS/1;Parent=psaB.mRNA
+###
+Z.marina	Chloe	gene	117168	117467	.	-	.	ID=rps14;Name=rps14
+Z.marina	Chloe	mRNA	117168	117467	.	-	.	ID=rps14.mRNA;Parent=rps14
+Z.marina	Chloe	CDS	117168	117467	.	-	0	ID=rps14/1/CDS/1;Parent=rps14.mRNA
+###
+Z.marina	Chloe	gene	116928	117001	.	-	.	ID=trnfM-CAU;Name=trnfM-CAU
+Z.marina	Chloe	tRNA	116928	117001	.	-	.	ID=trnfM-CAU.tRNA;Parent=trnfM-CAU
+Z.marina	Chloe	exon	116928	117001	.	-	.	ID=trnfM-CAU/1/tRNA/1;Parent=trnfM-CAU.tRNA
+###
+Z.marina	Chloe	gene	115645	115737	.	-	.	ID=trnS-UGA;Name=trnS-UGA
+Z.marina	Chloe	tRNA	115645	115737	.	-	.	ID=trnS-UGA.tRNA;Parent=trnS-UGA
+Z.marina	Chloe	exon	115645	115737	.	-	.	ID=trnS-UGA/1/tRNA/1;Parent=trnS-UGA.tRNA
+###
+Z.marina	Chloe	gene	111423	111495	.	-	.	ID=trnE-UUC;Name=trnE-UUC
+Z.marina	Chloe	tRNA	111423	111495	.	-	.	ID=trnE-UUC.tRNA;Parent=trnE-UUC
+Z.marina	Chloe	exon	111423	111495	.	-	.	ID=trnE-UUC/1/tRNA/1;Parent=trnE-UUC.tRNA
+###
+Z.marina	Chloe	gene	111273	111356	.	-	.	ID=trnY-GUA;Name=trnY-GUA
+Z.marina	Chloe	tRNA	111273	111356	.	-	.	ID=trnY-GUA.tRNA;Parent=trnY-GUA
+Z.marina	Chloe	exon	111273	111356	.	-	.	ID=trnY-GUA/1/tRNA/1;Parent=trnY-GUA.tRNA
+###
+Z.marina	Chloe	gene	110807	110880	.	-	.	ID=trnD-GUC;Name=trnD-GUC
+Z.marina	Chloe	tRNA	110807	110880	.	-	.	ID=trnD-GUC.tRNA;Parent=trnD-GUC
+Z.marina	Chloe	exon	110807	110880	.	-	.	ID=trnD-GUC/1/tRNA/1;Parent=trnD-GUC.tRNA
+###
+Z.marina	Chloe	gene	33885	33956	.	+	.	ID=trnV-GAC;Name=trnV-GAC
+Z.marina	Chloe	tRNA	33885	33956	.	+	.	ID=trnV-GAC.tRNA;Parent=trnV-GAC
+Z.marina	Chloe	exon	33885	33956	.	+	.	ID=trnV-GAC/1/tRNA/1;Parent=trnV-GAC.tRNA
+###
+Z.marina	Chloe	gene	34179	35669	.	+	.	ID=rrn16;Name=rrn16
+Z.marina	Chloe	rRNA	34179	35669	.	+	.	ID=rrn16.rRNA;Parent=rrn16
+Z.marina	Chloe	exon	34179	35669	.	+	.	ID=rrn16/1/rRNA/1;Parent=rrn16.rRNA
+###
+Z.marina	Chloe	gene	109584	109685	.	-	.	ID=psbM;Name=psbM
+Z.marina	Chloe	mRNA	109584	109685	.	-	.	ID=psbM.mRNA;Parent=psbM
+Z.marina	Chloe	CDS	109584	109685	.	-	0	ID=psbM/1/CDS/1;Parent=psbM.mRNA
+###
+Z.marina	Chloe	gene	35971	37063	.	+	.	ID=trnI-GAU;Name=trnI-GAU
+Z.marina	Chloe	tRNA	35971	37063	.	+	.	ID=trnI-GAU.tRNA;Parent=trnI-GAU
+Z.marina	Chloe	exon	35971	36007	.	+	.	ID=trnI-GAU/1/tRNA/1;Parent=trnI-GAU.tRNA
+Z.marina	Chloe	intron	36008	37028	.	+	.	ID=trnI-GAU/1/intron/2;Parent=trnI-GAU.tRNA
+Z.marina	Chloe	exon	37029	37063	.	+	.	ID=trnI-GAU/1/tRNA/3;Parent=trnI-GAU.tRNA
+###
+Z.marina	Chloe	gene	103958	107173	.	-	.	ID=rpoB;Name=rpoB
+Z.marina	Chloe	mRNA	103958	107173	.	-	.	ID=rpoB.mRNA;Parent=rpoB
+Z.marina	Chloe	CDS	103958	107173	.	-	0	ID=rpoB/1/CDS/1;Parent=rpoB.mRNA
+###
+Z.marina	Chloe	gene	37128	38010	.	+	.	ID=trnA-UGC;Name=trnA-UGC
+Z.marina	Chloe	tRNA	37128	38010	.	+	.	ID=trnA-UGC.tRNA;Parent=trnA-UGC
+Z.marina	Chloe	exon	37128	37165	.	+	.	ID=trnA-UGC/1/tRNA/1;Parent=trnA-UGC.tRNA
+Z.marina	Chloe	intron	37166	37975	.	+	.	ID=trnA-UGC/1/intron/2;Parent=trnA-UGC.tRNA
+Z.marina	Chloe	exon	37976	38010	.	+	.	ID=trnA-UGC/1/tRNA/3;Parent=trnA-UGC.tRNA
+###
+Z.marina	Chloe	gene	38147	40959	.	+	.	ID=rrn23;Name=rrn23
+Z.marina	Chloe	rRNA	38147	40959	.	+	.	ID=rrn23.rRNA;Parent=rrn23
+Z.marina	Chloe	exon	38147	40959	.	+	.	ID=rrn23/1/rRNA/1;Parent=rrn23.rRNA
+###
+Z.marina	Chloe	gene	101110	103928	.	-	.	ID=rpoC1;Name=rpoC1
+Z.marina	Chloe	mRNA	101110	103928	.	-	.	ID=rpoC1.mRNA;Parent=rpoC1
+Z.marina	Chloe	CDS	101110	102723	.	-	0	ID=rpoC1/1/CDS/3;Parent=rpoC1.mRNA
+Z.marina	Chloe	intron	102724	103496	.	-	.	ID=rpoC1/1/intron/2;Parent=rpoC1.mRNA
+Z.marina	Chloe	CDS	103497	103928	.	-	0	ID=rpoC1/1/CDS/1;Parent=rpoC1.mRNA
+###
+Z.marina	Chloe	gene	41058	41160	.	+	.	ID=rrn4.5;Name=rrn4.5
+Z.marina	Chloe	rRNA	41058	41160	.	+	.	ID=rrn4.5.rRNA;Parent=rrn4.5
+Z.marina	Chloe	exon	41058	41160	.	+	.	ID=rrn4.5/1/rRNA/1;Parent=rrn4.5.rRNA
+###
+Z.marina	Chloe	gene	41392	41512	.	+	.	ID=rrn5;Name=rrn5
+Z.marina	Chloe	rRNA	41392	41512	.	+	.	ID=rrn5.rRNA;Parent=rrn5
+Z.marina	Chloe	exon	41392	41512	.	+	.	ID=rrn5/1/rRNA/1;Parent=rrn5.rRNA
+###
+Z.marina	Chloe	gene	41741	41814	.	+	.	ID=trnR-ACG;Name=trnR-ACG
+Z.marina	Chloe	tRNA	41741	41814	.	+	.	ID=trnR-ACG.tRNA;Parent=trnR-ACG
+Z.marina	Chloe	exon	41741	41814	.	+	.	ID=trnR-ACG/1/tRNA/1;Parent=trnR-ACG.tRNA
+###
+Z.marina	Chloe	gene	96784	100920	.	-	.	ID=rpoC2;Name=rpoC2
+Z.marina	Chloe	mRNA	96784	100920	.	-	.	ID=rpoC2.mRNA;Parent=rpoC2
+Z.marina	Chloe	CDS	96784	100920	.	-	0	ID=rpoC2/1/CDS/1;Parent=rpoC2.mRNA
+###
+Z.marina	Chloe	gene	44204	44283	.	+	.	ID=trnL-UAG;Name=trnL-UAG
+Z.marina	Chloe	tRNA	44204	44283	.	+	.	ID=trnL-UAG.tRNA;Parent=trnL-UAG
+Z.marina	Chloe	exon	44204	44283	.	+	.	ID=trnL-UAG/1/tRNA/1;Parent=trnL-UAG.tRNA
+###
+Z.marina	Chloe	gene	44370	45326	.	+	.	ID=ccsA;Name=ccsA
+Z.marina	Chloe	mRNA	44370	45326	.	+	.	ID=ccsA.mRNA;Parent=ccsA
+Z.marina	Chloe	CDS	44370	45326	.	+	0	ID=ccsA/1/CDS/1;Parent=ccsA.mRNA
+###
+Z.marina	Chloe	gene	95829	96542	.	-	.	ID=rps2;Name=rps2
+Z.marina	Chloe	mRNA	95829	96542	.	-	.	ID=rps2.mRNA;Parent=rps2
+Z.marina	Chloe	CDS	95829	96542	.	-	0	ID=rps2/1/CDS/1;Parent=rps2.mRNA
+###
+Z.marina	Chloe	gene	94856	95596	.	-	.	ID=atpI;Name=atpI
+Z.marina	Chloe	mRNA	94856	95596	.	-	.	ID=atpI.mRNA;Parent=atpI
+Z.marina	Chloe	CDS	94856	95596	.	-	0	ID=atpI/1/CDS/1;Parent=atpI.mRNA
+###
+Z.marina	Chloe	gene	93805	94047	.	-	.	ID=atpH;Name=atpH
+Z.marina	Chloe	mRNA	93805	94047	.	-	.	ID=atpH.mRNA;Parent=atpH
+Z.marina	Chloe	CDS	93805	94047	.	-	0	ID=atpH/1/CDS/1;Parent=atpH.mRNA
+###
+Z.marina	Chloe	gene	91795	93370	.	-	.	ID=atpF;Name=atpF
+Z.marina	Chloe	mRNA	91795	93370	.	-	.	ID=atpF.mRNA;Parent=atpF
+Z.marina	Chloe	CDS	91795	92201	.	-	2	ID=atpF/1/CDS/3;Parent=atpF.mRNA
+Z.marina	Chloe	intron	92202	93225	.	-	.	ID=atpF/1/intron/2;Parent=atpF.mRNA
+Z.marina	Chloe	CDS	93226	93370	.	-	0	ID=atpF/1/CDS/1;Parent=atpF.mRNA
+###
+Z.marina	Chloe	gene	90194	91714	.	-	.	ID=atpA;Name=atpA
+Z.marina	Chloe	mRNA	90194	91714	.	-	.	ID=atpA.mRNA;Parent=atpA
+Z.marina	Chloe	CDS	90194	91714	.	-	0	ID=atpA/1/CDS/1;Parent=atpA.mRNA
+###
+Z.marina	Chloe	gene	54978	57179	.	+	.	ID=ndhF;Name=ndhF
+Z.marina	Chloe	mRNA	54978	57179	.	+	.	ID=ndhF.mRNA;Parent=ndhF
+Z.marina	Chloe	CDS	54978	57179	.	+	0	ID=ndhF/1/CDS/1;Parent=ndhF.mRNA
+###
+Z.marina	Chloe	gene	88275	88362	.	-	.	ID=trnS-GCU;Name=trnS-GCU
+Z.marina	Chloe	tRNA	88275	88362	.	-	.	ID=trnS-GCU.tRNA;Parent=trnS-GCU
+Z.marina	Chloe	exon	88275	88362	.	-	.	ID=trnS-GCU/1/tRNA/1;Parent=trnS-GCU.tRNA
+###
+Z.marina	Chloe	gene	86899	86970	.	-	.	ID=trnQ-UUG;Name=trnQ-UUG
+Z.marina	Chloe	tRNA	86899	86970	.	-	.	ID=trnQ-UUG.tRNA;Parent=trnQ-UUG
+Z.marina	Chloe	exon	86899	86970	.	-	.	ID=trnQ-UUG/1/tRNA/1;Parent=trnQ-UUG.tRNA
+###
+Z.marina	Chloe	gene	58243	58314	.	+	.	ID=trnN-GUU;Name=trnN-GUU
+Z.marina	Chloe	tRNA	58243	58314	.	+	.	ID=trnN-GUU.tRNA;Parent=trnN-GUU
+Z.marina	Chloe	exon	58243	58314	.	+	.	ID=trnN-GUU/1/tRNA/1;Parent=trnN-GUU.tRNA
+###
+Z.marina	Chloe	gene	81898	84429	.	-	.	ID=trnK-UUU;Name=trnK-UUU
+Z.marina	Chloe	tRNA	81898	84429	.	-	.	ID=trnK-UUU.tRNA;Parent=trnK-UUU
+Z.marina	Chloe	exon	81898	81932	.	-	.	ID=trnK-UUU/1/tRNA/3;Parent=trnK-UUU.tRNA
+Z.marina	Chloe	intron	81933	84392	.	-	.	ID=trnK-UUU/1/intron/2;Parent=trnK-UUU.tRNA
+Z.marina	Chloe	exon	84393	84429	.	-	.	ID=trnK-UUU/1/tRNA/1;Parent=trnK-UUU.tRNA
+###
+Z.marina	Chloe	gene	82178	83677	.	-	.	ID=matK;Name=matK
+Z.marina	Chloe	mRNA	82178	83677	.	-	.	ID=matK.mRNA;Parent=matK
+Z.marina	Chloe	CDS	82178	83677	.	-	0	ID=matK/1/CDS/1;Parent=matK.mRNA
+###
+Z.marina	Chloe	gene	80648	81706	.	-	.	ID=psbA;Name=psbA
+Z.marina	Chloe	mRNA	80648	81706	.	-	.	ID=psbA.mRNA;Parent=psbA
+Z.marina	Chloe	CDS	80648	81706	.	-	0	ID=psbA/1/CDS/1;Parent=psbA.mRNA
+###
+Z.marina	Chloe	gene	56549	80675	.	-	.	ID=IR-2;Name=IR-2
+Z.marina	Chloe	repeat_region	56549	80675	.	-	.	ID=IR-2/1/repeat_region/1;Parent=IR-2
+###
+Z.marina	Chloe	gene	80305	80379	.	-	.	ID=trnH-GUG-2;Name=trnH-GUG
+Z.marina	Chloe	tRNA	80305	80379	.	-	.	ID=trnH-GUG-2.tRNA;Parent=trnH-GUG-2
+Z.marina	Chloe	exon	80305	80379	.	-	.	ID=trnH-GUG/2/tRNA/1;Parent=trnH-GUG-2.tRNA
+###
+Z.marina	Chloe	gene	72629	78148	.	-	.	ID=ycf2-2;Name=ycf2
+Z.marina	Chloe	mRNA	72629	78148	.	-	.	ID=ycf2-2.mRNA;Parent=ycf2-2
+Z.marina	Chloe	CDS	72629	78148	.	-	0	ID=ycf2/2/CDS/1;Parent=ycf2-2.mRNA
+###
+Z.marina	Chloe	gene	67364	68723	.	+	.	ID=rps12B;Name=rps12B
+Z.marina	Chloe	intron	67364	67922	.	+	.	ID=rps12B/1/intron/1;Parent=rps12B
+Z.marina	Chloe	CDS	67923	68154	.	+	0	ID=rps12B/1/CDS/2;Parent=rps12B
+Z.marina	Chloe	intron	68155	68700	.	+	.	ID=rps12B/1/intron/3;Parent=rps12B
+Z.marina	Chloe	CDS	68701	68723	.	+	2	ID=rps12B/1/CDS/4;Parent=rps12B
+###
+Z.marina	Chloe	gene	68785	69249	.	+	.	ID=rps7;Name=rps7
+Z.marina	Chloe	mRNA	68785	69249	.	+	.	ID=rps7.mRNA;Parent=rps7
+Z.marina	Chloe	CDS	68785	69249	.	+	0	ID=rps7/1/CDS/1;Parent=rps7.mRNA
+###
+Z.marina	Chloe	gene	69613	71788	.	+	.	ID=ndhB;Name=ndhB
+Z.marina	Chloe	mRNA	69613	71788	.	+	.	ID=ndhB.mRNA;Parent=ndhB
+Z.marina	Chloe	CDS	69613	70335	.	+	0	ID=ndhB/1/CDS/1;Parent=ndhB.mRNA
+Z.marina	Chloe	intron	70336	71035	.	+	.	ID=ndhB/1/intron/2;Parent=ndhB.mRNA
+Z.marina	Chloe	CDS	71036	71788	.	+	0	ID=ndhB/1/CDS/3;Parent=ndhB.mRNA
+###
+Z.marina	Chloe	gene	72389	72469	.	+	.	ID=trnL-CAA;Name=trnL-CAA
+Z.marina	Chloe	tRNA	72389	72469	.	+	.	ID=trnL-CAA.tRNA;Parent=trnL-CAA
+Z.marina	Chloe	exon	72389	72469	.	+	.	ID=trnL-CAA/1/tRNA/1;Parent=trnL-CAA.tRNA
+###
+Z.marina	Chloe	gene	66739	66810	.	-	.	ID=trnV-GAC-2;Name=trnV-GAC
+Z.marina	Chloe	tRNA	66739	66810	.	-	.	ID=trnV-GAC-2.tRNA;Parent=trnV-GAC-2
+Z.marina	Chloe	exon	66739	66810	.	-	.	ID=trnV-GAC/2/tRNA/1;Parent=trnV-GAC-2.tRNA
+###
+Z.marina	Chloe	gene	65026	66516	.	-	.	ID=rrn16-2;Name=rrn16
+Z.marina	Chloe	rRNA	65026	66516	.	-	.	ID=rrn16-2.rRNA;Parent=rrn16-2
+Z.marina	Chloe	exon	65026	66516	.	-	.	ID=rrn16/2/rRNA/1;Parent=rrn16-2.rRNA
+###
+Z.marina	Chloe	gene	78288	78361	.	+	.	ID=trnI-CAU;Name=trnI-CAU
+Z.marina	Chloe	tRNA	78288	78361	.	+	.	ID=trnI-CAU.tRNA;Parent=trnI-CAU
+Z.marina	Chloe	exon	78288	78361	.	+	.	ID=trnI-CAU/1/tRNA/1;Parent=trnI-CAU.tRNA
+###
+Z.marina	Chloe	gene	78526	78810	.	+	.	ID=rpl23;Name=rpl23
+Z.marina	Chloe	mRNA	78526	78810	.	+	.	ID=rpl23.mRNA;Parent=rpl23
+Z.marina	Chloe	CDS	78526	78810	.	+	0	ID=rpl23/1/CDS/1;Parent=rpl23.mRNA
+###
+Z.marina	Chloe	gene	78838	80278	.	+	.	ID=rpl2;Name=rpl2
+Z.marina	Chloe	mRNA	78838	80278	.	+	.	ID=rpl2.mRNA;Parent=rpl2
+Z.marina	Chloe	CDS	78838	79228	.	+	0	ID=rpl2/1/CDS/1;Parent=rpl2.mRNA
+Z.marina	Chloe	intron	79229	79850	.	+	.	ID=rpl2/1/intron/2;Parent=rpl2.mRNA
+Z.marina	Chloe	CDS	79851	80278	.	+	2	ID=rpl2/1/CDS/3;Parent=rpl2.mRNA
+###
+Z.marina	Chloe	gene	63632	64724	.	-	.	ID=trnI-GAU-2;Name=trnI-GAU
+Z.marina	Chloe	tRNA	63632	64724	.	-	.	ID=trnI-GAU-2.tRNA;Parent=trnI-GAU-2
+Z.marina	Chloe	exon	63632	63666	.	-	.	ID=trnI-GAU/2/tRNA/3;Parent=trnI-GAU-2.tRNA
+Z.marina	Chloe	intron	63667	64687	.	-	.	ID=trnI-GAU/2/intron/2;Parent=trnI-GAU-2.tRNA
+Z.marina	Chloe	exon	64688	64724	.	-	.	ID=trnI-GAU/2/tRNA/1;Parent=trnI-GAU-2.tRNA
+###
+Z.marina	Chloe	gene	62685	63567	.	-	.	ID=trnA-UGC-2;Name=trnA-UGC
+Z.marina	Chloe	tRNA	62685	63567	.	-	.	ID=trnA-UGC-2.tRNA;Parent=trnA-UGC-2
+Z.marina	Chloe	exon	62685	62719	.	-	.	ID=trnA-UGC/2/tRNA/3;Parent=trnA-UGC-2.tRNA
+Z.marina	Chloe	intron	62720	63529	.	-	.	ID=trnA-UGC/2/intron/2;Parent=trnA-UGC-2.tRNA
+Z.marina	Chloe	exon	63530	63567	.	-	.	ID=trnA-UGC/2/tRNA/1;Parent=trnA-UGC-2.tRNA
+###
+Z.marina	Chloe	gene	59736	62548	.	-	.	ID=rrn23-2;Name=rrn23
+Z.marina	Chloe	rRNA	59736	62548	.	-	.	ID=rrn23-2.rRNA;Parent=rrn23-2
+Z.marina	Chloe	exon	59736	62548	.	-	.	ID=rrn23/2/rRNA/1;Parent=rrn23-2.rRNA
+###
+Z.marina	Chloe	gene	59535	59637	.	-	.	ID=rrn4.5-2;Name=rrn4.5
+Z.marina	Chloe	rRNA	59535	59637	.	-	.	ID=rrn4.5-2.rRNA;Parent=rrn4.5-2
+Z.marina	Chloe	exon	59535	59637	.	-	.	ID=rrn4.5/2/rRNA/1;Parent=rrn4.5-2.rRNA
+###
+Z.marina	Chloe	gene	59183	59303	.	-	.	ID=rrn5-2;Name=rrn5
+Z.marina	Chloe	rRNA	59183	59303	.	-	.	ID=rrn5-2.rRNA;Parent=rrn5-2
+Z.marina	Chloe	exon	59183	59303	.	-	.	ID=rrn5/2/rRNA/1;Parent=rrn5-2.rRNA
+###
+Z.marina	Chloe	gene	58881	58954	.	-	.	ID=trnR-ACG-2;Name=trnR-ACG
+Z.marina	Chloe	tRNA	58881	58954	.	-	.	ID=trnR-ACG-2.tRNA;Parent=trnR-ACG-2
+Z.marina	Chloe	exon	58881	58954	.	-	.	ID=trnR-ACG/2/tRNA/1;Parent=trnR-ACG-2.tRNA
+###
+Z.marina	Chloe	gene	87462	87644	.	+	.	ID=psbK;Name=psbK
+Z.marina	Chloe	mRNA	87462	87644	.	+	.	ID=psbK.mRNA;Parent=psbK
+Z.marina	Chloe	CDS	87462	87644	.	+	0	ID=psbK/1/CDS/1;Parent=psbK.mRNA
+###
+Z.marina	Chloe	gene	88042	88146	.	+	.	ID=psbI;Name=psbI
+Z.marina	Chloe	mRNA	88042	88146	.	+	.	ID=psbI.mRNA;Parent=psbI
+Z.marina	Chloe	CDS	88042	88146	.	+	0	ID=psbI/1/CDS/1;Parent=psbI.mRNA
+###
+Z.marina	Chloe	gene	89114	89904	.	+	.	ID=trnG-UCC;Name=trnG-UCC
+Z.marina	Chloe	tRNA	89114	89904	.	+	.	ID=trnG-UCC.tRNA;Parent=trnG-UCC
+Z.marina	Chloe	exon	89114	89136	.	+	.	ID=trnG-UCC/1/tRNA/1;Parent=trnG-UCC.tRNA
+Z.marina	Chloe	intron	89137	89856	.	+	.	ID=trnG-UCC/1/intron/2;Parent=trnG-UCC.tRNA
+Z.marina	Chloe	exon	89857	89904	.	+	.	ID=trnG-UCC/1/tRNA/3;Parent=trnG-UCC.tRNA
+###
+Z.marina	Chloe	gene	54243	54389	.	-	.	ID=rpl32;Name=rpl32
+Z.marina	Chloe	mRNA	54243	54389	.	-	.	ID=rpl32.mRNA;Parent=rpl32
+Z.marina	Chloe	CDS	54243	54389	.	-	0	ID=rpl32/1/CDS/1;Parent=rpl32.mRNA
+###
+Z.marina	Chloe	gene	90025	90096	.	+	.	ID=trnR-UCU;Name=trnR-UCU
+Z.marina	Chloe	tRNA	90025	90096	.	+	.	ID=trnR-UCU.tRNA;Parent=trnR-UCU
+Z.marina	Chloe	exon	90025	90096	.	+	.	ID=trnR-UCU/1/tRNA/1;Parent=trnR-UCU.tRNA
+###
+Z.marina	Chloe	gene	53595	53861	.	-	.	ID=rps15;Name=rps15
+Z.marina	Chloe	mRNA	53595	53861	.	-	.	ID=rps15.mRNA;Parent=rps15
+Z.marina	Chloe	CDS	53595	53861	.	-	0	ID=rps15/1/CDS/1;Parent=rps15.mRNA
+###
+Z.marina	Chloe	gene	52244	53422	.	-	.	ID=ndhH;Name=ndhH
+Z.marina	Chloe	mRNA	52244	53422	.	-	.	ID=ndhH.mRNA;Parent=ndhH
+Z.marina	Chloe	CDS	52244	53422	.	-	0	ID=ndhH/1/CDS/1;Parent=ndhH.mRNA
+###
+Z.marina	Chloe	gene	50042	52239	.	-	.	ID=ndhA;Name=ndhA
+Z.marina	Chloe	mRNA	50042	52239	.	-	.	ID=ndhA.mRNA;Parent=ndhA
+Z.marina	Chloe	CDS	50042	50571	.	-	2	ID=ndhA/1/CDS/3;Parent=ndhA.mRNA
+Z.marina	Chloe	intron	50572	51686	.	-	.	ID=ndhA/1/intron/2;Parent=ndhA.mRNA
+Z.marina	Chloe	CDS	51687	52239	.	-	0	ID=ndhA/1/CDS/1;Parent=ndhA.mRNA
+###
+Z.marina	Chloe	gene	49376	49945	.	-	.	ID=ndhI;Name=ndhI
+Z.marina	Chloe	mRNA	49376	49945	.	-	.	ID=ndhI.mRNA;Parent=ndhI
+Z.marina	Chloe	CDS	49376	49945	.	-	0	ID=ndhI/1/CDS/1;Parent=ndhI.mRNA
+###
+Z.marina	Chloe	gene	48403	48930	.	-	.	ID=ndhG;Name=ndhG
+Z.marina	Chloe	mRNA	48403	48930	.	-	.	ID=ndhG.mRNA;Parent=ndhG
+Z.marina	Chloe	CDS	48403	48930	.	-	0	ID=ndhG/1/CDS/1;Parent=ndhG.mRNA
+###
+Z.marina	Chloe	gene	47797	48099	.	-	.	ID=ndhE;Name=ndhE
+Z.marina	Chloe	mRNA	47797	48099	.	-	.	ID=ndhE.mRNA;Parent=ndhE
+Z.marina	Chloe	CDS	47797	48099	.	-	0	ID=ndhE/1/CDS/1;Parent=ndhE.mRNA
+###
+Z.marina	Chloe	gene	47147	47389	.	-	.	ID=psaC;Name=psaC
+Z.marina	Chloe	mRNA	47147	47389	.	-	.	ID=psaC.mRNA;Parent=psaC
+Z.marina	Chloe	CDS	47147	47389	.	-	0	ID=psaC/1/CDS/1;Parent=psaC.mRNA
+###
+Z.marina	Chloe	gene	45518	47017	.	-	.	ID=ndhD;Name=ndhD
+Z.marina	Chloe	mRNA	45518	47017	.	-	.	ID=ndhD.mRNA;Parent=ndhD
+Z.marina	Chloe	CDS	45518	47017	.	-	0	ID=ndhD/1/CDS/1;Parent=ndhD.mRNA
+###
+Z.marina	Chloe	gene	42381	42452	.	-	.	ID=trnN-GUU-2;Name=trnN-GUU
+Z.marina	Chloe	tRNA	42381	42452	.	-	.	ID=trnN-GUU-2.tRNA;Parent=trnN-GUU-2
+Z.marina	Chloe	exon	42381	42452	.	-	.	ID=trnN-GUU/2/tRNA/1;Parent=trnN-GUU-2.tRNA
+###
+Z.marina	Chloe	gene	108189	108259	.	+	.	ID=trnC-GCA;Name=trnC-GCA
+Z.marina	Chloe	tRNA	108189	108259	.	+	.	ID=trnC-GCA.tRNA;Parent=trnC-GCA
+Z.marina	Chloe	exon	108189	108259	.	+	.	ID=trnC-GCA/1/tRNA/1;Parent=trnC-GCA.tRNA
+###
+Z.marina	Chloe	gene	109061	109147	.	+	.	ID=petN;Name=petN
+Z.marina	Chloe	mRNA	109061	109147	.	+	.	ID=petN.mRNA;Parent=petN
+Z.marina	Chloe	CDS	109061	109147	.	+	0	ID=petN/1/CDS/1;Parent=petN.mRNA
+###
+Z.marina	Chloe	gene	31972	33331	.	-	.	ID=rps12B-2;Name=rps12B
+Z.marina	Chloe	CDS	31972	31994	.	-	2	ID=rps12B/2/CDS/4;Parent=rps12B-2
+Z.marina	Chloe	intron	31995	32540	.	-	.	ID=rps12B/2/intron/3;Parent=rps12B-2
+Z.marina	Chloe	CDS	32541	32772	.	-	0	ID=rps12B/2/CDS/2;Parent=rps12B-2
+Z.marina	Chloe	intron	32773	33331	.	-	.	ID=rps12B/2/intron/1;Parent=rps12B-2
+###
+Z.marina	Chloe	gene	111882	111953	.	+	.	ID=trnT-GGU;Name=trnT-GGU
+Z.marina	Chloe	tRNA	111882	111953	.	+	.	ID=trnT-GGU.tRNA;Parent=trnT-GGU
+Z.marina	Chloe	exon	111882	111953	.	+	.	ID=trnT-GGU/1/tRNA/1;Parent=trnT-GGU.tRNA
+###
+Z.marina	Chloe	gene	31446	31910	.	-	.	ID=rps7-2;Name=rps7
+Z.marina	Chloe	mRNA	31446	31910	.	-	.	ID=rps7-2.mRNA;Parent=rps7-2
+Z.marina	Chloe	CDS	31446	31910	.	-	0	ID=rps7/2/CDS/1;Parent=rps7-2.mRNA
+###
+Z.marina	Chloe	gene	28907	31082	.	-	.	ID=ndhB-2;Name=ndhB
+Z.marina	Chloe	mRNA	28907	31082	.	-	.	ID=ndhB-2.mRNA;Parent=ndhB-2
+Z.marina	Chloe	CDS	28907	29659	.	-	0	ID=ndhB/2/CDS/3;Parent=ndhB-2.mRNA
+Z.marina	Chloe	intron	29660	30359	.	-	.	ID=ndhB/2/intron/2;Parent=ndhB-2.mRNA
+Z.marina	Chloe	CDS	30360	31082	.	-	0	ID=ndhB/2/CDS/1;Parent=ndhB-2.mRNA
+###
+Z.marina	Chloe	gene	113103	114161	.	+	.	ID=psbD;Name=psbD
+Z.marina	Chloe	mRNA	113103	114161	.	+	.	ID=psbD.mRNA;Parent=psbD
+Z.marina	Chloe	CDS	113103	114161	.	+	0	ID=psbD/1/CDS/1;Parent=psbD.mRNA
+###
+Z.marina	Chloe	gene	114148	115530	.	+	.	ID=psbC;Name=psbC
+Z.marina	Chloe	mRNA	114148	115530	.	+	.	ID=psbC.mRNA;Parent=psbC
+Z.marina	Chloe	CDS	114148	115530	.	+	0	ID=psbC/1/CDS/1;Parent=psbC.mRNA
+###
+Z.marina	Chloe	gene	28226	28306	.	-	.	ID=trnL-CAA-2;Name=trnL-CAA
+Z.marina	Chloe	tRNA	28226	28306	.	-	.	ID=trnL-CAA-2.tRNA;Parent=trnL-CAA-2
+Z.marina	Chloe	exon	28226	28306	.	-	.	ID=trnL-CAA/2/tRNA/1;Parent=trnL-CAA-2.tRNA
+###
+Z.marina	Chloe	gene	116091	116276	.	+	.	ID=psbZ;Name=psbZ
+Z.marina	Chloe	mRNA	116091	116276	.	+	.	ID=psbZ.mRNA;Parent=psbZ
+Z.marina	Chloe	CDS	116091	116276	.	+	0	ID=psbZ/1/CDS/1;Parent=psbZ.mRNA
+###
+Z.marina	Chloe	gene	116723	116793	.	+	.	ID=trnG-GCC;Name=trnG-GCC
+Z.marina	Chloe	tRNA	116723	116793	.	+	.	ID=trnG-GCC.tRNA;Parent=trnG-GCC
+Z.marina	Chloe	exon	116723	116793	.	+	.	ID=trnG-GCC/1/tRNA/1;Parent=trnG-GCC.tRNA
+###
+Z.marina	Chloe	gene	22334	22407	.	-	.	ID=trnI-CAU-2;Name=trnI-CAU
+Z.marina	Chloe	tRNA	22334	22407	.	-	.	ID=trnI-CAU-2.tRNA;Parent=trnI-CAU-2
+Z.marina	Chloe	exon	22334	22407	.	-	.	ID=trnI-CAU/2/tRNA/1;Parent=trnI-CAU-2.tRNA
+###
+Z.marina	Chloe	gene	21885	22169	.	-	.	ID=rpl23-2;Name=rpl23
+Z.marina	Chloe	mRNA	21885	22169	.	-	.	ID=rpl23-2.mRNA;Parent=rpl23-2
+Z.marina	Chloe	CDS	21885	22169	.	-	0	ID=rpl23/2/CDS/1;Parent=rpl23-2.mRNA
+###
+Z.marina	Chloe	gene	20417	21857	.	-	.	ID=rpl2-2;Name=rpl2
+Z.marina	Chloe	mRNA	20417	21857	.	-	.	ID=rpl2-2.mRNA;Parent=rpl2-2
+Z.marina	Chloe	CDS	20417	20844	.	-	2	ID=rpl2/2/CDS/3;Parent=rpl2-2.mRNA
+Z.marina	Chloe	intron	20845	21466	.	-	.	ID=rpl2/2/intron/2;Parent=rpl2-2.mRNA
+Z.marina	Chloe	CDS	21467	21857	.	-	0	ID=rpl2/2/CDS/1;Parent=rpl2-2.mRNA
+###
+Z.marina	Chloe	gene	18817	19467	.	-	.	ID=rps3;Name=rps3
+Z.marina	Chloe	mRNA	18817	19467	.	-	.	ID=rps3.mRNA;Parent=rps3
+Z.marina	Chloe	CDS	18817	19467	.	-	0	ID=rps3/1/CDS/1;Parent=rps3.mRNA
+###
+Z.marina	Chloe	gene	125122	125208	.	+	.	ID=trnS-GGA;Name=trnS-GGA
+Z.marina	Chloe	tRNA	125122	125208	.	+	.	ID=trnS-GGA.tRNA;Parent=trnS-GGA
+Z.marina	Chloe	exon	125122	125208	.	+	.	ID=trnS-GGA/1/tRNA/1;Parent=trnS-GGA.tRNA
+###
+Z.marina	Chloe	gene	17264	18637	.	-	.	ID=rpl16;Name=rpl16
+Z.marina	Chloe	mRNA	17264	18637	.	-	.	ID=rpl16.mRNA;Parent=rpl16
+Z.marina	Chloe	CDS	17264	17659	.	-	0	ID=rpl16/1/CDS/3;Parent=rpl16.mRNA
+Z.marina	Chloe	intron	17660	18628	.	-	.	ID=rpl16/1/intron/2;Parent=rpl16.mRNA
+Z.marina	Chloe	CDS	18629	18637	.	-	0	ID=rpl16/1/CDS/1;Parent=rpl16.mRNA
+###
+Z.marina	Chloe	gene	16763	17128	.	-	.	ID=rpl14;Name=rpl14
+Z.marina	Chloe	mRNA	16763	17128	.	-	.	ID=rpl14.mRNA;Parent=rpl14
+Z.marina	Chloe	CDS	16763	17128	.	-	0	ID=rpl14/1/CDS/1;Parent=rpl14.mRNA
+###
+Z.marina	Chloe	gene	127326	128013	.	+	.	ID=trnL-UAA;Name=trnL-UAA
+Z.marina	Chloe	tRNA	127326	128013	.	+	.	ID=trnL-UAA.tRNA;Parent=trnL-UAA
+Z.marina	Chloe	exon	127326	127360	.	+	.	ID=trnL-UAA/1/tRNA/1;Parent=trnL-UAA.tRNA
+Z.marina	Chloe	intron	127361	127963	.	+	.	ID=trnL-UAA/1/intron/2;Parent=trnL-UAA.tRNA
+Z.marina	Chloe	exon	127964	128013	.	+	.	ID=trnL-UAA/1/tRNA/3;Parent=trnL-UAA.tRNA
+###
+Z.marina	Chloe	gene	16228	16623	.	-	.	ID=rps8;Name=rps8
+Z.marina	Chloe	mRNA	16228	16623	.	-	.	ID=rps8.mRNA;Parent=rps8
+Z.marina	Chloe	CDS	16228	16623	.	-	0	ID=rps8/1/CDS/1;Parent=rps8.mRNA
+###
+Z.marina	Chloe	gene	15885	16115	.	-	.	ID=infA;Name=infA
+Z.marina	Chloe	mRNA	15885	16115	.	-	.	ID=infA.mRNA;Parent=infA
+Z.marina	Chloe	CDS	15885	16115	.	-	0	ID=infA/1/CDS/1;Parent=infA.mRNA
+###
+Z.marina	Chloe	gene	15658	15768	.	-	.	ID=rpl36;Name=rpl36
+Z.marina	Chloe	mRNA	15658	15768	.	-	.	ID=rpl36.mRNA;Parent=rpl36
+Z.marina	Chloe	CDS	15658	15768	.	-	0	ID=rpl36/1/CDS/1;Parent=rpl36.mRNA
+###
+Z.marina	Chloe	gene	128366	128438	.	+	.	ID=trnF-GAA;Name=trnF-GAA
+Z.marina	Chloe	tRNA	128366	128438	.	+	.	ID=trnF-GAA.tRNA;Parent=trnF-GAA
+Z.marina	Chloe	exon	128366	128438	.	+	.	ID=trnF-GAA/1/tRNA/1;Parent=trnF-GAA.tRNA
+###
+Z.marina	Chloe	gene	15124	15537	.	-	.	ID=rps11;Name=rps11
+Z.marina	Chloe	mRNA	15124	15537	.	-	.	ID=rps11.mRNA;Parent=rps11
+Z.marina	Chloe	CDS	15124	15537	.	-	0	ID=rps11/1/CDS/1;Parent=rps11.mRNA
+###
+Z.marina	Chloe	gene	14049	15056	.	-	.	ID=rpoA;Name=rpoA
+Z.marina	Chloe	mRNA	14049	15056	.	-	.	ID=rpoA.mRNA;Parent=rpoA
+Z.marina	Chloe	CDS	14049	15056	.	-	0	ID=rpoA/1/CDS/1;Parent=rpoA.mRNA
+###
+Z.marina	Chloe	gene	10509	10637	.	-	.	ID=pbf1;Name=pbf1
+Z.marina	Chloe	mRNA	10509	10637	.	-	.	ID=pbf1.mRNA;Parent=pbf1
+Z.marina	Chloe	CDS	10509	10637	.	-	0	ID=pbf1/1/CDS/1;Parent=pbf1.mRNA
+###
+Z.marina	Chloe	gene	134190	135656	.	+	.	ID=atpB;Name=atpB
+Z.marina	Chloe	mRNA	134190	135656	.	+	.	ID=atpB.mRNA;Parent=atpB
+Z.marina	Chloe	CDS	134190	135656	.	+	0	ID=atpB/1/CDS/1;Parent=atpB.mRNA
+###
+Z.marina	Chloe	gene	135682	136080	.	+	.	ID=atpE;Name=atpE
+Z.marina	Chloe	mRNA	135682	136080	.	+	.	ID=atpE.mRNA;Parent=atpE
+Z.marina	Chloe	CDS	135682	136080	.	+	0	ID=atpE/1/CDS/1;Parent=atpE.mRNA
+###
+Z.marina	Chloe	gene	6230	8239	.	-	.	ID=clpP1;Name=clpP1
+Z.marina	Chloe	mRNA	6230	8239	.	-	.	ID=clpP1.mRNA;Parent=clpP1
+Z.marina	Chloe	CDS	6230	6472	.	-	0	ID=clpP1/1/CDS/5;Parent=clpP1.mRNA
+Z.marina	Chloe	intron	6473	7101	.	-	.	ID=clpP1/1/intron/4;Parent=clpP1.mRNA
+Z.marina	Chloe	CDS	7102	7393	.	-	1	ID=clpP1/1/CDS/3;Parent=clpP1.mRNA
+Z.marina	Chloe	intron	7394	8168	.	-	.	ID=clpP1/1/intron/2;Parent=clpP1.mRNA
+Z.marina	Chloe	CDS	8169	8239	.	-	0	ID=clpP1/1/CDS/1;Parent=clpP1.mRNA
+###
+Z.marina	Chloe	gene	136546	137232	.	+	.	ID=trnV-UAC;Name=trnV-UAC
+Z.marina	Chloe	tRNA	136546	137232	.	+	.	ID=trnV-UAC.tRNA;Parent=trnV-UAC
+Z.marina	Chloe	exon	136546	136584	.	+	.	ID=trnV-UAC/1/tRNA/1;Parent=trnV-UAC.tRNA
+Z.marina	Chloe	intron	136585	137197	.	+	.	ID=trnV-UAC/1/intron/2;Parent=trnV-UAC.tRNA
+Z.marina	Chloe	exon	137198	137232	.	+	.	ID=trnV-UAC/1/tRNA/3;Parent=trnV-UAC.tRNA
+###
+Z.marina	Chloe	gene	137852	139348	.	+	.	ID=accD;Name=accD
+Z.marina	Chloe	mRNA	137852	139348	.	+	.	ID=accD.mRNA;Parent=accD
+Z.marina	Chloe	CDS	137852	139348	.	+	0	ID=accD/1/CDS/1;Parent=accD.mRNA
+###
+Z.marina	Chloe	gene	5333	6069	.	-	.	ID=rps12A;Name=rps12A
+Z.marina	Chloe	mRNA	5333	6069	.	-	.	ID=rps12A.mRNA;Parent=rps12A
+Z.marina	Chloe	intron	5333	5955	.	-	.	ID=rps12A/1/intron/2;Parent=rps12A.mRNA
+Z.marina	Chloe	CDS	5956	6069	.	-	0	ID=rps12A/1/CDS/1;Parent=rps12A.mRNA
+###
+Z.marina	Chloe	gene	4870	5220	.	-	.	ID=rpl20;Name=rpl20
+Z.marina	Chloe	mRNA	4870	5220	.	-	.	ID=rpl20.mRNA;Parent=rpl20
+Z.marina	Chloe	CDS	4870	5220	.	-	0	ID=rpl20/1/CDS/1;Parent=rpl20.mRNA
+###
+Z.marina	Chloe	gene	140181	140288	.	+	.	ID=psaI;Name=psaI
+Z.marina	Chloe	mRNA	140181	140288	.	+	.	ID=psaI.mRNA;Parent=psaI
+Z.marina	Chloe	CDS	140181	140288	.	+	0	ID=psaI/1/CDS/1;Parent=psaI.mRNA
+###
+Z.marina	Chloe	gene	140665	141216	.	+	.	ID=pafII;Name=pafII
+Z.marina	Chloe	mRNA	140665	141216	.	+	.	ID=pafII.mRNA;Parent=pafII
+Z.marina	Chloe	CDS	140665	141216	.	+	0	ID=pafII/1/CDS/1;Parent=pafII.mRNA
+###
+Z.marina	Chloe	gene	2861	2934	.	-	.	ID=trnP-UGG;Name=trnP-UGG
+Z.marina	Chloe	tRNA	2861	2934	.	-	.	ID=trnP-UGG.tRNA;Parent=trnP-UGG
+Z.marina	Chloe	exon	2861	2934	.	-	.	ID=trnP-UGG/1/tRNA/1;Parent=trnP-UGG.tRNA
+###
+Z.marina	Chloe	gene	2618	2691	.	-	.	ID=trnW-CCA;Name=trnW-CCA
+Z.marina	Chloe	tRNA	2618	2691	.	-	.	ID=trnW-CCA.tRNA;Parent=trnW-CCA
+Z.marina	Chloe	exon	2618	2691	.	-	.	ID=trnW-CCA/1/tRNA/1;Parent=trnW-CCA.tRNA
+###
+Z.marina	Chloe	gene	141568	142254	.	+	.	ID=cemA;Name=cemA
+Z.marina	Chloe	mRNA	141568	142254	.	+	.	ID=cemA.mRNA;Parent=cemA
+Z.marina	Chloe	CDS	141568	142254	.	+	0	ID=cemA/1/CDS/1;Parent=cemA.mRNA
+###
+Z.marina	Chloe	gene	142482	143441	.	+	.	ID=petA;Name=petA
+Z.marina	Chloe	mRNA	142482	143441	.	+	.	ID=petA.mRNA;Parent=petA
+Z.marina	Chloe	CDS	142482	143441	.	+	0	ID=petA/1/CDS/1;Parent=petA.mRNA
+###
+Z.marina	Chloe	gene	750	998	.	-	.	ID=psbE;Name=psbE
+Z.marina	Chloe	mRNA	750	998	.	-	.	ID=psbE.mRNA;Parent=psbE
+Z.marina	Chloe	CDS	750	998	.	-	0	ID=psbE/1/CDS/1;Parent=psbE.mRNA
+###
+Z.marina	Chloe	gene	620	736	.	-	.	ID=psbF;Name=psbF
+Z.marina	Chloe	mRNA	620	736	.	-	.	ID=psbF.mRNA;Parent=psbF
+Z.marina	Chloe	CDS	620	736	.	-	0	ID=psbF/1/CDS/1;Parent=psbF.mRNA
+###
+Z.marina	Chloe	gene	481	594	.	-	.	ID=psbL;Name=psbL
+Z.marina	Chloe	mRNA	481	594	.	-	.	ID=psbL.mRNA;Parent=psbL
+Z.marina	Chloe	CDS	481	594	.	-	0	ID=psbL/1/CDS/1;Parent=psbL.mRNA
+###
+Z.marina	Chloe	gene	219	338	.	-	.	ID=psbJ;Name=psbJ
+Z.marina	Chloe	mRNA	219	338	.	-	.	ID=psbJ.mRNA;Parent=psbJ
+Z.marina	Chloe	CDS	219	338	.	-	0	ID=psbJ/1/CDS/1;Parent=psbJ.mRNA
+###

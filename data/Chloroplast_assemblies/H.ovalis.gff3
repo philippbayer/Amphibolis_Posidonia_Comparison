@@ -1,0 +1,582 @@
+##gff-version 3.2.1
+H.ovalis	Chloe	gene	124212	167208	.	-	.	ID=IR-2;Name=IR-2
+H.ovalis	Chloe	repeat_region	124212	167208	.	-	.	ID=IR-2/1/repeat_region/1;Parent=IR-2
+###
+H.ovalis	Chloe	gene	167091	167165	.	-	.	ID=trnH-GUG-2;Name=trnH-GUG
+H.ovalis	Chloe	tRNA	167091	167165	.	-	.	ID=trnH-GUG-2.tRNA;Parent=trnH-GUG-2
+H.ovalis	Chloe	exon	167091	167165	.	-	.	ID=trnH-GUG/2/tRNA/1;Parent=trnH-GUG-2.tRNA
+###
+H.ovalis	Chloe	gene	8210	8392	.	+	.	ID=psbK;Name=psbK
+H.ovalis	Chloe	mRNA	8210	8392	.	+	.	ID=psbK.mRNA;Parent=psbK
+H.ovalis	Chloe	CDS	8210	8392	.	+	0	ID=psbK/1/CDS/1;Parent=psbK.mRNA
+###
+H.ovalis	Chloe	gene	8831	8944	.	+	.	ID=psbI;Name=psbI
+H.ovalis	Chloe	mRNA	8831	8944	.	+	.	ID=psbI.mRNA;Parent=psbI
+H.ovalis	Chloe	CDS	8831	8944	.	+	0	ID=psbI/1/CDS/1;Parent=psbI.mRNA
+###
+H.ovalis	Chloe	gene	10072	10880	.	+	.	ID=trnG-UCC;Name=trnG-UCC
+H.ovalis	Chloe	tRNA	10072	10880	.	+	.	ID=trnG-UCC.tRNA;Parent=trnG-UCC
+H.ovalis	Chloe	exon	10072	10094	.	+	.	ID=trnG-UCC/1/tRNA/1;Parent=trnG-UCC.tRNA
+H.ovalis	Chloe	intron	10095	10832	.	+	.	ID=trnG-UCC/1/intron/2;Parent=trnG-UCC.tRNA
+H.ovalis	Chloe	exon	10833	10880	.	+	.	ID=trnG-UCC/1/tRNA/3;Parent=trnG-UCC.tRNA
+###
+H.ovalis	Chloe	gene	10994	11065	.	+	.	ID=trnR-UCU;Name=trnR-UCU
+H.ovalis	Chloe	tRNA	10994	11065	.	+	.	ID=trnR-UCU.tRNA;Parent=trnR-UCU
+H.ovalis	Chloe	exon	10994	11065	.	+	.	ID=trnR-UCU/1/tRNA/1;Parent=trnR-UCU.tRNA
+###
+H.ovalis	Chloe	gene	155297	155377	.	-	.	ID=trnL-CAA-2;Name=trnL-CAA
+H.ovalis	Chloe	tRNA	155297	155377	.	-	.	ID=trnL-CAA-2.tRNA;Parent=trnL-CAA-2
+H.ovalis	Chloe	exon	155297	155377	.	-	.	ID=trnL-CAA/2/tRNA/1;Parent=trnL-CAA-2.tRNA
+###
+H.ovalis	Chloe	gene	143456	143527	.	-	.	ID=trnV-GAC-2;Name=trnV-GAC
+H.ovalis	Chloe	tRNA	143456	143527	.	-	.	ID=trnV-GAC-2.tRNA;Parent=trnV-GAC-2
+H.ovalis	Chloe	exon	143456	143527	.	-	.	ID=trnV-GAC/2/tRNA/1;Parent=trnV-GAC-2.tRNA
+###
+H.ovalis	Chloe	gene	141708	143217	.	-	.	ID=rrn16-2;Name=rrn16
+H.ovalis	Chloe	rRNA	141708	143217	.	-	.	ID=rrn16-2.rRNA;Parent=rrn16-2
+H.ovalis	Chloe	exon	141708	143217	.	-	.	ID=rrn16/2/rRNA/1;Parent=rrn16-2.rRNA
+###
+H.ovalis	Chloe	gene	140594	141386	.	-	.	ID=trnI-GAU-2;Name=trnI-GAU
+H.ovalis	Chloe	tRNA	140594	141386	.	-	.	ID=trnI-GAU-2.tRNA;Parent=trnI-GAU-2
+H.ovalis	Chloe	exon	140594	140628	.	-	.	ID=trnI-GAU/2/tRNA/3;Parent=trnI-GAU-2.tRNA
+H.ovalis	Chloe	intron	140629	141349	.	-	.	ID=trnI-GAU/2/intron/2;Parent=trnI-GAU-2.tRNA
+H.ovalis	Chloe	exon	141350	141386	.	-	.	ID=trnI-GAU/2/tRNA/1;Parent=trnI-GAU-2.tRNA
+###
+H.ovalis	Chloe	gene	139637	140534	.	-	.	ID=trnA-UGC-2;Name=trnA-UGC
+H.ovalis	Chloe	tRNA	139637	140534	.	-	.	ID=trnA-UGC-2.tRNA;Parent=trnA-UGC-2
+H.ovalis	Chloe	exon	139637	139671	.	-	.	ID=trnA-UGC/2/tRNA/3;Parent=trnA-UGC-2.tRNA
+H.ovalis	Chloe	intron	139672	140496	.	-	.	ID=trnA-UGC/2/intron/2;Parent=trnA-UGC-2.tRNA
+H.ovalis	Chloe	exon	140497	140534	.	-	.	ID=trnA-UGC/2/tRNA/1;Parent=trnA-UGC-2.tRNA
+###
+H.ovalis	Chloe	gene	136661	139475	.	-	.	ID=rrn23-2;Name=rrn23
+H.ovalis	Chloe	rRNA	136661	139475	.	-	.	ID=rrn23-2.rRNA;Parent=rrn23-2
+H.ovalis	Chloe	exon	136661	139475	.	-	.	ID=rrn23/2/rRNA/1;Parent=rrn23-2.rRNA
+###
+H.ovalis	Chloe	gene	29780	29850	.	+	.	ID=trnC-GCA;Name=trnC-GCA
+H.ovalis	Chloe	tRNA	29780	29850	.	+	.	ID=trnC-GCA.tRNA;Parent=trnC-GCA
+H.ovalis	Chloe	exon	29780	29850	.	+	.	ID=trnC-GCA/1/tRNA/1;Parent=trnC-GCA.tRNA
+###
+H.ovalis	Chloe	gene	30610	30696	.	+	.	ID=petN;Name=petN
+H.ovalis	Chloe	mRNA	30610	30696	.	+	.	ID=petN.mRNA;Parent=petN
+H.ovalis	Chloe	CDS	30610	30696	.	+	0	ID=petN/1/CDS/1;Parent=petN.mRNA
+###
+H.ovalis	Chloe	gene	136465	136563	.	-	.	ID=rrn4.5-2;Name=rrn4.5
+H.ovalis	Chloe	rRNA	136465	136563	.	-	.	ID=rrn4.5-2.rRNA;Parent=rrn4.5-2
+H.ovalis	Chloe	exon	136465	136563	.	-	.	ID=rrn4.5/2/rRNA/1;Parent=rrn4.5-2.rRNA
+###
+H.ovalis	Chloe	gene	136118	136238	.	-	.	ID=rrn5-2;Name=rrn5
+H.ovalis	Chloe	rRNA	136118	136238	.	-	.	ID=rrn5-2.rRNA;Parent=rrn5-2
+H.ovalis	Chloe	exon	136118	136238	.	-	.	ID=rrn5/2/rRNA/1;Parent=rrn5-2.rRNA
+###
+H.ovalis	Chloe	gene	135963	136036	.	-	.	ID=trnR-ACG-2;Name=trnR-ACG
+H.ovalis	Chloe	tRNA	135963	136036	.	-	.	ID=trnR-ACG-2.tRNA;Parent=trnR-ACG-2
+H.ovalis	Chloe	exon	135963	136036	.	-	.	ID=trnR-ACG/2/tRNA/1;Parent=trnR-ACG-2.tRNA
+###
+H.ovalis	Chloe	gene	135873	135944	.	-	.	ID=trnN-GUU-2;Name=trnN-GUU
+H.ovalis	Chloe	tRNA	135873	135944	.	-	.	ID=trnN-GUU-2.tRNA;Parent=trnN-GUU-2
+H.ovalis	Chloe	exon	135873	135944	.	-	.	ID=trnN-GUU/2/tRNA/1;Parent=trnN-GUU-2.tRNA
+###
+H.ovalis	Chloe	gene	133415	133627	.	-	.	ID=rpl32-2;Name=rpl32
+H.ovalis	Chloe	mRNA	133415	133627	.	-	.	ID=rpl32-2.mRNA;Parent=rpl32-2
+H.ovalis	Chloe	CDS	133415	133627	.	-	0	ID=rpl32/2/CDS/1;Parent=rpl32-2.mRNA
+###
+H.ovalis	Chloe	gene	34433	34504	.	+	.	ID=trnT-GGU;Name=trnT-GGU
+H.ovalis	Chloe	tRNA	34433	34504	.	+	.	ID=trnT-GGU.tRNA;Parent=trnT-GGU
+H.ovalis	Chloe	exon	34433	34504	.	+	.	ID=trnT-GGU/1/tRNA/1;Parent=trnT-GGU.tRNA
+###
+H.ovalis	Chloe	gene	126163	132267	.	-	.	ID=ycf1-2;Name=ycf1
+H.ovalis	Chloe	mRNA	126163	132267	.	-	.	ID=ycf1-2.mRNA;Parent=ycf1-2
+H.ovalis	Chloe	CDS	126163	132267	.	-	0	ID=ycf1/2/CDS/1;Parent=ycf1-2.mRNA
+###
+H.ovalis	Chloe	gene	35346	36404	.	+	.	ID=psbD;Name=psbD
+H.ovalis	Chloe	mRNA	35346	36404	.	+	.	ID=psbD.mRNA;Parent=psbD
+H.ovalis	Chloe	CDS	35346	36404	.	+	0	ID=psbD/1/CDS/1;Parent=psbD.mRNA
+###
+H.ovalis	Chloe	gene	36391	37773	.	+	.	ID=psbC;Name=psbC
+H.ovalis	Chloe	mRNA	36391	37773	.	+	.	ID=psbC.mRNA;Parent=psbC
+H.ovalis	Chloe	CDS	36391	37773	.	+	0	ID=psbC/1/CDS/1;Parent=psbC.mRNA
+###
+H.ovalis	Chloe	gene	38351	38536	.	+	.	ID=psbZ;Name=psbZ
+H.ovalis	Chloe	mRNA	38351	38536	.	+	.	ID=psbZ.mRNA;Parent=psbZ
+H.ovalis	Chloe	CDS	38351	38536	.	+	0	ID=psbZ/1/CDS/1;Parent=psbZ.mRNA
+###
+H.ovalis	Chloe	gene	39040	39110	.	+	.	ID=trnG-GCC;Name=trnG-GCC
+H.ovalis	Chloe	tRNA	39040	39110	.	+	.	ID=trnG-GCC.tRNA;Parent=trnG-GCC
+H.ovalis	Chloe	exon	39040	39110	.	+	.	ID=trnG-GCC/1/tRNA/1;Parent=trnG-GCC.tRNA
+###
+H.ovalis	Chloe	gene	125553	125843	.	-	.	ID=rps15-2;Name=rps15
+H.ovalis	Chloe	mRNA	125553	125843	.	-	.	ID=rps15-2.mRNA;Parent=rps15-2
+H.ovalis	Chloe	CDS	125553	125843	.	-	0	ID=rps15/2/CDS/1;Parent=rps15-2.mRNA
+###
+H.ovalis	Chloe	gene	124255	124998	.	-	.	ID=ndhH-2;Name=ndhH
+H.ovalis	Chloe	mRNA	124255	124998	.	-	.	ID=ndhH-2.mRNA;Parent=ndhH-2
+H.ovalis	Chloe	CDS	124255	124998	.	-	0	ID=ndhH/2/CDS/1;Parent=ndhH-2.mRNA
+###
+H.ovalis	Chloe	gene	124011	124090	.	-	.	ID=trnL-UAG;Name=trnL-UAG
+H.ovalis	Chloe	tRNA	124011	124090	.	-	.	ID=trnL-UAG.tRNA;Parent=trnL-UAG
+H.ovalis	Chloe	exon	124011	124090	.	-	.	ID=trnL-UAG/1/tRNA/1;Parent=trnL-UAG.tRNA
+###
+H.ovalis	Chloe	gene	122941	123903	.	-	.	ID=ccsA;Name=ccsA
+H.ovalis	Chloe	mRNA	122941	123903	.	-	.	ID=ccsA.mRNA;Parent=ccsA
+H.ovalis	Chloe	CDS	122941	123903	.	-	0	ID=ccsA/1/CDS/1;Parent=ccsA.mRNA
+###
+H.ovalis	Chloe	gene	47668	47754	.	+	.	ID=trnS-GGA;Name=trnS-GGA
+H.ovalis	Chloe	tRNA	47668	47754	.	+	.	ID=trnS-GGA.tRNA;Parent=trnS-GGA
+H.ovalis	Chloe	exon	47668	47754	.	+	.	ID=trnS-GGA/1/tRNA/1;Parent=trnS-GGA.tRNA
+###
+H.ovalis	Chloe	gene	49978	50804	.	+	.	ID=trnL-UAA;Name=trnL-UAA
+H.ovalis	Chloe	tRNA	49978	50804	.	+	.	ID=trnL-UAA.tRNA;Parent=trnL-UAA
+H.ovalis	Chloe	exon	49978	50012	.	+	.	ID=trnL-UAA/1/tRNA/1;Parent=trnL-UAA.tRNA
+H.ovalis	Chloe	intron	50013	50754	.	+	.	ID=trnL-UAA/1/intron/2;Parent=trnL-UAA.tRNA
+H.ovalis	Chloe	exon	50755	50804	.	+	.	ID=trnL-UAA/1/tRNA/3;Parent=trnL-UAA.tRNA
+###
+H.ovalis	Chloe	gene	51187	51259	.	+	.	ID=trnF-GAA;Name=trnF-GAA
+H.ovalis	Chloe	tRNA	51187	51259	.	+	.	ID=trnF-GAA.tRNA;Parent=trnF-GAA
+H.ovalis	Chloe	exon	51187	51259	.	+	.	ID=trnF-GAA/1/tRNA/1;Parent=trnF-GAA.tRNA
+###
+H.ovalis	Chloe	gene	52882	52954	.	+	.	ID=trnM-CAU;Name=trnM-CAU
+H.ovalis	Chloe	tRNA	52882	52954	.	+	.	ID=trnM-CAU.tRNA;Parent=trnM-CAU
+H.ovalis	Chloe	exon	52882	52954	.	+	.	ID=trnM-CAU/1/tRNA/1;Parent=trnM-CAU.tRNA
+###
+H.ovalis	Chloe	gene	55938	57368	.	+	.	ID=rbcL;Name=rbcL
+H.ovalis	Chloe	mRNA	55938	57368	.	+	.	ID=rbcL.mRNA;Parent=rbcL
+H.ovalis	Chloe	CDS	55938	57368	.	+	0	ID=rbcL/1/CDS/1;Parent=rbcL.mRNA
+###
+H.ovalis	Chloe	gene	58605	60203	.	+	.	ID=accD;Name=accD
+H.ovalis	Chloe	mRNA	58605	60203	.	+	.	ID=accD.mRNA;Parent=accD
+H.ovalis	Chloe	CDS	58605	60203	.	+	0	ID=accD/1/CDS/1;Parent=accD.mRNA
+###
+H.ovalis	Chloe	gene	61049	61156	.	+	.	ID=psaI;Name=psaI
+H.ovalis	Chloe	mRNA	61049	61156	.	+	.	ID=psaI.mRNA;Parent=psaI
+H.ovalis	Chloe	CDS	61049	61156	.	+	0	ID=psaI/1/CDS/1;Parent=psaI.mRNA
+###
+H.ovalis	Chloe	gene	61531	62082	.	+	.	ID=pafII;Name=pafII
+H.ovalis	Chloe	mRNA	61531	62082	.	+	.	ID=pafII.mRNA;Parent=pafII
+H.ovalis	Chloe	CDS	61531	62082	.	+	0	ID=pafII/1/CDS/1;Parent=pafII.mRNA
+###
+H.ovalis	Chloe	gene	63027	63719	.	+	.	ID=cemA;Name=cemA
+H.ovalis	Chloe	mRNA	63027	63719	.	+	.	ID=cemA.mRNA;Parent=cemA
+H.ovalis	Chloe	CDS	63027	63719	.	+	0	ID=cemA/1/CDS/1;Parent=cemA.mRNA
+###
+H.ovalis	Chloe	gene	63955	64914	.	+	.	ID=petA;Name=petA
+H.ovalis	Chloe	mRNA	63955	64914	.	+	.	ID=petA.mRNA;Parent=petA
+H.ovalis	Chloe	CDS	63955	64914	.	+	0	ID=petA/1/CDS/1;Parent=petA.mRNA
+###
+H.ovalis	Chloe	gene	99491	101115	.	-	.	ID=rps12B-2;Name=rps12B
+H.ovalis	Chloe	CDS	99491	99513	.	-	2	ID=rps12B/2/CDS/4;Parent=rps12B-2
+H.ovalis	Chloe	intron	99514	100058	.	-	.	ID=rps12B/2/intron/3;Parent=rps12B-2
+H.ovalis	Chloe	CDS	100059	100290	.	-	0	ID=rps12B/2/CDS/2;Parent=rps12B-2
+H.ovalis	Chloe	intron	100291	101115	.	-	.	ID=rps12B/2/intron/1;Parent=rps12B-2
+###
+H.ovalis	Chloe	gene	67763	67855	.	+	.	ID=petL;Name=petL
+H.ovalis	Chloe	mRNA	67763	67855	.	+	.	ID=petL.mRNA;Parent=petL
+H.ovalis	Chloe	CDS	67763	67855	.	+	0	ID=petL/1/CDS/1;Parent=petL.mRNA
+###
+H.ovalis	Chloe	gene	98821	99429	.	-	.	ID=rps7-2;Name=rps7
+H.ovalis	Chloe	mRNA	98821	99429	.	-	.	ID=rps7-2.mRNA;Parent=rps7-2
+H.ovalis	Chloe	CDS	98821	99429	.	-	0	ID=rps7/2/CDS/1;Parent=rps7-2.mRNA
+###
+H.ovalis	Chloe	gene	68035	68145	.	+	.	ID=petG;Name=petG
+H.ovalis	Chloe	mRNA	68035	68145	.	+	.	ID=petG.mRNA;Parent=petG
+H.ovalis	Chloe	CDS	68035	68145	.	+	0	ID=petG/1/CDS/1;Parent=petG.mRNA
+###
+H.ovalis	Chloe	gene	68959	69075	.	+	.	ID=psaJ;Name=psaJ
+H.ovalis	Chloe	mRNA	68959	69075	.	+	.	ID=psaJ.mRNA;Parent=psaJ
+H.ovalis	Chloe	CDS	68959	69075	.	+	0	ID=psaJ/1/CDS/1;Parent=psaJ.mRNA
+###
+H.ovalis	Chloe	gene	91390	97851	.	-	.	ID=ycf2-2;Name=ycf2
+H.ovalis	Chloe	mRNA	91390	97851	.	-	.	ID=ycf2-2.mRNA;Parent=ycf2-2
+H.ovalis	Chloe	CDS	91390	97851	.	-	0	ID=ycf2/2/CDS/1;Parent=ycf2-2.mRNA
+###
+H.ovalis	Chloe	gene	69515	69718	.	+	.	ID=rpl33;Name=rpl33
+H.ovalis	Chloe	mRNA	69515	69718	.	+	.	ID=rpl33.mRNA;Parent=rpl33
+H.ovalis	Chloe	CDS	69515	69718	.	+	0	ID=rpl33/1/CDS/1;Parent=rpl33.mRNA
+###
+H.ovalis	Chloe	gene	69886	70374	.	+	.	ID=rps18;Name=rps18
+H.ovalis	Chloe	mRNA	69886	70374	.	+	.	ID=rps18.mRNA;Parent=rps18
+H.ovalis	Chloe	CDS	69886	70374	.	+	0	ID=rps18/1/CDS/1;Parent=rps18.mRNA
+###
+H.ovalis	Chloe	gene	73528	75051	.	+	.	ID=psbB;Name=psbB
+H.ovalis	Chloe	mRNA	73528	75051	.	+	.	ID=psbB.mRNA;Parent=psbB
+H.ovalis	Chloe	CDS	73528	75051	.	+	0	ID=psbB/1/CDS/1;Parent=psbB.mRNA
+###
+H.ovalis	Chloe	gene	75219	75323	.	+	.	ID=psbT;Name=psbT
+H.ovalis	Chloe	mRNA	75219	75323	.	+	.	ID=psbT.mRNA;Parent=psbT
+H.ovalis	Chloe	CDS	75219	75323	.	+	0	ID=psbT/1/CDS/1;Parent=psbT.mRNA
+###
+H.ovalis	Chloe	gene	75652	75870	.	+	.	ID=psbH;Name=psbH
+H.ovalis	Chloe	mRNA	75652	75870	.	+	.	ID=psbH.mRNA;Parent=psbH
+H.ovalis	Chloe	CDS	75652	75870	.	+	0	ID=psbH/1/CDS/1;Parent=psbH.mRNA
+###
+H.ovalis	Chloe	gene	75988	77450	.	+	.	ID=petB;Name=petB
+H.ovalis	Chloe	mRNA	75988	77450	.	+	.	ID=petB.mRNA;Parent=petB
+H.ovalis	Chloe	CDS	75988	75993	.	+	0	ID=petB/1/CDS/1;Parent=petB.mRNA
+H.ovalis	Chloe	intron	75994	76811	.	+	.	ID=petB/1/intron/2;Parent=petB.mRNA
+H.ovalis	Chloe	CDS	76812	77450	.	+	0	ID=petB/1/CDS/3;Parent=petB.mRNA
+###
+H.ovalis	Chloe	gene	90342	90415	.	-	.	ID=trnI-CAU-2;Name=trnI-CAU
+H.ovalis	Chloe	tRNA	90342	90415	.	-	.	ID=trnI-CAU-2.tRNA;Parent=trnI-CAU-2
+H.ovalis	Chloe	exon	90342	90415	.	-	.	ID=trnI-CAU/2/tRNA/1;Parent=trnI-CAU-2.tRNA
+###
+H.ovalis	Chloe	gene	89839	90162	.	-	.	ID=rpl23-2;Name=rpl23
+H.ovalis	Chloe	mRNA	89839	90162	.	-	.	ID=rpl23-2.mRNA;Parent=rpl23-2
+H.ovalis	Chloe	CDS	89839	90162	.	-	0	ID=rpl23/2/CDS/1;Parent=rpl23-2.mRNA
+###
+H.ovalis	Chloe	gene	88370	89834	.	-	.	ID=rpl2-2;Name=rpl2
+H.ovalis	Chloe	mRNA	88370	89834	.	-	.	ID=rpl2-2.mRNA;Parent=rpl2-2
+H.ovalis	Chloe	CDS	88370	88800	.	-	2	ID=rpl2/2/CDS/3;Parent=rpl2-2.mRNA
+H.ovalis	Chloe	intron	88801	89449	.	-	.	ID=rpl2/2/intron/2;Parent=rpl2-2.mRNA
+H.ovalis	Chloe	CDS	89450	89834	.	-	0	ID=rpl2/2/CDS/1;Parent=rpl2-2.mRNA
+###
+H.ovalis	Chloe	gene	77679	78906	.	+	.	ID=petD;Name=petD
+H.ovalis	Chloe	mRNA	77679	78906	.	+	.	ID=petD.mRNA;Parent=petD
+H.ovalis	Chloe	CDS	77679	77686	.	+	0	ID=petD/1/CDS/1;Parent=petD.mRNA
+H.ovalis	Chloe	intron	77687	78434	.	+	.	ID=petD/1/intron/2;Parent=petD.mRNA
+H.ovalis	Chloe	CDS	78435	78906	.	+	1	ID=petD/1/CDS/3;Parent=petD.mRNA
+###
+H.ovalis	Chloe	gene	78950	121946	.	+	.	ID=IR-1;Name=IR-1
+H.ovalis	Chloe	repeat_region	78950	121946	.	+	.	ID=IR-1/1/repeat_region/1;Parent=IR-1
+###
+H.ovalis	Chloe	gene	87956	88228	.	-	.	ID=rps19-2;Name=rps19
+H.ovalis	Chloe	mRNA	87956	88228	.	-	.	ID=rps19-2.mRNA;Parent=rps19-2
+H.ovalis	Chloe	CDS	87956	88228	.	-	0	ID=rps19/2/CDS/1;Parent=rps19-2.mRNA
+###
+H.ovalis	Chloe	gene	78993	79067	.	+	.	ID=trnH-GUG;Name=trnH-GUG
+H.ovalis	Chloe	tRNA	78993	79067	.	+	.	ID=trnH-GUG.tRNA;Parent=trnH-GUG
+H.ovalis	Chloe	exon	78993	79067	.	+	.	ID=trnH-GUG/1/tRNA/1;Parent=trnH-GUG.tRNA
+###
+H.ovalis	Chloe	gene	86579	86977	.	-	.	ID=rpl22-2;Name=rpl22
+H.ovalis	Chloe	mRNA	86579	86977	.	-	.	ID=rpl22-2.mRNA;Parent=rpl22-2
+H.ovalis	Chloe	CDS	86579	86977	.	-	0	ID=rpl22/2/CDS/1;Parent=rpl22-2.mRNA
+###
+H.ovalis	Chloe	gene	85829	86518	.	-	.	ID=rps3-2;Name=rps3
+H.ovalis	Chloe	mRNA	85829	86518	.	-	.	ID=rps3-2.mRNA;Parent=rps3-2
+H.ovalis	Chloe	CDS	85829	86518	.	-	0	ID=rps3/2/CDS/1;Parent=rps3-2.mRNA
+###
+H.ovalis	Chloe	gene	84353	85710	.	-	.	ID=rpl16-2;Name=rpl16
+H.ovalis	Chloe	mRNA	84353	85710	.	-	.	ID=rpl16-2.mRNA;Parent=rpl16-2
+H.ovalis	Chloe	CDS	84353	84757	.	-	0	ID=rpl16/2/CDS/3;Parent=rpl16-2.mRNA
+H.ovalis	Chloe	intron	84758	85701	.	-	.	ID=rpl16/2/intron/2;Parent=rpl16-2.mRNA
+H.ovalis	Chloe	CDS	85702	85710	.	-	0	ID=rpl16/2/CDS/1;Parent=rpl16-2.mRNA
+###
+H.ovalis	Chloe	gene	83848	84213	.	-	.	ID=rpl14-2;Name=rpl14
+H.ovalis	Chloe	mRNA	83848	84213	.	-	.	ID=rpl14-2.mRNA;Parent=rpl14-2
+H.ovalis	Chloe	CDS	83848	84213	.	-	0	ID=rpl14/2/CDS/1;Parent=rpl14-2.mRNA
+###
+H.ovalis	Chloe	gene	83299	83694	.	-	.	ID=rps8-2;Name=rps8
+H.ovalis	Chloe	mRNA	83299	83694	.	-	.	ID=rps8-2.mRNA;Parent=rps8-2
+H.ovalis	Chloe	CDS	83299	83694	.	-	0	ID=rps8/2/CDS/1;Parent=rps8-2.mRNA
+###
+H.ovalis	Chloe	gene	80873	80983	.	-	.	ID=rpl36-2;Name=rpl36
+H.ovalis	Chloe	mRNA	80873	80983	.	-	.	ID=rpl36-2.mRNA;Parent=rpl36-2
+H.ovalis	Chloe	CDS	80873	80983	.	-	0	ID=rpl36/2/CDS/1;Parent=rpl36-2.mRNA
+###
+H.ovalis	Chloe	gene	80246	80731	.	-	.	ID=rps11-2;Name=rps11
+H.ovalis	Chloe	mRNA	80246	80731	.	-	.	ID=rps11-2.mRNA;Parent=rps11-2
+H.ovalis	Chloe	CDS	80246	80731	.	-	0	ID=rps11/2/CDS/1;Parent=rps11-2.mRNA
+###
+H.ovalis	Chloe	gene	79128	80147	.	-	.	ID=rpoA-2;Name=rpoA
+H.ovalis	Chloe	mRNA	79128	80147	.	-	.	ID=rpoA-2.mRNA;Parent=rpoA-2
+H.ovalis	Chloe	CDS	79128	80147	.	-	0	ID=rpoA/2/CDS/1;Parent=rpoA-2.mRNA
+###
+H.ovalis	Chloe	gene	90781	90861	.	+	.	ID=trnL-CAA;Name=trnL-CAA
+H.ovalis	Chloe	tRNA	90781	90861	.	+	.	ID=trnL-CAA.tRNA;Parent=trnL-CAA
+H.ovalis	Chloe	exon	90781	90861	.	+	.	ID=trnL-CAA/1/tRNA/1;Parent=trnL-CAA.tRNA
+###
+H.ovalis	Chloe	gene	75403	75531	.	-	.	ID=pbf1;Name=pbf1
+H.ovalis	Chloe	mRNA	75403	75531	.	-	.	ID=pbf1.mRNA;Parent=pbf1
+H.ovalis	Chloe	CDS	75403	75531	.	-	0	ID=pbf1/1/CDS/1;Parent=pbf1.mRNA
+###
+H.ovalis	Chloe	gene	72136	72762	.	-	.	ID=clpP1;Name=clpP1
+H.ovalis	Chloe	mRNA	72136	72762	.	-	.	ID=clpP1.mRNA;Parent=clpP1
+H.ovalis	Chloe	CDS	72136	72762	.	-	0	ID=clpP1/1/CDS/1;Parent=clpP1.mRNA
+###
+H.ovalis	Chloe	gene	71208	71993	.	-	.	ID=rps12A;Name=rps12A
+H.ovalis	Chloe	mRNA	71208	71993	.	-	.	ID=rps12A.mRNA;Parent=rps12A
+H.ovalis	Chloe	intron	71208	71879	.	-	.	ID=rps12A/1/intron/2;Parent=rps12A.mRNA
+H.ovalis	Chloe	CDS	71880	71993	.	-	0	ID=rps12A/1/CDS/1;Parent=rps12A.mRNA
+###
+H.ovalis	Chloe	gene	70682	71074	.	-	.	ID=rpl20;Name=rpl20
+H.ovalis	Chloe	mRNA	70682	71074	.	-	.	ID=rpl20.mRNA;Parent=rpl20
+H.ovalis	Chloe	CDS	70682	71074	.	-	0	ID=rpl20/1/CDS/1;Parent=rpl20.mRNA
+###
+H.ovalis	Chloe	gene	68535	68608	.	-	.	ID=trnP-UGG;Name=trnP-UGG
+H.ovalis	Chloe	tRNA	68535	68608	.	-	.	ID=trnP-UGG.tRNA;Parent=trnP-UGG
+H.ovalis	Chloe	exon	68535	68608	.	-	.	ID=trnP-UGG/1/tRNA/1;Parent=trnP-UGG.tRNA
+###
+H.ovalis	Chloe	gene	68260	68333	.	-	.	ID=trnW-CCA;Name=trnW-CCA
+H.ovalis	Chloe	tRNA	68260	68333	.	-	.	ID=trnW-CCA.tRNA;Parent=trnW-CCA
+H.ovalis	Chloe	exon	68260	68333	.	-	.	ID=trnW-CCA/1/tRNA/1;Parent=trnW-CCA.tRNA
+###
+H.ovalis	Chloe	gene	66396	66644	.	-	.	ID=psbE;Name=psbE
+H.ovalis	Chloe	mRNA	66396	66644	.	-	.	ID=psbE.mRNA;Parent=psbE
+H.ovalis	Chloe	CDS	66396	66644	.	-	0	ID=psbE/1/CDS/1;Parent=psbE.mRNA
+###
+H.ovalis	Chloe	gene	66266	66382	.	-	.	ID=psbF;Name=psbF
+H.ovalis	Chloe	mRNA	66266	66382	.	-	.	ID=psbF.mRNA;Parent=psbF
+H.ovalis	Chloe	CDS	66266	66382	.	-	0	ID=psbF/1/CDS/1;Parent=psbF.mRNA
+###
+H.ovalis	Chloe	gene	66127	66240	.	-	.	ID=psbL;Name=psbL
+H.ovalis	Chloe	mRNA	66127	66240	.	-	.	ID=psbL.mRNA;Parent=psbL
+H.ovalis	Chloe	CDS	66127	66240	.	-	0	ID=psbL/1/CDS/1;Parent=psbL.mRNA
+###
+H.ovalis	Chloe	gene	65875	65994	.	-	.	ID=psbJ;Name=psbJ
+H.ovalis	Chloe	mRNA	65875	65994	.	-	.	ID=psbJ.mRNA;Parent=psbJ
+H.ovalis	Chloe	CDS	65875	65994	.	-	0	ID=psbJ/1/CDS/1;Parent=psbJ.mRNA
+###
+H.ovalis	Chloe	gene	102631	102702	.	+	.	ID=trnV-GAC;Name=trnV-GAC
+H.ovalis	Chloe	tRNA	102631	102702	.	+	.	ID=trnV-GAC.tRNA;Parent=trnV-GAC
+H.ovalis	Chloe	exon	102631	102702	.	+	.	ID=trnV-GAC/1/tRNA/1;Parent=trnV-GAC.tRNA
+###
+H.ovalis	Chloe	gene	102941	104450	.	+	.	ID=rrn16;Name=rrn16
+H.ovalis	Chloe	rRNA	102941	104450	.	+	.	ID=rrn16.rRNA;Parent=rrn16
+H.ovalis	Chloe	exon	102941	104450	.	+	.	ID=rrn16/1/rRNA/1;Parent=rrn16.rRNA
+###
+H.ovalis	Chloe	gene	104772	105564	.	+	.	ID=trnI-GAU;Name=trnI-GAU
+H.ovalis	Chloe	tRNA	104772	105564	.	+	.	ID=trnI-GAU.tRNA;Parent=trnI-GAU
+H.ovalis	Chloe	exon	104772	104808	.	+	.	ID=trnI-GAU/1/tRNA/1;Parent=trnI-GAU.tRNA
+H.ovalis	Chloe	intron	104809	105529	.	+	.	ID=trnI-GAU/1/intron/2;Parent=trnI-GAU.tRNA
+H.ovalis	Chloe	exon	105530	105564	.	+	.	ID=trnI-GAU/1/tRNA/3;Parent=trnI-GAU.tRNA
+###
+H.ovalis	Chloe	gene	105624	106521	.	+	.	ID=trnA-UGC;Name=trnA-UGC
+H.ovalis	Chloe	tRNA	105624	106521	.	+	.	ID=trnA-UGC.tRNA;Parent=trnA-UGC
+H.ovalis	Chloe	exon	105624	105661	.	+	.	ID=trnA-UGC/1/tRNA/1;Parent=trnA-UGC.tRNA
+H.ovalis	Chloe	intron	105662	106486	.	+	.	ID=trnA-UGC/1/intron/2;Parent=trnA-UGC.tRNA
+H.ovalis	Chloe	exon	106487	106521	.	+	.	ID=trnA-UGC/1/tRNA/3;Parent=trnA-UGC.tRNA
+###
+H.ovalis	Chloe	gene	106683	109497	.	+	.	ID=rrn23;Name=rrn23
+H.ovalis	Chloe	rRNA	106683	109497	.	+	.	ID=rrn23.rRNA;Parent=rrn23
+H.ovalis	Chloe	exon	106683	109497	.	+	.	ID=rrn23/1/rRNA/1;Parent=rrn23.rRNA
+###
+H.ovalis	Chloe	gene	109595	109693	.	+	.	ID=rrn4.5;Name=rrn4.5
+H.ovalis	Chloe	rRNA	109595	109693	.	+	.	ID=rrn4.5.rRNA;Parent=rrn4.5
+H.ovalis	Chloe	exon	109595	109693	.	+	.	ID=rrn4.5/1/rRNA/1;Parent=rrn4.5.rRNA
+###
+H.ovalis	Chloe	gene	109920	110040	.	+	.	ID=rrn5;Name=rrn5
+H.ovalis	Chloe	rRNA	109920	110040	.	+	.	ID=rrn5.rRNA;Parent=rrn5
+H.ovalis	Chloe	exon	109920	110040	.	+	.	ID=rrn5/1/rRNA/1;Parent=rrn5.rRNA
+###
+H.ovalis	Chloe	gene	110122	110195	.	+	.	ID=trnR-ACG;Name=trnR-ACG
+H.ovalis	Chloe	tRNA	110122	110195	.	+	.	ID=trnR-ACG.tRNA;Parent=trnR-ACG
+H.ovalis	Chloe	exon	110122	110195	.	+	.	ID=trnR-ACG/1/tRNA/1;Parent=trnR-ACG.tRNA
+###
+H.ovalis	Chloe	gene	110214	110285	.	+	.	ID=trnN-GUU;Name=trnN-GUU
+H.ovalis	Chloe	tRNA	110214	110285	.	+	.	ID=trnN-GUU.tRNA;Parent=trnN-GUU
+H.ovalis	Chloe	exon	110214	110285	.	+	.	ID=trnN-GUU/1/tRNA/1;Parent=trnN-GUU.tRNA
+###
+H.ovalis	Chloe	gene	53572	55080	.	-	.	ID=atpB;Name=atpB
+H.ovalis	Chloe	mRNA	53572	55080	.	-	.	ID=atpB.mRNA;Parent=atpB
+H.ovalis	Chloe	CDS	53572	55080	.	-	0	ID=atpB/1/CDS/1;Parent=atpB.mRNA
+###
+H.ovalis	Chloe	gene	112531	112743	.	+	.	ID=rpl32;Name=rpl32
+H.ovalis	Chloe	mRNA	112531	112743	.	+	.	ID=rpl32.mRNA;Parent=rpl32
+H.ovalis	Chloe	CDS	112531	112743	.	+	0	ID=rpl32/1/CDS/1;Parent=rpl32.mRNA
+###
+H.ovalis	Chloe	gene	53168	53572	.	-	.	ID=atpE;Name=atpE
+H.ovalis	Chloe	mRNA	53168	53572	.	-	.	ID=atpE.mRNA;Parent=atpE
+H.ovalis	Chloe	CDS	53168	53572	.	-	0	ID=atpE/1/CDS/1;Parent=atpE.mRNA
+###
+H.ovalis	Chloe	gene	113891	119995	.	+	.	ID=ycf1;Name=ycf1
+H.ovalis	Chloe	mRNA	113891	119995	.	+	.	ID=ycf1.mRNA;Parent=ycf1
+H.ovalis	Chloe	CDS	113891	119995	.	+	0	ID=ycf1/1/CDS/1;Parent=ycf1.mRNA
+###
+H.ovalis	Chloe	gene	52049	52681	.	-	.	ID=trnV-UAC;Name=trnV-UAC
+H.ovalis	Chloe	tRNA	52049	52681	.	-	.	ID=trnV-UAC.tRNA;Parent=trnV-UAC
+H.ovalis	Chloe	exon	52049	52083	.	-	.	ID=trnV-UAC/1/tRNA/3;Parent=trnV-UAC.tRNA
+H.ovalis	Chloe	intron	52084	52642	.	-	.	ID=trnV-UAC/1/intron/2;Parent=trnV-UAC.tRNA
+H.ovalis	Chloe	exon	52643	52681	.	-	.	ID=trnV-UAC/1/tRNA/1;Parent=trnV-UAC.tRNA
+###
+H.ovalis	Chloe	gene	49022	49094	.	-	.	ID=trnT-UGU;Name=trnT-UGU
+H.ovalis	Chloe	tRNA	49022	49094	.	-	.	ID=trnT-UGU.tRNA;Parent=trnT-UGU
+H.ovalis	Chloe	exon	49022	49094	.	-	.	ID=trnT-UGU/1/tRNA/1;Parent=trnT-UGU.tRNA
+###
+H.ovalis	Chloe	gene	48016	48639	.	-	.	ID=rps4;Name=rps4
+H.ovalis	Chloe	mRNA	48016	48639	.	-	.	ID=rps4.mRNA;Parent=rps4
+H.ovalis	Chloe	CDS	48016	48639	.	-	0	ID=rps4/1/CDS/1;Parent=rps4.mRNA
+###
+H.ovalis	Chloe	gene	45078	47026	.	-	.	ID=pafI;Name=pafI
+H.ovalis	Chloe	mRNA	45078	47026	.	-	.	ID=pafI.mRNA;Parent=pafI
+H.ovalis	Chloe	CDS	45078	45227	.	-	0	ID=pafI/1/CDS/5;Parent=pafI.mRNA
+H.ovalis	Chloe	intron	45228	45972	.	-	.	ID=pafI/1/intron/4;Parent=pafI.mRNA
+H.ovalis	Chloe	CDS	45973	46202	.	-	2	ID=pafI/1/CDS/3;Parent=pafI.mRNA
+H.ovalis	Chloe	intron	46203	46902	.	-	.	ID=pafI/1/intron/2;Parent=pafI.mRNA
+H.ovalis	Chloe	CDS	46903	47026	.	-	0	ID=pafI/1/CDS/1;Parent=pafI.mRNA
+###
+H.ovalis	Chloe	gene	120315	120605	.	+	.	ID=rps15;Name=rps15
+H.ovalis	Chloe	mRNA	120315	120605	.	+	.	ID=rps15.mRNA;Parent=rps15
+H.ovalis	Chloe	CDS	120315	120605	.	+	0	ID=rps15/1/CDS/1;Parent=rps15.mRNA
+###
+H.ovalis	Chloe	gene	121160	121903	.	+	.	ID=ndhH;Name=ndhH
+H.ovalis	Chloe	mRNA	121160	121903	.	+	.	ID=ndhH.mRNA;Parent=ndhH
+H.ovalis	Chloe	CDS	121160	121903	.	+	0	ID=ndhH/1/CDS/1;Parent=ndhH.mRNA
+###
+H.ovalis	Chloe	gene	122150	122392	.	+	.	ID=psaC;Name=psaC
+H.ovalis	Chloe	mRNA	122150	122392	.	+	.	ID=psaC.mRNA;Parent=psaC
+H.ovalis	Chloe	CDS	122150	122392	.	+	0	ID=psaC/1/CDS/1;Parent=psaC.mRNA
+###
+H.ovalis	Chloe	gene	42151	44400	.	-	.	ID=psaA;Name=psaA
+H.ovalis	Chloe	mRNA	42151	44400	.	-	.	ID=psaA.mRNA;Parent=psaA
+H.ovalis	Chloe	CDS	42151	44400	.	-	0	ID=psaA/1/CDS/1;Parent=psaA.mRNA
+###
+H.ovalis	Chloe	gene	39921	42122	.	-	.	ID=psaB;Name=psaB
+H.ovalis	Chloe	mRNA	39921	42122	.	-	.	ID=psaB.mRNA;Parent=psaB
+H.ovalis	Chloe	CDS	39921	42122	.	-	0	ID=psaB/1/CDS/1;Parent=psaB.mRNA
+###
+H.ovalis	Chloe	gene	39486	39785	.	-	.	ID=rps14;Name=rps14
+H.ovalis	Chloe	mRNA	39486	39785	.	-	.	ID=rps14.mRNA;Parent=rps14
+H.ovalis	Chloe	CDS	39486	39785	.	-	0	ID=rps14/1/CDS/1;Parent=rps14.mRNA
+###
+H.ovalis	Chloe	gene	39257	39330	.	-	.	ID=trnfM-CAU;Name=trnfM-CAU
+H.ovalis	Chloe	tRNA	39257	39330	.	-	.	ID=trnfM-CAU.tRNA;Parent=trnfM-CAU
+H.ovalis	Chloe	exon	39257	39330	.	-	.	ID=trnfM-CAU/1/tRNA/1;Parent=trnfM-CAU.tRNA
+###
+H.ovalis	Chloe	gene	37900	37994	.	-	.	ID=trnS-UGA;Name=trnS-UGA
+H.ovalis	Chloe	tRNA	37900	37994	.	-	.	ID=trnS-UGA.tRNA;Parent=trnS-UGA
+H.ovalis	Chloe	exon	37900	37994	.	-	.	ID=trnS-UGA/1/tRNA/1;Parent=trnS-UGA.tRNA
+###
+H.ovalis	Chloe	gene	33769	33841	.	-	.	ID=trnE-UUC;Name=trnE-UUC
+H.ovalis	Chloe	tRNA	33769	33841	.	-	.	ID=trnE-UUC.tRNA;Parent=trnE-UUC
+H.ovalis	Chloe	exon	33769	33841	.	-	.	ID=trnE-UUC/1/tRNA/1;Parent=trnE-UUC.tRNA
+###
+H.ovalis	Chloe	gene	33605	33688	.	-	.	ID=trnY-GUA;Name=trnY-GUA
+H.ovalis	Chloe	tRNA	33605	33688	.	-	.	ID=trnY-GUA.tRNA;Parent=trnY-GUA
+H.ovalis	Chloe	exon	33605	33688	.	-	.	ID=trnY-GUA/1/tRNA/1;Parent=trnY-GUA.tRNA
+###
+H.ovalis	Chloe	gene	33113	33186	.	-	.	ID=trnD-GUC;Name=trnD-GUC
+H.ovalis	Chloe	tRNA	33113	33186	.	-	.	ID=trnD-GUC.tRNA;Parent=trnD-GUC
+H.ovalis	Chloe	exon	33113	33186	.	-	.	ID=trnD-GUC/1/tRNA/1;Parent=trnD-GUC.tRNA
+###
+H.ovalis	Chloe	gene	31800	31901	.	-	.	ID=psbM;Name=psbM
+H.ovalis	Chloe	mRNA	31800	31901	.	-	.	ID=psbM.mRNA;Parent=psbM
+H.ovalis	Chloe	CDS	31800	31901	.	-	0	ID=psbM/1/CDS/1;Parent=psbM.mRNA
+###
+H.ovalis	Chloe	gene	25226	28627	.	-	.	ID=rpoB;Name=rpoB
+H.ovalis	Chloe	mRNA	25226	28627	.	-	.	ID=rpoB.mRNA;Parent=rpoB
+H.ovalis	Chloe	CDS	25226	28627	.	-	0	ID=rpoB/1/CDS/1;Parent=rpoB.mRNA
+###
+H.ovalis	Chloe	gene	22331	25192	.	-	.	ID=rpoC1;Name=rpoC1
+H.ovalis	Chloe	mRNA	22331	25192	.	-	.	ID=rpoC1.mRNA;Parent=rpoC1
+H.ovalis	Chloe	CDS	22331	23965	.	-	0	ID=rpoC1/1/CDS/3;Parent=rpoC1.mRNA
+H.ovalis	Chloe	intron	23966	24754	.	-	.	ID=rpoC1/1/intron/2;Parent=rpoC1.mRNA
+H.ovalis	Chloe	CDS	24755	25192	.	-	0	ID=rpoC1/1/CDS/1;Parent=rpoC1.mRNA
+###
+H.ovalis	Chloe	gene	17956	22167	.	-	.	ID=rpoC2;Name=rpoC2
+H.ovalis	Chloe	mRNA	17956	22167	.	-	.	ID=rpoC2.mRNA;Parent=rpoC2
+H.ovalis	Chloe	CDS	17956	22167	.	-	0	ID=rpoC2/1/CDS/1;Parent=rpoC2.mRNA
+###
+H.ovalis	Chloe	gene	145043	146667	.	+	.	ID=rps12B;Name=rps12B
+H.ovalis	Chloe	intron	145043	145867	.	+	.	ID=rps12B/1/intron/1;Parent=rps12B
+H.ovalis	Chloe	CDS	145868	146099	.	+	0	ID=rps12B/1/CDS/2;Parent=rps12B
+H.ovalis	Chloe	intron	146100	146644	.	+	.	ID=rps12B/1/intron/3;Parent=rps12B
+H.ovalis	Chloe	CDS	146645	146667	.	+	2	ID=rps12B/1/CDS/4;Parent=rps12B
+###
+H.ovalis	Chloe	gene	146729	147337	.	+	.	ID=rps7;Name=rps7
+H.ovalis	Chloe	mRNA	146729	147337	.	+	.	ID=rps7.mRNA;Parent=rps7
+H.ovalis	Chloe	CDS	146729	147337	.	+	0	ID=rps7/1/CDS/1;Parent=rps7.mRNA
+###
+H.ovalis	Chloe	gene	148307	154768	.	+	.	ID=ycf2;Name=ycf2
+H.ovalis	Chloe	mRNA	148307	154768	.	+	.	ID=ycf2.mRNA;Parent=ycf2
+H.ovalis	Chloe	CDS	148307	154768	.	+	0	ID=ycf2/1/CDS/1;Parent=ycf2.mRNA
+###
+H.ovalis	Chloe	gene	16859	17596	.	-	.	ID=rps2;Name=rps2
+H.ovalis	Chloe	mRNA	16859	17596	.	-	.	ID=rps2.mRNA;Parent=rps2
+H.ovalis	Chloe	CDS	16859	17596	.	-	0	ID=rps2/1/CDS/1;Parent=rps2.mRNA
+###
+H.ovalis	Chloe	gene	15860	16600	.	-	.	ID=atpI;Name=atpI
+H.ovalis	Chloe	mRNA	15860	16600	.	-	.	ID=atpI.mRNA;Parent=atpI
+H.ovalis	Chloe	CDS	15860	16600	.	-	0	ID=atpI/1/CDS/1;Parent=atpI.mRNA
+###
+H.ovalis	Chloe	gene	14676	14918	.	-	.	ID=atpH;Name=atpH
+H.ovalis	Chloe	mRNA	14676	14918	.	-	.	ID=atpH.mRNA;Parent=atpH
+H.ovalis	Chloe	CDS	14676	14918	.	-	0	ID=atpH/1/CDS/1;Parent=atpH.mRNA
+###
+H.ovalis	Chloe	gene	12815	14221	.	-	.	ID=atpF;Name=atpF
+H.ovalis	Chloe	mRNA	12815	14221	.	-	.	ID=atpF.mRNA;Parent=atpF
+H.ovalis	Chloe	CDS	12815	13230	.	-	2	ID=atpF/1/CDS/3;Parent=atpF.mRNA
+H.ovalis	Chloe	intron	13231	14076	.	-	.	ID=atpF/1/intron/2;Parent=atpF.mRNA
+H.ovalis	Chloe	CDS	14077	14221	.	-	0	ID=atpF/1/CDS/1;Parent=atpF.mRNA
+###
+H.ovalis	Chloe	gene	11209	12729	.	-	.	ID=atpA;Name=atpA
+H.ovalis	Chloe	mRNA	11209	12729	.	-	.	ID=atpA.mRNA;Parent=atpA
+H.ovalis	Chloe	CDS	11209	12729	.	-	0	ID=atpA/1/CDS/1;Parent=atpA.mRNA
+###
+H.ovalis	Chloe	gene	155743	155816	.	+	.	ID=trnI-CAU;Name=trnI-CAU
+H.ovalis	Chloe	tRNA	155743	155816	.	+	.	ID=trnI-CAU.tRNA;Parent=trnI-CAU
+H.ovalis	Chloe	exon	155743	155816	.	+	.	ID=trnI-CAU/1/tRNA/1;Parent=trnI-CAU.tRNA
+###
+H.ovalis	Chloe	gene	155996	156319	.	+	.	ID=rpl23;Name=rpl23
+H.ovalis	Chloe	mRNA	155996	156319	.	+	.	ID=rpl23.mRNA;Parent=rpl23
+H.ovalis	Chloe	CDS	155996	156319	.	+	0	ID=rpl23/1/CDS/1;Parent=rpl23.mRNA
+###
+H.ovalis	Chloe	gene	156324	157788	.	+	.	ID=rpl2;Name=rpl2
+H.ovalis	Chloe	mRNA	156324	157788	.	+	.	ID=rpl2.mRNA;Parent=rpl2
+H.ovalis	Chloe	CDS	156324	156708	.	+	0	ID=rpl2/1/CDS/1;Parent=rpl2.mRNA
+H.ovalis	Chloe	intron	156709	157357	.	+	.	ID=rpl2/1/intron/2;Parent=rpl2.mRNA
+H.ovalis	Chloe	CDS	157358	157788	.	+	2	ID=rpl2/1/CDS/3;Parent=rpl2.mRNA
+###
+H.ovalis	Chloe	gene	157930	158202	.	+	.	ID=rps19;Name=rps19
+H.ovalis	Chloe	mRNA	157930	158202	.	+	.	ID=rps19.mRNA;Parent=rps19
+H.ovalis	Chloe	CDS	157930	158202	.	+	0	ID=rps19/1/CDS/1;Parent=rps19.mRNA
+###
+H.ovalis	Chloe	gene	9088	9175	.	-	.	ID=trnS-GCU;Name=trnS-GCU
+H.ovalis	Chloe	tRNA	9088	9175	.	-	.	ID=trnS-GCU.tRNA;Parent=trnS-GCU
+H.ovalis	Chloe	exon	9088	9175	.	-	.	ID=trnS-GCU/1/tRNA/1;Parent=trnS-GCU.tRNA
+###
+H.ovalis	Chloe	gene	159181	159579	.	+	.	ID=rpl22;Name=rpl22
+H.ovalis	Chloe	mRNA	159181	159579	.	+	.	ID=rpl22.mRNA;Parent=rpl22
+H.ovalis	Chloe	CDS	159181	159579	.	+	0	ID=rpl22/1/CDS/1;Parent=rpl22.mRNA
+###
+H.ovalis	Chloe	gene	159640	160329	.	+	.	ID=rps3;Name=rps3
+H.ovalis	Chloe	mRNA	159640	160329	.	+	.	ID=rps3.mRNA;Parent=rps3
+H.ovalis	Chloe	CDS	159640	160329	.	+	0	ID=rps3/1/CDS/1;Parent=rps3.mRNA
+###
+H.ovalis	Chloe	gene	7471	7542	.	-	.	ID=trnQ-UUG;Name=trnQ-UUG
+H.ovalis	Chloe	tRNA	7471	7542	.	-	.	ID=trnQ-UUG.tRNA;Parent=trnQ-UUG
+H.ovalis	Chloe	exon	7471	7542	.	-	.	ID=trnQ-UUG/1/tRNA/1;Parent=trnQ-UUG.tRNA
+###
+H.ovalis	Chloe	gene	160448	161805	.	+	.	ID=rpl16;Name=rpl16
+H.ovalis	Chloe	mRNA	160448	161805	.	+	.	ID=rpl16.mRNA;Parent=rpl16
+H.ovalis	Chloe	CDS	160448	160456	.	+	0	ID=rpl16/1/CDS/1;Parent=rpl16.mRNA
+H.ovalis	Chloe	intron	160457	161400	.	+	.	ID=rpl16/1/intron/2;Parent=rpl16.mRNA
+H.ovalis	Chloe	CDS	161401	161805	.	+	0	ID=rpl16/1/CDS/3;Parent=rpl16.mRNA
+###
+H.ovalis	Chloe	gene	4719	6237	.	-	.	ID=rps16;Name=rps16
+H.ovalis	Chloe	mRNA	4719	6237	.	-	.	ID=rps16.mRNA;Parent=rps16
+H.ovalis	Chloe	CDS	4719	5029	.	-	0	ID=rps16/1/CDS/3;Parent=rps16.mRNA
+H.ovalis	Chloe	intron	5030	6197	.	-	.	ID=rps16/1/intron/2;Parent=rps16.mRNA
+H.ovalis	Chloe	CDS	6198	6237	.	-	0	ID=rps16/1/CDS/1;Parent=rps16.mRNA
+###
+H.ovalis	Chloe	gene	161945	162310	.	+	.	ID=rpl14;Name=rpl14
+H.ovalis	Chloe	mRNA	161945	162310	.	+	.	ID=rpl14.mRNA;Parent=rpl14
+H.ovalis	Chloe	CDS	161945	162310	.	+	0	ID=rpl14/1/CDS/1;Parent=rpl14.mRNA
+###
+H.ovalis	Chloe	gene	162464	162859	.	+	.	ID=rps8;Name=rps8
+H.ovalis	Chloe	mRNA	162464	162859	.	+	.	ID=rps8.mRNA;Parent=rps8
+H.ovalis	Chloe	CDS	162464	162859	.	+	0	ID=rps8/1/CDS/1;Parent=rps8.mRNA
+###
+H.ovalis	Chloe	gene	1388	3963	.	-	.	ID=trnK-UUU;Name=trnK-UUU
+H.ovalis	Chloe	tRNA	1388	3963	.	-	.	ID=trnK-UUU.tRNA;Parent=trnK-UUU
+H.ovalis	Chloe	exon	1388	1422	.	-	.	ID=trnK-UUU/1/tRNA/3;Parent=trnK-UUU.tRNA
+H.ovalis	Chloe	intron	1423	3926	.	-	.	ID=trnK-UUU/1/intron/2;Parent=trnK-UUU.tRNA
+H.ovalis	Chloe	exon	3927	3963	.	-	.	ID=trnK-UUU/1/tRNA/1;Parent=trnK-UUU.tRNA
+###
+H.ovalis	Chloe	gene	1670	3187	.	-	.	ID=matK;Name=matK
+H.ovalis	Chloe	mRNA	1670	3187	.	-	.	ID=matK.mRNA;Parent=matK
+H.ovalis	Chloe	CDS	1670	3187	.	-	0	ID=matK/1/CDS/1;Parent=matK.mRNA
+###
+H.ovalis	Chloe	gene	165175	165285	.	+	.	ID=rpl36;Name=rpl36
+H.ovalis	Chloe	mRNA	165175	165285	.	+	.	ID=rpl36.mRNA;Parent=rpl36
+H.ovalis	Chloe	CDS	165175	165285	.	+	0	ID=rpl36/1/CDS/1;Parent=rpl36.mRNA
+###
+H.ovalis	Chloe	gene	165427	165912	.	+	.	ID=rps11;Name=rps11
+H.ovalis	Chloe	mRNA	165427	165912	.	+	.	ID=rps11.mRNA;Parent=rps11
+H.ovalis	Chloe	CDS	165427	165912	.	+	0	ID=rps11/1/CDS/1;Parent=rps11.mRNA
+###
+H.ovalis	Chloe	gene	166011	167030	.	+	.	ID=rpoA;Name=rpoA
+H.ovalis	Chloe	mRNA	166011	167030	.	+	.	ID=rpoA.mRNA;Parent=rpoA
+H.ovalis	Chloe	CDS	166011	167030	.	+	0	ID=rpoA/1/CDS/1;Parent=rpoA.mRNA
+###
+H.ovalis	Chloe	gene	128	1186	.	-	.	ID=psbA;Name=psbA
+H.ovalis	Chloe	mRNA	128	1186	.	-	.	ID=psbA.mRNA;Parent=psbA
+H.ovalis	Chloe	CDS	128	1186	.	-	0	ID=psbA/1/CDS/1;Parent=psbA.mRNA
+###

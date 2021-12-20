@@ -5,6 +5,7 @@ date: "15 April 2021"
 output: html_document
 ---
 
+Here I use Orthofinder results to pull out genes unique to seagrasses, unique to duckweeds, and make some nice summary tables
 
 ```{r setup}
 library(tidyverse)

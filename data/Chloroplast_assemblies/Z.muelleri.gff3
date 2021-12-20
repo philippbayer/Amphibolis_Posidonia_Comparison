@@ -1,0 +1,568 @@
+##gff-version 3.2.1
+Z.muelleri	Chloe	gene	121422	145820	.	-	.	ID=IR-2;Name=IR-2
+Z.muelleri	Chloe	repeat_region	121422	145820	.	-	.	ID=IR-2/1/repeat_region/1;Parent=IR-2
+###
+Z.muelleri	Chloe	gene	145441	145515	.	-	.	ID=trnH-GUG-2;Name=trnH-GUG
+Z.muelleri	Chloe	tRNA	145441	145515	.	-	.	ID=trnH-GUG-2.tRNA;Parent=trnH-GUG-2
+Z.muelleri	Chloe	exon	145441	145515	.	-	.	ID=trnH-GUG/2/tRNA/1;Parent=trnH-GUG-2.tRNA
+###
+Z.muelleri	Chloe	gene	137822	143263	.	-	.	ID=ycf2-2;Name=ycf2
+Z.muelleri	Chloe	mRNA	137822	143263	.	-	.	ID=ycf2-2.mRNA;Parent=ycf2-2
+Z.muelleri	Chloe	CDS	137822	143263	.	-	0	ID=ycf2/2/CDS/1;Parent=ycf2-2.mRNA
+###
+Z.muelleri	Chloe	gene	6829	7011	.	+	.	ID=psbK;Name=psbK
+Z.muelleri	Chloe	mRNA	6829	7011	.	+	.	ID=psbK.mRNA;Parent=psbK
+Z.muelleri	Chloe	CDS	6829	7011	.	+	0	ID=psbK/1/CDS/1;Parent=psbK.mRNA
+###
+Z.muelleri	Chloe	gene	7418	7522	.	+	.	ID=psbI;Name=psbI
+Z.muelleri	Chloe	mRNA	7418	7522	.	+	.	ID=psbI.mRNA;Parent=psbI
+Z.muelleri	Chloe	CDS	7418	7522	.	+	0	ID=psbI/1/CDS/1;Parent=psbI.mRNA
+###
+Z.muelleri	Chloe	gene	8482	9266	.	+	.	ID=trnG-UCC;Name=trnG-UCC
+Z.muelleri	Chloe	tRNA	8482	9266	.	+	.	ID=trnG-UCC.tRNA;Parent=trnG-UCC
+Z.muelleri	Chloe	exon	8482	8504	.	+	.	ID=trnG-UCC/1/tRNA/1;Parent=trnG-UCC.tRNA
+Z.muelleri	Chloe	intron	8505	9218	.	+	.	ID=trnG-UCC/1/intron/2;Parent=trnG-UCC.tRNA
+Z.muelleri	Chloe	exon	9219	9266	.	+	.	ID=trnG-UCC/1/tRNA/3;Parent=trnG-UCC.tRNA
+###
+Z.muelleri	Chloe	gene	9382	9453	.	+	.	ID=trnR-UCU;Name=trnR-UCU
+Z.muelleri	Chloe	tRNA	9382	9453	.	+	.	ID=trnR-UCU.tRNA;Parent=trnR-UCU
+Z.muelleri	Chloe	exon	9382	9453	.	+	.	ID=trnR-UCU/1/tRNA/1;Parent=trnR-UCU.tRNA
+###
+Z.muelleri	Chloe	gene	131553	131624	.	-	.	ID=trnV-GAC-2;Name=trnV-GAC
+Z.muelleri	Chloe	tRNA	131553	131624	.	-	.	ID=trnV-GAC-2.tRNA;Parent=trnV-GAC-2
+Z.muelleri	Chloe	exon	131553	131624	.	-	.	ID=trnV-GAC/2/tRNA/1;Parent=trnV-GAC-2.tRNA
+###
+Z.muelleri	Chloe	gene	129840	131330	.	-	.	ID=rrn16-2;Name=rrn16
+Z.muelleri	Chloe	rRNA	129840	131330	.	-	.	ID=rrn16-2.rRNA;Parent=rrn16-2
+Z.muelleri	Chloe	exon	129840	131330	.	-	.	ID=rrn16/2/rRNA/1;Parent=rrn16-2.rRNA
+###
+Z.muelleri	Chloe	gene	128443	129528	.	-	.	ID=trnI-GAU-2;Name=trnI-GAU
+Z.muelleri	Chloe	tRNA	128443	129528	.	-	.	ID=trnI-GAU-2.tRNA;Parent=trnI-GAU-2
+Z.muelleri	Chloe	exon	128443	128477	.	-	.	ID=trnI-GAU/2/tRNA/3;Parent=trnI-GAU-2.tRNA
+Z.muelleri	Chloe	intron	128478	129491	.	-	.	ID=trnI-GAU/2/intron/2;Parent=trnI-GAU-2.tRNA
+Z.muelleri	Chloe	exon	129492	129528	.	-	.	ID=trnI-GAU/2/tRNA/1;Parent=trnI-GAU-2.tRNA
+###
+Z.muelleri	Chloe	gene	127496	128378	.	-	.	ID=trnA-UGC-2;Name=trnA-UGC
+Z.muelleri	Chloe	tRNA	127496	128378	.	-	.	ID=trnA-UGC-2.tRNA;Parent=trnA-UGC-2
+Z.muelleri	Chloe	exon	127496	127530	.	-	.	ID=trnA-UGC/2/tRNA/3;Parent=trnA-UGC-2.tRNA
+Z.muelleri	Chloe	intron	127531	128340	.	-	.	ID=trnA-UGC/2/intron/2;Parent=trnA-UGC-2.tRNA
+Z.muelleri	Chloe	exon	128341	128378	.	-	.	ID=trnA-UGC/2/tRNA/1;Parent=trnA-UGC-2.tRNA
+###
+Z.muelleri	Chloe	gene	124547	127359	.	-	.	ID=rrn23-2;Name=rrn23
+Z.muelleri	Chloe	rRNA	124547	127359	.	-	.	ID=rrn23-2.rRNA;Parent=rrn23-2
+Z.muelleri	Chloe	exon	124547	127359	.	-	.	ID=rrn23/2/rRNA/1;Parent=rrn23-2.rRNA
+###
+Z.muelleri	Chloe	gene	124346	124448	.	-	.	ID=rrn4.5-2;Name=rrn4.5
+Z.muelleri	Chloe	rRNA	124346	124448	.	-	.	ID=rrn4.5-2.rRNA;Parent=rrn4.5-2
+Z.muelleri	Chloe	exon	124346	124448	.	-	.	ID=rrn4.5/2/rRNA/1;Parent=rrn4.5-2.rRNA
+###
+Z.muelleri	Chloe	gene	123994	124114	.	-	.	ID=rrn5-2;Name=rrn5
+Z.muelleri	Chloe	rRNA	123994	124114	.	-	.	ID=rrn5-2.rRNA;Parent=rrn5-2
+Z.muelleri	Chloe	exon	123994	124114	.	-	.	ID=rrn5/2/rRNA/1;Parent=rrn5-2.rRNA
+###
+Z.muelleri	Chloe	gene	123696	123769	.	-	.	ID=trnR-ACG-2;Name=trnR-ACG
+Z.muelleri	Chloe	tRNA	123696	123769	.	-	.	ID=trnR-ACG-2.tRNA;Parent=trnR-ACG-2
+Z.muelleri	Chloe	exon	123696	123769	.	-	.	ID=trnR-ACG/2/tRNA/1;Parent=trnR-ACG-2.tRNA
+###
+Z.muelleri	Chloe	gene	120731	120810	.	-	.	ID=trnL-UAG;Name=trnL-UAG
+Z.muelleri	Chloe	tRNA	120731	120810	.	-	.	ID=trnL-UAG.tRNA;Parent=trnL-UAG
+Z.muelleri	Chloe	exon	120731	120810	.	-	.	ID=trnL-UAG/1/tRNA/1;Parent=trnL-UAG.tRNA
+###
+Z.muelleri	Chloe	gene	119687	120643	.	-	.	ID=ccsA;Name=ccsA
+Z.muelleri	Chloe	mRNA	119687	120643	.	-	.	ID=ccsA.mRNA;Parent=ccsA
+Z.muelleri	Chloe	CDS	119687	120643	.	-	0	ID=ccsA/1/CDS/1;Parent=ccsA.mRNA
+###
+Z.muelleri	Chloe	gene	27669	27739	.	+	.	ID=trnC-GCA;Name=trnC-GCA
+Z.muelleri	Chloe	tRNA	27669	27739	.	+	.	ID=trnC-GCA.tRNA;Parent=trnC-GCA
+Z.muelleri	Chloe	exon	27669	27739	.	+	.	ID=trnC-GCA/1/tRNA/1;Parent=trnC-GCA.tRNA
+###
+Z.muelleri	Chloe	gene	28549	28635	.	+	.	ID=petN;Name=petN
+Z.muelleri	Chloe	mRNA	28549	28635	.	+	.	ID=petN.mRNA;Parent=petN
+Z.muelleri	Chloe	CDS	28549	28635	.	+	0	ID=petN/1/CDS/1;Parent=petN.mRNA
+###
+Z.muelleri	Chloe	gene	31404	31475	.	+	.	ID=trnT-GGU;Name=trnT-GGU
+Z.muelleri	Chloe	tRNA	31404	31475	.	+	.	ID=trnT-GGU.tRNA;Parent=trnT-GGU
+Z.muelleri	Chloe	exon	31404	31475	.	+	.	ID=trnT-GGU/1/tRNA/1;Parent=trnT-GGU.tRNA
+###
+Z.muelleri	Chloe	gene	32650	33708	.	+	.	ID=psbD;Name=psbD
+Z.muelleri	Chloe	mRNA	32650	33708	.	+	.	ID=psbD.mRNA;Parent=psbD
+Z.muelleri	Chloe	CDS	32650	33708	.	+	0	ID=psbD/1/CDS/1;Parent=psbD.mRNA
+###
+Z.muelleri	Chloe	gene	33695	35077	.	+	.	ID=psbC;Name=psbC
+Z.muelleri	Chloe	mRNA	33695	35077	.	+	.	ID=psbC.mRNA;Parent=psbC
+Z.muelleri	Chloe	CDS	33695	35077	.	+	0	ID=psbC/1/CDS/1;Parent=psbC.mRNA
+###
+Z.muelleri	Chloe	gene	35639	35824	.	+	.	ID=psbZ;Name=psbZ
+Z.muelleri	Chloe	mRNA	35639	35824	.	+	.	ID=psbZ.mRNA;Parent=psbZ
+Z.muelleri	Chloe	CDS	35639	35824	.	+	0	ID=psbZ/1/CDS/1;Parent=psbZ.mRNA
+###
+Z.muelleri	Chloe	gene	107619	109817	.	-	.	ID=ndhF;Name=ndhF
+Z.muelleri	Chloe	mRNA	107619	109817	.	-	.	ID=ndhF.mRNA;Parent=ndhF
+Z.muelleri	Chloe	CDS	107619	109817	.	-	0	ID=ndhF/1/CDS/1;Parent=ndhF.mRNA
+###
+Z.muelleri	Chloe	gene	36290	36360	.	+	.	ID=trnG-GCC;Name=trnG-GCC
+Z.muelleri	Chloe	tRNA	36290	36360	.	+	.	ID=trnG-GCC.tRNA;Parent=trnG-GCC
+Z.muelleri	Chloe	exon	36290	36360	.	+	.	ID=trnG-GCC/1/tRNA/1;Parent=trnG-GCC.tRNA
+###
+Z.muelleri	Chloe	gene	106218	106289	.	-	.	ID=trnN-GUU-2;Name=trnN-GUU
+Z.muelleri	Chloe	tRNA	106218	106289	.	-	.	ID=trnN-GUU-2.tRNA;Parent=trnN-GUU-2
+Z.muelleri	Chloe	exon	106218	106289	.	-	.	ID=trnN-GUU/2/tRNA/1;Parent=trnN-GUU-2.tRNA
+###
+Z.muelleri	Chloe	gene	44703	44789	.	+	.	ID=trnS-GGA;Name=trnS-GGA
+Z.muelleri	Chloe	tRNA	44703	44789	.	+	.	ID=trnS-GGA.tRNA;Parent=trnS-GGA
+Z.muelleri	Chloe	exon	44703	44789	.	+	.	ID=trnS-GGA/1/tRNA/1;Parent=trnS-GGA.tRNA
+###
+Z.muelleri	Chloe	gene	46898	47582	.	+	.	ID=trnL-UAA;Name=trnL-UAA
+Z.muelleri	Chloe	tRNA	46898	47582	.	+	.	ID=trnL-UAA.tRNA;Parent=trnL-UAA
+Z.muelleri	Chloe	exon	46898	46932	.	+	.	ID=trnL-UAA/1/tRNA/1;Parent=trnL-UAA.tRNA
+Z.muelleri	Chloe	intron	46933	47532	.	+	.	ID=trnL-UAA/1/intron/2;Parent=trnL-UAA.tRNA
+Z.muelleri	Chloe	exon	47533	47582	.	+	.	ID=trnL-UAA/1/tRNA/3;Parent=trnL-UAA.tRNA
+###
+Z.muelleri	Chloe	gene	47908	47980	.	+	.	ID=trnF-GAA;Name=trnF-GAA
+Z.muelleri	Chloe	tRNA	47908	47980	.	+	.	ID=trnF-GAA.tRNA;Parent=trnF-GAA
+Z.muelleri	Chloe	exon	47908	47980	.	+	.	ID=trnF-GAA/1/tRNA/1;Parent=trnF-GAA.tRNA
+###
+Z.muelleri	Chloe	gene	95449	96808	.	-	.	ID=rps12B-2;Name=rps12B
+Z.muelleri	Chloe	CDS	95449	95471	.	-	2	ID=rps12B/2/CDS/4;Parent=rps12B-2
+Z.muelleri	Chloe	intron	95472	96017	.	-	.	ID=rps12B/2/intron/3;Parent=rps12B-2
+Z.muelleri	Chloe	CDS	96018	96249	.	-	0	ID=rps12B/2/CDS/2;Parent=rps12B-2
+Z.muelleri	Chloe	intron	96250	96808	.	-	.	ID=rps12B/2/intron/1;Parent=rps12B-2
+###
+Z.muelleri	Chloe	gene	94923	95387	.	-	.	ID=rps7-2;Name=rps7
+Z.muelleri	Chloe	mRNA	94923	95387	.	-	.	ID=rps7-2.mRNA;Parent=rps7-2
+Z.muelleri	Chloe	CDS	94923	95387	.	-	0	ID=rps7/2/CDS/1;Parent=rps7-2.mRNA
+###
+Z.muelleri	Chloe	gene	92366	94551	.	-	.	ID=ndhB-2;Name=ndhB
+Z.muelleri	Chloe	mRNA	92366	94551	.	-	.	ID=ndhB-2.mRNA;Parent=ndhB-2
+Z.muelleri	Chloe	CDS	92366	93118	.	-	0	ID=ndhB/2/CDS/3;Parent=ndhB-2.mRNA
+Z.muelleri	Chloe	intron	93119	93828	.	-	.	ID=ndhB/2/intron/2;Parent=ndhB-2.mRNA
+Z.muelleri	Chloe	CDS	93829	94551	.	-	0	ID=ndhB/2/CDS/1;Parent=ndhB-2.mRNA
+###
+Z.muelleri	Chloe	gene	53745	55217	.	+	.	ID=atpB;Name=atpB
+Z.muelleri	Chloe	mRNA	53745	55217	.	+	.	ID=atpB.mRNA;Parent=atpB
+Z.muelleri	Chloe	CDS	53745	55217	.	+	0	ID=atpB/1/CDS/1;Parent=atpB.mRNA
+###
+Z.muelleri	Chloe	gene	91683	91763	.	-	.	ID=trnL-CAA-2;Name=trnL-CAA
+Z.muelleri	Chloe	tRNA	91683	91763	.	-	.	ID=trnL-CAA-2.tRNA;Parent=trnL-CAA-2
+Z.muelleri	Chloe	exon	91683	91763	.	-	.	ID=trnL-CAA/2/tRNA/1;Parent=trnL-CAA-2.tRNA
+###
+Z.muelleri	Chloe	gene	55243	55641	.	+	.	ID=atpE;Name=atpE
+Z.muelleri	Chloe	mRNA	55243	55641	.	+	.	ID=atpE.mRNA;Parent=atpE
+Z.muelleri	Chloe	CDS	55243	55641	.	+	0	ID=atpE/1/CDS/1;Parent=atpE.mRNA
+###
+Z.muelleri	Chloe	gene	56108	56797	.	+	.	ID=trnV-UAC;Name=trnV-UAC
+Z.muelleri	Chloe	tRNA	56108	56797	.	+	.	ID=trnV-UAC.tRNA;Parent=trnV-UAC
+Z.muelleri	Chloe	exon	56108	56146	.	+	.	ID=trnV-UAC/1/tRNA/1;Parent=trnV-UAC.tRNA
+Z.muelleri	Chloe	intron	56147	56762	.	+	.	ID=trnV-UAC/1/intron/2;Parent=trnV-UAC.tRNA
+Z.muelleri	Chloe	exon	56763	56797	.	+	.	ID=trnV-UAC/1/tRNA/3;Parent=trnV-UAC.tRNA
+###
+Z.muelleri	Chloe	gene	57512	58930	.	+	.	ID=accD;Name=accD
+Z.muelleri	Chloe	mRNA	57512	58930	.	+	.	ID=accD.mRNA;Parent=accD
+Z.muelleri	Chloe	CDS	57512	58930	.	+	0	ID=accD/1/CDS/1;Parent=accD.mRNA
+###
+Z.muelleri	Chloe	gene	59732	59839	.	+	.	ID=psaI;Name=psaI
+Z.muelleri	Chloe	mRNA	59732	59839	.	+	.	ID=psaI.mRNA;Parent=psaI
+Z.muelleri	Chloe	CDS	59732	59839	.	+	0	ID=psaI/1/CDS/1;Parent=psaI.mRNA
+###
+Z.muelleri	Chloe	gene	85890	85963	.	-	.	ID=trnI-CAU-2;Name=trnI-CAU
+Z.muelleri	Chloe	tRNA	85890	85963	.	-	.	ID=trnI-CAU-2.tRNA;Parent=trnI-CAU-2
+Z.muelleri	Chloe	exon	85890	85963	.	-	.	ID=trnI-CAU/2/tRNA/1;Parent=trnI-CAU-2.tRNA
+###
+Z.muelleri	Chloe	gene	85441	85725	.	-	.	ID=rpl23-2;Name=rpl23
+Z.muelleri	Chloe	mRNA	85441	85725	.	-	.	ID=rpl23-2.mRNA;Parent=rpl23-2
+Z.muelleri	Chloe	CDS	85441	85725	.	-	0	ID=rpl23/2/CDS/1;Parent=rpl23-2.mRNA
+###
+Z.muelleri	Chloe	gene	60213	60764	.	+	.	ID=pafII;Name=pafII
+Z.muelleri	Chloe	mRNA	60213	60764	.	+	.	ID=pafII.mRNA;Parent=pafII
+Z.muelleri	Chloe	CDS	60213	60764	.	+	0	ID=pafII/1/CDS/1;Parent=pafII.mRNA
+###
+Z.muelleri	Chloe	gene	83931	85413	.	-	.	ID=rpl2-2;Name=rpl2
+Z.muelleri	Chloe	mRNA	83931	85413	.	-	.	ID=rpl2-2.mRNA;Parent=rpl2-2
+Z.muelleri	Chloe	CDS	83931	84358	.	-	2	ID=rpl2/2/CDS/3;Parent=rpl2-2.mRNA
+Z.muelleri	Chloe	intron	84359	85022	.	-	.	ID=rpl2/2/intron/2;Parent=rpl2-2.mRNA
+Z.muelleri	Chloe	CDS	85023	85413	.	-	0	ID=rpl2/2/CDS/1;Parent=rpl2-2.mRNA
+###
+Z.muelleri	Chloe	gene	61116	61802	.	+	.	ID=cemA;Name=cemA
+Z.muelleri	Chloe	mRNA	61116	61802	.	+	.	ID=cemA.mRNA;Parent=cemA
+Z.muelleri	Chloe	CDS	61116	61802	.	+	0	ID=cemA/1/CDS/1;Parent=cemA.mRNA
+###
+Z.muelleri	Chloe	gene	62030	62989	.	+	.	ID=petA;Name=petA
+Z.muelleri	Chloe	mRNA	62030	62989	.	+	.	ID=petA.mRNA;Parent=petA
+Z.muelleri	Chloe	CDS	62030	62989	.	+	0	ID=petA/1/CDS/1;Parent=petA.mRNA
+###
+Z.muelleri	Chloe	gene	82297	82947	.	-	.	ID=rps3;Name=rps3
+Z.muelleri	Chloe	mRNA	82297	82947	.	-	.	ID=rps3.mRNA;Parent=rps3
+Z.muelleri	Chloe	CDS	82297	82947	.	-	0	ID=rps3/1/CDS/1;Parent=rps3.mRNA
+###
+Z.muelleri	Chloe	gene	80765	82134	.	-	.	ID=rpl16;Name=rpl16
+Z.muelleri	Chloe	mRNA	80765	82134	.	-	.	ID=rpl16.mRNA;Parent=rpl16
+Z.muelleri	Chloe	CDS	80765	81160	.	-	0	ID=rpl16/1/CDS/3;Parent=rpl16.mRNA
+Z.muelleri	Chloe	intron	81161	82125	.	-	.	ID=rpl16/1/intron/2;Parent=rpl16.mRNA
+Z.muelleri	Chloe	CDS	82126	82134	.	-	0	ID=rpl16/1/CDS/1;Parent=rpl16.mRNA
+###
+Z.muelleri	Chloe	gene	80263	80628	.	-	.	ID=rpl14;Name=rpl14
+Z.muelleri	Chloe	mRNA	80263	80628	.	-	.	ID=rpl14.mRNA;Parent=rpl14
+Z.muelleri	Chloe	CDS	80263	80628	.	-	0	ID=rpl14/1/CDS/1;Parent=rpl14.mRNA
+###
+Z.muelleri	Chloe	gene	65567	65659	.	+	.	ID=petL;Name=petL
+Z.muelleri	Chloe	mRNA	65567	65659	.	+	.	ID=petL.mRNA;Parent=petL
+Z.muelleri	Chloe	CDS	65567	65659	.	+	0	ID=petL/1/CDS/1;Parent=petL.mRNA
+###
+Z.muelleri	Chloe	gene	79725	80120	.	-	.	ID=rps8;Name=rps8
+Z.muelleri	Chloe	mRNA	79725	80120	.	-	.	ID=rps8.mRNA;Parent=rps8
+Z.muelleri	Chloe	CDS	79725	80120	.	-	0	ID=rps8/1/CDS/1;Parent=rps8.mRNA
+###
+Z.muelleri	Chloe	gene	65839	65949	.	+	.	ID=petG;Name=petG
+Z.muelleri	Chloe	mRNA	65839	65949	.	+	.	ID=petG.mRNA;Parent=petG
+Z.muelleri	Chloe	CDS	65839	65949	.	+	0	ID=petG/1/CDS/1;Parent=petG.mRNA
+###
+Z.muelleri	Chloe	gene	79383	79613	.	-	.	ID=infA;Name=infA
+Z.muelleri	Chloe	mRNA	79383	79613	.	-	.	ID=infA.mRNA;Parent=infA
+Z.muelleri	Chloe	CDS	79383	79613	.	-	0	ID=infA/1/CDS/1;Parent=infA.mRNA
+###
+Z.muelleri	Chloe	gene	79162	79272	.	-	.	ID=rpl36;Name=rpl36
+Z.muelleri	Chloe	mRNA	79162	79272	.	-	.	ID=rpl36.mRNA;Parent=rpl36
+Z.muelleri	Chloe	CDS	79162	79272	.	-	0	ID=rpl36/1/CDS/1;Parent=rpl36.mRNA
+###
+Z.muelleri	Chloe	gene	66756	66881	.	+	.	ID=psaJ;Name=psaJ
+Z.muelleri	Chloe	mRNA	66756	66881	.	+	.	ID=psaJ.mRNA;Parent=psaJ
+Z.muelleri	Chloe	CDS	66756	66881	.	+	0	ID=psaJ/1/CDS/1;Parent=psaJ.mRNA
+###
+Z.muelleri	Chloe	gene	78631	79044	.	-	.	ID=rps11;Name=rps11
+Z.muelleri	Chloe	mRNA	78631	79044	.	-	.	ID=rps11.mRNA;Parent=rps11
+Z.muelleri	Chloe	CDS	78631	79044	.	-	0	ID=rps11/1/CDS/1;Parent=rps11.mRNA
+###
+Z.muelleri	Chloe	gene	77555	78562	.	-	.	ID=rpoA;Name=rpoA
+Z.muelleri	Chloe	mRNA	77555	78562	.	-	.	ID=rpoA.mRNA;Parent=rpoA
+Z.muelleri	Chloe	CDS	77555	78562	.	-	0	ID=rpoA/1/CDS/1;Parent=rpoA.mRNA
+###
+Z.muelleri	Chloe	gene	67301	67498	.	+	.	ID=rpl33;Name=rpl33
+Z.muelleri	Chloe	mRNA	67301	67498	.	+	.	ID=rpl33.mRNA;Parent=rpl33
+Z.muelleri	Chloe	CDS	67301	67498	.	+	0	ID=rpl33/1/CDS/1;Parent=rpl33.mRNA
+###
+Z.muelleri	Chloe	gene	67717	68019	.	+	.	ID=rps18;Name=rps18
+Z.muelleri	Chloe	mRNA	67717	68019	.	+	.	ID=rps18.mRNA;Parent=rps18
+Z.muelleri	Chloe	CDS	67717	68019	.	+	0	ID=rps18/1/CDS/1;Parent=rps18.mRNA
+###
+Z.muelleri	Chloe	gene	74001	74129	.	-	.	ID=pbf1;Name=pbf1
+Z.muelleri	Chloe	mRNA	74001	74129	.	-	.	ID=pbf1.mRNA;Parent=pbf1
+Z.muelleri	Chloe	CDS	74001	74129	.	-	0	ID=pbf1/1/CDS/1;Parent=pbf1.mRNA
+###
+Z.muelleri	Chloe	gene	72125	73648	.	+	.	ID=psbB;Name=psbB
+Z.muelleri	Chloe	mRNA	72125	73648	.	+	.	ID=psbB.mRNA;Parent=psbB
+Z.muelleri	Chloe	CDS	72125	73648	.	+	0	ID=psbB/1/CDS/1;Parent=psbB.mRNA
+###
+Z.muelleri	Chloe	gene	73801	73899	.	+	.	ID=psbT;Name=psbT
+Z.muelleri	Chloe	mRNA	73801	73899	.	+	.	ID=psbT.mRNA;Parent=psbT
+Z.muelleri	Chloe	CDS	73801	73899	.	+	0	ID=psbT/1/CDS/1;Parent=psbT.mRNA
+###
+Z.muelleri	Chloe	gene	69679	71688	.	-	.	ID=clpP1;Name=clpP1
+Z.muelleri	Chloe	mRNA	69679	71688	.	-	.	ID=clpP1.mRNA;Parent=clpP1
+Z.muelleri	Chloe	CDS	69679	69921	.	-	0	ID=clpP1/1/CDS/5;Parent=clpP1.mRNA
+Z.muelleri	Chloe	intron	69922	70542	.	-	.	ID=clpP1/1/intron/4;Parent=clpP1.mRNA
+Z.muelleri	Chloe	CDS	70543	70834	.	-	1	ID=clpP1/1/CDS/3;Parent=clpP1.mRNA
+Z.muelleri	Chloe	intron	70835	71617	.	-	.	ID=clpP1/1/intron/2;Parent=clpP1.mRNA
+Z.muelleri	Chloe	CDS	71618	71688	.	-	0	ID=clpP1/1/CDS/1;Parent=clpP1.mRNA
+###
+Z.muelleri	Chloe	gene	74244	74462	.	+	.	ID=psbH;Name=psbH
+Z.muelleri	Chloe	mRNA	74244	74462	.	+	.	ID=psbH.mRNA;Parent=psbH
+Z.muelleri	Chloe	CDS	74244	74462	.	+	0	ID=psbH/1/CDS/1;Parent=psbH.mRNA
+###
+Z.muelleri	Chloe	gene	74571	75949	.	+	.	ID=petB;Name=petB
+Z.muelleri	Chloe	mRNA	74571	75949	.	+	.	ID=petB.mRNA;Parent=petB
+Z.muelleri	Chloe	CDS	74571	74576	.	+	0	ID=petB/1/CDS/1;Parent=petB.mRNA
+Z.muelleri	Chloe	intron	74577	75310	.	+	.	ID=petB/1/intron/2;Parent=petB.mRNA
+Z.muelleri	Chloe	CDS	75311	75949	.	+	0	ID=petB/1/CDS/3;Parent=petB.mRNA
+###
+Z.muelleri	Chloe	gene	76172	77382	.	+	.	ID=petD;Name=petD
+Z.muelleri	Chloe	mRNA	76172	77382	.	+	.	ID=petD.mRNA;Parent=petD
+Z.muelleri	Chloe	CDS	76172	76179	.	+	0	ID=petD/1/CDS/1;Parent=petD.mRNA
+Z.muelleri	Chloe	intron	76180	76910	.	+	.	ID=petD/1/intron/2;Parent=petD.mRNA
+Z.muelleri	Chloe	CDS	76911	77382	.	+	1	ID=petD/1/CDS/3;Parent=petD.mRNA
+###
+Z.muelleri	Chloe	gene	68783	69514	.	-	.	ID=rps12A;Name=rps12A
+Z.muelleri	Chloe	mRNA	68783	69514	.	-	.	ID=rps12A.mRNA;Parent=rps12A
+Z.muelleri	Chloe	intron	68783	69400	.	-	.	ID=rps12A/1/intron/2;Parent=rps12A.mRNA
+Z.muelleri	Chloe	CDS	69401	69514	.	-	0	ID=rps12A/1/CDS/1;Parent=rps12A.mRNA
+###
+Z.muelleri	Chloe	gene	68320	68670	.	-	.	ID=rpl20;Name=rpl20
+Z.muelleri	Chloe	mRNA	68320	68670	.	-	.	ID=rpl20.mRNA;Parent=rpl20
+Z.muelleri	Chloe	CDS	68320	68670	.	-	0	ID=rpl20/1/CDS/1;Parent=rpl20.mRNA
+###
+Z.muelleri	Chloe	gene	66319	66392	.	-	.	ID=trnP-UGG;Name=trnP-UGG
+Z.muelleri	Chloe	tRNA	66319	66392	.	-	.	ID=trnP-UGG.tRNA;Parent=trnP-UGG
+Z.muelleri	Chloe	exon	66319	66392	.	-	.	ID=trnP-UGG/1/tRNA/1;Parent=trnP-UGG.tRNA
+###
+Z.muelleri	Chloe	gene	66076	66149	.	-	.	ID=trnW-CCA;Name=trnW-CCA
+Z.muelleri	Chloe	tRNA	66076	66149	.	-	.	ID=trnW-CCA.tRNA;Parent=trnW-CCA
+Z.muelleri	Chloe	exon	66076	66149	.	-	.	ID=trnW-CCA/1/tRNA/1;Parent=trnW-CCA.tRNA
+###
+Z.muelleri	Chloe	gene	64232	64480	.	-	.	ID=psbE;Name=psbE
+Z.muelleri	Chloe	mRNA	64232	64480	.	-	.	ID=psbE.mRNA;Parent=psbE
+Z.muelleri	Chloe	CDS	64232	64480	.	-	0	ID=psbE/1/CDS/1;Parent=psbE.mRNA
+###
+Z.muelleri	Chloe	gene	64102	64218	.	-	.	ID=psbF;Name=psbF
+Z.muelleri	Chloe	mRNA	64102	64218	.	-	.	ID=psbF.mRNA;Parent=psbF
+Z.muelleri	Chloe	CDS	64102	64218	.	-	0	ID=psbF/1/CDS/1;Parent=psbF.mRNA
+###
+Z.muelleri	Chloe	gene	63963	64076	.	-	.	ID=psbL;Name=psbL
+Z.muelleri	Chloe	mRNA	63963	64076	.	-	.	ID=psbL.mRNA;Parent=psbL
+Z.muelleri	Chloe	CDS	63963	64076	.	-	0	ID=psbL/1/CDS/1;Parent=psbL.mRNA
+###
+Z.muelleri	Chloe	gene	63711	63830	.	-	.	ID=psbJ;Name=psbJ
+Z.muelleri	Chloe	mRNA	63711	63830	.	-	.	ID=psbJ.mRNA;Parent=psbJ
+Z.muelleri	Chloe	CDS	63711	63830	.	-	0	ID=psbJ/1/CDS/1;Parent=psbJ.mRNA
+###
+Z.muelleri	Chloe	gene	83525	107923	.	+	.	ID=IR-1;Name=IR-1
+Z.muelleri	Chloe	repeat_region	83525	107923	.	+	.	ID=IR-1/1/repeat_region/1;Parent=IR-1
+###
+Z.muelleri	Chloe	gene	83830	83904	.	+	.	ID=trnH-GUG;Name=trnH-GUG
+Z.muelleri	Chloe	tRNA	83830	83904	.	+	.	ID=trnH-GUG.tRNA;Parent=trnH-GUG
+Z.muelleri	Chloe	exon	83830	83904	.	+	.	ID=trnH-GUG/1/tRNA/1;Parent=trnH-GUG.tRNA
+###
+Z.muelleri	Chloe	gene	86082	91523	.	+	.	ID=ycf2;Name=ycf2
+Z.muelleri	Chloe	mRNA	86082	91523	.	+	.	ID=ycf2.mRNA;Parent=ycf2
+Z.muelleri	Chloe	CDS	86082	91523	.	+	0	ID=ycf2/1/CDS/1;Parent=ycf2.mRNA
+###
+Z.muelleri	Chloe	gene	55830	55902	.	-	.	ID=trnM-CAU;Name=trnM-CAU
+Z.muelleri	Chloe	tRNA	55830	55902	.	-	.	ID=trnM-CAU.tRNA;Parent=trnM-CAU
+Z.muelleri	Chloe	exon	55830	55902	.	-	.	ID=trnM-CAU/1/tRNA/1;Parent=trnM-CAU.tRNA
+###
+Z.muelleri	Chloe	gene	51499	52926	.	-	.	ID=rbcL;Name=rbcL
+Z.muelleri	Chloe	mRNA	51499	52926	.	-	.	ID=rbcL.mRNA;Parent=rbcL
+Z.muelleri	Chloe	CDS	51499	52926	.	-	0	ID=rbcL/1/CDS/1;Parent=rbcL.mRNA
+###
+Z.muelleri	Chloe	gene	49910	50269	.	-	.	ID=ndhC;Name=ndhC
+Z.muelleri	Chloe	mRNA	49910	50269	.	-	.	ID=ndhC.mRNA;Parent=ndhC
+Z.muelleri	Chloe	CDS	49910	50269	.	-	0	ID=ndhC/1/CDS/1;Parent=ndhC.mRNA
+###
+Z.muelleri	Chloe	gene	49176	49916	.	-	.	ID=ndhK;Name=ndhK
+Z.muelleri	Chloe	mRNA	49176	49916	.	-	.	ID=ndhK.mRNA;Parent=ndhK
+Z.muelleri	Chloe	CDS	49176	49916	.	-	0	ID=ndhK/1/CDS/1;Parent=ndhK.mRNA
+###
+Z.muelleri	Chloe	gene	48595	49068	.	-	.	ID=ndhJ;Name=ndhJ
+Z.muelleri	Chloe	mRNA	48595	49068	.	-	.	ID=ndhJ.mRNA;Parent=ndhJ
+Z.muelleri	Chloe	CDS	48595	49068	.	-	0	ID=ndhJ/1/CDS/1;Parent=ndhJ.mRNA
+###
+Z.muelleri	Chloe	gene	97721	97792	.	+	.	ID=trnV-GAC;Name=trnV-GAC
+Z.muelleri	Chloe	tRNA	97721	97792	.	+	.	ID=trnV-GAC.tRNA;Parent=trnV-GAC
+Z.muelleri	Chloe	exon	97721	97792	.	+	.	ID=trnV-GAC/1/tRNA/1;Parent=trnV-GAC.tRNA
+###
+Z.muelleri	Chloe	gene	98015	99505	.	+	.	ID=rrn16;Name=rrn16
+Z.muelleri	Chloe	rRNA	98015	99505	.	+	.	ID=rrn16.rRNA;Parent=rrn16
+Z.muelleri	Chloe	exon	98015	99505	.	+	.	ID=rrn16/1/rRNA/1;Parent=rrn16.rRNA
+###
+Z.muelleri	Chloe	gene	46059	46131	.	-	.	ID=trnT-UGU;Name=trnT-UGU
+Z.muelleri	Chloe	tRNA	46059	46131	.	-	.	ID=trnT-UGU.tRNA;Parent=trnT-UGU
+Z.muelleri	Chloe	exon	46059	46131	.	-	.	ID=trnT-UGU/1/tRNA/1;Parent=trnT-UGU.tRNA
+###
+Z.muelleri	Chloe	gene	99817	100902	.	+	.	ID=trnI-GAU;Name=trnI-GAU
+Z.muelleri	Chloe	tRNA	99817	100902	.	+	.	ID=trnI-GAU.tRNA;Parent=trnI-GAU
+Z.muelleri	Chloe	exon	99817	99853	.	+	.	ID=trnI-GAU/1/tRNA/1;Parent=trnI-GAU.tRNA
+Z.muelleri	Chloe	intron	99854	100867	.	+	.	ID=trnI-GAU/1/intron/2;Parent=trnI-GAU.tRNA
+Z.muelleri	Chloe	exon	100868	100902	.	+	.	ID=trnI-GAU/1/tRNA/3;Parent=trnI-GAU.tRNA
+###
+Z.muelleri	Chloe	gene	45058	45660	.	-	.	ID=rps4;Name=rps4
+Z.muelleri	Chloe	mRNA	45058	45660	.	-	.	ID=rps4.mRNA;Parent=rps4
+Z.muelleri	Chloe	CDS	45058	45660	.	-	0	ID=rps4/1/CDS/1;Parent=rps4.mRNA
+###
+Z.muelleri	Chloe	gene	100967	101849	.	+	.	ID=trnA-UGC;Name=trnA-UGC
+Z.muelleri	Chloe	tRNA	100967	101849	.	+	.	ID=trnA-UGC.tRNA;Parent=trnA-UGC
+Z.muelleri	Chloe	exon	100967	101004	.	+	.	ID=trnA-UGC/1/tRNA/1;Parent=trnA-UGC.tRNA
+Z.muelleri	Chloe	intron	101005	101814	.	+	.	ID=trnA-UGC/1/intron/2;Parent=trnA-UGC.tRNA
+Z.muelleri	Chloe	exon	101815	101849	.	+	.	ID=trnA-UGC/1/tRNA/3;Parent=trnA-UGC.tRNA
+###
+Z.muelleri	Chloe	gene	42298	44258	.	-	.	ID=pafI;Name=pafI
+Z.muelleri	Chloe	mRNA	42298	44258	.	-	.	ID=pafI.mRNA;Parent=pafI
+Z.muelleri	Chloe	CDS	42298	42453	.	-	0	ID=pafI/1/CDS/5;Parent=pafI.mRNA
+Z.muelleri	Chloe	intron	42454	43187	.	-	.	ID=pafI/1/intron/4;Parent=pafI.mRNA
+Z.muelleri	Chloe	CDS	43188	43417	.	-	2	ID=pafI/1/CDS/3;Parent=pafI.mRNA
+Z.muelleri	Chloe	intron	43418	44134	.	-	.	ID=pafI/1/intron/2;Parent=pafI.mRNA
+Z.muelleri	Chloe	CDS	44135	44258	.	-	0	ID=pafI/1/CDS/1;Parent=pafI.mRNA
+###
+Z.muelleri	Chloe	gene	101986	104798	.	+	.	ID=rrn23;Name=rrn23
+Z.muelleri	Chloe	rRNA	101986	104798	.	+	.	ID=rrn23.rRNA;Parent=rrn23
+Z.muelleri	Chloe	exon	101986	104798	.	+	.	ID=rrn23/1/rRNA/1;Parent=rrn23.rRNA
+###
+Z.muelleri	Chloe	gene	39405	41654	.	-	.	ID=psaA;Name=psaA
+Z.muelleri	Chloe	mRNA	39405	41654	.	-	.	ID=psaA.mRNA;Parent=psaA
+Z.muelleri	Chloe	CDS	39405	41654	.	-	0	ID=psaA/1/CDS/1;Parent=psaA.mRNA
+###
+Z.muelleri	Chloe	gene	104897	104999	.	+	.	ID=rrn4.5;Name=rrn4.5
+Z.muelleri	Chloe	rRNA	104897	104999	.	+	.	ID=rrn4.5.rRNA;Parent=rrn4.5
+Z.muelleri	Chloe	exon	104897	104999	.	+	.	ID=rrn4.5/1/rRNA/1;Parent=rrn4.5.rRNA
+###
+Z.muelleri	Chloe	gene	105231	105351	.	+	.	ID=rrn5;Name=rrn5
+Z.muelleri	Chloe	rRNA	105231	105351	.	+	.	ID=rrn5.rRNA;Parent=rrn5
+Z.muelleri	Chloe	exon	105231	105351	.	+	.	ID=rrn5/1/rRNA/1;Parent=rrn5.rRNA
+###
+Z.muelleri	Chloe	gene	105576	105649	.	+	.	ID=trnR-ACG;Name=trnR-ACG
+Z.muelleri	Chloe	tRNA	105576	105649	.	+	.	ID=trnR-ACG.tRNA;Parent=trnR-ACG
+Z.muelleri	Chloe	exon	105576	105649	.	+	.	ID=trnR-ACG/1/tRNA/1;Parent=trnR-ACG.tRNA
+###
+Z.muelleri	Chloe	gene	37175	39376	.	-	.	ID=psaB;Name=psaB
+Z.muelleri	Chloe	mRNA	37175	39376	.	-	.	ID=psaB.mRNA;Parent=psaB
+Z.muelleri	Chloe	CDS	37175	39376	.	-	0	ID=psaB/1/CDS/1;Parent=psaB.mRNA
+###
+Z.muelleri	Chloe	gene	36745	37044	.	-	.	ID=rps14;Name=rps14
+Z.muelleri	Chloe	mRNA	36745	37044	.	-	.	ID=rps14.mRNA;Parent=rps14
+Z.muelleri	Chloe	CDS	36745	37044	.	-	0	ID=rps14/1/CDS/1;Parent=rps14.mRNA
+###
+Z.muelleri	Chloe	gene	36496	36569	.	-	.	ID=trnfM-CAU;Name=trnfM-CAU
+Z.muelleri	Chloe	tRNA	36496	36569	.	-	.	ID=trnfM-CAU.tRNA;Parent=trnfM-CAU
+Z.muelleri	Chloe	exon	36496	36569	.	-	.	ID=trnfM-CAU/1/tRNA/1;Parent=trnfM-CAU.tRNA
+###
+Z.muelleri	Chloe	gene	35197	35289	.	-	.	ID=trnS-UGA;Name=trnS-UGA
+Z.muelleri	Chloe	tRNA	35197	35289	.	-	.	ID=trnS-UGA.tRNA;Parent=trnS-UGA
+Z.muelleri	Chloe	exon	35197	35289	.	-	.	ID=trnS-UGA/1/tRNA/1;Parent=trnS-UGA.tRNA
+###
+Z.muelleri	Chloe	gene	110564	110710	.	+	.	ID=rpl32;Name=rpl32
+Z.muelleri	Chloe	mRNA	110564	110710	.	+	.	ID=rpl32.mRNA;Parent=rpl32
+Z.muelleri	Chloe	CDS	110564	110710	.	+	0	ID=rpl32/1/CDS/1;Parent=rpl32.mRNA
+###
+Z.muelleri	Chloe	gene	111089	111355	.	+	.	ID=rps15;Name=rps15
+Z.muelleri	Chloe	mRNA	111089	111355	.	+	.	ID=rps15.mRNA;Parent=rps15
+Z.muelleri	Chloe	CDS	111089	111355	.	+	0	ID=rps15/1/CDS/1;Parent=rps15.mRNA
+###
+Z.muelleri	Chloe	gene	111538	112716	.	+	.	ID=ndhH;Name=ndhH
+Z.muelleri	Chloe	mRNA	111538	112716	.	+	.	ID=ndhH.mRNA;Parent=ndhH
+Z.muelleri	Chloe	CDS	111538	112716	.	+	0	ID=ndhH/1/CDS/1;Parent=ndhH.mRNA
+###
+Z.muelleri	Chloe	gene	112721	114910	.	+	.	ID=ndhA;Name=ndhA
+Z.muelleri	Chloe	mRNA	112721	114910	.	+	.	ID=ndhA.mRNA;Parent=ndhA
+Z.muelleri	Chloe	CDS	112721	113273	.	+	0	ID=ndhA/1/CDS/1;Parent=ndhA.mRNA
+Z.muelleri	Chloe	intron	113274	114380	.	+	.	ID=ndhA/1/intron/2;Parent=ndhA.mRNA
+Z.muelleri	Chloe	CDS	114381	114910	.	+	2	ID=ndhA/1/CDS/3;Parent=ndhA.mRNA
+###
+Z.muelleri	Chloe	gene	30959	31031	.	-	.	ID=trnE-UUC;Name=trnE-UUC
+Z.muelleri	Chloe	tRNA	30959	31031	.	-	.	ID=trnE-UUC.tRNA;Parent=trnE-UUC
+Z.muelleri	Chloe	exon	30959	31031	.	-	.	ID=trnE-UUC/1/tRNA/1;Parent=trnE-UUC.tRNA
+###
+Z.muelleri	Chloe	gene	30809	30892	.	-	.	ID=trnY-GUA;Name=trnY-GUA
+Z.muelleri	Chloe	tRNA	30809	30892	.	-	.	ID=trnY-GUA.tRNA;Parent=trnY-GUA
+Z.muelleri	Chloe	exon	30809	30892	.	-	.	ID=trnY-GUA/1/tRNA/1;Parent=trnY-GUA.tRNA
+###
+Z.muelleri	Chloe	gene	115007	115576	.	+	.	ID=ndhI;Name=ndhI
+Z.muelleri	Chloe	mRNA	115007	115576	.	+	.	ID=ndhI.mRNA;Parent=ndhI
+Z.muelleri	Chloe	CDS	115007	115576	.	+	0	ID=ndhI/1/CDS/1;Parent=ndhI.mRNA
+###
+Z.muelleri	Chloe	gene	30349	30422	.	-	.	ID=trnD-GUC;Name=trnD-GUC
+Z.muelleri	Chloe	tRNA	30349	30422	.	-	.	ID=trnD-GUC.tRNA;Parent=trnD-GUC
+Z.muelleri	Chloe	exon	30349	30422	.	-	.	ID=trnD-GUC/1/tRNA/1;Parent=trnD-GUC.tRNA
+###
+Z.muelleri	Chloe	gene	116023	116550	.	+	.	ID=ndhG;Name=ndhG
+Z.muelleri	Chloe	mRNA	116023	116550	.	+	.	ID=ndhG.mRNA;Parent=ndhG
+Z.muelleri	Chloe	CDS	116023	116550	.	+	0	ID=ndhG/1/CDS/1;Parent=ndhG.mRNA
+###
+Z.muelleri	Chloe	gene	29095	29196	.	-	.	ID=psbM;Name=psbM
+Z.muelleri	Chloe	mRNA	29095	29196	.	-	.	ID=psbM.mRNA;Parent=psbM
+Z.muelleri	Chloe	CDS	29095	29196	.	-	0	ID=psbM/1/CDS/1;Parent=psbM.mRNA
+###
+Z.muelleri	Chloe	gene	116901	117203	.	+	.	ID=ndhE;Name=ndhE
+Z.muelleri	Chloe	mRNA	116901	117203	.	+	.	ID=ndhE.mRNA;Parent=ndhE
+Z.muelleri	Chloe	CDS	116901	117203	.	+	0	ID=ndhE/1/CDS/1;Parent=ndhE.mRNA
+###
+Z.muelleri	Chloe	gene	117617	117859	.	+	.	ID=psaC;Name=psaC
+Z.muelleri	Chloe	mRNA	117617	117859	.	+	.	ID=psaC.mRNA;Parent=psaC
+Z.muelleri	Chloe	CDS	117617	117859	.	+	0	ID=psaC/1/CDS/1;Parent=psaC.mRNA
+###
+Z.muelleri	Chloe	gene	117990	119489	.	+	.	ID=ndhD;Name=ndhD
+Z.muelleri	Chloe	mRNA	117990	119489	.	+	.	ID=ndhD.mRNA;Parent=ndhD
+Z.muelleri	Chloe	CDS	117990	119489	.	+	0	ID=ndhD/1/CDS/1;Parent=ndhD.mRNA
+###
+Z.muelleri	Chloe	gene	23334	26549	.	-	.	ID=rpoB;Name=rpoB
+Z.muelleri	Chloe	mRNA	23334	26549	.	-	.	ID=rpoB.mRNA;Parent=rpoB
+Z.muelleri	Chloe	CDS	23334	26549	.	-	0	ID=rpoB/1/CDS/1;Parent=rpoB.mRNA
+###
+Z.muelleri	Chloe	gene	20482	23304	.	-	.	ID=rpoC1;Name=rpoC1
+Z.muelleri	Chloe	mRNA	20482	23304	.	-	.	ID=rpoC1.mRNA;Parent=rpoC1
+Z.muelleri	Chloe	CDS	20482	22095	.	-	0	ID=rpoC1/1/CDS/3;Parent=rpoC1.mRNA
+Z.muelleri	Chloe	intron	22096	22872	.	-	.	ID=rpoC1/1/intron/2;Parent=rpoC1.mRNA
+Z.muelleri	Chloe	CDS	22873	23304	.	-	0	ID=rpoC1/1/CDS/1;Parent=rpoC1.mRNA
+###
+Z.muelleri	Chloe	gene	123056	123127	.	+	.	ID=trnN-GUU;Name=trnN-GUU
+Z.muelleri	Chloe	tRNA	123056	123127	.	+	.	ID=trnN-GUU.tRNA;Parent=trnN-GUU
+Z.muelleri	Chloe	exon	123056	123127	.	+	.	ID=trnN-GUU/1/tRNA/1;Parent=trnN-GUU.tRNA
+###
+Z.muelleri	Chloe	gene	16168	20304	.	-	.	ID=rpoC2;Name=rpoC2
+Z.muelleri	Chloe	mRNA	16168	20304	.	-	.	ID=rpoC2.mRNA;Parent=rpoC2
+Z.muelleri	Chloe	CDS	16168	20304	.	-	0	ID=rpoC2/1/CDS/1;Parent=rpoC2.mRNA
+###
+Z.muelleri	Chloe	gene	15213	15926	.	-	.	ID=rps2;Name=rps2
+Z.muelleri	Chloe	mRNA	15213	15926	.	-	.	ID=rps2.mRNA;Parent=rps2
+Z.muelleri	Chloe	CDS	15213	15926	.	-	0	ID=rps2/1/CDS/1;Parent=rps2.mRNA
+###
+Z.muelleri	Chloe	gene	14244	14984	.	-	.	ID=atpI;Name=atpI
+Z.muelleri	Chloe	mRNA	14244	14984	.	-	.	ID=atpI.mRNA;Parent=atpI
+Z.muelleri	Chloe	CDS	14244	14984	.	-	0	ID=atpI/1/CDS/1;Parent=atpI.mRNA
+###
+Z.muelleri	Chloe	gene	13186	13428	.	-	.	ID=atpH;Name=atpH
+Z.muelleri	Chloe	mRNA	13186	13428	.	-	.	ID=atpH.mRNA;Parent=atpH
+Z.muelleri	Chloe	CDS	13186	13428	.	-	0	ID=atpH/1/CDS/1;Parent=atpH.mRNA
+###
+Z.muelleri	Chloe	gene	132537	133896	.	+	.	ID=rps12B;Name=rps12B
+Z.muelleri	Chloe	intron	132537	133095	.	+	.	ID=rps12B/1/intron/1;Parent=rps12B
+Z.muelleri	Chloe	CDS	133096	133327	.	+	0	ID=rps12B/1/CDS/2;Parent=rps12B
+Z.muelleri	Chloe	intron	133328	133873	.	+	.	ID=rps12B/1/intron/3;Parent=rps12B
+Z.muelleri	Chloe	CDS	133874	133896	.	+	2	ID=rps12B/1/CDS/4;Parent=rps12B
+###
+Z.muelleri	Chloe	gene	11175	12749	.	-	.	ID=atpF;Name=atpF
+Z.muelleri	Chloe	mRNA	11175	12749	.	-	.	ID=atpF.mRNA;Parent=atpF
+Z.muelleri	Chloe	CDS	11175	11581	.	-	2	ID=atpF/1/CDS/3;Parent=atpF.mRNA
+Z.muelleri	Chloe	intron	11582	12604	.	-	.	ID=atpF/1/intron/2;Parent=atpF.mRNA
+Z.muelleri	Chloe	CDS	12605	12749	.	-	0	ID=atpF/1/CDS/1;Parent=atpF.mRNA
+###
+Z.muelleri	Chloe	gene	133958	134422	.	+	.	ID=rps7;Name=rps7
+Z.muelleri	Chloe	mRNA	133958	134422	.	+	.	ID=rps7.mRNA;Parent=rps7
+Z.muelleri	Chloe	CDS	133958	134422	.	+	0	ID=rps7/1/CDS/1;Parent=rps7.mRNA
+###
+Z.muelleri	Chloe	gene	9576	11096	.	-	.	ID=atpA;Name=atpA
+Z.muelleri	Chloe	mRNA	9576	11096	.	-	.	ID=atpA.mRNA;Parent=atpA
+Z.muelleri	Chloe	CDS	9576	11096	.	-	0	ID=atpA/1/CDS/1;Parent=atpA.mRNA
+###
+Z.muelleri	Chloe	gene	134794	136979	.	+	.	ID=ndhB;Name=ndhB
+Z.muelleri	Chloe	mRNA	134794	136979	.	+	.	ID=ndhB.mRNA;Parent=ndhB
+Z.muelleri	Chloe	CDS	134794	135516	.	+	0	ID=ndhB/1/CDS/1;Parent=ndhB.mRNA
+Z.muelleri	Chloe	intron	135517	136226	.	+	.	ID=ndhB/1/intron/2;Parent=ndhB.mRNA
+Z.muelleri	Chloe	CDS	136227	136979	.	+	0	ID=ndhB/1/CDS/3;Parent=ndhB.mRNA
+###
+Z.muelleri	Chloe	gene	137582	137662	.	+	.	ID=trnL-CAA;Name=trnL-CAA
+Z.muelleri	Chloe	tRNA	137582	137662	.	+	.	ID=trnL-CAA.tRNA;Parent=trnL-CAA
+Z.muelleri	Chloe	exon	137582	137662	.	+	.	ID=trnL-CAA/1/tRNA/1;Parent=trnL-CAA.tRNA
+###
+Z.muelleri	Chloe	gene	7649	7736	.	-	.	ID=trnS-GCU;Name=trnS-GCU
+Z.muelleri	Chloe	tRNA	7649	7736	.	-	.	ID=trnS-GCU.tRNA;Parent=trnS-GCU
+Z.muelleri	Chloe	exon	7649	7736	.	-	.	ID=trnS-GCU/1/tRNA/1;Parent=trnS-GCU.tRNA
+###
+Z.muelleri	Chloe	gene	6269	6340	.	-	.	ID=trnQ-UUG;Name=trnQ-UUG
+Z.muelleri	Chloe	tRNA	6269	6340	.	-	.	ID=trnQ-UUG.tRNA;Parent=trnQ-UUG
+Z.muelleri	Chloe	exon	6269	6340	.	-	.	ID=trnQ-UUG/1/tRNA/1;Parent=trnQ-UUG.tRNA
+###
+Z.muelleri	Chloe	gene	1219	3743	.	-	.	ID=trnK-UUU;Name=trnK-UUU
+Z.muelleri	Chloe	tRNA	1219	3743	.	-	.	ID=trnK-UUU.tRNA;Parent=trnK-UUU
+Z.muelleri	Chloe	exon	1219	1253	.	-	.	ID=trnK-UUU/1/tRNA/3;Parent=trnK-UUU.tRNA
+Z.muelleri	Chloe	intron	1254	3706	.	-	.	ID=trnK-UUU/1/intron/2;Parent=trnK-UUU.tRNA
+Z.muelleri	Chloe	exon	3707	3743	.	-	.	ID=trnK-UUU/1/tRNA/1;Parent=trnK-UUU.tRNA
+###
+Z.muelleri	Chloe	gene	1495	2994	.	-	.	ID=matK;Name=matK
+Z.muelleri	Chloe	mRNA	1495	2994	.	-	.	ID=matK.mRNA;Parent=matK
+Z.muelleri	Chloe	CDS	1495	2994	.	-	0	ID=matK/1/CDS/1;Parent=matK.mRNA
+###
+Z.muelleri	Chloe	gene	143382	143455	.	+	.	ID=trnI-CAU;Name=trnI-CAU
+Z.muelleri	Chloe	tRNA	143382	143455	.	+	.	ID=trnI-CAU.tRNA;Parent=trnI-CAU
+Z.muelleri	Chloe	exon	143382	143455	.	+	.	ID=trnI-CAU/1/tRNA/1;Parent=trnI-CAU.tRNA
+###
+Z.muelleri	Chloe	gene	143620	143904	.	+	.	ID=rpl23;Name=rpl23
+Z.muelleri	Chloe	mRNA	143620	143904	.	+	.	ID=rpl23.mRNA;Parent=rpl23
+Z.muelleri	Chloe	CDS	143620	143904	.	+	0	ID=rpl23/1/CDS/1;Parent=rpl23.mRNA
+###
+Z.muelleri	Chloe	gene	143932	145414	.	+	.	ID=rpl2;Name=rpl2
+Z.muelleri	Chloe	mRNA	143932	145414	.	+	.	ID=rpl2.mRNA;Parent=rpl2
+Z.muelleri	Chloe	CDS	143932	144322	.	+	0	ID=rpl2/1/CDS/1;Parent=rpl2.mRNA
+Z.muelleri	Chloe	intron	144323	144986	.	+	.	ID=rpl2/1/intron/2;Parent=rpl2.mRNA
+Z.muelleri	Chloe	CDS	144987	145414	.	+	2	ID=rpl2/1/CDS/3;Parent=rpl2.mRNA
+###
+Z.muelleri	Chloe	gene	145787	146845	.	-	.	ID=psbA;Name=psbA
+Z.muelleri	Chloe	mRNA	145787	146845	.	-	.	ID=psbA.mRNA;Parent=psbA
+Z.muelleri	Chloe	CDS	145787	146845	.	-	0	ID=psbA/1/CDS/1;Parent=psbA.mRNA
+###
