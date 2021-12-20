@@ -241,7 +241,7 @@ Let's also pull these terms out as tables
 ```{r}
 for( i in names(results_list)) {
   print(i)
-  print(knitr::kable(results_list[[i]] %>% filter(Eliminated == FALSE), label=i))
+  print(knitr::kable(results_list[[i]] %>% filter(Eliminated == FALSE), label=i, format = 'html'))
   cat("\n")
 }
 
