@@ -238,10 +238,10 @@ for (f in names(results_list)) {
 
 Let's also pull these terms out as tables
 
-```{r}
+```{r results='asis'}
 for( i in names(results_list)) {
   print(i)
-  print(knitr::kable(results_list[[i]] %>% filter(Eliminated == FALSE), label=i, format = 'html'))
+  print(knitr::kable(results_list[[i]] %>% filter(Eliminated == FALSE), label=i))
   cat("\n")
 }
 
