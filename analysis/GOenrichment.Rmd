@@ -195,9 +195,12 @@ for (f in names(results_list)) {
   if (one.data[1,] == '<html>') {next} # some datasets result in error
   one.data <- one.data [(one.data$plot_X != "null" & one.data$plot_Y != "null") & (! is.na(one.data$frequency)) & (one.data$value != 'null'), ];
   one.data <- type_convert(one.data)
-  
+  top_ten_values <- one.data %>% arrange(value) %>% head(10) %>% pull(term_ID) 
+  one.data <- one.data %>% mutate(description2 = case_when(
+    term_ID %in% top_ten_values ~ description, 
+                                                           TRUE ~ ''))
   p1 <-
-    ggplot(data = one.data, aes(plot_X, plot_Y, label = description)) +
+    ggplot(data = one.data, aes(plot_X, plot_Y, label = description2)) +
     geom_point(aes(colour = value, size = log_size), alpha = I(0.6)) +
     scale_size_area() +
     scale_colour_gradientn(colours = rev(wes_palette("Zissou1", 100, type = "continuous")), 
@@ -209,7 +212,7 @@ for (f in names(results_list)) {
       colour = I (alpha ("black", 0.6))
     ) +
     scale_size_area() +
-    geom_label_repel(max.overlaps = 5, box.padding = 0.5,
+    geom_label_repel(max.overlaps = Inf, box.padding = 0.5,
                      aes(point.size = log_size)) +
     theme_minimal() +
     labs(y = "Semantic space x",
@@ -222,7 +225,8 @@ for (f in names(results_list)) {
       axis.text.y = element_blank(),
       axis.ticks.y = element_blank()
     ) +
-    ggtitle(f)
+    NULL
+    #ggtitle(f)
   
   
   plot_list[[f]] <- p1
@@ -230,6 +234,17 @@ for (f in names(results_list)) {
 }
 ```
 
+# Making Supplementary Tables for the REVIGO results
+
+Let's also pull these terms out as tables
+
+```{r}
+for( i in names(results_list)) {
+  print(i)
+  knitr::kable(results_list[[i]] %>% filter(Eliminated == FALSE), label=i)
+}
+
+```
 
 # Venn diagram GO overlaps
 
@@ -237,7 +252,12 @@ Let's also check which GO terms overlap between the 4 seagrasses!
 
 Let's have a look at all of these plots. Manually zooming in leads to ggrepel reloading labels, so on the small scale a lot of these plots don't have labels.
 ```{r}
-plot_list
+for(i in names(plot_list)) {
+  file_name = paste('output/',  i, '.png', sep='')
+  
+  cowplot::save_plot(file_name, plot_list[[i]], base_height=8)
+  
+}
 ```
 
 How many shared lost GO-terms are there? Hopefully, all four species will have lost the most GO-terms.
