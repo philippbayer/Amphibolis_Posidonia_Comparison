@@ -198,3 +198,57 @@ joined_counts <- left_join(big_joined, counts, by='Orthogroup') %>% select(-star
 joined_counts %>% writexl::write_xlsx('data/arabidopsis_gene_level_counts.xlsx')
 ```
 
+
+# FINAL version redoing - terrestrial vs aquatics vs seagrasses
+
+Plotting all species separately is messy as I have so many species. I'm joining the species into three groups: aquatics, terrestrials, and seagrasses!
+
+```{r}
+per_group_spec <-
+  per_spec %>% mutate(group = case_when(
+    name %in% c(
+      'A. trichopada',
+      'B. distachyon',
+      'O. sativa',
+      'P. patens',
+      'P. trichocarpa',
+      'S. moellendorffii',
+      'A. thaliana',
+      'T. parvula',
+      'V. vinifera',
+      'Z. mays'
+    ) ~ 'Terrestrial',
+    name %in% c(
+      'C. reinhardtii',
+      'L. gibba',
+      'S. polyrhiza',
+      'O. lucimarinus',
+      'W. australis'
+    ) ~ 'Aquatic',
+    name %in% c('P. australis', 'Z. muelleri', 'Z. marina', 'A. antarctica') ~ 'Seagrasses'
+  )) 
+```
+
+
+```{r}
+# now I want the data in this format:
+# listInput <- list(one = c(1, 2, 3, 5, 7, 8, 11, 12, 13), two = c(1, 2, 4, 5, 
+#   10), three = c(1, 5, 6, 7, 8, 9, 10, 12, 13))
+groupx <- per_group_spec %>% 
+  select(group, Orthogroup) %>% # turn the table around
+  deframe() # convert to named vector
+```
+
+```{r}
+mylistgroup <- lapply(split(groupx, names(groupx)), unname) # yuck - ugly code to convert the named vector to a list
+```
+
+```{r}
+xgroup <- upset(fromList(mylistgroup), order.by='freq', nsets = length(groups) - 1)
+```
+
+```{r fig.width=10}
+xgroup
+```
+
+MUCH better. The biggest chunk of orthogroups is not in aquatics or seagrasses with 13562 orthogroups. 3437 orthogroups are unique to aquatics, but not in seagrasses - 1183 orthogroups are unique in seagrasses, but not in aquatics. 404 + 3437 + 2217 orthogroups are not in terrestrials.
