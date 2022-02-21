@@ -5,11 +5,15 @@ output: html_notebook
 ```{r setup}
 library(tidyverse)
 library(wesanderson)
+library(ggtree)
+library(ggtreeExtra)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+
 ```
 
 
 
-Visualising R-gene differences here
+# Visualising R-gene differences here
 
 ```{r}
 pal <- wes_palette("Zissou1", 3, type = "continuous")
@@ -43,3 +47,107 @@ df2 %>% dplyr::filter(Genome %in% c('P. australis', 'Z. marina', 'Z. muelleri', 
   labs(fill='Class')
 ```
 
+Let's link those to the phylogeny we got from timetree.org
+
+```{r}
+tree <- ape::read.tree('./data/timetree_species.nwk')
+tree$tip.label <- c('O. lucimarinus', 'C. reinhardtii', 'P. patens', 'S. moellendorffii', 'O. sativa', 'B. distachyon', 'Z. mays', 'P. australis', 'Z. marina', 'Z. muelleri', 'A. antarctica', 'S. polyrhiza', 'L. gibba', 'V. vinifera', 'A. thaliana', 'S. parvula', 'P. trichocarpa', 'A. trichopada')
+
+```
+```{r}
+p2 <- df2 %>% ggplot(aes(fill=Class2, x=Genome, y=Count)) + geom_bar(stat='identity') +
+    scale_fill_manual(values=pal)  + coord_flip() +  cowplot::theme_minimal_vgrid() +
+    theme(axis.text.y = element_text(face = "italic")) 
+```
+
+```{r}
+p1 <- ggtree(tree)
+p1
+```
+
+```{r}
+df2$label <- df2$Genome
+# get species not in tree
+subtree <- ape::drop.tip(tree, tree$tip.label[!tree$tip.label %in% df2$label])
+```
+
+```{r}
+p1 <- ggtree(subtree)
+p1 
+df3 <- as.data.frame(df2)
+df3$label <- df3$Genome
+df3$id <- df3$label
+
+```
+
+
+```{r}
+# code from https://thackl.github.io/ggtree-composite-plots
+
+tree_y <-  function(ggtree, data){
+  if(!inherits(ggtree, "ggtree"))
+    stop("not a ggtree object")
+  left_join(select(data, label), select(ggtree$data, label, y)) %>%
+    pull(y)
+}
+# overwrite the default expand for continuous scales
+scale_y_tree <- function(expand=expand_scale(0, 0.6), ...){
+    scale_y_continuous(expand=expand, ...)
+}
+
+# get the range of the ggtree y-axis data
+tree_ylim <- function(ggtree){
+  if(!inherits(ggtree, "ggtree"))
+    stop("not a ggtree object")
+  range(ggtree$data$y)
+}
+
+# plot data next to a ggtree aligned by shared labels
+ggtreeplot <- function(ggtree, data = NULL, mapping = aes(), flip=FALSE,
+     expand_limits=expand_scale(0,.6), ...){
+  
+  if(!inherits(ggtree, "ggtree"))
+    stop("not a ggtree object")
+
+  # match the tree limits
+  limits <- tree_ylim(ggtree)
+  limits[1] <- limits[1] + (limits[1] * expand_limits[1]) - expand_limits[2]
+  limits[2] <- limits[2] + (limits[2] * expand_limits[3]) + expand_limits[4]
+  
+  if(flip){
+    mapping <- modifyList(aes_(x=~x), mapping)
+    data <- mutate(data, x=tree_y(ggtree, data))
+    gg <- ggplot(data=data, mapping = mapping, ...) +
+      scale_x_continuous(limits=limits, expand=c(0,0))
+  }else{
+    mapping <- modifyList(aes_(y=~y), mapping)
+    data <- mutate(data, y=tree_y(ggtree, data))
+    gg <- ggplot(data=data, mapping = mapping, ...) +
+      scale_y_continuous(limits=limits, expand=c(0,0))
+  }
+  gg
+}
+
+# get rid of superfluous axis - this works after coord_flip, so it also works
+# for the rotated histogram
+no_y_axis <- function () 
+  theme(axis.line.y = element_blank(), 
+        axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank())
+```
+
+```{r}
+p3 <-  ggtree(subtree) + geom_tiplab(align=TRUE, fontface='italic') +
+  scale_x_continuous(expand=expand_scale(0.8)) + scale_y_tree()
+
+myhist <- ggtreeplot(p3, df3, aes(y=Count, color=Class2, fill=Class2), flip=TRUE) +
+  geom_col(aes(fill=Class2,group=Class2,color=Class2)) + 
+  #theme(legend.position="none") +
+  coord_flip() + no_y_axis()  + 
+  theme(legend.position=c(0.6, 0.87)) + 
+  labs(fill='Class', color='Class')
+
+p3 + myhist 
+
+```
