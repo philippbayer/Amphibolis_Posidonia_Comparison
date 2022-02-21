@@ -7,6 +7,7 @@ library(tidyverse)
 library(wesanderson)
 library(ggtree)
 library(ggtreeExtra)
+library(kableExtra)
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 
 ```
@@ -151,3 +152,11 @@ myhist <- ggtreeplot(p3, df3, aes(y=Count, color=Class2, fill=Class2), flip=TRUE
 p3 + myhist 
 
 ```
+
+# Quick summary stats
+
+```{r}
+df %>% group_by(Genome, Class) %>% summarise(sum=sum(Count)) %>% kbl() %>%
+  kable_styling()
+```
+
