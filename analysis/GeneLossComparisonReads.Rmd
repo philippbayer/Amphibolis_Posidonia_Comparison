@@ -1,0 +1,249 @@
+---
+title: "Visualising gene differences based on read alignments"
+author: "Philipp Bayer"
+date: "21 February 2022"
+output: html_document
+---
+
+Here I compare read alignment differences with known Arabidopsis genes.
+
+
+```{r setup}
+library(tidyverse)
+library(cowplot)
+theme_set(theme_cowplot())
+library(RColorBrewer)
+library(wesanderson)
+library(gghighlight)
+library(patchwork)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+
+```
+
+The data is based on Supplementary Table S6 and S7.
+
+# Stomata genes
+
+```{r}
+stomata <- tibble::tribble(
+             ~Gene.symbol, ~A..antarctica, ~P..australis, ~H..ovalis, ~Z..muelleri, ~Z..marina,
+                 "SBT1.2",              0,             0,                  5.63,          8.2,       4.34,
+                  "EPFL9",              0,             0,                     0,            0,          0,
+                   "EPF1",              0,         25.08,                     0,            0,          0,
+                    "TMM",           3.35,             0,                     0,            0,          0,
+                   "EPF2",              0,             0,                     0,            0,          0,
+                  "MYB88",              0,             0,                  6.74,         2.34,          0,
+                   "MUTE",              0,             0,                     0,            0,          0,
+                   "SPCH",           7.95,          3.29,                  5.84,         4.47,          0,
+                   "FAMA",           6.99,         20.64,                  6.83,         4.98,       4.98,
+                  "SCRM2",           21.8,         25.57,                 19.66,        26.16,      22.25,
+                    "FLP",            3.2,          8.77,                  4.42,            0,          0
+             )
+
+
+```
+
+```{r}
+stomata_long <- stomata %>% pivot_longer(-Gene.symbol, values_to = 'Coverage', names_to='Species') %>% 
+  mutate(Species = gsub('\\.\\.', '. ', Species))
+```
+
+```{r}
+stom_p <- stomata_long %>% ggplot(aes(x=forcats::fct_rev(Species), y=Coverage, fill=Species, color=Species)) + 
+  geom_boxplot(
+    aes(fill = after_scale(colorspace::lighten(fill, .9))),
+    size = 1.5, outlier.shape = NA
+  ) +
+  geom_jitter(width = .1, size = 4, alpha = .5) +
+  ylim(c(-1,100)) +
+  
+  theme(legend.position = "None",
+  axis.text.y = element_text(face = "italic")) +
+  scale_color_brewer(palette='Dark2') +
+  ylab('Coverage (%)') +
+  coord_flip() + xlab('Species')
+
+stom_p
+```
+
+# Ethylene
+
+```{r}
+ethylene <- tibble::tribble(
+              ~Gene.symbol, ~A..antarctica, ~P..australis, ~H..ovalis, ~Z..muelleri, ~Z..marina,
+                    "ACO1",              0,         53.16,          0,            0,          0,
+                    "ACO2",              0,         11.53,          0,            0,          0,
+                    "ACO4",              0,         15.74,          0,            0,          0,
+                    "ACO5",              0,             0,          0,         6.39,        5.3,
+                    "ACS1",           9.34,          5.11,          0,            0,          0,
+                    "ACS2",           7.24,          5.97,          0,         4.43,          0,
+                    "ACS4",          18.74,         25.19,          0,         8.49,       8.21,
+                    "ACS5",          19.25,         50.39,       4.46,            0,          0,
+                    "ACS6",              0,             0,          0,            0,          0,
+                    "ACS7",          10.27,         66.29,          0,         6.47,          0,
+                    "ACS8",          38.58,         42.62,       6.24,            0,          0,
+                    "ACS9",          20.52,         36.94,          0,            0,          0,
+                   "ACS11",              0,         22.05,       7.45,            0,          0,
+                    "ERS1",          35.23,         40.88,          0,          2.5,          0,
+               "ETR1/EIN1",          49.57,         51.87,          0,         3.83,          0,
+                    "ETR2",              0,         21.96,          0,            0,          0,
+                    "EIN4",           1.74,         31.33,          0,            0,       1.78,
+                    "CTR1",          26.68,         31.55,       5.96,            0,          0,
+                    "EIN2",              0,         14.54,      11.12,            0,          0,
+                    "EBF1",              0,             0,        4.5,            0,          0,
+                    "EBF2",              0,         12.45,       4.22,            0,          0,
+                    "EIN3",          27.03,         43.08,      36.83,        31.27,      31.11,
+                    "MYC2",           4.43,         27.83,      10.31,        23.61,       23.5,
+                    "MYC3",             19,         17.14,      10.06,        12.14,      13.77,
+                    "MYC4",              0,          3.84,       8.19,        20.96,      11.75
+              )
+
+```
+
+```{r}
+ethylene_long <- ethylene %>% pivot_longer(-Gene.symbol, values_to = 'Coverage', names_to='Species') %>% 
+  mutate(Species = gsub('\\.\\.', '. ', Species))
+```
+
+```{r}
+eth_p <- ethylene_long %>% ggplot(aes(x=forcats::fct_rev(Species), y=Coverage, fill=Species, color=Species)) + 
+  geom_boxplot(
+    aes(fill = after_scale(colorspace::lighten(fill, .9))),
+    size = 1.5, outlier.shape = NA
+  ) +
+  geom_jitter(width = .1, size = 4, alpha = .5) +
+  ylim(c(-1,100)) +
+  
+  theme(legend.position = "None",
+  axis.text.y = element_text(face = "italic")) +
+  scale_color_brewer(palette='Dark2') +
+  ylab('Coverage (%)') +
+  coord_flip() +
+  xlab('Species')
+eth_p
+```
+# NDH genes
+
+```{r}
+ndh <- tibble::tribble(
+         ~Gene.symbol, ~A..antarctica, ~P..australis, ~H..ovalis, ~Z..muelleri, ~Z..marina,
+               "NDHL",              0,             0,          0,        16.67,      16.67,
+               "NDHM",              0,             0,          0,        36.24,       34.4,
+               "NDHN",          48.73,             0,          0,        66.35,      59.68,
+               "NDHO",              0,             0,          0,        33.54,      22.22,
+               "NDHS",          12.35,         28.29,          0,         34.4,      30.15,
+               "NDHT",              0,          8.67,          0,        19.47,      16.67,
+               "NDHU",              0,             0,          0,         9.89,          0,
+              "PNSB1",           4.26,         42.42,          0,         32.4,      31.24,
+              "PNSB2",              0,             0,          0,            0,          0,
+              "PNSB3",              0,          8.46,          0,        16.26,       9.76,
+              "PNSB4",              0,         19.13,          0,        18.75,      18.75,
+              "PNSL1",              0,             0,          0,            0,          0,
+              "PNSL2",          16.58,             0,          0,        45.03,      15.01,
+              "PNSL3",              0,             0,          0,            0,          0,
+              "PNSL4",           7.19,         23.55,          0,        31.04,      45.11,
+              "PNSL5",          52.82,         62.82,      57.31,        48.72,      46.28,
+               "CRR6",              0,             0,          0,        43.86,      33.06,
+               "CRR7",              0,             0,          0,            0,          0,
+              "Lhca5",              0,         35.15,          0,        18.29,      27.76,
+              "Lhca6",              0,         47.85,          0,        58.43,      60.27,
+              "CRR27",           21.9,           9.2,       9.26,        36.38,      41.78,
+              "CRR41",              0,             0,          0,        44.03,       7.86,
+               "PGR5",          55.97,         56.72,      53.98,        55.22,      55.22,
+             "PGRL1A",          17.54,         23.79,      29.54,        33.54,      31.08,
+               "CRR2",          41.49,          61.4,       2.94,        23.51,      13.93,
+               "CRR3",              0,             0,          0,            0,          0,
+              "CRR42",              0,             0,          0,        30.89,      28.44,
+               "PQL3",              0,             0,          0,            0,          0,
+               "NDF5",              0,             0,          0,            0,          0
+         )
+
+```
+
+
+```{r}
+ndh_long <- ndh %>% pivot_longer(-Gene.symbol, values_to = 'Coverage', names_to='Species') %>% 
+  mutate(Species = gsub('\\.\\.', '. ', Species))
+```
+
+```{r}
+ndh_p <- ndh_long %>% ggplot(aes(x=forcats::fct_rev(Species), y=Coverage, fill=Species, color=Species)) + 
+  geom_boxplot(
+    aes( fill = after_scale(colorspace::lighten(fill, .9))),
+    size = 1.5, outlier.shape = NA
+  ) +
+  geom_jitter(width = .1, size = 4, alpha = .5) +
+  ylim(c(-1,100)) +
+  
+  theme(legend.position = "None",
+  axis.text.y = element_text(face = "italic")) +
+  scale_color_brewer(palette='Dark2') +
+  ylab('Coverage %') +
+  coord_flip() +
+  xlab('Species')
+ndh_p
+```
+
+The following data is slightly different because it compares lengths of annotated genes in the chloroplast assembly.
+
+```{r}
+ndh_chloro <- tibble::tribble(
+  ~Gene.symbol, ~A..antarctica, ~H..ovalis, ~P..australis, ~Z..marina, ~Z..muelleri,
+        "ndhA",              0,          0,             0,      101.8,        101.4,
+        "ndhB",              0,          0,             0,      100.4,        100.9,
+      "ndhB-2",              0,          0,             0,      100.4,        100.9,
+        "ndhC",           92.5,          0,           100,        100,          100,
+        "ndhD",           29.4,          0,             0,        100,          100,
+        "ndhE",              0,          0,          45.4,        100,          100,
+        "ndhF",              0,          0,             0,       98.4,         98.3,
+        "ndhG",           45.9,          0,             0,        100,          100,
+        "ndhH",             34,       63.1,          63.8,        100,          100,
+        "ndhI",              0,          0,             0,      110.5,        110.5,
+        "ndhJ",           70.8,          0,             0,        100,          100,
+        "ndhK",             55,          0,         109.3,      109.8,        109.8
+  )
+
+
+```
+
+```{r}
+ndh_chl_long <- ndh_chloro %>% pivot_longer(-Gene.symbol, values_to = 'Coverage', names_to='Species') %>% 
+  mutate(Species = gsub('\\.\\.', '. ', Species))
+```
+
+Stylistic choice - if the new gene is longer than the Arabidopsis one, set to 100%.
+
+```{r}
+ndh_chl_p <- ndh_chl_long %>%
+  mutate(Coverage = case_when(Coverage > 100 ~ 100,
+                              TRUE ~ Coverage)) %>% 
+  ggplot(aes(x=forcats::fct_rev(Species), y=Coverage, fill=Species, color=Species)) + 
+  geom_boxplot(
+    aes( fill = after_scale(colorspace::lighten(fill, .9))),
+    size = 1.5, outlier.shape = NA
+  ) +
+  geom_jitter(width = .1, size = 4, alpha = .5) +
+  ylim(c(-1,100.1)) +
+  
+  theme(legend.position = "None",
+  axis.text.y = element_text(face = "italic")) +
+  scale_color_brewer(palette='Dark2') +
+  ylab('Gene size difference (%)') +
+  xlab('Species') +
+  coord_flip()
+ndh_chl_p
+```
+
+# all together
+
+```{r fig.width=10}
+patchwork <- (eth_p + stom_p) / (ndh_p + ndh_chl_p)
+# patchwork[[2]] = patchwork[[2]] + theme(axis.text.y = element_blank(),
+#                                         axis.ticks.y = element_blank(),
+#                                         axis.title.y = element_blank() )
+# patchwork[[1]] = patchwork[[1]] + theme(axis.text.y = element_blank(),
+#                                         axis.ticks.y = element_blank(),
+#                                         axis.title.y = element_blank() )
+patchwork+ plot_annotation(tag_levels = "A")
+```
+
