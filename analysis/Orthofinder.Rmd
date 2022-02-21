@@ -246,6 +246,7 @@ mylistgroup <- lapply(split(groupx, names(groupx)), unname) # yuck - ugly code t
 mylistgroup <- lapply(mylistgroup, unique)
 ```
 
+
 ```{r}
 xgroup <- upset(fromList(mylistgroup), order.by='freq', nsets = length(groups) - 1)
 ```
@@ -265,7 +266,7 @@ p <- ggVennDiagram(mylistgroup, label_alpha=0) +
   theme(legend.position = "none")
 ```
 
-```{r fig.width=10}
+```{r fig.width=9}
 p
 ```
 
