@@ -12,8 +12,10 @@ library(tidyverse)
 library(cowplot)
 theme_set(theme_cowplot())
 library(RColorBrewer)
+library(wesanderson)
 library(patchwork)
 library(UpSetR)
+library(ggVennDiagram)
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 
 ```
@@ -189,7 +191,7 @@ rice_count <- rice_groups %>% count(Orthogroup)
 ```{r}
 counts <- plyr::join_all(list(ara_count, posi_count, amphi_count, zmar_count, zmuel_count, lgibba_count, s_polyrhi_count, w_aus_count, rice_count), by='Orthogroup', type='left') 
 names(counts) <- c('Orthogroup', 'A. thaliana', 'P. australis', 'A. antarctica', 'Z. marina', 'Z. muelleri', 'L. gibba', 'S. polyrhiza', 'W. australis', 'O. sativa')
-counts
+head(counts)
 ```
 
 ```{r}
@@ -217,14 +219,14 @@ per_group_spec <-
       'T. parvula',
       'V. vinifera',
       'Z. mays'
-    ) ~ 'Terrestrial',
+    ) ~ 'Terrestrials',
     name %in% c(
       'C. reinhardtii',
       'L. gibba',
       'S. polyrhiza',
       'O. lucimarinus',
       'W. australis'
-    ) ~ 'Aquatic',
+    ) ~ 'Aquatics',
     name %in% c('P. australis', 'Z. muelleri', 'Z. marina', 'A. antarctica') ~ 'Seagrasses'
   )) 
 ```
@@ -241,6 +243,7 @@ groupx <- per_group_spec %>%
 
 ```{r}
 mylistgroup <- lapply(split(groupx, names(groupx)), unname) # yuck - ugly code to convert the named vector to a list
+mylistgroup <- lapply(mylistgroup, unique)
 ```
 
 ```{r}
@@ -252,3 +255,18 @@ xgroup
 ```
 
 MUCH better. The biggest chunk of orthogroups is not in aquatics or seagrasses with 13562 orthogroups. 3437 orthogroups are unique to aquatics, but not in seagrasses - 1183 orthogroups are unique in seagrasses, but not in aquatics. 404 + 3437 + 2217 orthogroups are not in terrestrials.
+
+OK now we need to do the GOenrichment for those three groups.
+
+Let's also make an Venn plot, we have only three groups:
+```{r}
+p <- ggVennDiagram(mylistgroup, label_alpha=0) + 
+  scale_fill_gradientn(colours=wes_palette("Zissou1", 100, type = "continuous")) + 
+  theme(legend.position = "none")
+```
+
+```{r fig.width=10}
+p
+```
+
+Nice!

@@ -67,6 +67,7 @@ compare('lost_in_zmuel_vs_all.txt', 'missing_zmuel_vs_all_GO.txt', allgenes, ann
 ```
 
 # lost in seagrasses vs all terrestrials
+
 Here we compare GO terms for seagrasses and aquatics (seagrasses+duckweeds) vs all terrestrials
 
 ```{r eval=FALSE}
