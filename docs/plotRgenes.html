@@ -381,7 +381,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2021-10-18
+<strong>Last updated:</strong> 2022-02-21
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -472,16 +472,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree35aa72f17934fa027bc006e34a1da721a1fdfef1targetblank35aa72fa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/35aa72f17934fa027bc006e34a1da721a1fdfef1" target="_blank">35aa72f</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreed3cdc00f1383eb15f9ed1fef6caec707e8071afbtargetblankd3cdc00a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/d3cdc00f1383eb15f9ed1fef6caec707e8071afb" target="_blank">d3cdc00</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree35aa72f17934fa027bc006e34a1da721a1fdfef1targetblank35aa72fa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreed3cdc00f1383eb15f9ed1fef6caec707e8071afbtargetblankd3cdc00a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/35aa72f17934fa027bc006e34a1da721a1fdfef1" target="_blank">35aa72f</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/d3cdc00f1383eb15f9ed1fef6caec707e8071afb" target="_blank">d3cdc00</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -491,13 +491,18 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    analysis/OTT.nb.html
+    Ignored:    analysis/figure/
     Ignored:    analysis/plotGenes.nb.html
     Ignored:    analysis/plotRgenes.nb.html
 
+Untracked files:
+    Untracked:  data/~$R_genes.xlsx
+
 Unstaged changes:
-    Modified:   data/Lost_GO_terms_in_five_species.PlantSpecific.xlsx
-    Modified:   data/Lost_GO_terms_in_five_species.xlsx
-    Modified:   data/shared_lost_genes.xlsx
+    Modified:   analysis/Orthofinder.Rmd
+    Modified:   data/arabidopsis_gene_level_comparison.xlsx
+    Modified:   data/arabidopsis_gene_level_comparison_only_losts.xlsx
+    Modified:   data/arabidopsis_gene_level_counts.xlsx
 
 </code></pre>
 <p>
@@ -536,6 +541,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/d3cdc00f1383eb15f9ed1fef6caec707e8071afb/analysis/plotRgenes.Rmd" target="_blank">d3cdc00</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-02-21
+</td>
+<td>
+better plot
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/292db59bce9791ed43dcb422518e0aedecd602de/docs/plotRgenes.html" target="_blank">292db59</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-10-18
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -612,16 +651,48 @@ wflow_publish(files = c("analysis/*"))
 </div>
 </div>
 <pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>Warning: package &#39;tidyverse&#39; was built under R version 4.1.1</code></pre>
 <pre><code>-- Attaching packages --------------------------------------- tidyverse 1.3.1 --</code></pre>
 <pre><code>v ggplot2 3.3.5     v purrr   0.3.4
 v tibble  3.1.5     v dplyr   1.0.7
 v tidyr   1.1.4     v stringr 1.4.0
 v readr   2.0.2     v forcats 0.5.1</code></pre>
+<pre><code>Warning: package &#39;ggplot2&#39; was built under R version 4.1.1</code></pre>
+<pre><code>Warning: package &#39;tibble&#39; was built under R version 4.1.1</code></pre>
+<pre><code>Warning: package &#39;tidyr&#39; was built under R version 4.1.1</code></pre>
+<pre><code>Warning: package &#39;readr&#39; was built under R version 4.1.1</code></pre>
+<pre><code>Warning: package &#39;purrr&#39; was built under R version 4.1.1</code></pre>
+<pre><code>Warning: package &#39;dplyr&#39; was built under R version 4.1.1</code></pre>
+<pre><code>Warning: package &#39;stringr&#39; was built under R version 4.1.1</code></pre>
+<pre><code>Warning: package &#39;forcats&#39; was built under R version 4.1.1</code></pre>
 <pre><code>-- Conflicts ------------------------------------------ tidyverse_conflicts() --
 x dplyr::filter() masks stats::filter()
 x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>library(wesanderson)</code></pre>
-<p>Visualising R-gene differences here</p>
+<pre><code>Warning: package &#39;wesanderson&#39; was built under R version 4.1.1</code></pre>
+<pre class="r"><code>library(ggtree)</code></pre>
+<pre><code>ggtree v3.0.4  For help: https://yulab-smu.top/treedata-book/
+
+If you use ggtree in published research, please cite the most appropriate paper(s):
+
+1. Guangchuang Yu. Using ggtree to visualize data on tree-like structures. Current Protocols in Bioinformatics, 2020, 69:e96. doi:10.1002/cpbi.96
+2. Guangchuang Yu, Tommy Tsan-Yuk Lam, Huachen Zhu, Yi Guan. Two methods for mapping and visualizing associated data on phylogeny using ggtree. Molecular Biology and Evolution 2018, 35(12):3041-3043. doi:10.1093/molbev/msy194
+3. Guangchuang Yu, David Smith, Huachen Zhu, Yi Guan, Tommy Tsan-Yuk Lam. ggtree: an R package for visualization and annotation of phylogenetic trees with their covariates and other associated data. Methods in Ecology and Evolution 2017, 8(1):28-36. doi:10.1111/2041-210X.12628</code></pre>
+<pre><code>
+Attaching package: &#39;ggtree&#39;</code></pre>
+<pre><code>The following object is masked from &#39;package:tidyr&#39;:
+
+    expand</code></pre>
+<pre class="r"><code>library(ggtreeExtra)</code></pre>
+<pre><code>Warning: package &#39;ggtreeExtra&#39; was built under R version 4.1.1</code></pre>
+<pre><code>ggtreeExtra v1.2.3  For help: https://yulab-smu.top/treedata-book/
+
+If you use ggtreeExtra in published research, please cite the paper:
+
+S Xu, Z Dai, P Guo, X Fu, S Liu, L Zhou, W Tang, T Feng, M Chen, L Zhan, T Wu, E Hu, Y Jiang, X Bo, G Yu. ggtreeExtra: Compact visualization of richly annotated phylogenetic data. Molecular Biology and Evolution 2021, 38(9):4039-4042. doi: 10.1093/molbev/msab166</code></pre>
+<pre class="r"><code>knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())</code></pre>
+<div id="visualising-r-gene-differences-here" class="section level1">
+<h1>Visualising R-gene differences here</h1>
 <pre class="r"><code>pal &lt;- wes_palette(&quot;Zissou1&quot;, 3, type = &quot;continuous&quot;)
 
 df &lt;- readxl::read_xlsx(&#39;./data/R_genes.xlsx&#39;)
@@ -647,6 +718,94 @@ df2 %&gt;% ggplot(aes(fill=Class2, x=Genome, y=Count)) + geom_bar(stat=&#39;iden
   xlab(&#39;Genome&#39;) +
   labs(fill=&#39;Class&#39;)</code></pre>
 <p><img src="figure/plotRgenes.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Let’s link those to the phylogeny we got from timetree.org</p>
+<pre class="r"><code>tree &lt;- ape::read.tree(&#39;./data/timetree_species.nwk&#39;)
+tree$tip.label &lt;- c(&#39;O. lucimarinus&#39;, &#39;C. reinhardtii&#39;, &#39;P. patens&#39;, &#39;S. moellendorffii&#39;, &#39;O. sativa&#39;, &#39;B. distachyon&#39;, &#39;Z. mays&#39;, &#39;P. australis&#39;, &#39;Z. marina&#39;, &#39;Z. muelleri&#39;, &#39;A. antarctica&#39;, &#39;S. polyrhiza&#39;, &#39;L. gibba&#39;, &#39;V. vinifera&#39;, &#39;A. thaliana&#39;, &#39;S. parvula&#39;, &#39;P. trichocarpa&#39;, &#39;A. trichopada&#39;)</code></pre>
+<pre class="r"><code>p2 &lt;- df2 %&gt;% ggplot(aes(fill=Class2, x=Genome, y=Count)) + geom_bar(stat=&#39;identity&#39;) +
+    scale_fill_manual(values=pal)  + coord_flip() +  cowplot::theme_minimal_vgrid() +
+    theme(axis.text.y = element_text(face = &quot;italic&quot;)) </code></pre>
+<pre class="r"><code>p1 &lt;- ggtree(tree)
+p1</code></pre>
+<p><img src="figure/plotRgenes.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>df2$label &lt;- df2$Genome
+# get species not in tree
+subtree &lt;- ape::drop.tip(tree, tree$tip.label[!tree$tip.label %in% df2$label])</code></pre>
+<pre class="r"><code>p1 &lt;- ggtree(subtree)
+p1 </code></pre>
+<p><img src="figure/plotRgenes.Rmd/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>df3 &lt;- as.data.frame(df2)
+df3$label &lt;- df3$Genome
+df3$id &lt;- df3$label</code></pre>
+<pre class="r"><code># code from https://thackl.github.io/ggtree-composite-plots
+
+tree_y &lt;-  function(ggtree, data){
+  if(!inherits(ggtree, &quot;ggtree&quot;))
+    stop(&quot;not a ggtree object&quot;)
+  left_join(select(data, label), select(ggtree$data, label, y)) %&gt;%
+    pull(y)
+}
+# overwrite the default expand for continuous scales
+scale_y_tree &lt;- function(expand=expand_scale(0, 0.6), ...){
+    scale_y_continuous(expand=expand, ...)
+}
+
+# get the range of the ggtree y-axis data
+tree_ylim &lt;- function(ggtree){
+  if(!inherits(ggtree, &quot;ggtree&quot;))
+    stop(&quot;not a ggtree object&quot;)
+  range(ggtree$data$y)
+}
+
+# plot data next to a ggtree aligned by shared labels
+ggtreeplot &lt;- function(ggtree, data = NULL, mapping = aes(), flip=FALSE,
+     expand_limits=expand_scale(0,.6), ...){
+  
+  if(!inherits(ggtree, &quot;ggtree&quot;))
+    stop(&quot;not a ggtree object&quot;)
+
+  # match the tree limits
+  limits &lt;- tree_ylim(ggtree)
+  limits[1] &lt;- limits[1] + (limits[1] * expand_limits[1]) - expand_limits[2]
+  limits[2] &lt;- limits[2] + (limits[2] * expand_limits[3]) + expand_limits[4]
+  
+  if(flip){
+    mapping &lt;- modifyList(aes_(x=~x), mapping)
+    data &lt;- mutate(data, x=tree_y(ggtree, data))
+    gg &lt;- ggplot(data=data, mapping = mapping, ...) +
+      scale_x_continuous(limits=limits, expand=c(0,0))
+  }else{
+    mapping &lt;- modifyList(aes_(y=~y), mapping)
+    data &lt;- mutate(data, y=tree_y(ggtree, data))
+    gg &lt;- ggplot(data=data, mapping = mapping, ...) +
+      scale_y_continuous(limits=limits, expand=c(0,0))
+  }
+  gg
+}
+
+# get rid of superfluous axis - this works after coord_flip, so it also works
+# for the rotated histogram
+no_y_axis &lt;- function () 
+  theme(axis.line.y = element_blank(), 
+        axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank())</code></pre>
+<pre class="r"><code>p3 &lt;-  ggtree(subtree) + geom_tiplab(align=TRUE, fontface=&#39;italic&#39;) +
+  scale_x_continuous(expand=expand_scale(0.8)) + scale_y_tree()</code></pre>
+<pre><code>Warning: `expand_scale()` is deprecated; use `expansion()` instead.
+
+Warning: `expand_scale()` is deprecated; use `expansion()` instead.</code></pre>
+<pre><code>Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which will
+replace the existing scale.</code></pre>
+<pre class="r"><code>myhist &lt;- ggtreeplot(p3, df3, aes(y=Count, color=Class2, fill=Class2), flip=TRUE) +
+  geom_col(aes(fill=Class2,group=Class2,color=Class2)) + 
+  #theme(legend.position=&quot;none&quot;) +
+  coord_flip() + no_y_axis()  + 
+  theme(legend.position=c(0.6, 0.87)) + 
+  labs(fill=&#39;Class&#39;, color=&#39;Class&#39;)</code></pre>
+<pre><code>Warning: `expand_scale()` is deprecated; use `expansion()` instead.</code></pre>
+<pre><code>Joining, by = &quot;label&quot;</code></pre>
+<pre class="r"><code>p3 + myhist </code></pre>
+<p><img src="figure/plotRgenes.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -655,9 +814,9 @@ df2 %&gt;% ggplot(aes(fill=Class2, x=Genome, y=Count)) + geom_bar(stat=&#39;iden
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
 <pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>R version 4.1.1 (2021-08-10)
+<pre><code>R version 4.1.0 (2021-05-18)
 Platform: x86_64-w64-mingw32/x64 (64-bit)
-Running under: Windows 10 x64 (build 17134)
+Running under: Windows 10 x64 (build 19042)
 
 Matrix products: default
 
@@ -670,28 +829,33 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] wesanderson_0.3.6 forcats_0.5.1     stringr_1.4.0     dplyr_1.0.7      
- [5] purrr_0.3.4       readr_2.0.2       tidyr_1.1.4       tibble_3.1.5     
- [9] ggplot2_3.3.5     tidyverse_1.3.1   workflowr_1.6.2  
+ [1] ggtreeExtra_1.2.3 ggtree_3.0.4      wesanderson_0.3.6 forcats_0.5.1    
+ [5] stringr_1.4.0     dplyr_1.0.7       purrr_0.3.4       readr_2.0.2      
+ [9] tidyr_1.1.4       tibble_3.1.5      ggplot2_3.3.5     tidyverse_1.3.1  
+[13] workflowr_1.6.2  
 
 loaded via a namespace (and not attached):
- [1] Rcpp_1.0.7       lubridate_1.7.10 assertthat_0.2.1 rprojroot_2.0.2 
- [5] digest_0.6.28    utf8_1.2.2       R6_2.5.1         cellranger_1.1.0
- [9] backports_1.2.1  reprex_2.0.1     evaluate_0.14    highr_0.9       
-[13] httr_1.4.2       pillar_1.6.3     rlang_0.4.11     readxl_1.3.1    
-[17] rstudioapi_0.13  whisker_0.4      jquerylib_0.1.4  rmarkdown_2.11  
-[21] labeling_0.4.2   munsell_0.5.0    broom_0.7.9      compiler_4.1.1  
-[25] httpuv_1.6.3     modelr_0.1.8     xfun_0.26        pkgconfig_2.0.3 
-[29] htmltools_0.5.2  tidyselect_1.1.1 fansi_0.5.0      crayon_1.4.1    
-[33] tzdb_0.1.2       dbplyr_2.1.1     withr_2.4.2      later_1.3.0     
-[37] grid_4.1.1       jsonlite_1.7.2   gtable_0.3.0     lifecycle_1.0.1 
-[41] DBI_1.1.1        git2r_0.28.0     magrittr_2.0.1   scales_1.1.1    
-[45] cli_3.0.1        stringi_1.7.5    farver_2.1.0     fs_1.5.0        
-[49] promises_1.2.0.1 xml2_1.3.2       bslib_0.3.1      ellipsis_0.3.2  
-[53] generics_0.1.0   vctrs_0.3.8      cowplot_1.1.1    tools_4.1.1     
-[57] glue_1.4.2       hms_1.1.1        fastmap_1.1.0    yaml_2.2.1      
-[61] colorspace_2.0-2 rvest_1.0.1      knitr_1.36       haven_2.4.3     
-[65] sass_0.4.0      </code></pre>
+ [1] nlme_3.1-152       fs_1.5.0           lubridate_1.8.0    httr_1.4.2        
+ [5] rprojroot_2.0.2    tools_4.1.0        backports_1.2.1    bslib_0.3.1       
+ [9] utf8_1.2.2         R6_2.5.1           DBI_1.1.1          lazyeval_0.2.2    
+[13] colorspace_2.0-2   withr_2.4.2        tidyselect_1.1.1   compiler_4.1.0    
+[17] git2r_0.28.0       cli_3.0.1          rvest_1.0.2        xml2_1.3.2        
+[21] labeling_0.4.2     sass_0.4.0         scales_1.1.1       digest_0.6.28     
+[25] yulab.utils_0.0.4  rmarkdown_2.11     pkgconfig_2.0.3    htmltools_0.5.2   
+[29] highr_0.9          dbplyr_2.1.1       fastmap_1.1.0      rlang_0.4.12      
+[33] readxl_1.3.1       rstudioapi_0.13    farver_2.1.0       gridGraphics_0.5-1
+[37] jquerylib_0.1.4    generics_0.1.1     jsonlite_1.7.2     magrittr_2.0.1    
+[41] ggplotify_0.1.0    patchwork_1.1.1    Rcpp_1.0.7         munsell_0.5.0     
+[45] fansi_0.5.0        ape_5.5            ggnewscale_0.4.5   lifecycle_1.0.1   
+[49] stringi_1.7.5      whisker_0.4        yaml_2.2.1         grid_4.1.0        
+[53] parallel_4.1.0     promises_1.2.0.1   crayon_1.4.1       lattice_0.20-44   
+[57] haven_2.4.3        cowplot_1.1.1      hms_1.1.1          knitr_1.36        
+[61] pillar_1.6.4       reprex_2.0.1       glue_1.4.2         evaluate_0.14     
+[65] ggfun_0.0.5        modelr_0.1.8       vctrs_0.3.8        treeio_1.16.2     
+[69] tzdb_0.1.2         httpuv_1.6.3       cellranger_1.1.0   gtable_0.3.0      
+[73] assertthat_0.2.1   xfun_0.27          broom_0.7.9        tidytree_0.3.7    
+[77] later_1.3.0        aplot_0.1.2        ellipsis_0.3.2    </code></pre>
+</div>
 </div>
 
 
