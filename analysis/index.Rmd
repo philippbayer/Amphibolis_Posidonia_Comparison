@@ -18,6 +18,6 @@ This website collects comparisons of *Amphibolis* and *Posidonia* comparative an
 
 [R gene plotting](plotRgenes.html)
 
-[Gene count association](associateGenes.html)
+[Gene Loss comparison by reads](GeneLossComparisonReads.html)
 
 [GO enrichment](GOenrichment.html)
