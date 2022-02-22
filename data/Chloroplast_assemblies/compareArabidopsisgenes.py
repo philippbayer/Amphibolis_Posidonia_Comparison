@@ -30,7 +30,7 @@ for l in glob('*gff3'):
         start = ll[3]
         end = ll[4]
         length = abs(int(end) - int(start))
-        name = ll[-1].split(';')[0].replace('ID=','')
+        name = ll[-1].split(';')[1].replace('Name=','')
         thisgenes[name] = length
 
     for ara_gene in sorted(ara_genes.keys()):

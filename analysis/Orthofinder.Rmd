@@ -15,13 +15,14 @@ library(RColorBrewer)
 library(wesanderson)
 library(patchwork)
 library(UpSetR)
+library(kableExtra)
 library(ggVennDiagram)
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 
 ```
 
 ```{r}
-groups <- read_tsv('./data/Orthogroups.tsv') 
+groups <- read_tsv('./data/Orthogroups.tsv.gz') 
 
 names(groups) <- c('Orthogroup', 'A. antarctica', 'A. trichopada', 'B. distachyon', 'C. reinhardtii', 'L. gibba', 'O. sativa', 'P. australis', 'P. patens', 'P. trichocarpa', 'S. moellendorffii', 'S. polyrhiza', 'A. thaliana', 'T. parvula', 'V. vinifera', 'Z. mays', 'Z. muelleri', 'Z. marina', 'O. lucimarinus', 'W. australis')
 ```
@@ -69,7 +70,8 @@ per_spec %>%
   group_by(name) %>% 
   count() %>% 
   arrange(n) %>% 
-  knitr::kable()
+  kbl() %>%
+  kable_styling()
 ```
 
 How many orthogroups are shared between the four seagrasses?
@@ -81,6 +83,7 @@ newlist <- mylist[c('A. antarctica', 'Z. marina', 'P. australis', 'Z. muelleri')
 x <- upset(fromList(newlist), order.by='freq', nsets = 4)
 
 ```
+
 ```{r}
 x
 ```
@@ -271,3 +274,36 @@ p
 ```
 
 Nice!
+
+# Write out the per-group GO-terms
+
+Now we pull out all gene-IDs that are only in terrestrials, only in seagrasses, only in aquatics, and unique for each of these three groups, AND we pull out the IDs only present in the four seagrasses each compared with the others.
+
+
+```{r}
+gene_per_spec <- groups %>% pivot_longer(-Orthogroup) %>% 
+  filter(!is.na(value)) %>% 
+  mutate(group = case_when(
+    name %in% c(
+      'A. trichopada',
+      'B. distachyon',
+      'O. sativa',
+      'P. patens',
+      'P. trichocarpa',
+      'S. moellendorffii',
+      'A. thaliana',
+      'T. parvula',
+      'V. vinifera',
+      'Z. mays'
+    ) ~ 'Terrestrials',
+    name %in% c(
+      'C. reinhardtii',
+      'L. gibba',
+      'S. polyrhiza',
+      'O. lucimarinus',
+      'W. australis'
+    ) ~ 'Aquatics',
+    name %in% c('P. australis', 'Z. muelleri', 'Z. marina', 'A. antarctica') ~ 'Seagrasses'
+  )) 
+```
+
