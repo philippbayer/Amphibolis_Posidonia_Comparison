@@ -228,7 +228,7 @@ ndh_chl_p <- ndh_chl_long %>%
   theme(legend.position = "None",
   axis.text.y = element_text(face = "italic")) +
   scale_color_brewer(palette='Dark2') +
-  ylab('Gene size difference (%)') +
+  ylab('Gene size similarity (%)') +
   xlab('Species') +
   coord_flip()
 ndh_chl_p
@@ -237,7 +237,7 @@ ndh_chl_p
 # all together
 
 ```{r fig.width=10}
-patchwork <- (eth_p + stom_p) / (ndh_p + ndh_chl_p)
+patchwork <- (eth_p + stom_p) / ( ndh_chl_p + ndh_p )
 # patchwork[[2]] = patchwork[[2]] + theme(axis.text.y = element_blank(),
 #                                         axis.ticks.y = element_blank(),
 #                                         axis.title.y = element_blank() )
@@ -246,4 +246,6 @@ patchwork <- (eth_p + stom_p) / (ndh_p + ndh_chl_p)
 #                                         axis.title.y = element_blank() )
 patchwork+ plot_annotation(tag_levels = "A")
 ```
+
+
 
