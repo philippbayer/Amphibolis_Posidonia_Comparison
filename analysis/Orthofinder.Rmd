@@ -263,14 +263,37 @@ MUCH better. The biggest chunk of orthogroups is not in aquatics or seagrasses w
 OK now we need to do the GOenrichment for those three groups.
 
 Let's also make an Venn plot, we have only three groups:
-```{r}
-p <- ggVennDiagram(mylistgroup, label_alpha=0) + 
-  scale_fill_gradientn(colours=wes_palette("Zissou1", 100, type = "continuous")) + 
-  theme(legend.position = "none")
-```
+```{r fig.width=8}
 
-```{r fig.width=9}
-p
+# code from https://github.com/gaospecial/ggVennDiagram/blob/4cb2aa13c7beae469f9b9836c5d4f94610bd872e/R/ggVennDiagram.R to customise
+venn <- Venn(mylistgroup)
+data <- process_data(venn)
+region_label <- data@region %>%
+      dplyr::filter(.data$component == "region") %>%
+      dplyr::mutate(percent = paste(round(.data$count*100/sum(.data$count),
+                                          digits = 0),"%", sep="")) %>%
+      dplyr::mutate(both = paste(.data$count,paste0("(",.data$percent,")"),sep = "\n"))
+
+group_venn <- ggplot() +
+    geom_sf(aes_string(fill="count"), data = data@region) +
+    geom_sf(aes_string(color = "id"), data = data@setEdge, show.legend = F,
+            lty = 'solid', size = 1, color='gray') +
+    geom_sf_text(aes_string(label = "name"), data = data@setLabel,
+                 size = NA, 
+                 color = 'black') +
+    theme_void() +
+     geom_sf_label(aes_string(label='both'),
+                             data = region_label,
+                             alpha= 0.0,
+                             color = 'black',
+                             size = NA,
+                             lineheight = 0.85,
+                             label.size = NA) +
+  scale_fill_gradientn(colours=wes_palette("Zissou1", 100, type = "continuous")) + 
+  theme(legend.position = "none") + 
+  scale_x_continuous(expand = expansion(mult = .2)) #trick from https://github.com/gaospecial/ggVennDiagram/blob/9435aa0ab4abb470c670ecb938c71576461ccedc/vignettes/using-ggVennDiagram.Rmd#L65
+
+group_venn
 ```
 
 Nice!
@@ -305,5 +328,196 @@ gene_per_spec <- groups %>% pivot_longer(-Orthogroup) %>%
     ) ~ 'Aquatics',
     name %in% c('P. australis', 'Z. muelleri', 'Z. marina', 'A. antarctica') ~ 'Seagrasses'
   )) 
+```
+
+mylistgroup now looks like this:
+key is Aquatics, Seagrasses, Terrestrials, values are OG00000, OG00001, OG00002 etc.
+
+```{r}
+present_aquatics_only <- setdiff(setdiff(mylistgroup$Aquatics, mylistgroup$Terrestrials), 
+                         mylistgroup$Seagrasses)
+present_seagrasses_only <- setdiff(setdiff(mylistgroup$Seagrasses, mylistgroup$Aquatics), 
+                           mylistgroup$Terrestrials)
+present_terrestrials_only <- setdiff(setdiff(mylistgroup$Terrestrials, mylistgroup$Aquatics),
+                             mylistgroup$Seagrasses)
+print(cbind(length(present_aquatics_only), length(present_seagrasses_only), length(present_terrestrials_only)))
+
+```
+OK those numbers fit with the above Venn diagram. I now have three lists of orthogroup names.
+
+I also want the orthogroups present in aquatics + seagrasses, NOT terrestrials
+
+```{r}
+present_seagrass_and_aquatics_only <- setdiff(intersect(mylistgroup$Aquatics, mylistgroup$Seagrasses), 
+        mylistgroup$Terrestrials)
+print(length(present_seagrass_and_aquatics_only))
+```
+That's the tiny intersection of genes shared between aquatics and seagrasses, let's also get the union of seagrass genes, aquatic genes, and their intersection
+
+```{r}
+present_seagrass_and_aquatics_union <- union(mylistgroup$Aquatics, mylistgroup$Seagrasses)
+print(length(present_seagrass_and_aquatics_union))
+```
+
+OK let's also get the intersection in the middle
+
+```{r}
+present_all <- intersect(intersect(mylistgroup$Terrestrials, mylistgroup$Aquatics), mylistgroup$Seagrasses)
+length(present_all)
+```
+
+Now we pull out these gene IDs and write them out for files to continue in [GOenrichment](GOenrichment.html).
+
+
+```{r}
+# gene_per_spec has the genes per orthogroup, we need to join with the various set-results we've made
+genes_in_all <- gene_per_spec %>% filter(Orthogroup %in% present_all) %>% separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
+genes_only_in_aquatics_and_seagrasses <- gene_per_spec %>% filter(Orthogroup %in% present_seagrass_and_aquatics_only) %>% separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
+genes_present_seagrass_and_aquatics_union <- gene_per_spec %>% filter(Orthogroup %in% present_seagrass_and_aquatics_union) %>% separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
+
+genes_only_in_aquatics <- gene_per_spec %>% filter(Orthogroup %in% present_aquatics_only) %>% separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
+genes_only_in_seagrasses <- gene_per_spec %>% filter(Orthogroup %in% present_seagrasses_only) %>% separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
+genes_only_in_terrestrials <- gene_per_spec %>% filter(Orthogroup %in% present_terrestrials_only) %>% separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
+```
+
+Now we have a bunch of lists, we can write them into files for the [GO enrichment part](GOenrichment.html)
+
+```{r}
+sink('data/Lost_present_gene_lists/Genes_only_in_Terrestrials.txt')
+cat(genes_only_in_terrestrials, sep='\n')
+sink()
+
+sink('data/Lost_present_gene_lists/Genes_only_in_Seagrasses.txt')
+cat(genes_only_in_seagrasses, sep='\n')
+sink()
+
+sink('data/Lost_present_gene_lists/Genes_only_in_Aquatics.txt')
+cat(genes_only_in_aquatics, sep='\n')
+sink()
+
+
+sink('data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses.txt')
+cat(genes_only_in_aquatics_and_seagrasses, sep='\n')
+sink()
+
+sink('data/Lost_present_gene_lists/Genes_union_of_Seagrass_and_Aquatics_union.txt')
+cat(genes_present_seagrass_and_aquatics_union, sep='\n')
+sink()
+
+sink('data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses_and_Terrestrials.txt')
+cat(genes_in_all, sep='\n')
+sink()
+
+
+```
+ 
+
+## Dig into seagrass specific differences
+
+In this section, I compare the four seagrasses with each other only, so we can ignore the previous section and go back to the original orthogroups.
+
+```{r}
+seagrass_groups <- groups %>% select(Orthogroup, `A. antarctica`, `P. australis`, `Z. marina`, `Z. muelleri`) %>%
+  rowwise() %>% 
+  mutate(na_count = sum(is.na(c(`A. antarctica`, `P. australis`, `Z. marina`, `Z. muelleri`)))) %>% 
+  filter(na_count != 4) %>% 
+  select(-na_count)
+```
+
+Let's make a Venn diagram like above. We need a list, with the species as keys, and the c(rownumber)
+
+```{r}
+big_list <- list()
+big_list[['A. antarctica']] <- seagrass_groups %>% select(Orthogroup, `A. antarctica`) %>% filter(!is.na(`A. antarctica`)) %>% pull(Orthogroup)
+big_list[['P. australis']] <- seagrass_groups %>% select(Orthogroup, `P. australis`) %>% filter(!is.na(`P. australis`)) %>% pull(Orthogroup)
+big_list[['Z. marina']] <- seagrass_groups %>% select(Orthogroup, `Z. marina`) %>% filter(!is.na(`Z. marina`)) %>% pull(Orthogroup)
+big_list[['Z. muelleri']] <- seagrass_groups %>% select(Orthogroup, `Z. muelleri`) %>% filter(!is.na(`Z. muelleri`)) %>% pull(Orthogroup)
+
+```
+
+
+```{r fig.width=8}
+venn <- Venn(big_list)
+data <- process_data(venn)
+# code from https://github.com/gaospecial/ggVennDiagram/blob/4cb2aa13c7beae469f9b9836c5d4f94610bd872e/R/ggVennDiagram.R to customise
+region_label <- data@region %>%
+      dplyr::filter(.data$component == "region") %>%
+      dplyr::mutate(percent = paste(round(.data$count*100/sum(.data$count),
+                                          digits = 0),"%", sep="")) %>%
+      dplyr::mutate(both = paste(.data$count,paste0("(",.data$percent,")"),sep = "\n"))
+
+seagrass_venn <- ggplot() +
+    geom_sf(aes_string(fill="count"), data = data@region) +
+    geom_sf(aes_string(color = "id"), data = data@setEdge, show.legend = F,
+            lty = 'solid', size = 1, color='gray') +
+    geom_sf_text(aes_string(label = "name"), data = data@setLabel,
+                 size = NA, fontface='italic',
+                 color = 'black') +
+    theme_void() +
+     geom_sf_label(aes_string(label='both'),
+                             data = region_label,
+                             alpha= 0,
+                             color = 'black',
+                             size = NA,
+                             lineheight = 0.85,
+                             label.size = NA) +
+  scale_fill_gradientn(colours=wes_palette("Zissou1", 100, type = "continuous")) + 
+  theme(legend.position = "none") + 
+  scale_x_continuous(expand = expansion(mult = .2)) #trick from https://github.com/gaospecial/ggVennDiagram/blob/9435aa0ab4abb470c670ecb938c71576461ccedc/vignettes/using-ggVennDiagram.Rmd#L65
+seagrass_venn
+```
+# Both Venns together
+
+```{r fig.height=10, fig.width=8}
+group_venn / seagrass_venn +  plot_annotation(tag_levels = 'A')
+
+```
+
+OK now as above, we dig out the gene names.
+
+
+```{r}
+# gene_per_spec has the genes per orthogroup, we need to join with the various set-results we've made
+groups_only_in_A_antarctica <- setdiff(setdiff(setdiff(big_list[['A. antarctica']], big_list[['P. australis']]), big_list[['Z. marina']]), big_list[['Z. muelleri']])
+genes_only_in_A_antarctica <- gene_per_spec %>% 
+  filter(name == 'A. antarctica', Orthogroup %in% groups_only_in_A_antarctica) %>% 
+  separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
+
+groups_only_in_P_australis <- setdiff(setdiff(setdiff(big_list[['P. australis']], big_list[['A. antarctica']]), big_list[['Z. marina']]), big_list[['Z. muelleri']])
+genes_only_in_P_australis <- gene_per_spec %>% 
+  filter(name == 'P. australis', Orthogroup %in% groups_only_in_P_australis) %>% 
+  separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
+
+groups_only_in_Z_marina <- setdiff(setdiff(setdiff(big_list[['Z. marina']], big_list[['A. antarctica']]), big_list[['P. australis']]), big_list[['Z. muelleri']])
+genes_only_in_Z_marina <- gene_per_spec %>% 
+  filter(name == 'Z. marina', Orthogroup %in% groups_only_in_Z_marina) %>% 
+  separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
+
+groups_only_in_Z_muelleri <- setdiff(setdiff(setdiff(big_list[['Z. muelleri']], big_list[['A. antarctica']]), big_list[['P. australis']]), big_list[['Z. marina']])
+genes_only_in_Z_muelleri <- gene_per_spec %>% 
+  filter(name == 'Z. muelleri', Orthogroup %in% groups_only_in_Z_muelleri) %>% 
+  separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
+
+```
+
+Now we have a bunch of lists, we can write them into files for the [GO enrichment part](GOenrichment.html)
+
+```{r}
+sink('data/Lost_present_gene_lists/Genes_only_in_A_antarctica_not_other_seagrasses.txt')
+cat(genes_only_in_A_antarctica, sep='\n')
+sink()
+
+sink('data/Lost_present_gene_lists/Genes_only_in_P_australis_not_other_seagrasses.txt')
+cat(genes_only_in_P_australis, sep='\n')
+sink()
+
+sink('data/Lost_present_gene_lists/Genes_only_in_Z_marina_not_other_seagrasses.txt')
+cat(genes_only_in_Z_marina, sep='\n')
+sink()
+
+sink('data/Lost_present_gene_lists/Genes_only_in_Z_muelleri_not_other_seagrasses.txt')
+cat(genes_only_in_Z_muelleri, sep='\n')
+sink()
+
 ```
 
