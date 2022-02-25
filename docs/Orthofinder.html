@@ -478,16 +478,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreeb7bce950478f4dac79ba039a1d53a5d2addd1869targetblankb7bce95a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/b7bce950478f4dac79ba039a1d53a5d2addd1869" target="_blank">b7bce95</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree5fa37b7aa8ee4ae02b145e616f82bebedefea69etargetblank5fa37b7a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/5fa37b7aa8ee4ae02b145e616f82bebedefea69e" target="_blank">5fa37b7</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreeb7bce950478f4dac79ba039a1d53a5d2addd1869targetblankb7bce95a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree5fa37b7aa8ee4ae02b145e616f82bebedefea69etargetblank5fa37b7a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/b7bce950478f4dac79ba039a1d53a5d2addd1869" target="_blank">b7bce95</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/5fa37b7aa8ee4ae02b145e616f82bebedefea69e" target="_blank">5fa37b7</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -498,6 +498,15 @@ Ignored files:
     Ignored:    .Rproj.user/
     Ignored:    analysis/OTT.nb.html
     Ignored:    analysis/plotRgenes.nb.html
+
+Unstaged changes:
+    Modified:   data/Lost_present_gene_lists/Genes_lost_in_A_antarctica_not_other_seagrasses.txt
+    Modified:   data/Lost_present_gene_lists/Genes_lost_in_P_australis_not_other_seagrasses.txt
+    Modified:   data/Lost_present_gene_lists/Genes_lost_in_Z_marina_not_other_seagrasses.txt
+    Modified:   data/Lost_present_gene_lists/Genes_lost_in_Z_muelleri_not_other_seagrasses.txt
+    Modified:   data/arabidopsis_gene_level_comparison.xlsx
+    Modified:   data/arabidopsis_gene_level_comparison_only_losts.xlsx
+    Modified:   data/arabidopsis_gene_level_counts.xlsx
 
 </code></pre>
 <p>
@@ -536,6 +545,57 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/5fa37b7aa8ee4ae02b145e616f82bebedefea69e/analysis/Orthofinder.Rmd" target="_blank">5fa37b7</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-02-25
+</td>
+<td>
+Fix bug in the very last lines
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/6ab5b93cf239cb43186fb64ca253e753e0b7507a/analysis/Orthofinder.Rmd" target="_blank">6ab5b93</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-02-25
+</td>
+<td>
+Fix typo
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/d366ade33481bb34ed4546aa6bc395e7a1c1bba7/docs/Orthofinder.html" target="_blank">d366ade</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-02-25
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1354,7 +1414,7 @@ fileConn&lt;-file(&#39;data/Lost_present_gene_lists/Genes_only_in_Aquatics.txt&#
 writeLines(genes_only_in_aquatics, fileConn)
 close(fileConn)
 
-fileConn&lt;-file(&#39;Genes_only_in_Aquatics_and_Seagrasses.txt&#39;)
+fileConn&lt;-file(&#39;data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses.txt&#39;)
 writeLines(genes_only_in_aquatics_and_seagrasses, fileConn)
 close(fileConn)
 
@@ -1362,7 +1422,7 @@ fileConn&lt;-file(&#39;data/Lost_present_gene_lists/Genes_union_of_Seagrass_and_
 writeLines(genes_present_seagrass_and_aquatics_union, fileConn)
 close(fileConn)
 
-fileConn&lt;-file(&#39;Genes_only_in_Aquatics_and_Seagrasses_and_Terrestrials.txt&#39;)
+fileConn&lt;-file(&#39;data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses_and_Terrestrials.txt&#39;)
 writeLines(genes_in_all, fileConn)
 close(fileConn)</code></pre>
 <div id="dig-into-seagrass-specific-differences" class="section level2">
@@ -1436,22 +1496,22 @@ groups_in_all_seagrasses &lt;- union(union(union(big_list[[&#39;Z. muelleri&#39;
 
 groups_lost_in_A_antarctica &lt;- setdiff(groups_in_all_seagrasses, big_list[[&#39;A. antarctica&#39;]])
 genes_lost_in_A_antarctica &lt;- gene_per_spec %&gt;% 
-  filter(name == &#39;A. antarctica&#39;, Orthogroup %in% groups_lost_in_A_antarctica) %&gt;% 
+  filter(name != &#39;A. antarctica&#39;, Orthogroup %in% groups_lost_in_A_antarctica) %&gt;% 
   separate_rows(value, sep=&#39;,&#39;) %&gt;% pull(value) %&gt;% str_trim()
 
 groups_lost_in_P_australis &lt;- setdiff(groups_in_all_seagrasses, big_list[[&#39;P. australis&#39;]])
 genes_lost_in_P_australis &lt;- gene_per_spec %&gt;% 
-  filter(name == &#39;P. australis&#39;, Orthogroup %in% groups_lost_in_P_australis) %&gt;% 
+  filter(name != &#39;P. australis&#39;, Orthogroup %in% groups_lost_in_P_australis) %&gt;% 
   separate_rows(value, sep=&#39;,&#39;) %&gt;% pull(value) %&gt;% str_trim()
 
 groups_lost_in_Z_marina &lt;- setdiff(groups_in_all_seagrasses, big_list[[&#39;Z. marina&#39;]])
 genes_lost_in_Z_marina &lt;- gene_per_spec %&gt;% 
-  filter(name == &#39;Z. marina&#39;, Orthogroup %in% groups_lost_in_Z_marina) %&gt;% 
+  filter(name != &#39;Z. marina&#39;, Orthogroup %in% groups_lost_in_Z_marina) %&gt;% 
   separate_rows(value, sep=&#39;,&#39;) %&gt;% pull(value) %&gt;% str_trim()
 
 groups_lost_in_Z_muelleri &lt;- setdiff(groups_in_all_seagrasses, big_list[[&#39;Z. muelleri&#39;]])
 genes_lost_in_Z_muelleri &lt;- gene_per_spec %&gt;% 
-  filter(name == &#39;Z. muelleri&#39;, Orthogroup %in% groups_lost_in_Z_muelleri) %&gt;% 
+  filter(name != &#39;Z. muelleri&#39;, Orthogroup %in% groups_lost_in_Z_muelleri) %&gt;% 
   separate_rows(value, sep=&#39;,&#39;) %&gt;% pull(value) %&gt;% str_trim()</code></pre>
 <p>Now we have a bunch of lists, we can write them into files for the <a href="GOenrichment.html">GO enrichment part</a></p>
 <pre class="r"><code>fileConn&lt;-file(&#39;data/Lost_present_gene_lists/Genes_only_in_A_antarctica_not_other_seagrasses.txt&#39;)
