@@ -383,32 +383,29 @@ genes_only_in_terrestrials <- gene_per_spec %>% filter(Orthogroup %in% present_t
 Now we have a bunch of lists, we can write them into files for the [GO enrichment part](GOenrichment.html)
 
 ```{r}
-sink('data/Lost_present_gene_lists/Genes_only_in_Terrestrials.txt')
-cat(genes_only_in_terrestrials, sep='\n')
-sink()
+fileConn<-file('data/Lost_present_gene_lists/Genes_only_in_Terrestrials.txt')
+writeLines(genes_only_in_terrestrials, fileConn)
+close(fileConn)
 
-sink('data/Lost_present_gene_lists/Genes_only_in_Seagrasses.txt')
-cat(genes_only_in_seagrasses, sep='\n')
-sink()
+fileConn<-file('data/Lost_present_gene_lists/Genes_only_in_Seagrasses.txt')
+writeLines(genes_only_in_seagrasses, fileConn)
+close(fileConn)
 
-sink('data/Lost_present_gene_lists/Genes_only_in_Aquatics.txt')
-cat(genes_only_in_aquatics, sep='\n')
-sink()
+fileConn<-file('data/Lost_present_gene_lists/Genes_only_in_Aquatics.txt')
+writeLines(genes_only_in_aquatics, fileConn)
+close(fileConn)
 
+fileConn<-file('Genes_only_in_Aquatics_and_Seagrasses.txt')
+writeLines(genes_only_in_aquatics_and_seagrasses, fileConn)
+close(fileConn)
 
-sink('data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses.txt')
-cat(genes_only_in_aquatics_and_seagrasses, sep='\n')
-sink()
+fileConn<-file('data/Lost_present_gene_lists/Genes_union_of_Seagrass_and_Aquatics_union.txt')
+writeLines(genes_present_seagrass_and_aquatics_union, fileConn)
+close(fileConn)
 
-sink('data/Lost_present_gene_lists/Genes_union_of_Seagrass_and_Aquatics_union.txt')
-cat(genes_present_seagrass_and_aquatics_union, sep='\n')
-sink()
-
-sink('data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses_and_Terrestrials.txt')
-cat(genes_in_all, sep='\n')
-sink()
-
-
+fileConn<-file('Genes_only_in_Aquatics_and_Seagrasses_and_Terrestrials.txt')
+writeLines(genes_in_all, fileConn)
+close(fileConn)
 ```
  
 
@@ -498,26 +495,62 @@ genes_only_in_Z_muelleri <- gene_per_spec %>%
   filter(name == 'Z. muelleri', Orthogroup %in% groups_only_in_Z_muelleri) %>% 
   separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
 
+groups_in_all_seagrasses <- union(union(union(big_list[['Z. muelleri']], big_list[['A. antarctica']]), big_list[['P. australis']]), big_list[['Z. marina']])
+
+groups_lost_in_A_antarctica <- setdiff(groups_in_all_seagrasses, big_list[['A. antarctica']])
+genes_lost_in_A_antarctica <- gene_per_spec %>% 
+  filter(name == 'A. antarctica', Orthogroup %in% groups_lost_in_A_antarctica) %>% 
+  separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
+
+groups_lost_in_P_australis <- setdiff(groups_in_all_seagrasses, big_list[['P. australis']])
+genes_lost_in_P_australis <- gene_per_spec %>% 
+  filter(name == 'P. australis', Orthogroup %in% groups_lost_in_P_australis) %>% 
+  separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
+
+groups_lost_in_Z_marina <- setdiff(groups_in_all_seagrasses, big_list[['Z. marina']])
+genes_lost_in_Z_marina <- gene_per_spec %>% 
+  filter(name == 'Z. marina', Orthogroup %in% groups_lost_in_Z_marina) %>% 
+  separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
+
+groups_lost_in_Z_muelleri <- setdiff(groups_in_all_seagrasses, big_list[['Z. muelleri']])
+genes_lost_in_Z_muelleri <- gene_per_spec %>% 
+  filter(name == 'Z. muelleri', Orthogroup %in% groups_lost_in_Z_muelleri) %>% 
+  separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
 ```
 
 Now we have a bunch of lists, we can write them into files for the [GO enrichment part](GOenrichment.html)
 
 ```{r}
-sink('data/Lost_present_gene_lists/Genes_only_in_A_antarctica_not_other_seagrasses.txt')
-cat(genes_only_in_A_antarctica, sep='\n')
-sink()
+fileConn<-file('data/Lost_present_gene_lists/Genes_only_in_A_antarctica_not_other_seagrasses.txt')
+writeLines(genes_only_in_A_antarctica, fileConn)
+close(fileConn)
 
-sink('data/Lost_present_gene_lists/Genes_only_in_P_australis_not_other_seagrasses.txt')
-cat(genes_only_in_P_australis, sep='\n')
-sink()
+fileConn<-file('data/Lost_present_gene_lists/Genes_only_in_P_australis_not_other_seagrasses.txt')
+writeLines(genes_only_in_P_australis, fileConn)
+close(fileConn)
 
-sink('data/Lost_present_gene_lists/Genes_only_in_Z_marina_not_other_seagrasses.txt')
-cat(genes_only_in_Z_marina, sep='\n')
-sink()
+fileConn<-file('data/Lost_present_gene_lists/Genes_only_in_Z_marina_not_other_seagrasses.txt')
+writeLines(genes_only_in_Z_marina, fileConn)
+close(fileConn)
 
-sink('data/Lost_present_gene_lists/Genes_only_in_Z_muelleri_not_other_seagrasses.txt')
-cat(genes_only_in_Z_muelleri, sep='\n')
-sink()
+fileConn<-file('data/Lost_present_gene_lists/Genes_only_in_Z_muelleri_not_other_seagrasses.txt')
+writeLines(genes_only_in_Z_muelleri, fileConn)
+close(fileConn)
 
+fileConn<-file('data/Lost_present_gene_lists/Genes_lost_in_A_antarctica_not_other_seagrasses.txt')
+writeLines(genes_lost_in_A_antarctica, fileConn)
+close(fileConn)
+
+fileConn<-file('data/Lost_present_gene_lists/Genes_lost_in_P_australis_not_other_seagrasses.txt')
+writeLines(genes_lost_in_P_australis, fileConn)
+close(fileConn)
+
+fileConn<-file('data/Lost_present_gene_lists/Genes_lost_in_Z_marina_not_other_seagrasses.txt')
+writeLines(genes_lost_in_Z_marina, fileConn)
+close(fileConn)
+
+fileConn<-file('data/Lost_present_gene_lists/Genes_lost_in_Z_muelleri_not_other_seagrasses.txt')
+writeLines(genes_lost_in_Z_muelleri, fileConn)
+close(fileConn)
 ```
 
