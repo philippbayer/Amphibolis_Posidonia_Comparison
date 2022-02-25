@@ -499,22 +499,22 @@ groups_in_all_seagrasses <- union(union(union(big_list[['Z. muelleri']], big_lis
 
 groups_lost_in_A_antarctica <- setdiff(groups_in_all_seagrasses, big_list[['A. antarctica']])
 genes_lost_in_A_antarctica <- gene_per_spec %>% 
-  filter(name == 'A. antarctica', Orthogroup %in% groups_lost_in_A_antarctica) %>% 
+  filter(name != 'A. antarctica', Orthogroup %in% groups_lost_in_A_antarctica) %>% 
   separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
 
 groups_lost_in_P_australis <- setdiff(groups_in_all_seagrasses, big_list[['P. australis']])
 genes_lost_in_P_australis <- gene_per_spec %>% 
-  filter(name == 'P. australis', Orthogroup %in% groups_lost_in_P_australis) %>% 
+  filter(name != 'P. australis', Orthogroup %in% groups_lost_in_P_australis) %>% 
   separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
 
 groups_lost_in_Z_marina <- setdiff(groups_in_all_seagrasses, big_list[['Z. marina']])
 genes_lost_in_Z_marina <- gene_per_spec %>% 
-  filter(name == 'Z. marina', Orthogroup %in% groups_lost_in_Z_marina) %>% 
+  filter(name != 'Z. marina', Orthogroup %in% groups_lost_in_Z_marina) %>% 
   separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
 
 groups_lost_in_Z_muelleri <- setdiff(groups_in_all_seagrasses, big_list[['Z. muelleri']])
 genes_lost_in_Z_muelleri <- gene_per_spec %>% 
-  filter(name == 'Z. muelleri', Orthogroup %in% groups_lost_in_Z_muelleri) %>% 
+  filter(name != 'Z. muelleri', Orthogroup %in% groups_lost_in_Z_muelleri) %>% 
   separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
 ```
 
