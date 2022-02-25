@@ -395,7 +395,7 @@ fileConn<-file('data/Lost_present_gene_lists/Genes_only_in_Aquatics.txt')
 writeLines(genes_only_in_aquatics, fileConn)
 close(fileConn)
 
-fileConn<-file('Genes_only_in_Aquatics_and_Seagrasses.txt')
+fileConn<-file('data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses.txt')
 writeLines(genes_only_in_aquatics_and_seagrasses, fileConn)
 close(fileConn)
 
@@ -403,7 +403,7 @@ fileConn<-file('data/Lost_present_gene_lists/Genes_union_of_Seagrass_and_Aquatic
 writeLines(genes_present_seagrass_and_aquatics_union, fileConn)
 close(fileConn)
 
-fileConn<-file('Genes_only_in_Aquatics_and_Seagrasses_and_Terrestrials.txt')
+fileConn<-file('data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses_and_Terrestrials.txt')
 writeLines(genes_in_all, fileConn)
 close(fileConn)
 ```
