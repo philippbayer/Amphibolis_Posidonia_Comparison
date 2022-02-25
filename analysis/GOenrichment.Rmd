@@ -16,6 +16,8 @@ library(ggrepel)
 library(eulerr)
 library(UpSetR)
 library(rrvgo)
+library(kableExtra)
+library(patchwork)
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 ```
 
@@ -57,27 +59,29 @@ compare <- function(genelistfile, outname, allgenes, annAT) {
 }
 
 ```
-
-# lost in seagrasses, each one uniquely vs all terrestrials
-```{r eval=FALSE}
-compare('lost_in_amphi_vs_all.txt', 'missing_amphi_vs_all_GO.txt', allgenes, annAT)
-compare('lost_in_posi_vs_all.txt', 'missing_posi_vs_all_GO.txt', allgenes, annAT)
-compare('lost_in_zmar_vs_all.txt', 'missing_zmar_vs_all_GO.txt', allgenes, annAT)
-compare('lost_in_zmuel_vs_all.txt', 'missing_zmuel_vs_all_GO.txt', allgenes, annAT)
-```
-
-# lost in seagrasses vs all terrestrials
-
-Here we compare GO terms for seagrasses and aquatics (seagrasses+duckweeds) vs all terrestrials
+# Comparing the three big groups
 
 ```{r eval=FALSE}
+# all genes shared - this runs out of memory
+#compare('Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses_and_Terrestrials.txt', 'output/GO_results_genes_in_Aquatics_and_Seagrasses_and_Terrestrials.csv', allgenes, annAT)
 
-compare('lost_in_seagrasses.txt', 'missing_seagrasses_GO.txt', allgenes, annAT)
-compare('lost_in_aquatics.txt', 'missing_aquatics_GO.txt', allgenes, annAT)
-compare('only_in_seagrasses.txt', 'only_seagrasses_GO.txt', allgenes, annAT)
+# Genes in aquatics and seagrasses - IMPORTANT This is NOT the union - this is the intersection!
+# Union is below
+compare('Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses.txt', 'output/GO_results_genes_in_Aquatics_and_Seagrasses_NOT_Terrestrials.csv', allgenes, annAT)
+
+# Genes only in aquatics
+compare('Lost_present_gene_lists/Genes_only_in_Aquatics.txt', 'output/GO_results_genes_in_Aquatics_NOT_Seagrasses_NOT_Terrestrials.csv', allgenes, annAT)
+
+# Genes only in seagrasses
+compare('Lost_present_gene_lists/Genes_only_in_Seagrasses.txt', 'output/GO_results_genes_in_Seagrasses_NOT_Aquatics_NOT_Terrestrials.csv', allgenes, annAT)
+
+# Genes only in terrestrials
+compare('Lost_present_gene_lists/Genes_only_in_Terrestrials.txt', 'output/GO_results_genes_in_Terrestrials_NOT_Aquatics_NOT_Seagrasses.csv', allgenes, annAT)
+
+# Genes union of Seagrass and Aquatics
+compare('Lost_present_gene_lists/Genes_union_of_Seagrass_and_Aquatics_union.txt', 'output/GO_results_genes_union_Aquatics_and_Seagrasses_NOT_Terrestrials.csv', allgenes, annAT)
 
 ```
-
 # Seagrass only comparisons
 
 Now we compare seagrasses within each other.
@@ -89,29 +93,35 @@ For the seagrass-only comparisons, I'm using a Seagrass-only background as that 
 #sannAT <- readMappings('SEAGRASSBACKGROUND.txt', sep="\t", IDsep=";")
 #save(sannAT, file='sannAtObject.RData')
 
-load('annAtObject.RData')
+load('sannAtObject.RData')
 sallgenes <- unique(unlist(sannAT))
 
-compare('lost_in_amphi.txt', 'lost_in_amphi_vs_seagrasses_GO.txt', sallgenes, sannAT)
-compare('lost_in_posi.txt', 'lost_in_posi_vs_seagrasses_GO.txt', sallgenes, sannAT)
-compare('lost_in_zmar.txt', 'lost_in_zmar_vs_seagrasses_GO.txt', sallgenes, sannAT)
-compare('lost_in_zmuel.txt', 'lost_in_zmuel_vs_seagrasses_GO.txt', sallgenes, sannAT)
+```
+# lost in seagrasses
+
+```{r eval=FALSE}
+compare('Lost_present_gene_lists/Genes_lost_in_A_antarctica_not_other_seagrasses.txt', 'output/GO_results_genes_lost_A_antarctica_not_other_seagrasses.csv', sallgenes, sannAT)
+
+compare('Lost_present_gene_lists/Genes_lost_in_Z_marina_not_other_seagrasses.txt', 'output/GO_results_genes_lost_Z_marina_not_other_seagrasses.csv', sallgenes, sannAT)
+
+compare('Lost_present_gene_lists/Genes_lost_in_P_australis_not_other_seagrasses.txt', 'output/GO_results_genes_lost_P_australis_not_other_seagrasses.csv', sallgenes, sannAT)
+
+compare('Lost_present_gene_lists/Genes_lost_in_Z_muelleri_not_other_seagrasses.txt', 'output/GO_results_genes_lost_Z_muelleri_not_other_seagrasses.csv', sallgenes, sannAT)
 ```
 
 # Present in seagrasses
 
-The opposite - which GO-terms are present only in one of the four species?
-
 ```{r eval=FALSE}
-compare('only_in_amphi.txt', 'only_in_amphi_vs_seagrasses_GO.txt', sallgenes, sannAT)
-compare('only_in_posi.txt', 'only_in_posi_vs_seagrasses_GO.txt', sallgenes, sannAT)
-compare('only_in_zmar.txt', 'only_in_zmar_vs_seagrasses_GO.txt', sallgenes, sannAT)
-compare('only_in_zmuel.txt', 'only_in_zmuel_vs_seagrasses_GO.txt', sallgenes, sannAT)
+compare('Lost_present_gene_lists/Genes_only_in_Z_marina_not_other_seagrasses.txt', 'output/GO_results_genes_only_Z_marina_not_other_seagrasses.csv', sallgenes, sannAT)
+
+compare('Lost_present_gene_lists/Genes_only_in_Z_muelleri_not_other_seagrasses.txt', 'output/GO_results_genes_only_Z_muelleri_not_other_seagrasses.csv', sallgenes, sannAT)
+
+compare('Lost_present_gene_lists/Genes_only_in_P_australis_not_other_seagrasses.txt', 'output/GO_results_genes_only_P_australis_not_other_seagrasses.csv', sallgenes, sannAT)
+
+compare('Lost_present_gene_lists/Genes_only_in_A_antarctica_not_other_seagrasses.txt', 'output/GO_results_genes_only_A_antarctica_not_other_seagrasses.csv', sallgenes, sannAT)
 ```
 
-
 Alright now we have all these different GO terms in all these files - we can send them to revigo for visualiation and some deduplication!
-
 
 # Revigo
 
@@ -121,8 +131,8 @@ This code is based on http://revigo.irb.hr/CodeExamples/revigo.R.txt
 ```{r}
 results_list <- list()
 
-for (f in list.files('./data/', pattern='GO.txt')){
-  filename <- paste('./data/', f, sep='')
+for (f in list.files('./output/', pattern='*.csv')){
+  filename <- paste('./output/', f, sep='')
   go_and_pvalues <- readChar(filename, file.info(filename)$size)
   go_and_pvalues <- gsub(',', ' ', go_and_pvalues)
   
@@ -195,11 +205,11 @@ for (f in names(results_list)) {
   one.data <- dat
   if (one.data[1,] == '<html>') {next} # some datasets result in error
   one.data <- one.data [(one.data$plot_X != "null" & one.data$plot_Y != "null") & (! is.na(one.data$frequency)) & (one.data$value != 'null'), ];
-  one.data <- type_convert(one.data)
+  one.data <- suppressMessages(type_convert(one.data)) # guess data types, but also: shush
   top_ten_values <- one.data %>% arrange(value) %>% head(10) %>% pull(term_ID) 
   one.data <- one.data %>% mutate(description2 = case_when(
     term_ID %in% top_ten_values ~ description, 
-                                                           TRUE ~ ''))
+    TRUE ~ ''))
   p1 <-
     ggplot(data = one.data, aes(plot_X, plot_Y, label = description2)) +
     geom_point(aes(colour = value, size = log_size), alpha = I(0.6)) +
@@ -214,21 +224,20 @@ for (f in names(results_list)) {
     ) +
     scale_size_area() +
     geom_label_repel(max.overlaps = Inf, box.padding = 0.5,
-                     aes(point.size = log_size)) +
+                     aes(point.size = log_size), alpha=0.9) +
     theme_minimal() +
-    labs(y = "Semantic space x",
-         x = "Semantic space y",
-         color = 'Log(p-value)',
+    labs(color = 'log(p-value)',
          size = 'Frequency') +
     theme(
       axis.text.x = element_blank(),
       axis.ticks.x = element_blank(),
       axis.text.y = element_blank(),
-      axis.ticks.y = element_blank()
+      axis.ticks.y = element_blank(),
+      axis.title.x = element_blank(),
+      axis.title.y = element_blank()
     ) +
     NULL
     #ggtitle(f)
-  
   
   plot_list[[f]] <- p1
   
@@ -242,43 +251,56 @@ Let's also pull these terms out as tables. `Value` is the unadjusted p-value (-3
 ```{r results='asis'}
 for( i in names(results_list)) {
   print(i)
-  print(knitr::kable(results_list[[i]] %>% filter(Eliminated == FALSE) %>% select(TermID, Name, Value) %>% arrange(Value), caption=i))
+  print(results_list[[i]] %>% filter(Eliminated == FALSE) %>% select(TermID, Name, Value) %>% arrange(Value) %>% kbl() %>%  kable_styling())
   cat("\n")
 }
 
 ```
 
-# Venn diagram GO overlaps
-
-Let's also check which GO terms overlap between the 4 seagrasses!
 
 Let's have a look at all of these plots. Manually zooming in leads to ggrepel reloading labels, so on the small scale a lot of these plots don't have labels.
 ```{r}
 for(i in names(plot_list)) {
   file_name = paste('output/',  i, '.png', sep='')
   
-  cowplot::save_plot(file_name, plot_list[[i]], base_height=8)
+  cowplot::save_plot(file_name, plot_list[[i]], base_height=6)
   
 }
 ```
 
-How many shared lost GO-terms are there? Hopefully, all four species will have lost the most GO-terms.
-```{r}
-a <- list(`P. australis` = results_list$missing_posi_vs_all_GO.txt$Name,
-          `A. antarctica` = results_list$missing_amphi_vs_all_GO.txt$Name,
-          `Z. marina` = results_list$missing_zmar_vs_all_GO.txt$Name,
-          `Z. muelleri` = results_list$missing_zmuel_vs_all_GO.txt$Name,
-          `A. thaliana` = results_list$missing_arabidopsis_vs_all_GO.txt$Name)
+Let me also try and make some patchworks. 
 
-a_go_ids <- list(`P. australis` = results_list$missing_posi_vs_all_GO.txt$TermID,
-          `A. antarctica` = results_list$missing_amphi_vs_all_GO.txt$TermID,
-          `Z. marina` = results_list$missing_zmar_vs_all_GO.txt$TermID,
-          `Z. muelleri` = results_list$missing_zmuel_vs_all_GO.txt$TermID,
-          `A. thaliana` = results_list$missing_arabidopsis_vs_all_GO.txt$TermID)
+```{r fig.width=10}
+# For some reason with this plot the legends aren't correctly collected by patchwork, 
+# so I need to manually turn one off
+patchy <- (plot_list[["GO_results_genes_in_Terrestrials_NOT_Aquatics_NOT_Seagrasses.csv"]] + theme(legend.position = "none")) /
+  plot_list[["GO_results_genes_union_Aquatics_and_Seagrasses_NOT_Terrestrials.csv"]] + plot_layout(guides = 'collect') + plot_annotation(tag_levels = 'A')
+patchy
+cowplot::save_plot('output/GO_results_terrestrials_vs_union_aquatics_seagrasses.png', patchy, base_height=7)
+```
+
+OK I'll better make this figure for the seagrasses alone, it's quite messy this way.
+
+# Seagrass-specific loss
+
+Let's check which GO terms overlap between the 4 seagrasses!
+
+How many shared lost GO-terms are there? 
+
+```{r}
+a <- list(`P. australis` = results_list$GO_results_genes_lost_P_australis_not_other_seagrasses.csv$Name,
+          `A. antarctica` = results_list$GO_results_genes_lost_A_antarctica_not_other_seagrasses.csv$Name,
+          `Z. marina` = results_list$GO_results_genes_lost_Z_marina_not_other_seagrasses.csv$Name,
+          `Z. muelleri` = results_list$GO_results_genes_lost_Z_muelleri_not_other_seagrasses.csv$Name)
+
+a_go_ids <- list(`P. australis` = results_list$GO_results_genes_lost_P_australis_not_other_seagrasses.csv$TermID,
+          `A. antarctica` = results_list$GO_results_genes_lost_A_antarctica_not_other_seagrasses.csv$TermID,
+          `Z. marina` = results_list$GO_results_genes_lost_Z_marina_not_other_seagrasses.csv$TermID,
+          `Z. muelleri` = results_list$GO_results_genes_lost_Z_muelleri_not_other_seagrasses.csv$TermID)
 ```
 
 ```{r}
-plot(euler(a), 
+plot(venn(a), 
      quantities = TRUE,
      fill = rev(wes_palette("Zissou1", 15, type = 'continuous')),
     alpha = 0.5,
@@ -299,7 +321,7 @@ a_no_ara <- list(`P. australis` = results_list$missing_posi_vs_all_GO.txt$Name,
 
 What are the shared GO-terms in seagrasses, WITHOUT the Ara loss??
 ```{r}
-setdiff(Reduce(intersect, a_no_ara), Reduce(intersect, a)) %>% enframe() %>% writexl::write_xlsx('./data/shared_lost_genes.xlsx')
+Reduce(union, a) %>% enframe() %>% writexl::write_xlsx('./output/Seagrasses_shared_lost_genes.xlsx')
 ```
 
 
@@ -343,10 +365,11 @@ for (index in seq_along(all_go_terms)){
 ```
 
 ```{r}
-writexl::write_xlsx(results_d, 'data/Lost_GO_terms_in_five_species.xlsx')
+writexl::write_xlsx(results_d, 'output/Lost_GO_terms_in_five_species.xlsx')
 ```
 
-# after filtering for plant-specific GO-terms
+
+# After filtering for plant-specific GO-terms
 
 We will use the GO-terms that are plant-specific as identified by the GOMAP paper.
 See https://github.com/wkpalan/GOMAP-maize-analysis/blob/main/6.plantSpecific/1.getSppSpecific.R
@@ -364,7 +387,7 @@ plantSpecificGO <- c(plantSpecificGO,c("GO:0005575","GO:0008150","GO:0003674"))
 ```
 
 ```{r}
-results_d %>% filter(GOID %in% plantSpecificGO) %>% writexl::write_xlsx('data/Lost_GO_terms_in_five_species.PlantSpecific.xlsx')
+results_d %>% filter(GOID %in% plantSpecificGO) %>% writexl::write_xlsx('output/Lost_GO_terms_in_five_species.PlantSpecific.xlsx')
 ```
 
 Now let's redo the Venn diagram with those filtered GO-terms
@@ -382,7 +405,7 @@ for (species in names(filters)) {
 ```
 
 ```{r}
-plot(euler(newa), 
+plot(venn(newa), 
      quantities = TRUE,
      fill = rev(wes_palette("Zissou1", 15, type = 'continuous')),
     alpha = 0.5,
