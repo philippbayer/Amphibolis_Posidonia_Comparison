@@ -1,0 +1,6832 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Philipp Bayer" />
+
+<meta name="date" content="2021-01-10" />
+
+<title>GO enrichment</title>
+
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Amphibolis Posidonia Comparison</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison">
+    <span class="fa fa-github"></span>
+     
+    Source code
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">GO enrichment</h1>
+<h4 class="author">Philipp Bayer</h4>
+<h4 class="date">01/10/2021</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2022-02-25
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>Amphibolis_Posidonia_Comparison/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20210414code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20210414)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20210414code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20210414)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree61c8f69445812d93a875620f86f58b0b40fb9e50targetblank61c8f69a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/61c8f69445812d93a875620f86f58b0b40fb9e50" target="_blank">61c8f69</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree61c8f69445812d93a875620f86f58b0b40fb9e50targetblank61c8f69a" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/61c8f69445812d93a875620f86f58b0b40fb9e50" target="_blank">61c8f69</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+    Ignored:    analysis/OTT.nb.html
+    Ignored:    analysis/plotRgenes.nb.html
+
+Untracked files:
+    Untracked:  output/GO_results_genes_in_Aquatics_NOT_Seagrasses_NOT_Terrestrials.csv
+    Untracked:  output/GO_results_genes_in_Aquatics_NOT_Seagrasses_NOT_Terrestrials.csv.png
+    Untracked:  output/GO_results_genes_in_Aquatics_and_Seagrasses_NOT_Terrestrials.csv
+    Untracked:  output/GO_results_genes_in_Aquatics_and_Seagrasses_NOT_Terrestrials.csv.png
+    Untracked:  output/GO_results_genes_in_Seagrasses_NOT_Aquatics_NOT_Terrestrials.csv
+    Untracked:  output/GO_results_genes_in_Seagrasses_NOT_Aquatics_NOT_Terrestrials.csv.png
+    Untracked:  output/GO_results_genes_in_Terrestrials_NOT_Aquatics_NOT_Seagrasses.csv
+    Untracked:  output/GO_results_genes_in_Terrestrials_NOT_Aquatics_NOT_Seagrasses.csv.png
+    Untracked:  output/GO_results_genes_lost_A_antarctica_not_other_seagrasses.csv
+    Untracked:  output/GO_results_genes_lost_A_antarctica_not_other_seagrasses.csv.png
+    Untracked:  output/GO_results_genes_lost_P_australis_not_other_seagrasses.csv
+    Untracked:  output/GO_results_genes_lost_P_australis_not_other_seagrasses.csv.png
+    Untracked:  output/GO_results_genes_lost_Z_marina_not_other_seagrasses.csv
+    Untracked:  output/GO_results_genes_lost_Z_marina_not_other_seagrasses.csv.png
+    Untracked:  output/GO_results_genes_lost_Z_muelleri_not_other_seagrasses.csv
+    Untracked:  output/GO_results_genes_lost_Z_muelleri_not_other_seagrasses.csv.png
+    Untracked:  output/GO_results_genes_only_A_antarctica_not_other_seagrasses.csv
+    Untracked:  output/GO_results_genes_only_P_australis_not_other_seagrasses.csv
+    Untracked:  output/GO_results_genes_only_P_australis_not_other_seagrasses.csv.png
+    Untracked:  output/GO_results_genes_only_Z_marina_not_other_seagrasses.csv
+    Untracked:  output/GO_results_genes_only_Z_marina_not_other_seagrasses.csv.png
+    Untracked:  output/GO_results_genes_only_Z_muelleri_not_other_seagrasses.csv
+    Untracked:  output/GO_results_genes_only_Z_muelleri_not_other_seagrasses.csv.png
+    Untracked:  output/GO_results_genes_union_Aquatics_and_Seagrasses_NOT_Terrestrials.csv
+    Untracked:  output/GO_results_genes_union_Aquatics_and_Seagrasses_NOT_Terrestrials.csv.png
+    Untracked:  output/GO_results_terrestrials_vs_union_aquatics_seagrasses.png
+    Untracked:  output/Lost_GO_terms_in_five_species.PlantSpecific.xlsx
+    Untracked:  output/Lost_GO_terms_in_five_species.xlsx
+
+Unstaged changes:
+    Deleted:    data/Lost_GO_terms_in_five_species.PlantSpecific.xlsx
+    Deleted:    data/Lost_GO_terms_in_five_species.xlsx
+    Modified:   data/Lost_present_gene_lists/Genes_lost_in_A_antarctica_not_other_seagrasses.txt
+    Modified:   data/Lost_present_gene_lists/Genes_lost_in_P_australis_not_other_seagrasses.txt
+    Modified:   data/Lost_present_gene_lists/Genes_lost_in_Z_marina_not_other_seagrasses.txt
+    Modified:   data/Lost_present_gene_lists/Genes_lost_in_Z_muelleri_not_other_seagrasses.txt
+    Modified:   data/arabidopsis_gene_level_comparison.xlsx
+    Modified:   data/arabidopsis_gene_level_comparison_only_losts.xlsx
+    Modified:   data/arabidopsis_gene_level_counts.xlsx
+    Deleted:    data/shared_lost_genes.xlsx
+    Deleted:    output/lost_in_amphi_GO.txt.png
+    Deleted:    output/lost_in_posi_GO.txt.png
+    Deleted:    output/lost_in_zmar_GO.txt.png
+    Deleted:    output/lost_in_zmuel_GO.txt.png
+    Deleted:    output/missing_amphi_vs_all_GO.txt.png
+    Deleted:    output/missing_aquatics_GO.txt.png
+    Deleted:    output/missing_arabidopsis_vs_all_GO.txt.png
+    Deleted:    output/missing_posi_vs_all_GO.txt.png
+    Deleted:    output/missing_seagrasses_GO.txt.png
+    Deleted:    output/missing_zmar_vs_all_GO.txt.png
+    Deleted:    output/missing_zmuel_vs_all_GO.txt.png
+    Deleted:    output/only_in_posi_GO.txt.png
+    Deleted:    output/only_in_zmar_GO.txt.png
+    Deleted:    output/only_in_zmuel_GO.txt.png
+    Deleted:    output/only_seagrasses_GO.txt.png
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/GOenrichment.Rmd</code>) and HTML (<code>docs/GOenrichment.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/61c8f69445812d93a875620f86f58b0b40fb9e50/analysis/GOenrichment.Rmd" target="_blank">61c8f69</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-02-25
+</td>
+<td>
+Replace GO enrichment
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/9b5946749e9a370a7bd1d185df8df76ba424af1f/docs/GOenrichment.html" target="_blank">9b59467</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-02-23
+</td>
+<td>
+Rewrite Orthofinder analysis
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/ab9a1f6eba9f91725081729b83cf2467438a2133/analysis/GOenrichment.Rmd" target="_blank">ab9a1f6</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-02-21
+</td>
+<td>
+add some more changes
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/65d3fa4f073f505a24a78c914f425e9077e97af7/docs/GOenrichment.html" target="_blank">65d3fa4</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-12-20
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/21f4c6f0393cd733c7ad70338ca68a9f76a798cd/analysis/GOenrichment.Rmd" target="_blank">21f4c6f</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-12-20
+</td>
+<td>
+fix tables again, finally :) haha
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/d8ec8d3f59f061b4ccbd7181fe24815be7461bbb/docs/GOenrichment.html" target="_blank">d8ec8d3</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-12-20
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/2fb63eb09270b8f7041643a9a148f9469f6360f6/analysis/GOenrichment.Rmd" target="_blank">2fb63eb</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-12-20
+</td>
+<td>
+fix tables again, finally :)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/cf2e045534e9b3b6cac6498918fb9dc2f9c25a0c/docs/GOenrichment.html" target="_blank">cf2e045</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-12-20
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/280fc5d6d95c15858f714b7ea5eec781cc8c9241/analysis/GOenrichment.Rmd" target="_blank">280fc5d</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-12-20
+</td>
+<td>
+fix tables again
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/5356e2cb407090630db5fc2bcf8a8db6ae492737/docs/GOenrichment.html" target="_blank">5356e2c</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-12-20
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/9f4be6fd7eb99768e8cac7bc671d2518217e5163/analysis/GOenrichment.Rmd" target="_blank">9f4be6f</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-12-20
+</td>
+<td>
+fix tables
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/7816b8ccd7d331a5e4f64d289080362c63fdea29/docs/GOenrichment.html" target="_blank">7816b8c</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-12-20
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/73bffa46db8c16fe7ec5f8be2cb868e1822deab8/analysis/GOenrichment.Rmd" target="_blank">73bffa4</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-12-20
+</td>
+<td>
+add tables
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/c1288a408b91a20d358e23035d98f223fa704335/docs/GOenrichment.html" target="_blank">c1288a4</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-12-20
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/2691cad4eb460fddb2fe90aace812b24d4b9dc24/analysis/GOenrichment.Rmd" target="_blank">2691cad</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-12-20
+</td>
+<td>
+add tables
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/292db59bce9791ed43dcb422518e0aedecd602de/docs/GOenrichment.html" target="_blank">292db59</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-10-18
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/35aa72f17934fa027bc006e34a1da721a1fdfef1/analysis/GOenrichment.Rmd" target="_blank">35aa72f</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-10-18
+</td>
+<td>
+wflow_publish(c(“analysis/GOenrichment.Rmd”, “analysis/plotGenes.Rmd”,
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/7e370e9730c8ff0d2f639461b7c6195b588b6624/analysis/GOenrichment.Rmd" target="_blank">7e370e9</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-10-07
+</td>
+<td>
+Updated GOenrichment
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/95586f9a994c41619ed3eb0c6f948debc4926f94/analysis/GOenrichment.Rmd" target="_blank">95586f9</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-10-07
+</td>
+<td>
+Add missing data
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/95586f9a994c41619ed3eb0c6f948debc4926f94/docs/GOenrichment.html" target="_blank">95586f9</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-10-07
+</td>
+<td>
+Add missing data
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/c0db4a55cee717b3c1b0b2b02c5e9d1bfddac065/docs/GOenrichment.html" target="_blank">c0db4a5</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-10-07
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/08b28eacde8985a9d65405b6bc555c4c9d934f92/analysis/GOenrichment.Rmd" target="_blank">08b28ea</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2021-10-07
+</td>
+<td>
+wflow_publish(files = c("analysis/*"))
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id="lost-in-seagrasses" class="section level1">
+<h1>Lost in seagrasses</h1>
+<p>The GO enrichment does not work well on my laptop so I’m setting this to eval=FALSE and run it on a remote server. The script which writes the input files is a Python script in the scripts/ folder: findClustersUniqueToAquatic.py. This script parses Orthofinder output to pull out genome-specific groups and genes.</p>
+<pre class="r"><code># give properly formatted background in format: GO:0005838  GSBRNA2T00088508001;GSBRNA2T00088313001;GSBRNA2T00035842001 
+#annAT &lt;- readMappings(&#39;BACKGROUND.txt.gz&#39;, sep=&quot;\t&quot;, IDsep=&quot;;&quot;)
+#save(annAT, file=&#39;annAtObject.RData&#39;)
+
+load(&#39;annAtObject.RData&#39;)
+allgenes &lt;- unique(unlist(annAT))
+
+compare &lt;- function(genelistfile, outname, allgenes, annAT) {
+  # give file with your genes of interest, one gene_id per line
+  
+  mygenes &lt;-scan(genelistfile ,what=&quot;&quot;)
+  geneList &lt;- factor(as.integer(allgenes %in% mygenes))
+  names(geneList) &lt;- allgenes
+  
+  GOdata &lt;-new (&quot;topGOdata&quot;, ontology = &#39;BP&#39;, allGenes = geneList, nodeSize = 5, annot=annFUN.GO2genes, GO2genes=annAT)
+  # using ClassicCount:
+  #test.stat &lt;-new (&quot;classicCount&quot;, testStatistic = GOFisherTest, name = &quot;Fisher Test&quot;)
+  #resultsFisherC &lt;-getSigGroups (GOdata, test.stat)
+  # using weight01:
+  weight01.fisher &lt;- runTest(GOdata, statistic = &quot;fisher&quot;)
+  # using ClassicCount:
+  # allRes &lt;- GenTable(GOdata, classicFisher= resultsFisherC, topNodes = 30)
+  # using weight01:
+  allRes &lt;- GenTable(GOdata, classicFisher=weight01.fisher,topNodes=30)#,topNodes=100)
+  names(allRes)[length(allRes)] &lt;- &quot;p.value&quot;
+  p_values &lt;- score(weight01.fisher)
+  adjusted_p &lt;- p.adjust(p_values)
+  adjusted_p[adjusted_p &lt; 0.05] %&gt;% enframe() %&gt;% write_csv(&#39;data/&#39; + outname)
+
+}</code></pre>
+</div>
+<div id="comparing-the-three-big-groups" class="section level1">
+<h1>Comparing the three big groups</h1>
+<pre class="r"><code># all genes shared - this runs out of memory
+#compare(&#39;Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses_and_Terrestrials.txt&#39;, &#39;output/GO_results_genes_in_Aquatics_and_Seagrasses_and_Terrestrials.csv&#39;, allgenes, annAT)
+
+# Genes in aquatics and seagrasses - IMPORTANT This is NOT the union - this is the intersection!
+# Union is below
+compare(&#39;Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses.txt&#39;, &#39;output/GO_results_genes_in_Aquatics_and_Seagrasses_NOT_Terrestrials.csv&#39;, allgenes, annAT)
+
+# Genes only in aquatics
+compare(&#39;Lost_present_gene_lists/Genes_only_in_Aquatics.txt&#39;, &#39;output/GO_results_genes_in_Aquatics_NOT_Seagrasses_NOT_Terrestrials.csv&#39;, allgenes, annAT)
+
+# Genes only in seagrasses
+compare(&#39;Lost_present_gene_lists/Genes_only_in_Seagrasses.txt&#39;, &#39;output/GO_results_genes_in_Seagrasses_NOT_Aquatics_NOT_Terrestrials.csv&#39;, allgenes, annAT)
+
+# Genes only in terrestrials
+compare(&#39;Lost_present_gene_lists/Genes_only_in_Terrestrials.txt&#39;, &#39;output/GO_results_genes_in_Terrestrials_NOT_Aquatics_NOT_Seagrasses.csv&#39;, allgenes, annAT)
+
+# Genes union of Seagrass and Aquatics
+compare(&#39;Lost_present_gene_lists/Genes_union_of_Seagrass_and_Aquatics_union.txt&#39;, &#39;output/GO_results_genes_union_Aquatics_and_Seagrasses_NOT_Terrestrials.csv&#39;, allgenes, annAT)</code></pre>
+</div>
+<div id="seagrass-only-comparisons" class="section level1">
+<h1>Seagrass only comparisons</h1>
+<p>Now we compare seagrasses within each other.</p>
+<p>For the seagrass-only comparisons, I’m using a Seagrass-only background as that makes more biological sense to me.s</p>
+<pre class="r"><code># give properly formatted background in format: GO:0005838  GSBRNA2T00088508001;GSBRNA2T00088313001;GSBRNA2T00035842001 
+#sannAT &lt;- readMappings(&#39;SEAGRASSBACKGROUND.txt&#39;, sep=&quot;\t&quot;, IDsep=&quot;;&quot;)
+#save(sannAT, file=&#39;sannAtObject.RData&#39;)
+
+load(&#39;sannAtObject.RData&#39;)
+sallgenes &lt;- unique(unlist(sannAT))</code></pre>
+</div>
+<div id="lost-in-seagrasses-1" class="section level1">
+<h1>lost in seagrasses</h1>
+<pre class="r"><code>compare(&#39;Lost_present_gene_lists/Genes_lost_in_A_antarctica_not_other_seagrasses.txt&#39;, &#39;output/GO_results_genes_lost_A_antarctica_not_other_seagrasses.csv&#39;, sallgenes, sannAT)
+
+compare(&#39;Lost_present_gene_lists/Genes_lost_in_Z_marina_not_other_seagrasses.txt&#39;, &#39;output/GO_results_genes_lost_Z_marina_not_other_seagrasses.csv&#39;, sallgenes, sannAT)
+
+compare(&#39;Lost_present_gene_lists/Genes_lost_in_P_australis_not_other_seagrasses.txt&#39;, &#39;output/GO_results_genes_lost_P_australis_not_other_seagrasses.csv&#39;, sallgenes, sannAT)
+
+compare(&#39;Lost_present_gene_lists/Genes_lost_in_Z_muelleri_not_other_seagrasses.txt&#39;, &#39;output/GO_results_genes_lost_Z_muelleri_not_other_seagrasses.csv&#39;, sallgenes, sannAT)</code></pre>
+</div>
+<div id="present-in-seagrasses" class="section level1">
+<h1>Present in seagrasses</h1>
+<pre class="r"><code>compare(&#39;Lost_present_gene_lists/Genes_only_in_Z_marina_not_other_seagrasses.txt&#39;, &#39;output/GO_results_genes_only_Z_marina_not_other_seagrasses.csv&#39;, sallgenes, sannAT)
+
+compare(&#39;Lost_present_gene_lists/Genes_only_in_Z_muelleri_not_other_seagrasses.txt&#39;, &#39;output/GO_results_genes_only_Z_muelleri_not_other_seagrasses.csv&#39;, sallgenes, sannAT)
+
+compare(&#39;Lost_present_gene_lists/Genes_only_in_P_australis_not_other_seagrasses.txt&#39;, &#39;output/GO_results_genes_only_P_australis_not_other_seagrasses.csv&#39;, sallgenes, sannAT)
+
+compare(&#39;Lost_present_gene_lists/Genes_only_in_A_antarctica_not_other_seagrasses.txt&#39;, &#39;output/GO_results_genes_only_A_antarctica_not_other_seagrasses.csv&#39;, sallgenes, sannAT)</code></pre>
+<p>Alright now we have all these different GO terms in all these files - we can send them to revigo for visualiation and some deduplication!</p>
+</div>
+<div id="revigo" class="section level1">
+<h1>Revigo</h1>
+<p>This code is based on <a href="http://revigo.irb.hr/CodeExamples/revigo.R.txt" class="uri">http://revigo.irb.hr/CodeExamples/revigo.R.txt</a></p>
+<pre class="r"><code>results_list &lt;- list()
+
+for (f in list.files(&#39;./output/&#39;, pattern=&#39;*.csv&#39;)){
+  filename &lt;- paste(&#39;./output/&#39;, f, sep=&#39;&#39;)
+  go_and_pvalues &lt;- readChar(filename, file.info(filename)$size)
+  go_and_pvalues &lt;- gsub(&#39;,&#39;, &#39; &#39;, go_and_pvalues)
+  
+  httr::POST(
+    url = &quot;http://revigo.irb.hr/StartJob.aspx&quot;,
+    body = list(
+      cutoff = &quot;0.7&quot;,
+      valueType = &quot;pvalue&quot;,
+     # speciesTaxon = &quot;4577&quot;, # zea mays
+     #speciesTaxon = &#39;39947&#39;, # japonica
+     speciesTaxon = &#39;3702&#39;, # arabidopsis
+      measure = &quot;SIMREL&quot;,
+      goList = go_and_pvalues
+    ),
+    # application/x-www-form-urlencoded
+    encode = &quot;form&quot;
+  ) -&gt; res
+  
+  dat &lt;- httr::content(res, encoding = &quot;UTF-8&quot;)
+  
+  jobid &lt;- jsonlite::fromJSON(dat,bigint_as_char=TRUE)$jobid
+  
+  # Check job status
+  running &lt;- &quot;1&quot;
+  while (running != &quot;0&quot; ) {
+      httr::POST(
+        url = &quot;http://revigo.irb.hr/QueryJobStatus.aspx&quot;,
+        query = list( jobid = jobid )
+      ) -&gt; res2
+      dat2 &lt;- httr::content(res2, encoding = &quot;UTF-8&quot;)
+      running &lt;- jsonlite::fromJSON(dat2)$running
+      Sys.sleep(1)
+  }
+  
+  # Fetch results
+  httr::POST(
+    url = &quot;http://revigo.irb.hr/ExportJob.aspx&quot;,
+    query = list(
+      jobid = jobid, 
+      namespace = &quot;1&quot;,
+      type = &quot;CSVTable&quot;
+    )
+  ) -&gt; res3
+  
+  dat3 &lt;- httr::content(res3, encoding = &quot;UTF-8&quot;)
+  
+  dat3 &lt;- stri_replace_all_fixed(dat3, &quot;\r&quot;, &quot;&quot;)
+  # Now we have a csv table in a string!
+
+  # read_csv does not like the &#39;, &#39;, it wants &#39;,&#39;
+  dat &lt;- read_csv(gsub(&#39;, &#39;, &#39;,&#39;, dat3), show_col_types = FALSE) 
+  
+  # do we even have results?
+  if(nrow(dat) == 0){next}
+  results_list[[f]] &lt;- dat
+  
+}</code></pre>
+<pre><code>Warning in readChar(filename, file.info(filename)$size): truncating string with
+embedded nuls
+
+Warning in readChar(filename, file.info(filename)$size): truncating string with
+embedded nuls
+
+Warning in readChar(filename, file.info(filename)$size): truncating string with
+embedded nuls
+
+Warning in readChar(filename, file.info(filename)$size): truncating string with
+embedded nuls
+
+Warning in readChar(filename, file.info(filename)$size): truncating string with
+embedded nuls
+
+Warning in readChar(filename, file.info(filename)$size): truncating string with
+embedded nuls
+
+Warning in readChar(filename, file.info(filename)$size): truncating string with
+embedded nuls
+
+Warning in readChar(filename, file.info(filename)$size): truncating string with
+embedded nuls
+
+Warning in readChar(filename, file.info(filename)$size): truncating string with
+embedded nuls
+
+Warning in readChar(filename, file.info(filename)$size): truncating string with
+embedded nuls
+
+Warning in readChar(filename, file.info(filename)$size): truncating string with
+embedded nuls
+
+Warning in readChar(filename, file.info(filename)$size): truncating string with
+embedded nuls</code></pre>
+<p>OK we have a list with all results in a big list. Now we can plot!</p>
+</div>
+<div id="making-supplementary-tables-for-the-revigo-results" class="section level1">
+<h1>Making Supplementary Tables for the REVIGO results</h1>
+<p>Let’s also pull these terms out as tables. <code>Value</code> is the unadjusted p-value (-3.7 = 10 * -3.7)</p>
+<pre class="r"><code>for( i in names(results_list)) {
+  print(i)
+  print(results_list[[i]] %&gt;% filter(Eliminated == FALSE) %&gt;% select(TermID, Name, Value) %&gt;% arrange(Value) %&gt;% kbl() %&gt;%  kable_styling())
+  cat(&quot;\n&quot;)
+}</code></pre>
+[1] “GO_results_genes_in_Aquatics_and_Seagrasses_NOT_Terrestrials.csv”
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+TermID
+</th>
+<th style="text-align:left;">
+Name
+</th>
+<th style="text-align:right;">
+Value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0032197" class="uri">GO:0032197</a>
+</td>
+<td style="text-align:left;">
+transposition,RNA-mediated
+</td>
+<td style="text-align:right;">
+-67.507734
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006278" class="uri">GO:0006278</a>
+</td>
+<td style="text-align:left;">
+RNA-dependent DNA biosynthetic process
+</td>
+<td style="text-align:right;">
+-49.118091
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090501" class="uri">GO:0090501</a>
+</td>
+<td style="text-align:left;">
+RNA phosphodiester bond hydrolysis
+</td>
+<td style="text-align:right;">
+-43.436290
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006508" class="uri">GO:0006508</a>
+</td>
+<td style="text-align:left;">
+proteolysis
+</td>
+<td style="text-align:right;">
+-28.556828
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0045747" class="uri">GO:0045747</a>
+</td>
+<td style="text-align:left;">
+positive regulation of Notch signaling pathway
+</td>
+<td style="text-align:right;">
+-21.348070
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0016360" class="uri">GO:0016360</a>
+</td>
+<td style="text-align:left;">
+sensory organ precursor cell fate determination
+</td>
+<td style="text-align:right;">
+-21.348070
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0045314" class="uri">GO:0045314</a>
+</td>
+<td style="text-align:left;">
+regulation of compound eye photoreceptor development
+</td>
+<td style="text-align:right;">
+-21.348070
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0007398" class="uri">GO:0007398</a>
+</td>
+<td style="text-align:left;">
+ectoderm development
+</td>
+<td style="text-align:right;">
+-21.348070
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0035204" class="uri">GO:0035204</a>
+</td>
+<td style="text-align:left;">
+negative regulation of lamellocyte differentiation
+</td>
+<td style="text-align:right;">
+-21.348070
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:2000027" class="uri">GO:2000027</a>
+</td>
+<td style="text-align:left;">
+regulation of animal organ morphogenesis
+</td>
+<td style="text-align:right;">
+-21.236806
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0007616" class="uri">GO:0007616</a>
+</td>
+<td style="text-align:left;">
+long-term memory
+</td>
+<td style="text-align:right;">
+-21.231089
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0030718" class="uri">GO:0030718</a>
+</td>
+<td style="text-align:left;">
+germ-line stem cell population maintenance
+</td>
+<td style="text-align:right;">
+-18.709600
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0007422" class="uri">GO:0007422</a>
+</td>
+<td style="text-align:left;">
+peripheral nervous system development
+</td>
+<td style="text-align:right;">
+-18.628472
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0007498" class="uri">GO:0007498</a>
+</td>
+<td style="text-align:left;">
+mesoderm development
+</td>
+<td style="text-align:right;">
+-18.628472
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0030707" class="uri">GO:0030707</a>
+</td>
+<td style="text-align:left;">
+ovarian follicle cell development
+</td>
+<td style="text-align:right;">
+-17.937024
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0033962" class="uri">GO:0033962</a>
+</td>
+<td style="text-align:left;">
+P-body assembly
+</td>
+<td style="text-align:right;">
+-12.505301
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0000290" class="uri">GO:0000290</a>
+</td>
+<td style="text-align:left;">
+deadenylation-dependent decapping of nuclear-transcribed mRNA
+</td>
+<td style="text-align:right;">
+-10.390740
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0008104" class="uri">GO:0008104</a>
+</td>
+<td style="text-align:left;">
+protein localization
+</td>
+<td style="text-align:right;">
+-8.899044
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0001896" class="uri">GO:0001896</a>
+</td>
+<td style="text-align:left;">
+autolysis
+</td>
+<td style="text-align:right;">
+-8.396837
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0043386" class="uri">GO:0043386</a>
+</td>
+<td style="text-align:left;">
+mycotoxin biosynthetic process
+</td>
+<td style="text-align:right;">
+-8.396837
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010914" class="uri">GO:0010914</a>
+</td>
+<td style="text-align:left;">
+positive regulation of sterigmatocystin biosynthetic process
+</td>
+<td style="text-align:right;">
+-8.396837
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0051260" class="uri">GO:0051260</a>
+</td>
+<td style="text-align:left;">
+protein homooligomerization
+</td>
+<td style="text-align:right;">
+-7.067176
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0008356" class="uri">GO:0008356</a>
+</td>
+<td style="text-align:left;">
+asymmetric cell division
+</td>
+<td style="text-align:right;">
+-6.018134
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0000209" class="uri">GO:0000209</a>
+</td>
+<td style="text-align:left;">
+protein polyubiquitination
+</td>
+<td style="text-align:right;">
+-5.141380
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010501" class="uri">GO:0010501</a>
+</td>
+<td style="text-align:left;">
+RNA secondary structure unwinding
+</td>
+<td style="text-align:right;">
+-5.076995
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009062" class="uri">GO:0009062</a>
+</td>
+<td style="text-align:left;">
+fatty acid catabolic process
+</td>
+<td style="text-align:right;">
+-4.163845
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0042306" class="uri">GO:0042306</a>
+</td>
+<td style="text-align:left;">
+regulation of protein import into nucleus
+</td>
+<td style="text-align:right;">
+-3.362772
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0016446" class="uri">GO:0016446</a>
+</td>
+<td style="text-align:left;">
+somatic hypermutation of immunoglobulin genes
+</td>
+<td style="text-align:right;">
+-3.103944
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010098" class="uri">GO:0010098</a>
+</td>
+<td style="text-align:left;">
+suspensor development
+</td>
+<td style="text-align:right;">
+-2.948600
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0040007" class="uri">GO:0040007</a>
+</td>
+<td style="text-align:left;">
+growth
+</td>
+<td style="text-align:right;">
+-2.774732
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0097164" class="uri">GO:0097164</a>
+</td>
+<td style="text-align:left;">
+ammonium ion metabolic process
+</td>
+<td style="text-align:right;">
+-2.588258
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0019365" class="uri">GO:0019365</a>
+</td>
+<td style="text-align:left;">
+pyridine nucleotide salvage
+</td>
+<td style="text-align:right;">
+-2.389379
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006657" class="uri">GO:0006657</a>
+</td>
+<td style="text-align:left;">
+CDP-choline pathway
+</td>
+<td style="text-align:right;">
+-2.045139
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006458" class="uri">GO:0006458</a>
+</td>
+<td style="text-align:left;">
+‘de novo’ protein folding
+</td>
+<td style="text-align:right;">
+-2.026123
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0016560" class="uri">GO:0016560</a>
+</td>
+<td style="text-align:left;">
+protein import into peroxisome matrix,docking
+</td>
+<td style="text-align:right;">
+-1.985661
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0098719" class="uri">GO:0098719</a>
+</td>
+<td style="text-align:left;">
+sodium ion import across plasma membrane
+</td>
+<td style="text-align:right;">
+-1.614660
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1904580" class="uri">GO:1904580</a>
+</td>
+<td style="text-align:left;">
+regulation of intracellular mRNA localization
+</td>
+<td style="text-align:right;">
+-1.534859
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006970" class="uri">GO:0006970</a>
+</td>
+<td style="text-align:left;">
+response to osmotic stress
+</td>
+<td style="text-align:right;">
+-1.532272
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0046520" class="uri">GO:0046520</a>
+</td>
+<td style="text-align:left;">
+sphingoid biosynthetic process
+</td>
+<td style="text-align:right;">
+-1.482379
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010555" class="uri">GO:0010555</a>
+</td>
+<td style="text-align:left;">
+response to mannitol
+</td>
+<td style="text-align:right;">
+-1.441326
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006885" class="uri">GO:0006885</a>
+</td>
+<td style="text-align:left;">
+regulation of pH
+</td>
+<td style="text-align:right;">
+-1.341458
+</td>
+</tr>
+</tbody>
+</table>
+[1] “GO_results_genes_in_Aquatics_NOT_Seagrasses_NOT_Terrestrials.csv”
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+TermID
+</th>
+<th style="text-align:left;">
+Name
+</th>
+<th style="text-align:right;">
+Value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010025" class="uri">GO:0010025</a>
+</td>
+<td style="text-align:left;">
+wax biosynthetic process
+</td>
+<td style="text-align:right;">
+-26.626443
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0019432" class="uri">GO:0019432</a>
+</td>
+<td style="text-align:left;">
+triglyceride biosynthetic process
+</td>
+<td style="text-align:right;">
+-25.954024
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0048438" class="uri">GO:0048438</a>
+</td>
+<td style="text-align:left;">
+floral whorl development
+</td>
+<td style="text-align:right;">
+-25.054223
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009753" class="uri">GO:0009753</a>
+</td>
+<td style="text-align:left;">
+response to jasmonic acid
+</td>
+<td style="text-align:right;">
+-13.955898
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0017148" class="uri">GO:0017148</a>
+</td>
+<td style="text-align:left;">
+negative regulation of translation
+</td>
+<td style="text-align:right;">
+-13.764822
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:2000117" class="uri">GO:2000117</a>
+</td>
+<td style="text-align:left;">
+negative regulation of cysteine-type endopeptidase activity
+</td>
+<td style="text-align:right;">
+-12.436518
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006869" class="uri">GO:0006869</a>
+</td>
+<td style="text-align:left;">
+lipid transport
+</td>
+<td style="text-align:right;">
+-10.654295
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009723" class="uri">GO:0009723</a>
+</td>
+<td style="text-align:left;">
+response to ethylene
+</td>
+<td style="text-align:right;">
+-10.158676
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090696" class="uri">GO:0090696</a>
+</td>
+<td style="text-align:left;">
+post-embryonic plant organ development
+</td>
+<td style="text-align:right;">
+-9.654049
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0001666" class="uri">GO:0001666</a>
+</td>
+<td style="text-align:left;">
+response to hypoxia
+</td>
+<td style="text-align:right;">
+-9.070723
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0001101" class="uri">GO:0001101</a>
+</td>
+<td style="text-align:left;">
+response to acid chemical
+</td>
+<td style="text-align:right;">
+-8.606000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0034605" class="uri">GO:0034605</a>
+</td>
+<td style="text-align:left;">
+cellular response to heat
+</td>
+<td style="text-align:right;">
+-8.228346
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010373" class="uri">GO:0010373</a>
+</td>
+<td style="text-align:left;">
+negative regulation of gibberellin biosynthetic process
+</td>
+<td style="text-align:right;">
+-7.331038
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010208" class="uri">GO:0010208</a>
+</td>
+<td style="text-align:left;">
+pollen wall assembly
+</td>
+<td style="text-align:right;">
+-6.453670
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009266" class="uri">GO:0009266</a>
+</td>
+<td style="text-align:left;">
+response to temperature stimulus
+</td>
+<td style="text-align:right;">
+-6.229266
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010030" class="uri">GO:0010030</a>
+</td>
+<td style="text-align:left;">
+positive regulation of seed germination
+</td>
+<td style="text-align:right;">
+-6.157498
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006606" class="uri">GO:0006606</a>
+</td>
+<td style="text-align:left;">
+protein import into nucleus
+</td>
+<td style="text-align:right;">
+-5.868931
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0019365" class="uri">GO:0019365</a>
+</td>
+<td style="text-align:left;">
+pyridine nucleotide salvage
+</td>
+<td style="text-align:right;">
+-5.687459
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0042254" class="uri">GO:0042254</a>
+</td>
+<td style="text-align:left;">
+ribosome biogenesis
+</td>
+<td style="text-align:right;">
+-5.646111
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010220" class="uri">GO:0010220</a>
+</td>
+<td style="text-align:left;">
+positive regulation of vernalization response
+</td>
+<td style="text-align:right;">
+-5.563470
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006355" class="uri">GO:0006355</a>
+</td>
+<td style="text-align:left;">
+regulation of transcription,DNA-templated
+</td>
+<td style="text-align:right;">
+-4.209775
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009910" class="uri">GO:0009910</a>
+</td>
+<td style="text-align:left;">
+negative regulation of flower development
+</td>
+<td style="text-align:right;">
+-3.634419
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0048441" class="uri">GO:0048441</a>
+</td>
+<td style="text-align:left;">
+petal development
+</td>
+<td style="text-align:right;">
+-3.509074
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006396" class="uri">GO:0006396</a>
+</td>
+<td style="text-align:left;">
+RNA processing
+</td>
+<td style="text-align:right;">
+-3.319062
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090143" class="uri">GO:0090143</a>
+</td>
+<td style="text-align:left;">
+nucleoid organization
+</td>
+<td style="text-align:right;">
+-3.064675
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009416" class="uri">GO:0009416</a>
+</td>
+<td style="text-align:left;">
+response to light stimulus
+</td>
+<td style="text-align:right;">
+-2.859747
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010262" class="uri">GO:0010262</a>
+</td>
+<td style="text-align:left;">
+somatic embryogenesis
+</td>
+<td style="text-align:right;">
+-2.802825
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0032353" class="uri">GO:0032353</a>
+</td>
+<td style="text-align:left;">
+negative regulation of hormone biosynthetic process
+</td>
+<td style="text-align:right;">
+-2.781174
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0050821" class="uri">GO:0050821</a>
+</td>
+<td style="text-align:left;">
+protein stabilization
+</td>
+<td style="text-align:right;">
+-2.655356
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009650" class="uri">GO:0009650</a>
+</td>
+<td style="text-align:left;">
+UV protection
+</td>
+<td style="text-align:right;">
+-2.631031
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006212" class="uri">GO:0006212</a>
+</td>
+<td style="text-align:left;">
+uracil catabolic process
+</td>
+<td style="text-align:right;">
+-2.393548
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009093" class="uri">GO:0009093</a>
+</td>
+<td style="text-align:left;">
+cysteine catabolic process
+</td>
+<td style="text-align:right;">
+-2.271820
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0048830" class="uri">GO:0048830</a>
+</td>
+<td style="text-align:left;">
+adventitious root development
+</td>
+<td style="text-align:right;">
+-2.256427
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009739" class="uri">GO:0009739</a>
+</td>
+<td style="text-align:left;">
+response to gibberellin
+</td>
+<td style="text-align:right;">
+-1.992537
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0042814" class="uri">GO:0042814</a>
+</td>
+<td style="text-align:left;">
+monopolar cell growth
+</td>
+<td style="text-align:right;">
+-1.754299
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0072699" class="uri">GO:0072699</a>
+</td>
+<td style="text-align:left;">
+protein localization to cortical microtubule cytoskeleton
+</td>
+<td style="text-align:right;">
+-1.754299
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0085029" class="uri">GO:0085029</a>
+</td>
+<td style="text-align:left;">
+extracellular matrix assembly
+</td>
+<td style="text-align:right;">
+-1.708512
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010077" class="uri">GO:0010077</a>
+</td>
+<td style="text-align:left;">
+maintenance of inflorescence meristem identity
+</td>
+<td style="text-align:right;">
+-1.620899
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0055046" class="uri">GO:0055046</a>
+</td>
+<td style="text-align:left;">
+microgametogenesis
+</td>
+<td style="text-align:right;">
+-1.407736
+</td>
+</tr>
+</tbody>
+</table>
+[1] “GO_results_genes_in_Seagrasses_NOT_Aquatics_NOT_Terrestrials.csv”
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+TermID
+</th>
+<th style="text-align:left;">
+Name
+</th>
+<th style="text-align:right;">
+Value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0051603" class="uri">GO:0051603</a>
+</td>
+<td style="text-align:left;">
+proteolysis involved in cellular protein catabolic process
+</td>
+<td style="text-align:right;">
+-11.456833
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006278" class="uri">GO:0006278</a>
+</td>
+<td style="text-align:left;">
+RNA-dependent DNA biosynthetic process
+</td>
+<td style="text-align:right;">
+-9.577934
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0032197" class="uri">GO:0032197</a>
+</td>
+<td style="text-align:left;">
+transposition,RNA-mediated
+</td>
+<td style="text-align:right;">
+-9.168511
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0033275" class="uri">GO:0033275</a>
+</td>
+<td style="text-align:left;">
+actin-myosin filament sliding
+</td>
+<td style="text-align:right;">
+-6.682353
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090501" class="uri">GO:0090501</a>
+</td>
+<td style="text-align:left;">
+RNA phosphodiester bond hydrolysis
+</td>
+<td style="text-align:right;">
+-6.648430
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0043007" class="uri">GO:0043007</a>
+</td>
+<td style="text-align:left;">
+maintenance of rDNA
+</td>
+<td style="text-align:right;">
+-6.455202
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0033298" class="uri">GO:0033298</a>
+</td>
+<td style="text-align:left;">
+contractile vacuole organization
+</td>
+<td style="text-align:right;">
+-5.583611
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0032060" class="uri">GO:0032060</a>
+</td>
+<td style="text-align:left;">
+bleb assembly
+</td>
+<td style="text-align:right;">
+-5.583611
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0050982" class="uri">GO:0050982</a>
+</td>
+<td style="text-align:left;">
+detection of mechanical stimulus
+</td>
+<td style="text-align:right;">
+-5.431629
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1900049" class="uri">GO:1900049</a>
+</td>
+<td style="text-align:left;">
+regulation of histone exchange
+</td>
+<td style="text-align:right;">
+-5.042366
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0016131" class="uri">GO:0016131</a>
+</td>
+<td style="text-align:left;">
+brassinosteroid metabolic process
+</td>
+<td style="text-align:right;">
+-4.909247
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1902466" class="uri">GO:1902466</a>
+</td>
+<td style="text-align:left;">
+positive regulation of histone H3-K27 trimethylation
+</td>
+<td style="text-align:right;">
+-4.579819
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0051591" class="uri">GO:0051591</a>
+</td>
+<td style="text-align:left;">
+response to cAMP
+</td>
+<td style="text-align:right;">
+-4.509703
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0001932" class="uri">GO:0001932</a>
+</td>
+<td style="text-align:left;">
+regulation of protein phosphorylation
+</td>
+<td style="text-align:right;">
+-3.934885
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0032989" class="uri">GO:0032989</a>
+</td>
+<td style="text-align:left;">
+cellular component morphogenesis
+</td>
+<td style="text-align:right;">
+-3.724531
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0048578" class="uri">GO:0048578</a>
+</td>
+<td style="text-align:left;">
+positive regulation of long-day photoperiodism,flowering
+</td>
+<td style="text-align:right;">
+-3.385409
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006468" class="uri">GO:0006468</a>
+</td>
+<td style="text-align:left;">
+protein phosphorylation
+</td>
+<td style="text-align:right;">
+-3.226314
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0080156" class="uri">GO:0080156</a>
+</td>
+<td style="text-align:left;">
+mitochondrial mRNA modification
+</td>
+<td style="text-align:right;">
+-3.221374
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0097193" class="uri">GO:0097193</a>
+</td>
+<td style="text-align:left;">
+intrinsic apoptotic signaling pathway
+</td>
+<td style="text-align:right;">
+-3.003236
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009048" class="uri">GO:0009048</a>
+</td>
+<td style="text-align:left;">
+dosage compensation by inactivation of X chromosome
+</td>
+<td style="text-align:right;">
+-2.792735
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090701" class="uri">GO:0090701</a>
+</td>
+<td style="text-align:left;">
+specification of plant organ identity
+</td>
+<td style="text-align:right;">
+-2.713400
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010022" class="uri">GO:0010022</a>
+</td>
+<td style="text-align:left;">
+meristem determinacy
+</td>
+<td style="text-align:right;">
+-2.675579
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006971" class="uri">GO:0006971</a>
+</td>
+<td style="text-align:left;">
+hypotonic response
+</td>
+<td style="text-align:right;">
+-2.372108
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010090" class="uri">GO:0010090</a>
+</td>
+<td style="text-align:left;">
+trichome morphogenesis
+</td>
+<td style="text-align:right;">
+-2.336224
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0051707" class="uri">GO:0051707</a>
+</td>
+<td style="text-align:left;">
+response to other organism
+</td>
+<td style="text-align:right;">
+-2.284036
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0051555" class="uri">GO:0051555</a>
+</td>
+<td style="text-align:left;">
+flavonol biosynthetic process
+</td>
+<td style="text-align:right;">
+-2.102840
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1904872" class="uri">GO:1904872</a>
+</td>
+<td style="text-align:left;">
+regulation of telomerase RNA localization to Cajal body
+</td>
+<td style="text-align:right;">
+-1.978326
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0051127" class="uri">GO:0051127</a>
+</td>
+<td style="text-align:left;">
+positive regulation of actin nucleation
+</td>
+<td style="text-align:right;">
+-1.905381
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0097242" class="uri">GO:0097242</a>
+</td>
+<td style="text-align:left;">
+amyloid-beta clearance
+</td>
+<td style="text-align:right;">
+-1.718349
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010992" class="uri">GO:0010992</a>
+</td>
+<td style="text-align:left;">
+ubiquitin recycling
+</td>
+<td style="text-align:right;">
+-1.718349
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010815" class="uri">GO:0010815</a>
+</td>
+<td style="text-align:left;">
+bradykinin catabolic process
+</td>
+<td style="text-align:right;">
+-1.718349
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:2001240" class="uri">GO:2001240</a>
+</td>
+<td style="text-align:left;">
+negative regulation of extrinsic apoptotic signaling pathway in absence of ligand
+</td>
+<td style="text-align:right;">
+-1.641177
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0016926" class="uri">GO:0016926</a>
+</td>
+<td style="text-align:left;">
+protein desumoylation
+</td>
+<td style="text-align:right;">
+-1.543029
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071048" class="uri">GO:0071048</a>
+</td>
+<td style="text-align:left;">
+nuclear retention of unspliced pre-mRNA at the site of transcription
+</td>
+<td style="text-align:right;">
+-1.532452
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010222" class="uri">GO:0010222</a>
+</td>
+<td style="text-align:left;">
+stem vascular tissue pattern formation
+</td>
+<td style="text-align:right;">
+-1.487551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010492" class="uri">GO:0010492</a>
+</td>
+<td style="text-align:left;">
+maintenance of shoot apical meristem identity
+</td>
+<td style="text-align:right;">
+-1.433920
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0048576" class="uri">GO:0048576</a>
+</td>
+<td style="text-align:left;">
+positive regulation of short-day photoperiodism,flowering
+</td>
+<td style="text-align:right;">
+-1.364131
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0043086" class="uri">GO:0043086</a>
+</td>
+<td style="text-align:left;">
+negative regulation of catalytic activity
+</td>
+<td style="text-align:right;">
+-1.351735
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0031154" class="uri">GO:0031154</a>
+</td>
+<td style="text-align:left;">
+culmination involved in sorocarp development
+</td>
+<td style="text-align:right;">
+-1.309504
+</td>
+</tr>
+</tbody>
+</table>
+[1] “GO_results_genes_in_Terrestrials_NOT_Aquatics_NOT_Seagrasses.csv”
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+TermID
+</th>
+<th style="text-align:left;">
+Name
+</th>
+<th style="text-align:right;">
+Value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0051762" class="uri">GO:0051762</a>
+</td>
+<td style="text-align:left;">
+sesquiterpene biosynthetic process
+</td>
+<td style="text-align:right;">
+-143.501548
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006952" class="uri">GO:0006952</a>
+</td>
+<td style="text-align:left;">
+defense response
+</td>
+<td style="text-align:right;">
+-117.942439
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010082" class="uri">GO:0010082</a>
+</td>
+<td style="text-align:left;">
+regulation of root meristem growth
+</td>
+<td style="text-align:right;">
+-108.551199
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:2000280" class="uri">GO:2000280</a>
+</td>
+<td style="text-align:left;">
+regulation of root development
+</td>
+<td style="text-align:right;">
+-86.448127
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0007165" class="uri">GO:0007165</a>
+</td>
+<td style="text-align:left;">
+signal transduction
+</td>
+<td style="text-align:right;">
+-73.886537
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0046345" class="uri">GO:0046345</a>
+</td>
+<td style="text-align:left;">
+abscisic acid catabolic process
+</td>
+<td style="text-align:right;">
+-57.837256
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0000966" class="uri">GO:0000966</a>
+</td>
+<td style="text-align:left;">
+RNA 5’-end processing
+</td>
+<td style="text-align:right;">
+-56.420803
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0031146" class="uri">GO:0031146</a>
+</td>
+<td style="text-align:left;">
+SCF-dependent proteasomal ubiquitin-dependent protein catabolic process
+</td>
+<td style="text-align:right;">
+-52.213782
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0048509" class="uri">GO:0048509</a>
+</td>
+<td style="text-align:left;">
+regulation of meristem development
+</td>
+<td style="text-align:right;">
+-51.881994
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0045338" class="uri">GO:0045338</a>
+</td>
+<td style="text-align:left;">
+farnesyl diphosphate metabolic process
+</td>
+<td style="text-align:right;">
+-41.706252
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:2000026" class="uri">GO:2000026</a>
+</td>
+<td style="text-align:left;">
+regulation of multicellular organismal development
+</td>
+<td style="text-align:right;">
+-40.141627
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0051554" class="uri">GO:0051554</a>
+</td>
+<td style="text-align:left;">
+flavonol metabolic process
+</td>
+<td style="text-align:right;">
+-37.734717
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009819" class="uri">GO:0009819</a>
+</td>
+<td style="text-align:left;">
+drought recovery
+</td>
+<td style="text-align:right;">
+-36.208841
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010469" class="uri">GO:0010469</a>
+</td>
+<td style="text-align:left;">
+regulation of signaling receptor activity
+</td>
+<td style="text-align:right;">
+-36.089822
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090615" class="uri">GO:0090615</a>
+</td>
+<td style="text-align:left;">
+mitochondrial mRNA processing
+</td>
+<td style="text-align:right;">
+-35.930259
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0019756" class="uri">GO:0019756</a>
+</td>
+<td style="text-align:left;">
+cyanogenic glycoside biosynthetic process
+</td>
+<td style="text-align:right;">
+-35.084917
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0080003" class="uri">GO:0080003</a>
+</td>
+<td style="text-align:left;">
+thalianol metabolic process
+</td>
+<td style="text-align:right;">
+-31.306539
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009617" class="uri">GO:0009617</a>
+</td>
+<td style="text-align:left;">
+response to bacterium
+</td>
+<td style="text-align:right;">
+-31.074845
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009625" class="uri">GO:0009625</a>
+</td>
+<td style="text-align:left;">
+response to insect
+</td>
+<td style="text-align:right;">
+-29.065755
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009962" class="uri">GO:0009962</a>
+</td>
+<td style="text-align:left;">
+regulation of flavonoid biosynthetic process
+</td>
+<td style="text-align:right;">
+-26.749126
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006468" class="uri">GO:0006468</a>
+</td>
+<td style="text-align:left;">
+protein phosphorylation
+</td>
+<td style="text-align:right;">
+-26.047386
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006885" class="uri">GO:0006885</a>
+</td>
+<td style="text-align:left;">
+regulation of pH
+</td>
+<td style="text-align:right;">
+-23.177460
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0016567" class="uri">GO:0016567</a>
+</td>
+<td style="text-align:left;">
+protein ubiquitination
+</td>
+<td style="text-align:right;">
+-23.062311
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010618" class="uri">GO:0010618</a>
+</td>
+<td style="text-align:left;">
+aerenchyma formation
+</td>
+<td style="text-align:right;">
+-21.148233
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0045168" class="uri">GO:0045168</a>
+</td>
+<td style="text-align:left;">
+cell-cell signaling involved in cell fate commitment
+</td>
+<td style="text-align:right;">
+-21.038631
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0052544" class="uri">GO:0052544</a>
+</td>
+<td style="text-align:left;">
+defense response by callose deposition in cell wall
+</td>
+<td style="text-align:right;">
+-19.928674
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:2000083" class="uri">GO:2000083</a>
+</td>
+<td style="text-align:left;">
+negative regulation of L-ascorbic acid biosynthetic process
+</td>
+<td style="text-align:right;">
+-19.592316
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0000304" class="uri">GO:0000304</a>
+</td>
+<td style="text-align:left;">
+response to singlet oxygen
+</td>
+<td style="text-align:right;">
+-18.701819
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071368" class="uri">GO:0071368</a>
+</td>
+<td style="text-align:left;">
+cellular response to cytokinin stimulus
+</td>
+<td style="text-align:right;">
+-17.533700
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0045926" class="uri">GO:0045926</a>
+</td>
+<td style="text-align:left;">
+negative regulation of growth
+</td>
+<td style="text-align:right;">
+-16.846454
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1902025" class="uri">GO:1902025</a>
+</td>
+<td style="text-align:left;">
+nitrate import
+</td>
+<td style="text-align:right;">
+-16.819160
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0060307" class="uri">GO:0060307</a>
+</td>
+<td style="text-align:left;">
+regulation of ventricular cardiac muscle cell membrane repolarization
+</td>
+<td style="text-align:right;">
+-16.402211
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0036371" class="uri">GO:0036371</a>
+</td>
+<td style="text-align:left;">
+protein localization to T-tubule
+</td>
+<td style="text-align:right;">
+-16.095554
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0033292" class="uri">GO:0033292</a>
+</td>
+<td style="text-align:left;">
+T-tubule organization
+</td>
+<td style="text-align:right;">
+-16.095554
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0036309" class="uri">GO:0036309</a>
+</td>
+<td style="text-align:left;">
+protein localization to M-band
+</td>
+<td style="text-align:right;">
+-16.095554
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1901021" class="uri">GO:1901021</a>
+</td>
+<td style="text-align:left;">
+positive regulation of calcium ion transmembrane transporter activity
+</td>
+<td style="text-align:right;">
+-16.095554
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009626" class="uri">GO:0009626</a>
+</td>
+<td style="text-align:left;">
+plant-type hypersensitive response
+</td>
+<td style="text-align:right;">
+-15.316450
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0097185" class="uri">GO:0097185</a>
+</td>
+<td style="text-align:left;">
+cellular response to azide
+</td>
+<td style="text-align:right;">
+-14.492924
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0080027" class="uri">GO:0080027</a>
+</td>
+<td style="text-align:left;">
+response to herbivore
+</td>
+<td style="text-align:right;">
+-14.021250
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010221" class="uri">GO:0010221</a>
+</td>
+<td style="text-align:left;">
+negative regulation of vernalization response
+</td>
+<td style="text-align:right;">
+-13.971217
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0042742" class="uri">GO:0042742</a>
+</td>
+<td style="text-align:left;">
+defense response to bacterium
+</td>
+<td style="text-align:right;">
+-13.848529
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0080184" class="uri">GO:0080184</a>
+</td>
+<td style="text-align:left;">
+response to phenylpropanoid
+</td>
+<td style="text-align:right;">
+-13.215717
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009684" class="uri">GO:0009684</a>
+</td>
+<td style="text-align:left;">
+indoleacetic acid biosynthetic process
+</td>
+<td style="text-align:right;">
+-12.791295
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009871" class="uri">GO:0009871</a>
+</td>
+<td style="text-align:left;">
+jasmonic acid and ethylene-dependent systemic resistance,ethylene mediated signaling pathway
+</td>
+<td style="text-align:right;">
+-12.418186
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071236" class="uri">GO:0071236</a>
+</td>
+<td style="text-align:left;">
+cellular response to antibiotic
+</td>
+<td style="text-align:right;">
+-11.827987
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009852" class="uri">GO:0009852</a>
+</td>
+<td style="text-align:left;">
+auxin catabolic process
+</td>
+<td style="text-align:right;">
+-11.760676
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010942" class="uri">GO:0010942</a>
+</td>
+<td style="text-align:left;">
+positive regulation of cell death
+</td>
+<td style="text-align:right;">
+-11.630087
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071466" class="uri">GO:0071466</a>
+</td>
+<td style="text-align:left;">
+cellular response to xenobiotic stimulus
+</td>
+<td style="text-align:right;">
+-11.288199
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071766" class="uri">GO:0071766</a>
+</td>
+<td style="text-align:left;">
+Actinobacterium-type cell wall biogenesis
+</td>
+<td style="text-align:right;">
+-10.455440
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0007166" class="uri">GO:0007166</a>
+</td>
+<td style="text-align:left;">
+cell surface receptor signaling pathway
+</td>
+<td style="text-align:right;">
+-10.403838
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1904526" class="uri">GO:1904526</a>
+</td>
+<td style="text-align:left;">
+regulation of microtubule binding
+</td>
+<td style="text-align:right;">
+-10.390529
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009611" class="uri">GO:0009611</a>
+</td>
+<td style="text-align:left;">
+response to wounding
+</td>
+<td style="text-align:right;">
+-10.241320
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009410" class="uri">GO:0009410</a>
+</td>
+<td style="text-align:left;">
+response to xenobiotic stimulus
+</td>
+<td style="text-align:right;">
+-9.812383
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006812" class="uri">GO:0006812</a>
+</td>
+<td style="text-align:left;">
+cation transport
+</td>
+<td style="text-align:right;">
+-9.518886
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1905255" class="uri">GO:1905255</a>
+</td>
+<td style="text-align:left;">
+regulation of RNA binding transcription factor activity
+</td>
+<td style="text-align:right;">
+-9.396917
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0035024" class="uri">GO:0035024</a>
+</td>
+<td style="text-align:left;">
+negative regulation of Rho protein signal transduction
+</td>
+<td style="text-align:right;">
+-8.998029
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009914" class="uri">GO:0009914</a>
+</td>
+<td style="text-align:left;">
+hormone transport
+</td>
+<td style="text-align:right;">
+-8.966261
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010930" class="uri">GO:0010930</a>
+</td>
+<td style="text-align:left;">
+negative regulation of auxin mediated signaling pathway
+</td>
+<td style="text-align:right;">
+-8.845442
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0002213" class="uri">GO:0002213</a>
+</td>
+<td style="text-align:left;">
+defense response to insect
+</td>
+<td style="text-align:right;">
+-8.830445
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071395" class="uri">GO:0071395</a>
+</td>
+<td style="text-align:left;">
+cellular response to jasmonic acid stimulus
+</td>
+<td style="text-align:right;">
+-8.620748
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0070301" class="uri">GO:0070301</a>
+</td>
+<td style="text-align:left;">
+cellular response to hydrogen peroxide
+</td>
+<td style="text-align:right;">
+-8.478385
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0002011" class="uri">GO:0002011</a>
+</td>
+<td style="text-align:left;">
+morphogenesis of an epithelial sheet
+</td>
+<td style="text-align:right;">
+-8.038068
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010030" class="uri">GO:0010030</a>
+</td>
+<td style="text-align:left;">
+positive regulation of seed germination
+</td>
+<td style="text-align:right;">
+-8.035314
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0016045" class="uri">GO:0016045</a>
+</td>
+<td style="text-align:left;">
+detection of bacterium
+</td>
+<td style="text-align:right;">
+-7.948233
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0097237" class="uri">GO:0097237</a>
+</td>
+<td style="text-align:left;">
+cellular response to toxic substance
+</td>
+<td style="text-align:right;">
+-7.664251
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1902265" class="uri">GO:1902265</a>
+</td>
+<td style="text-align:left;">
+abscisic acid homeostasis
+</td>
+<td style="text-align:right;">
+-7.523139
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0034394" class="uri">GO:0034394</a>
+</td>
+<td style="text-align:left;">
+protein localization to cell surface
+</td>
+<td style="text-align:right;">
+-6.648005
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009865" class="uri">GO:0009865</a>
+</td>
+<td style="text-align:left;">
+pollen tube adhesion
+</td>
+<td style="text-align:right;">
+-6.357568
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006355" class="uri">GO:0006355</a>
+</td>
+<td style="text-align:left;">
+regulation of transcription,DNA-templated
+</td>
+<td style="text-align:right;">
+-6.326918
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090559" class="uri">GO:0090559</a>
+</td>
+<td style="text-align:left;">
+regulation of membrane permeability
+</td>
+<td style="text-align:right;">
+-6.145108
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0007584" class="uri">GO:0007584</a>
+</td>
+<td style="text-align:left;">
+response to nutrient
+</td>
+<td style="text-align:right;">
+-6.032889
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009866" class="uri">GO:0009866</a>
+</td>
+<td style="text-align:left;">
+induced systemic resistance,ethylene mediated signaling pathway
+</td>
+<td style="text-align:right;">
+-6.031631
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010310" class="uri">GO:0010310</a>
+</td>
+<td style="text-align:left;">
+regulation of hydrogen peroxide metabolic process
+</td>
+<td style="text-align:right;">
+-5.857372
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0097167" class="uri">GO:0097167</a>
+</td>
+<td style="text-align:left;">
+circadian regulation of translation
+</td>
+<td style="text-align:right;">
+-5.774298
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009734" class="uri">GO:0009734</a>
+</td>
+<td style="text-align:left;">
+auxin-activated signaling pathway
+</td>
+<td style="text-align:right;">
+-5.408543
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0003283" class="uri">GO:0003283</a>
+</td>
+<td style="text-align:left;">
+atrial septum development
+</td>
+<td style="text-align:right;">
+-5.371665
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0007267" class="uri">GO:0007267</a>
+</td>
+<td style="text-align:left;">
+cell-cell signaling
+</td>
+<td style="text-align:right;">
+-5.269003
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009737" class="uri">GO:0009737</a>
+</td>
+<td style="text-align:left;">
+response to abscisic acid
+</td>
+<td style="text-align:right;">
+-5.143354
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009311" class="uri">GO:0009311</a>
+</td>
+<td style="text-align:left;">
+oligosaccharide metabolic process
+</td>
+<td style="text-align:right;">
+-5.050193
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010233" class="uri">GO:0010233</a>
+</td>
+<td style="text-align:left;">
+phloem transport
+</td>
+<td style="text-align:right;">
+-5.045523
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009826" class="uri">GO:0009826</a>
+</td>
+<td style="text-align:left;">
+unidimensional cell growth
+</td>
+<td style="text-align:right;">
+-4.938939
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010114" class="uri">GO:0010114</a>
+</td>
+<td style="text-align:left;">
+response to red light
+</td>
+<td style="text-align:right;">
+-4.892294
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071218" class="uri">GO:0071218</a>
+</td>
+<td style="text-align:left;">
+cellular response to misfolded protein
+</td>
+<td style="text-align:right;">
+-4.859071
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0061157" class="uri">GO:0061157</a>
+</td>
+<td style="text-align:left;">
+mRNA destabilization
+</td>
+<td style="text-align:right;">
+-4.507855
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010438" class="uri">GO:0010438</a>
+</td>
+<td style="text-align:left;">
+cellular response to sulfur starvation
+</td>
+<td style="text-align:right;">
+-4.191383
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0007422" class="uri">GO:0007422</a>
+</td>
+<td style="text-align:left;">
+peripheral nervous system development
+</td>
+<td style="text-align:right;">
+-4.020084
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0031542" class="uri">GO:0031542</a>
+</td>
+<td style="text-align:left;">
+positive regulation of anthocyanin biosynthetic process
+</td>
+<td style="text-align:right;">
+-3.961486
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0002239" class="uri">GO:0002239</a>
+</td>
+<td style="text-align:left;">
+response to oomycetes
+</td>
+<td style="text-align:right;">
+-3.957108
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0015708" class="uri">GO:0015708</a>
+</td>
+<td style="text-align:left;">
+silicic acid import across plasma membrane
+</td>
+<td style="text-align:right;">
+-3.932028
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006335" class="uri">GO:0006335</a>
+</td>
+<td style="text-align:left;">
+DNA replication-dependent chromatin assembly
+</td>
+<td style="text-align:right;">
+-3.844884
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0032504" class="uri">GO:0032504</a>
+</td>
+<td style="text-align:left;">
+multicellular organism reproduction
+</td>
+<td style="text-align:right;">
+-3.826316
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009745" class="uri">GO:0009745</a>
+</td>
+<td style="text-align:left;">
+sucrose mediated signaling
+</td>
+<td style="text-align:right;">
+-3.815288
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0035600" class="uri">GO:0035600</a>
+</td>
+<td style="text-align:left;">
+tRNA methylthiolation
+</td>
+<td style="text-align:right;">
+-3.689252
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0001101" class="uri">GO:0001101</a>
+</td>
+<td style="text-align:left;">
+response to acid chemical
+</td>
+<td style="text-align:right;">
+-3.608320
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009751" class="uri">GO:0009751</a>
+</td>
+<td style="text-align:left;">
+response to salicylic acid
+</td>
+<td style="text-align:right;">
+-3.586672
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1905614" class="uri">GO:1905614</a>
+</td>
+<td style="text-align:left;">
+negative regulation of developmental vegetative growth
+</td>
+<td style="text-align:right;">
+-3.393833
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0032527" class="uri">GO:0032527</a>
+</td>
+<td style="text-align:left;">
+protein exit from endoplasmic reticulum
+</td>
+<td style="text-align:right;">
+-3.369785
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010305" class="uri">GO:0010305</a>
+</td>
+<td style="text-align:left;">
+leaf vascular tissue pattern formation
+</td>
+<td style="text-align:right;">
+-3.344485
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1902290" class="uri">GO:1902290</a>
+</td>
+<td style="text-align:left;">
+positive regulation of defense response to oomycetes
+</td>
+<td style="text-align:right;">
+-3.258939
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0051513" class="uri">GO:0051513</a>
+</td>
+<td style="text-align:left;">
+regulation of monopolar cell growth
+</td>
+<td style="text-align:right;">
+-3.182886
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0002230" class="uri">GO:0002230</a>
+</td>
+<td style="text-align:left;">
+positive regulation of defense response to virus by host
+</td>
+<td style="text-align:right;">
+-3.125303
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0097503" class="uri">GO:0097503</a>
+</td>
+<td style="text-align:left;">
+sialylation
+</td>
+<td style="text-align:right;">
+-3.117517
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006898" class="uri">GO:0006898</a>
+</td>
+<td style="text-align:left;">
+receptor-mediated endocytosis
+</td>
+<td style="text-align:right;">
+-3.067736
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009960" class="uri">GO:0009960</a>
+</td>
+<td style="text-align:left;">
+endosperm development
+</td>
+<td style="text-align:right;">
+-2.946166
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0043086" class="uri">GO:0043086</a>
+</td>
+<td style="text-align:left;">
+negative regulation of catalytic activity
+</td>
+<td style="text-align:right;">
+-2.893705
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009733" class="uri">GO:0009733</a>
+</td>
+<td style="text-align:left;">
+response to auxin
+</td>
+<td style="text-align:right;">
+-2.892061
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0031347" class="uri">GO:0031347</a>
+</td>
+<td style="text-align:left;">
+regulation of defense response
+</td>
+<td style="text-align:right;">
+-2.842056
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0042177" class="uri">GO:0042177</a>
+</td>
+<td style="text-align:left;">
+negative regulation of protein catabolic process
+</td>
+<td style="text-align:right;">
+-2.756067
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0045314" class="uri">GO:0045314</a>
+</td>
+<td style="text-align:left;">
+regulation of compound eye photoreceptor development
+</td>
+<td style="text-align:right;">
+-2.705864
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0007398" class="uri">GO:0007398</a>
+</td>
+<td style="text-align:left;">
+ectoderm development
+</td>
+<td style="text-align:right;">
+-2.705864
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0045747" class="uri">GO:0045747</a>
+</td>
+<td style="text-align:left;">
+positive regulation of Notch signaling pathway
+</td>
+<td style="text-align:right;">
+-2.705864
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0035204" class="uri">GO:0035204</a>
+</td>
+<td style="text-align:left;">
+negative regulation of lamellocyte differentiation
+</td>
+<td style="text-align:right;">
+-2.705864
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010150" class="uri">GO:0010150</a>
+</td>
+<td style="text-align:left;">
+leaf senescence
+</td>
+<td style="text-align:right;">
+-2.704461
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071229" class="uri">GO:0071229</a>
+</td>
+<td style="text-align:left;">
+cellular response to acid chemical
+</td>
+<td style="text-align:right;">
+-2.695489
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0031640" class="uri">GO:0031640</a>
+</td>
+<td style="text-align:left;">
+killing of cells of other organism
+</td>
+<td style="text-align:right;">
+-2.629273
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1903553" class="uri">GO:1903553</a>
+</td>
+<td style="text-align:left;">
+positive regulation of extracellular exosome assembly
+</td>
+<td style="text-align:right;">
+-2.629137
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0044364" class="uri">GO:0044364</a>
+</td>
+<td style="text-align:left;">
+disruption of cells of other organism
+</td>
+<td style="text-align:right;">
+-2.629137
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0048265" class="uri">GO:0048265</a>
+</td>
+<td style="text-align:left;">
+response to pain
+</td>
+<td style="text-align:right;">
+-2.629137
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:2000027" class="uri">GO:2000027</a>
+</td>
+<td style="text-align:left;">
+regulation of animal organ morphogenesis
+</td>
+<td style="text-align:right;">
+-2.615330
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0007498" class="uri">GO:0007498</a>
+</td>
+<td style="text-align:left;">
+mesoderm development
+</td>
+<td style="text-align:right;">
+-2.610391
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0048821" class="uri">GO:0048821</a>
+</td>
+<td style="text-align:left;">
+erythrocyte development
+</td>
+<td style="text-align:right;">
+-2.525503
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1905663" class="uri">GO:1905663</a>
+</td>
+<td style="text-align:left;">
+positive regulation of telomerase RNA reverse transcriptase activity
+</td>
+<td style="text-align:right;">
+-2.437567
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009627" class="uri">GO:0009627</a>
+</td>
+<td style="text-align:left;">
+systemic acquired resistance
+</td>
+<td style="text-align:right;">
+-2.272801
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009828" class="uri">GO:0009828</a>
+</td>
+<td style="text-align:left;">
+plant-type cell wall loosening
+</td>
+<td style="text-align:right;">
+-2.257521
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010275" class="uri">GO:0010275</a>
+</td>
+<td style="text-align:left;">
+NAD(P)H dehydrogenase complex assembly
+</td>
+<td style="text-align:right;">
+-2.187116
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1904355" class="uri">GO:1904355</a>
+</td>
+<td style="text-align:left;">
+positive regulation of telomere capping
+</td>
+<td style="text-align:right;">
+-1.975465
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1900745" class="uri">GO:1900745</a>
+</td>
+<td style="text-align:left;">
+positive regulation of p38MAPK cascade
+</td>
+<td style="text-align:right;">
+-1.870783
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0031930" class="uri">GO:0031930</a>
+</td>
+<td style="text-align:left;">
+mitochondria-nucleus signaling pathway
+</td>
+<td style="text-align:right;">
+-1.675324
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0046482" class="uri">GO:0046482</a>
+</td>
+<td style="text-align:left;">
+para-aminobenzoic acid metabolic process
+</td>
+<td style="text-align:right;">
+-1.654849
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0001824" class="uri">GO:0001824</a>
+</td>
+<td style="text-align:left;">
+blastocyst development
+</td>
+<td style="text-align:right;">
+-1.628424
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071219" class="uri">GO:0071219</a>
+</td>
+<td style="text-align:left;">
+cellular response to molecule of bacterial origin
+</td>
+<td style="text-align:right;">
+-1.522636
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0097366" class="uri">GO:0097366</a>
+</td>
+<td style="text-align:left;">
+response to bronchodilator
+</td>
+<td style="text-align:right;">
+-1.511918
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0002215" class="uri">GO:0002215</a>
+</td>
+<td style="text-align:left;">
+defense response to nematode
+</td>
+<td style="text-align:right;">
+-1.438176
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0042761" class="uri">GO:0042761</a>
+</td>
+<td style="text-align:left;">
+very long-chain fatty acid biosynthetic process
+</td>
+<td style="text-align:right;">
+-1.415808
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009958" class="uri">GO:0009958</a>
+</td>
+<td style="text-align:left;">
+positive gravitropism
+</td>
+<td style="text-align:right;">
+-1.402316
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0000769" class="uri">GO:0000769</a>
+</td>
+<td style="text-align:left;">
+syncytium formation by mitosis without cytokinesis
+</td>
+<td style="text-align:right;">
+-1.356437
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0045056" class="uri">GO:0045056</a>
+</td>
+<td style="text-align:left;">
+transcytosis
+</td>
+<td style="text-align:right;">
+-1.355560
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0048211" class="uri">GO:0048211</a>
+</td>
+<td style="text-align:left;">
+Golgi vesicle docking
+</td>
+<td style="text-align:right;">
+-1.355560
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0032526" class="uri">GO:0032526</a>
+</td>
+<td style="text-align:left;">
+response to retinoic acid
+</td>
+<td style="text-align:right;">
+-1.346440
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009218" class="uri">GO:0009218</a>
+</td>
+<td style="text-align:left;">
+pyrimidine ribonucleotide metabolic process
+</td>
+<td style="text-align:right;">
+-1.324744
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090548" class="uri">GO:0090548</a>
+</td>
+<td style="text-align:left;">
+response to nitrate starvation
+</td>
+<td style="text-align:right;">
+-1.315645
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006424" class="uri">GO:0006424</a>
+</td>
+<td style="text-align:left;">
+glutamyl-tRNA aminoacylation
+</td>
+<td style="text-align:right;">
+-1.313120
+</td>
+</tr>
+</tbody>
+</table>
+[1] “GO_results_genes_lost_A_antarctica_not_other_seagrasses.csv”
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+TermID
+</th>
+<th style="text-align:left;">
+Name
+</th>
+<th style="text-align:right;">
+Value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006278" class="uri">GO:0006278</a>
+</td>
+<td style="text-align:left;">
+RNA-dependent DNA biosynthetic process
+</td>
+<td style="text-align:right;">
+-180.916060
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0032197" class="uri">GO:0032197</a>
+</td>
+<td style="text-align:left;">
+transposition,RNA-mediated
+</td>
+<td style="text-align:right;">
+-175.316613
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090501" class="uri">GO:0090501</a>
+</td>
+<td style="text-align:left;">
+RNA phosphodiester bond hydrolysis
+</td>
+<td style="text-align:right;">
+-160.989575
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006508" class="uri">GO:0006508</a>
+</td>
+<td style="text-align:left;">
+proteolysis
+</td>
+<td style="text-align:right;">
+-72.416255
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090305" class="uri">GO:0090305</a>
+</td>
+<td style="text-align:left;">
+nucleic acid phosphodiester bond hydrolysis
+</td>
+<td style="text-align:right;">
+-55.006996
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009451" class="uri">GO:0009451</a>
+</td>
+<td style="text-align:left;">
+RNA modification
+</td>
+<td style="text-align:right;">
+-51.871677
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0044550" class="uri">GO:0044550</a>
+</td>
+<td style="text-align:left;">
+secondary metabolite biosynthetic process
+</td>
+<td style="text-align:right;">
+-23.892755
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010726" class="uri">GO:0010726</a>
+</td>
+<td style="text-align:left;">
+positive regulation of hydrogen peroxide metabolic process
+</td>
+<td style="text-align:right;">
+-18.244993
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0080181" class="uri">GO:0080181</a>
+</td>
+<td style="text-align:left;">
+lateral root branching
+</td>
+<td style="text-align:right;">
+-14.606194
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0032350" class="uri">GO:0032350</a>
+</td>
+<td style="text-align:left;">
+regulation of hormone metabolic process
+</td>
+<td style="text-align:right;">
+-11.320614
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0051258" class="uri">GO:0051258</a>
+</td>
+<td style="text-align:left;">
+protein polymerization
+</td>
+<td style="text-align:right;">
+-10.767659
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071395" class="uri">GO:0071395</a>
+</td>
+<td style="text-align:left;">
+cellular response to jasmonic acid stimulus
+</td>
+<td style="text-align:right;">
+-10.138487
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0016101" class="uri">GO:0016101</a>
+</td>
+<td style="text-align:left;">
+diterpenoid metabolic process
+</td>
+<td style="text-align:right;">
+-9.758264
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010942" class="uri">GO:0010942</a>
+</td>
+<td style="text-align:left;">
+positive regulation of cell death
+</td>
+<td style="text-align:right;">
+-9.704042
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0044245" class="uri">GO:0044245</a>
+</td>
+<td style="text-align:left;">
+polysaccharide digestion
+</td>
+<td style="text-align:right;">
+-6.692450
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0016081" class="uri">GO:0016081</a>
+</td>
+<td style="text-align:left;">
+synaptic vesicle docking
+</td>
+<td style="text-align:right;">
+-6.692450
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0032260" class="uri">GO:0032260</a>
+</td>
+<td style="text-align:left;">
+response to jasmonic acid stimulus involved in jasmonic acid and ethylene-dependent systemic resistance
+</td>
+<td style="text-align:right;">
+-6.439823
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0051603" class="uri">GO:0051603</a>
+</td>
+<td style="text-align:left;">
+proteolysis involved in cellular protein catabolic process
+</td>
+<td style="text-align:right;">
+-6.039701
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0015695" class="uri">GO:0015695</a>
+</td>
+<td style="text-align:left;">
+organic cation transport
+</td>
+<td style="text-align:right;">
+-5.617644
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0048462" class="uri">GO:0048462</a>
+</td>
+<td style="text-align:left;">
+carpel formation
+</td>
+<td style="text-align:right;">
+-4.934992
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010337" class="uri">GO:0010337</a>
+</td>
+<td style="text-align:left;">
+regulation of salicylic acid metabolic process
+</td>
+<td style="text-align:right;">
+-4.452476
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0072488" class="uri">GO:0072488</a>
+</td>
+<td style="text-align:left;">
+ammonium transmembrane transport
+</td>
+<td style="text-align:right;">
+-4.131855
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0045962" class="uri">GO:0045962</a>
+</td>
+<td style="text-align:left;">
+positive regulation of development,heterochronic
+</td>
+<td style="text-align:right;">
+-4.056345
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0040007" class="uri">GO:0040007</a>
+</td>
+<td style="text-align:left;">
+growth
+</td>
+<td style="text-align:right;">
+-3.522516
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1900049" class="uri">GO:1900049</a>
+</td>
+<td style="text-align:left;">
+regulation of histone exchange
+</td>
+<td style="text-align:right;">
+-3.227057
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071289" class="uri">GO:0071289</a>
+</td>
+<td style="text-align:left;">
+cellular response to nickel ion
+</td>
+<td style="text-align:right;">
+-3.177715
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0015709" class="uri">GO:0015709</a>
+</td>
+<td style="text-align:left;">
+thiosulfate transport
+</td>
+<td style="text-align:right;">
+-3.177715
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0033259" class="uri">GO:0033259</a>
+</td>
+<td style="text-align:left;">
+plastid DNA replication
+</td>
+<td style="text-align:right;">
+-3.177715
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006182" class="uri">GO:0006182</a>
+</td>
+<td style="text-align:left;">
+cGMP biosynthetic process
+</td>
+<td style="text-align:right;">
+-2.777287
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006032" class="uri">GO:0006032</a>
+</td>
+<td style="text-align:left;">
+chitin catabolic process
+</td>
+<td style="text-align:right;">
+-2.777287
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0007165" class="uri">GO:0007165</a>
+</td>
+<td style="text-align:left;">
+signal transduction
+</td>
+<td style="text-align:right;">
+-2.454269
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009629" class="uri">GO:0009629</a>
+</td>
+<td style="text-align:left;">
+response to gravity
+</td>
+<td style="text-align:right;">
+-2.417378
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009694" class="uri">GO:0009694</a>
+</td>
+<td style="text-align:left;">
+jasmonic acid metabolic process
+</td>
+<td style="text-align:right;">
+-2.381020
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0043086" class="uri">GO:0043086</a>
+</td>
+<td style="text-align:left;">
+negative regulation of catalytic activity
+</td>
+<td style="text-align:right;">
+-2.306902
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0080021" class="uri">GO:0080021</a>
+</td>
+<td style="text-align:left;">
+response to benzoic acid
+</td>
+<td style="text-align:right;">
+-2.299520
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0072756" class="uri">GO:0072756</a>
+</td>
+<td style="text-align:left;">
+cellular response to paraquat
+</td>
+<td style="text-align:right;">
+-2.299520
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071465" class="uri">GO:0071465</a>
+</td>
+<td style="text-align:left;">
+cellular response to desiccation
+</td>
+<td style="text-align:right;">
+-2.299520
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0034265" class="uri">GO:0034265</a>
+</td>
+<td style="text-align:left;">
+isopentenyl adenine biosynthetic process
+</td>
+<td style="text-align:right;">
+-2.299520
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0070562" class="uri">GO:0070562</a>
+</td>
+<td style="text-align:left;">
+regulation of vitamin D receptor signaling pathway
+</td>
+<td style="text-align:right;">
+-2.278555
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0048385" class="uri">GO:0048385</a>
+</td>
+<td style="text-align:left;">
+regulation of retinoic acid receptor signaling pathway
+</td>
+<td style="text-align:right;">
+-2.278555
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0002229" class="uri">GO:0002229</a>
+</td>
+<td style="text-align:left;">
+defense response to oomycetes
+</td>
+<td style="text-align:right;">
+-2.187161
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006012" class="uri">GO:0006012</a>
+</td>
+<td style="text-align:left;">
+galactose metabolic process
+</td>
+<td style="text-align:right;">
+-2.057857
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010258" class="uri">GO:0010258</a>
+</td>
+<td style="text-align:left;">
+NADH dehydrogenase complex (plastoquinone) assembly
+</td>
+<td style="text-align:right;">
+-1.880093
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0051707" class="uri">GO:0051707</a>
+</td>
+<td style="text-align:left;">
+response to other organism
+</td>
+<td style="text-align:right;">
+-1.559465
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0034461" class="uri">GO:0034461</a>
+</td>
+<td style="text-align:left;">
+uropod retraction
+</td>
+<td style="text-align:right;">
+-1.484321
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090284" class="uri">GO:0090284</a>
+</td>
+<td style="text-align:left;">
+positive regulation of protein glycosylation in Golgi
+</td>
+<td style="text-align:right;">
+-1.465553
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0042773" class="uri">GO:0042773</a>
+</td>
+<td style="text-align:left;">
+ATP synthesis coupled electron transport
+</td>
+<td style="text-align:right;">
+-1.424052
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0080143" class="uri">GO:0080143</a>
+</td>
+<td style="text-align:left;">
+regulation of amino acid export
+</td>
+<td style="text-align:right;">
+-1.421822
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0043153" class="uri">GO:0043153</a>
+</td>
+<td style="text-align:left;">
+entrainment of circadian clock by photoperiod
+</td>
+<td style="text-align:right;">
+-1.421822
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0015990" class="uri">GO:0015990</a>
+</td>
+<td style="text-align:left;">
+electron transport coupled proton transport
+</td>
+<td style="text-align:right;">
+-1.421822
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0008347" class="uri">GO:0008347</a>
+</td>
+<td style="text-align:left;">
+glial cell migration
+</td>
+<td style="text-align:right;">
+-1.366082
+</td>
+</tr>
+</tbody>
+</table>
+[1] “GO_results_genes_lost_P_australis_not_other_seagrasses.csv”
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+TermID
+</th>
+<th style="text-align:left;">
+Name
+</th>
+<th style="text-align:right;">
+Value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009451" class="uri">GO:0009451</a>
+</td>
+<td style="text-align:left;">
+RNA modification
+</td>
+<td style="text-align:right;">
+-89.911120
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090305" class="uri">GO:0090305</a>
+</td>
+<td style="text-align:left;">
+nucleic acid phosphodiester bond hydrolysis
+</td>
+<td style="text-align:right;">
+-89.381091
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006278" class="uri">GO:0006278</a>
+</td>
+<td style="text-align:left;">
+RNA-dependent DNA biosynthetic process
+</td>
+<td style="text-align:right;">
+-20.038600
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0032197" class="uri">GO:0032197</a>
+</td>
+<td style="text-align:left;">
+transposition,RNA-mediated
+</td>
+<td style="text-align:right;">
+-19.701475
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090501" class="uri">GO:0090501</a>
+</td>
+<td style="text-align:left;">
+RNA phosphodiester bond hydrolysis
+</td>
+<td style="text-align:right;">
+-17.299422
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0051603" class="uri">GO:0051603</a>
+</td>
+<td style="text-align:left;">
+proteolysis involved in cellular protein catabolic process
+</td>
+<td style="text-align:right;">
+-10.112687
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0032260" class="uri">GO:0032260</a>
+</td>
+<td style="text-align:left;">
+response to jasmonic acid stimulus involved in jasmonic acid and ethylene-dependent systemic resistance
+</td>
+<td style="text-align:right;">
+-8.751969
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0016081" class="uri">GO:0016081</a>
+</td>
+<td style="text-align:left;">
+synaptic vesicle docking
+</td>
+<td style="text-align:right;">
+-8.178899
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0048462" class="uri">GO:0048462</a>
+</td>
+<td style="text-align:left;">
+carpel formation
+</td>
+<td style="text-align:right;">
+-6.173514
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006508" class="uri">GO:0006508</a>
+</td>
+<td style="text-align:left;">
+proteolysis
+</td>
+<td style="text-align:right;">
+-5.348966
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006885" class="uri">GO:0006885</a>
+</td>
+<td style="text-align:left;">
+regulation of pH
+</td>
+<td style="text-align:right;">
+-4.363572
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0080156" class="uri">GO:0080156</a>
+</td>
+<td style="text-align:left;">
+mitochondrial mRNA modification
+</td>
+<td style="text-align:right;">
+-4.352576
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071602" class="uri">GO:0071602</a>
+</td>
+<td style="text-align:left;">
+phytosphingosine biosynthetic process
+</td>
+<td style="text-align:right;">
+-4.167583
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009694" class="uri">GO:0009694</a>
+</td>
+<td style="text-align:left;">
+jasmonic acid metabolic process
+</td>
+<td style="text-align:right;">
+-3.855562
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0043086" class="uri">GO:0043086</a>
+</td>
+<td style="text-align:left;">
+negative regulation of catalytic activity
+</td>
+<td style="text-align:right;">
+-3.708144
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0030244" class="uri">GO:0030244</a>
+</td>
+<td style="text-align:left;">
+cellulose biosynthetic process
+</td>
+<td style="text-align:right;">
+-3.449424
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0019761" class="uri">GO:0019761</a>
+</td>
+<td style="text-align:left;">
+glucosinolate biosynthetic process
+</td>
+<td style="text-align:right;">
+-3.391467
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0018008" class="uri">GO:0018008</a>
+</td>
+<td style="text-align:left;">
+N-terminal peptidyl-glycine N-myristoylation
+</td>
+<td style="text-align:right;">
+-3.253926
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010064" class="uri">GO:0010064</a>
+</td>
+<td style="text-align:left;">
+embryonic shoot morphogenesis
+</td>
+<td style="text-align:right;">
+-3.253926
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0016131" class="uri">GO:0016131</a>
+</td>
+<td style="text-align:left;">
+brassinosteroid metabolic process
+</td>
+<td style="text-align:right;">
+-3.208332
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1902184" class="uri">GO:1902184</a>
+</td>
+<td style="text-align:left;">
+negative regulation of shoot apical meristem development
+</td>
+<td style="text-align:right;">
+-3.165687
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006812" class="uri">GO:0006812</a>
+</td>
+<td style="text-align:left;">
+cation transport
+</td>
+<td style="text-align:right;">
+-3.078937
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0042273" class="uri">GO:0042273</a>
+</td>
+<td style="text-align:left;">
+ribosomal large subunit biogenesis
+</td>
+<td style="text-align:right;">
+-2.363144
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010500" class="uri">GO:0010500</a>
+</td>
+<td style="text-align:left;">
+transmitting tissue development
+</td>
+<td style="text-align:right;">
+-2.323910
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0050434" class="uri">GO:0050434</a>
+</td>
+<td style="text-align:left;">
+positive regulation of viral transcription
+</td>
+<td style="text-align:right;">
+-2.302352
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071289" class="uri">GO:0071289</a>
+</td>
+<td style="text-align:left;">
+cellular response to nickel ion
+</td>
+<td style="text-align:right;">
+-2.302352
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010208" class="uri">GO:0010208</a>
+</td>
+<td style="text-align:left;">
+pollen wall assembly
+</td>
+<td style="text-align:right;">
+-2.288990
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0042773" class="uri">GO:0042773</a>
+</td>
+<td style="text-align:left;">
+ATP synthesis coupled electron transport
+</td>
+<td style="text-align:right;">
+-2.166858
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0080143" class="uri">GO:0080143</a>
+</td>
+<td style="text-align:left;">
+regulation of amino acid export
+</td>
+<td style="text-align:right;">
+-2.163578
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0043153" class="uri">GO:0043153</a>
+</td>
+<td style="text-align:left;">
+entrainment of circadian clock by photoperiod
+</td>
+<td style="text-align:right;">
+-2.163578
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0015990" class="uri">GO:0015990</a>
+</td>
+<td style="text-align:left;">
+electron transport coupled proton transport
+</td>
+<td style="text-align:right;">
+-2.163578
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0046785" class="uri">GO:0046785</a>
+</td>
+<td style="text-align:left;">
+microtubule polymerization
+</td>
+<td style="text-align:right;">
+-1.922603
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0032461" class="uri">GO:0032461</a>
+</td>
+<td style="text-align:left;">
+positive regulation of protein oligomerization
+</td>
+<td style="text-align:right;">
+-1.861507
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0048658" class="uri">GO:0048658</a>
+</td>
+<td style="text-align:left;">
+anther wall tapetum development
+</td>
+<td style="text-align:right;">
+-1.861507
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006446" class="uri">GO:0006446</a>
+</td>
+<td style="text-align:left;">
+regulation of translational initiation
+</td>
+<td style="text-align:right;">
+-1.783246
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0097480" class="uri">GO:0097480</a>
+</td>
+<td style="text-align:left;">
+establishment of synaptic vesicle localization
+</td>
+<td style="text-align:right;">
+-1.778068
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0019471" class="uri">GO:0019471</a>
+</td>
+<td style="text-align:left;">
+4-hydroxyproline metabolic process
+</td>
+<td style="text-align:right;">
+-1.716219
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0018401" class="uri">GO:0018401</a>
+</td>
+<td style="text-align:left;">
+peptidyl-proline hydroxylation to 4-hydroxy-L-proline
+</td>
+<td style="text-align:right;">
+-1.716219
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090284" class="uri">GO:0090284</a>
+</td>
+<td style="text-align:left;">
+positive regulation of protein glycosylation in Golgi
+</td>
+<td style="text-align:right;">
+-1.640876
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0042407" class="uri">GO:0042407</a>
+</td>
+<td style="text-align:left;">
+cristae formation
+</td>
+<td style="text-align:right;">
+-1.635329
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1900140" class="uri">GO:1900140</a>
+</td>
+<td style="text-align:left;">
+regulation of seedling development
+</td>
+<td style="text-align:right;">
+-1.374861
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0052472" class="uri">GO:0052472</a>
+</td>
+<td style="text-align:left;">
+modulation by host of symbiont transcription
+</td>
+<td style="text-align:right;">
+-1.358014
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010374" class="uri">GO:0010374</a>
+</td>
+<td style="text-align:left;">
+stomatal complex development
+</td>
+<td style="text-align:right;">
+-1.351927
+</td>
+</tr>
+</tbody>
+</table>
+[1] “GO_results_genes_lost_Z_marina_not_other_seagrasses.csv”
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+TermID
+</th>
+<th style="text-align:left;">
+Name
+</th>
+<th style="text-align:right;">
+Value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009083" class="uri">GO:0009083</a>
+</td>
+<td style="text-align:left;">
+branched-chain amino acid catabolic process
+</td>
+<td style="text-align:right;">
+-12.099651
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1902418" class="uri">GO:1902418</a>
+</td>
+<td style="text-align:left;">
+(+)-abscisic acid D-glucopyranosyl ester transmembrane transport
+</td>
+<td style="text-align:right;">
+-12.065236
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0098660" class="uri">GO:0098660</a>
+</td>
+<td style="text-align:left;">
+inorganic ion transmembrane transport
+</td>
+<td style="text-align:right;">
+-9.090653
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0015700" class="uri">GO:0015700</a>
+</td>
+<td style="text-align:left;">
+arsenite transport
+</td>
+<td style="text-align:right;">
+-8.216962
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1901684" class="uri">GO:1901684</a>
+</td>
+<td style="text-align:left;">
+arsenate ion transmembrane transport
+</td>
+<td style="text-align:right;">
+-7.927843
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0040007" class="uri">GO:0040007</a>
+</td>
+<td style="text-align:left;">
+growth
+</td>
+<td style="text-align:right;">
+-7.168854
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090284" class="uri">GO:0090284</a>
+</td>
+<td style="text-align:left;">
+positive regulation of protein glycosylation in Golgi
+</td>
+<td style="text-align:right;">
+-6.355361
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071669" class="uri">GO:0071669</a>
+</td>
+<td style="text-align:left;">
+plant-type cell wall organization or biogenesis
+</td>
+<td style="text-align:right;">
+-5.783306
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0007059" class="uri">GO:0007059</a>
+</td>
+<td style="text-align:left;">
+chromosome segregation
+</td>
+<td style="text-align:right;">
+-5.267361
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0043617" class="uri">GO:0043617</a>
+</td>
+<td style="text-align:left;">
+cellular response to sucrose starvation
+</td>
+<td style="text-align:right;">
+-4.682327
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0007018" class="uri">GO:0007018</a>
+</td>
+<td style="text-align:left;">
+microtubule-based movement
+</td>
+<td style="text-align:right;">
+-4.630782
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009313" class="uri">GO:0009313</a>
+</td>
+<td style="text-align:left;">
+oligosaccharide catabolic process
+</td>
+<td style="text-align:right;">
+-4.522609
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090303" class="uri">GO:0090303</a>
+</td>
+<td style="text-align:left;">
+positive regulation of wound healing
+</td>
+<td style="text-align:right;">
+-4.515170
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:2000114" class="uri">GO:2000114</a>
+</td>
+<td style="text-align:left;">
+regulation of establishment of cell polarity
+</td>
+<td style="text-align:right;">
+-4.303925
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1902198" class="uri">GO:1902198</a>
+</td>
+<td style="text-align:left;">
+3-methylbut-2-enoyl-CoA(4-) metabolic process
+</td>
+<td style="text-align:right;">
+-3.727762
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1904211" class="uri">GO:1904211</a>
+</td>
+<td style="text-align:left;">
+membrane protein proteolysis involved in retrograde protein transport,ER to cytosol
+</td>
+<td style="text-align:right;">
+-3.727762
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0043007" class="uri">GO:0043007</a>
+</td>
+<td style="text-align:left;">
+maintenance of rDNA
+</td>
+<td style="text-align:right;">
+-3.677400
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1900400" class="uri">GO:1900400</a>
+</td>
+<td style="text-align:left;">
+regulation of iron ion import into cell by regulation of transcription from RNA polymerase II promoter
+</td>
+<td style="text-align:right;">
+-3.277240
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1901255" class="uri">GO:1901255</a>
+</td>
+<td style="text-align:left;">
+nucleotide-excision repair involved in interstrand cross-link repair
+</td>
+<td style="text-align:right;">
+-3.277240
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0008347" class="uri">GO:0008347</a>
+</td>
+<td style="text-align:left;">
+glial cell migration
+</td>
+<td style="text-align:right;">
+-3.277240
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0032508" class="uri">GO:0032508</a>
+</td>
+<td style="text-align:left;">
+DNA duplex unwinding
+</td>
+<td style="text-align:right;">
+-3.131414
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0034260" class="uri">GO:0034260</a>
+</td>
+<td style="text-align:left;">
+negative regulation of GTPase activity
+</td>
+<td style="text-align:right;">
+-3.043832
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010104" class="uri">GO:0010104</a>
+</td>
+<td style="text-align:left;">
+regulation of ethylene-activated signaling pathway
+</td>
+<td style="text-align:right;">
+-2.878893
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0030837" class="uri">GO:0030837</a>
+</td>
+<td style="text-align:left;">
+negative regulation of actin filament polymerization
+</td>
+<td style="text-align:right;">
+-2.774984
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0097502" class="uri">GO:0097502</a>
+</td>
+<td style="text-align:left;">
+mannosylation
+</td>
+<td style="text-align:right;">
+-2.734209
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1900153" class="uri">GO:1900153</a>
+</td>
+<td style="text-align:left;">
+positive regulation of nuclear-transcribed mRNA catabolic process,deadenylation-dependent decay
+</td>
+<td style="text-align:right;">
+-2.645697
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1900049" class="uri">GO:1900049</a>
+</td>
+<td style="text-align:left;">
+regulation of histone exchange
+</td>
+<td style="text-align:right;">
+-2.607858
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0097193" class="uri">GO:0097193</a>
+</td>
+<td style="text-align:left;">
+intrinsic apoptotic signaling pathway
+</td>
+<td style="text-align:right;">
+-2.601213
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0000913" class="uri">GO:0000913</a>
+</td>
+<td style="text-align:left;">
+preprophase band assembly
+</td>
+<td style="text-align:right;">
+-2.495797
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0016573" class="uri">GO:0016573</a>
+</td>
+<td style="text-align:left;">
+histone acetylation
+</td>
+<td style="text-align:right;">
+-2.305824
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009556" class="uri">GO:0009556</a>
+</td>
+<td style="text-align:left;">
+microsporogenesis
+</td>
+<td style="text-align:right;">
+-2.080502
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006075" class="uri">GO:0006075</a>
+</td>
+<td style="text-align:left;">
+(1-&gt;3)-beta-D-glucan biosynthetic process
+</td>
+<td style="text-align:right;">
+-1.868028
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071329" class="uri">GO:0071329</a>
+</td>
+<td style="text-align:left;">
+cellular response to sucrose stimulus
+</td>
+<td style="text-align:right;">
+-1.827140
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0051289" class="uri">GO:0051289</a>
+</td>
+<td style="text-align:left;">
+protein homotetramerization
+</td>
+<td style="text-align:right;">
+-1.755497
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009624" class="uri">GO:0009624</a>
+</td>
+<td style="text-align:left;">
+response to nematode
+</td>
+<td style="text-align:right;">
+-1.749373
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0106004" class="uri">GO:0106004</a>
+</td>
+<td style="text-align:left;">
+tRNA (guanine-N7)-methylation
+</td>
+<td style="text-align:right;">
+-1.563561
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1900000" class="uri">GO:1900000</a>
+</td>
+<td style="text-align:left;">
+regulation of anthocyanin catabolic process
+</td>
+<td style="text-align:right;">
+-1.563561
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0097242" class="uri">GO:0097242</a>
+</td>
+<td style="text-align:left;">
+amyloid-beta clearance
+</td>
+<td style="text-align:right;">
+-1.533347
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010992" class="uri">GO:0010992</a>
+</td>
+<td style="text-align:left;">
+ubiquitin recycling
+</td>
+<td style="text-align:right;">
+-1.533347
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0008340" class="uri">GO:0008340</a>
+</td>
+<td style="text-align:left;">
+determination of adult lifespan
+</td>
+<td style="text-align:right;">
+-1.533347
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010815" class="uri">GO:0010815</a>
+</td>
+<td style="text-align:left;">
+bradykinin catabolic process
+</td>
+<td style="text-align:right;">
+-1.533347
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010208" class="uri">GO:0010208</a>
+</td>
+<td style="text-align:left;">
+pollen wall assembly
+</td>
+<td style="text-align:right;">
+-1.374147
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0035194" class="uri">GO:0035194</a>
+</td>
+<td style="text-align:left;">
+post-transcriptional gene silencing by RNA
+</td>
+<td style="text-align:right;">
+-1.312663
+</td>
+</tr>
+</tbody>
+</table>
+[1] “GO_results_genes_lost_Z_muelleri_not_other_seagrasses.csv”
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+TermID
+</th>
+<th style="text-align:left;">
+Name
+</th>
+<th style="text-align:right;">
+Value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0051603" class="uri">GO:0051603</a>
+</td>
+<td style="text-align:left;">
+proteolysis involved in cellular protein catabolic process
+</td>
+<td style="text-align:right;">
+-9.343439
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071482" class="uri">GO:0071482</a>
+</td>
+<td style="text-align:left;">
+cellular response to light stimulus
+</td>
+<td style="text-align:right;">
+-4.060248
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0080156" class="uri">GO:0080156</a>
+</td>
+<td style="text-align:left;">
+mitochondrial mRNA modification
+</td>
+<td style="text-align:right;">
+-3.977341
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0046785" class="uri">GO:0046785</a>
+</td>
+<td style="text-align:left;">
+microtubule polymerization
+</td>
+<td style="text-align:right;">
+-3.919147
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006624" class="uri">GO:0006624</a>
+</td>
+<td style="text-align:left;">
+vacuolar protein processing
+</td>
+<td style="text-align:right;">
+-3.194610
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006597" class="uri">GO:0006597</a>
+</td>
+<td style="text-align:left;">
+spermine biosynthetic process
+</td>
+<td style="text-align:right;">
+-3.169700
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1990019" class="uri">GO:1990019</a>
+</td>
+<td style="text-align:left;">
+protein storage vacuole organization
+</td>
+<td style="text-align:right;">
+-2.561493
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0030174" class="uri">GO:0030174</a>
+</td>
+<td style="text-align:left;">
+regulation of DNA-dependent DNA replication initiation
+</td>
+<td style="text-align:right;">
+-2.463341
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0042372" class="uri">GO:0042372</a>
+</td>
+<td style="text-align:left;">
+phylloquinone biosynthetic process
+</td>
+<td style="text-align:right;">
+-2.463341
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0046900" class="uri">GO:0046900</a>
+</td>
+<td style="text-align:left;">
+tetrahydrofolylpolyglutamate metabolic process
+</td>
+<td style="text-align:right;">
+-1.766281
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0070914" class="uri">GO:0070914</a>
+</td>
+<td style="text-align:left;">
+UV-damage excision repair
+</td>
+<td style="text-align:right;">
+-1.765542
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071332" class="uri">GO:0071332</a>
+</td>
+<td style="text-align:left;">
+cellular response to fructose stimulus
+</td>
+<td style="text-align:right;">
+-1.444683
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010157" class="uri">GO:0010157</a>
+</td>
+<td style="text-align:left;">
+response to chlorate
+</td>
+<td style="text-align:right;">
+-1.444683
+</td>
+</tr>
+</tbody>
+</table>
+[1] “GO_results_genes_only_P_australis_not_other_seagrasses.csv”
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+TermID
+</th>
+<th style="text-align:left;">
+Name
+</th>
+<th style="text-align:right;">
+Value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0005983" class="uri">GO:0005983</a>
+</td>
+<td style="text-align:left;">
+starch catabolic process
+</td>
+<td style="text-align:right;">
+-2.055820
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0034721" class="uri">GO:0034721</a>
+</td>
+<td style="text-align:left;">
+histone H3-K4 demethylation,trimethyl-H3-K4-specific
+</td>
+<td style="text-align:right;">
+-1.884385
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0046686" class="uri">GO:0046686</a>
+</td>
+<td style="text-align:left;">
+response to cadmium ion
+</td>
+<td style="text-align:right;">
+-1.754551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071333" class="uri">GO:0071333</a>
+</td>
+<td style="text-align:left;">
+cellular response to glucose stimulus
+</td>
+<td style="text-align:right;">
+-1.582738
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0030174" class="uri">GO:0030174</a>
+</td>
+<td style="text-align:left;">
+regulation of DNA-dependent DNA replication initiation
+</td>
+<td style="text-align:right;">
+-1.307768
+</td>
+</tr>
+</tbody>
+</table>
+[1] “GO_results_genes_only_Z_marina_not_other_seagrasses.csv”
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+TermID
+</th>
+<th style="text-align:left;">
+Name
+</th>
+<th style="text-align:right;">
+Value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0051603" class="uri">GO:0051603</a>
+</td>
+<td style="text-align:left;">
+proteolysis involved in cellular protein catabolic process
+</td>
+<td style="text-align:right;">
+-23.445501
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0046785" class="uri">GO:0046785</a>
+</td>
+<td style="text-align:left;">
+microtubule polymerization
+</td>
+<td style="text-align:right;">
+-13.774183
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006624" class="uri">GO:0006624</a>
+</td>
+<td style="text-align:left;">
+vacuolar protein processing
+</td>
+<td style="text-align:right;">
+-9.895786
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1990019" class="uri">GO:1990019</a>
+</td>
+<td style="text-align:left;">
+protein storage vacuole organization
+</td>
+<td style="text-align:right;">
+-8.591400
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0080156" class="uri">GO:0080156</a>
+</td>
+<td style="text-align:left;">
+mitochondrial mRNA modification
+</td>
+<td style="text-align:right;">
+-7.414447
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010157" class="uri">GO:0010157</a>
+</td>
+<td style="text-align:left;">
+response to chlorate
+</td>
+<td style="text-align:right;">
+-5.513515
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0048281" class="uri">GO:0048281</a>
+</td>
+<td style="text-align:left;">
+inflorescence morphogenesis
+</td>
+<td style="text-align:right;">
+-4.588824
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0032989" class="uri">GO:0032989</a>
+</td>
+<td style="text-align:left;">
+cellular component morphogenesis
+</td>
+<td style="text-align:right;">
+-4.508650
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090156" class="uri">GO:0090156</a>
+</td>
+<td style="text-align:left;">
+cellular sphingolipid homeostasis
+</td>
+<td style="text-align:right;">
+-4.494330
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010090" class="uri">GO:0010090</a>
+</td>
+<td style="text-align:left;">
+trichome morphogenesis
+</td>
+<td style="text-align:right;">
+-4.097280
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1901332" class="uri">GO:1901332</a>
+</td>
+<td style="text-align:left;">
+negative regulation of lateral root development
+</td>
+<td style="text-align:right;">
+-2.847257
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006278" class="uri">GO:0006278</a>
+</td>
+<td style="text-align:left;">
+RNA-dependent DNA biosynthetic process
+</td>
+<td style="text-align:right;">
+-2.761258
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0032197" class="uri">GO:0032197</a>
+</td>
+<td style="text-align:left;">
+transposition,RNA-mediated
+</td>
+<td style="text-align:right;">
+-2.708915
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010286" class="uri">GO:0010286</a>
+</td>
+<td style="text-align:left;">
+heat acclimation
+</td>
+<td style="text-align:right;">
+-2.016484
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090709" class="uri">GO:0090709</a>
+</td>
+<td style="text-align:left;">
+regulation of timing of plant organ formation
+</td>
+<td style="text-align:right;">
+-1.857388
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006537" class="uri">GO:0006537</a>
+</td>
+<td style="text-align:left;">
+glutamate biosynthetic process
+</td>
+<td style="text-align:right;">
+-1.818101
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090305" class="uri">GO:0090305</a>
+</td>
+<td style="text-align:left;">
+nucleic acid phosphodiester bond hydrolysis
+</td>
+<td style="text-align:right;">
+-1.818070
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0048194" class="uri">GO:0048194</a>
+</td>
+<td style="text-align:left;">
+Golgi vesicle budding
+</td>
+<td style="text-align:right;">
+-1.775108
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009408" class="uri">GO:0009408</a>
+</td>
+<td style="text-align:left;">
+response to heat
+</td>
+<td style="text-align:right;">
+-1.548177
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0045332" class="uri">GO:0045332</a>
+</td>
+<td style="text-align:left;">
+phospholipid translocation
+</td>
+<td style="text-align:right;">
+-1.546385
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0015770" class="uri">GO:0015770</a>
+</td>
+<td style="text-align:left;">
+sucrose transport
+</td>
+<td style="text-align:right;">
+-1.318982
+</td>
+</tr>
+</tbody>
+</table>
+[1] “GO_results_genes_only_Z_muelleri_not_other_seagrasses.csv”
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+TermID
+</th>
+<th style="text-align:left;">
+Name
+</th>
+<th style="text-align:right;">
+Value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090284" class="uri">GO:0090284</a>
+</td>
+<td style="text-align:left;">
+positive regulation of protein glycosylation in Golgi
+</td>
+<td style="text-align:right;">
+-5.506616
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010222" class="uri">GO:0010222</a>
+</td>
+<td style="text-align:left;">
+stem vascular tissue pattern formation
+</td>
+<td style="text-align:right;">
+-5.047945
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0008347" class="uri">GO:0008347</a>
+</td>
+<td style="text-align:left;">
+glial cell migration
+</td>
+<td style="text-align:right;">
+-4.650340
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0090303" class="uri">GO:0090303</a>
+</td>
+<td style="text-align:left;">
+positive regulation of wound healing
+</td>
+<td style="text-align:right;">
+-4.387055
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0040007" class="uri">GO:0040007</a>
+</td>
+<td style="text-align:left;">
+growth
+</td>
+<td style="text-align:right;">
+-4.373448
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1900049" class="uri">GO:1900049</a>
+</td>
+<td style="text-align:left;">
+regulation of histone exchange
+</td>
+<td style="text-align:right;">
+-4.140205
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:2000114" class="uri">GO:2000114</a>
+</td>
+<td style="text-align:left;">
+regulation of establishment of cell polarity
+</td>
+<td style="text-align:right;">
+-3.856587
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0043007" class="uri">GO:0043007</a>
+</td>
+<td style="text-align:left;">
+maintenance of rDNA
+</td>
+<td style="text-align:right;">
+-3.318770
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:2001240" class="uri">GO:2001240</a>
+</td>
+<td style="text-align:left;">
+negative regulation of extrinsic apoptotic signaling pathway in absence of ligand
+</td>
+<td style="text-align:right;">
+-2.928272
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0046328" class="uri">GO:0046328</a>
+</td>
+<td style="text-align:left;">
+regulation of JNK cascade
+</td>
+<td style="text-align:right;">
+-2.672143
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0080119" class="uri">GO:0080119</a>
+</td>
+<td style="text-align:left;">
+ER body organization
+</td>
+<td style="text-align:right;">
+-2.146026
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0007030" class="uri">GO:0007030</a>
+</td>
+<td style="text-align:left;">
+Golgi organization
+</td>
+<td style="text-align:right;">
+-1.799156
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0034260" class="uri">GO:0034260</a>
+</td>
+<td style="text-align:left;">
+negative regulation of GTPase activity
+</td>
+<td style="text-align:right;">
+-1.793183
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0046459" class="uri">GO:0046459</a>
+</td>
+<td style="text-align:left;">
+short-chain fatty acid metabolic process
+</td>
+<td style="text-align:right;">
+-1.740640
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006336" class="uri">GO:0006336</a>
+</td>
+<td style="text-align:left;">
+DNA replication-independent chromatin assembly
+</td>
+<td style="text-align:right;">
+-1.395115
+</td>
+</tr>
+</tbody>
+</table>
+[1] “GO_results_genes_union_Aquatics_and_Seagrasses_NOT_Terrestrials.csv”
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+TermID
+</th>
+<th style="text-align:left;">
+Name
+</th>
+<th style="text-align:right;">
+Value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0071577" class="uri">GO:0071577</a>
+</td>
+<td style="text-align:left;">
+zinc ion transmembrane transport
+</td>
+<td style="text-align:right;">
+-6.945551
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0000398" class="uri">GO:0000398</a>
+</td>
+<td style="text-align:left;">
+mRNA splicing,via spliceosome
+</td>
+<td style="text-align:right;">
+-6.679986
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0010252" class="uri">GO:0010252</a>
+</td>
+<td style="text-align:left;">
+auxin homeostasis
+</td>
+<td style="text-align:right;">
+-4.110544
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006886" class="uri">GO:0006886</a>
+</td>
+<td style="text-align:left;">
+intracellular protein transport
+</td>
+<td style="text-align:right;">
+-4.096642
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006334" class="uri">GO:0006334</a>
+</td>
+<td style="text-align:left;">
+nucleosome assembly
+</td>
+<td style="text-align:right;">
+-3.942266
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006487" class="uri">GO:0006487</a>
+</td>
+<td style="text-align:left;">
+protein N-linked glycosylation
+</td>
+<td style="text-align:right;">
+-2.841110
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009637" class="uri">GO:0009637</a>
+</td>
+<td style="text-align:left;">
+response to blue light
+</td>
+<td style="text-align:right;">
+-2.750609
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0034599" class="uri">GO:0034599</a>
+</td>
+<td style="text-align:left;">
+cellular response to oxidative stress
+</td>
+<td style="text-align:right;">
+-2.436697
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009658" class="uri">GO:0009658</a>
+</td>
+<td style="text-align:left;">
+chloroplast organization
+</td>
+<td style="text-align:right;">
+-2.279829
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1903508" class="uri">GO:1903508</a>
+</td>
+<td style="text-align:left;">
+positive regulation of nucleic acid-templated transcription
+</td>
+<td style="text-align:right;">
+-2.028043
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0006412" class="uri">GO:0006412</a>
+</td>
+<td style="text-align:left;">
+translation
+</td>
+<td style="text-align:right;">
+-1.833720
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0045454" class="uri">GO:0045454</a>
+</td>
+<td style="text-align:left;">
+cell redox homeostasis
+</td>
+<td style="text-align:right;">
+-1.787827
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0019915" class="uri">GO:0019915</a>
+</td>
+<td style="text-align:left;">
+lipid storage
+</td>
+<td style="text-align:right;">
+-1.718930
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0015770" class="uri">GO:0015770</a>
+</td>
+<td style="text-align:left;">
+sucrose transport
+</td>
+<td style="text-align:right;">
+-1.566032
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0000290" class="uri">GO:0000290</a>
+</td>
+<td style="text-align:left;">
+deadenylation-dependent decapping of nuclear-transcribed mRNA
+</td>
+<td style="text-align:right;">
+-1.465894
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0008333" class="uri">GO:0008333</a>
+</td>
+<td style="text-align:left;">
+endosome to lysosome transport
+</td>
+<td style="text-align:right;">
+-1.454659
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:1902358" class="uri">GO:1902358</a>
+</td>
+<td style="text-align:left;">
+sulfate transmembrane transport
+</td>
+<td style="text-align:right;">
+-1.365088
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<a href="GO:0009853" class="uri">GO:0009853</a>
+</td>
+<td style="text-align:left;">
+photorespiration
+</td>
+<td style="text-align:right;">
+-1.311822
+</td>
+</tr>
+</tbody>
+</table>
+<p>Let’s have a look at all of these plots. Manually zooming in leads to ggrepel reloading labels, so on the small scale a lot of these plots don’t have labels.</p>
+<pre class="r"><code>for(i in names(plot_list)) {
+  file_name = paste(&#39;output/&#39;,  i, &#39;.png&#39;, sep=&#39;&#39;)
+  
+  cowplot::save_plot(file_name, plot_list[[i]], base_height=6)
+  
+}</code></pre>
+<p>Let me also try and make some patchworks.</p>
+<pre class="r"><code># For some reason with this plot the legends aren&#39;t correctly collected by patchwork, 
+# so I need to manually turn one off
+patchy &lt;- (plot_list[[&quot;GO_results_genes_in_Terrestrials_NOT_Aquatics_NOT_Seagrasses.csv&quot;]] + theme(legend.position = &quot;none&quot;)) /
+  plot_list[[&quot;GO_results_genes_union_Aquatics_and_Seagrasses_NOT_Terrestrials.csv&quot;]] + plot_layout(guides = &#39;collect&#39;) + plot_annotation(tag_levels = &#39;A&#39;)
+patchy</code></pre>
+<p><img src="figure/GOenrichment.Rmd/unnamed-chunk-10-1.png" width="960" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>cowplot::save_plot(&#39;output/GO_results_terrestrials_vs_union_aquatics_seagrasses.png&#39;, patchy, base_height=7)</code></pre>
+<p>OK I’ll better make this figure for the seagrasses alone, it’s quite messy this way.</p>
+</div>
+<div id="seagrass-specific-loss" class="section level1">
+<h1>Seagrass-specific loss</h1>
+<p>Let’s check which GO terms overlap between the 4 seagrasses!</p>
+<p>How many shared lost GO-terms are there?</p>
+<pre class="r"><code>a &lt;- list(`P. australis` = results_list$GO_results_genes_lost_P_australis_not_other_seagrasses.csv$Name,
+          `A. antarctica` = results_list$GO_results_genes_lost_A_antarctica_not_other_seagrasses.csv$Name,
+          `Z. marina` = results_list$GO_results_genes_lost_Z_marina_not_other_seagrasses.csv$Name,
+          `Z. muelleri` = results_list$GO_results_genes_lost_Z_muelleri_not_other_seagrasses.csv$Name)
+
+a_go_ids &lt;- list(`P. australis` = results_list$GO_results_genes_lost_P_australis_not_other_seagrasses.csv$TermID,
+          `A. antarctica` = results_list$GO_results_genes_lost_A_antarctica_not_other_seagrasses.csv$TermID,
+          `Z. marina` = results_list$GO_results_genes_lost_Z_marina_not_other_seagrasses.csv$TermID,
+          `Z. muelleri` = results_list$GO_results_genes_lost_Z_muelleri_not_other_seagrasses.csv$TermID)</code></pre>
+<pre class="r"><code>plot(venn(a), 
+     quantities = TRUE,
+     fill = rev(wes_palette(&quot;Zissou1&quot;, 15, type = &#39;continuous&#39;)),
+    alpha = 0.5,
+     labels = list(font = 4))</code></pre>
+<p><img src="figure/GOenrichment.Rmd/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>upset(fromList(a), order.by=&#39;freq&#39;, )</code></pre>
+<p><img src="figure/GOenrichment.Rmd/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>a_no_ara &lt;- list(`P. australis` = results_list$missing_posi_vs_all_GO.txt$Name,
+          `A. antarctica` = results_list$missing_amphi_vs_all_GO.txt$Name,
+          `Z. marina` = results_list$missing_zmar_vs_all_GO.txt$Name,
+          `Z. muelleri` = results_list$missing_zmuel_vs_all_GO.txt$Name)</code></pre>
+<p>What are the shared GO-terms in seagrasses, WITHOUT the Ara loss??</p>
+<pre class="r"><code>Reduce(union, a) %&gt;% enframe() %&gt;% writexl::write_xlsx(&#39;./output/Seagrasses_shared_lost_genes.xlsx&#39;)</code></pre>
+<p>What if we remove Posidonia?</p>
+<pre class="r"><code>b &lt;- list(`A. antarctica` = results_list$missing_amphi_vs_all_GO.txt$Name,
+          `Z. marina` = results_list$missing_zmar_vs_all_GO.txt$Name,
+          `Z. muelleri` = results_list$missing_zmuel_vs_all_GO.txt$Name)
+intersections &lt;- Reduce(intersect, b)
+intersections[grepl(&#39;ethylene&#39;, intersections)]</code></pre>
+<pre><code>NULL</code></pre>
+<p>OK we need a big list of all GO-terms here - which GO-term is lost in which species. That will be a supplementary table.</p>
+<pre class="r"><code>all_species &lt;- c(&quot;P. australis&quot;,&quot;A. antarctica&quot;,&quot;Z. marina&quot;,&quot;Z. muelleri&quot;, &#39;A. thaliana&#39;)  
+all_go_terms &lt;- Reduce(union, a)
+all_go_ids &lt;- Reduce(union, a_go_ids)
+results_d &lt;- data.frame(&#39;GOID&#39; = character(),
+                        &#39;GO&#39; = character(),
+                        &#39;P. australis&#39; = character(),
+                        &#39;A. antarctica&#39; = character(),
+                        &#39;Z. marina&#39; = character(),
+                        &#39;Z. muelleri&#39; = character(),
+                        &#39;A. thaliana&#39; = character())
+
+
+for (index in seq_along(all_go_terms)){
+  go &lt;- all_go_terms[index]
+  go_id &lt;- all_go_ids[index]
+  specs &lt;- c()
+  for (species in names(a)) {
+    if ( length(a[[species]][grep(paste(&#39;^&#39;, go, &#39;$&#39;, sep=&#39;&#39;), a[[species]])]) &gt; 0 ) {
+      specs &lt;- c(specs, species)
+    }
+  }
+  
+  results_d[index,] &lt;- c(go_id, go, gsub(&#39;FALSE&#39;, &#39;Present&#39;, gsub(&#39;TRUE&#39;, &#39;Lost&#39;, all_species %in% specs)))
+}</code></pre>
+<pre class="r"><code>writexl::write_xlsx(results_d, &#39;output/Lost_GO_terms_in_five_species.xlsx&#39;)</code></pre>
+</div>
+<div id="after-filtering-for-plant-specific-go-terms" class="section level1">
+<h1>After filtering for plant-specific GO-terms</h1>
+<p>We will use the GO-terms that are plant-specific as identified by the GOMAP paper. See <a href="https://github.com/wkpalan/GOMAP-maize-analysis/blob/main/6.plantSpecific/1.getSppSpecific.R" class="uri">https://github.com/wkpalan/GOMAP-maize-analysis/blob/main/6.plantSpecific/1.getSppSpecific.R</a> or <a href="https://plantmethods.biomedcentral.com/articles/10.1186/s13007-021-00754-1" class="uri">https://plantmethods.biomedcentral.com/articles/10.1186/s13007-021-00754-1</a></p>
+<pre class="r"><code>go_plant &lt;- read_tsv(&#39;https://raw.githubusercontent.com/wkpalan/GOMAP-maize-analysis/main/data/go/speciesSpecificGOTerms.txt&#39;)</code></pre>
+<pre><code>Rows: 45031 Columns: 5</code></pre>
+<pre><code>-- Column specification --------------------------------------------------------
+Delimiter: &quot;\t&quot;
+chr (1): GOterm
+dbl (4): NCBITaxon:10090, NCBITaxon:33090, NCBITaxon:3702, NCBITaxon:40674</code></pre>
+<pre><code>
+i Use `spec()` to retrieve the full column specification for this data.
+i Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code># taxon 33090 is Viridiplantae
+plantSpecificGO &lt;- go_plant %&gt;% dplyr::filter(`NCBITaxon:33090`==1) %&gt;% pull(GOterm)
+plantSpecificGO &lt;- c(plantSpecificGO,c(&quot;GO:0005575&quot;,&quot;GO:0008150&quot;,&quot;GO:0003674&quot;))</code></pre>
+<pre class="r"><code>results_d %&gt;% filter(GOID %in% plantSpecificGO) %&gt;% writexl::write_xlsx(&#39;output/Lost_GO_terms_in_five_species.PlantSpecific.xlsx&#39;)</code></pre>
+<p>Now let’s redo the Venn diagram with those filtered GO-terms</p>
+<pre class="r"><code>filters &lt;- lapply(a_go_ids, function(ch) ch %in% plantSpecificGO)
+
+newa &lt;- list()
+for (species in names(filters)) {
+  before &lt;- a[[species]]
+  after &lt;- before[filters[[species]]]
+  newa[[species]] &lt;- after
+}</code></pre>
+<pre class="r"><code>plot(venn(newa), 
+     quantities = TRUE,
+     fill = rev(wes_palette(&quot;Zissou1&quot;, 15, type = &#39;continuous&#39;)),
+    alpha = 0.5,
+     labels = list(font = 4))</code></pre>
+<p><img src="figure/GOenrichment.Rmd/unnamed-chunk-23-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Not much difference?</p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.1.0 (2021-05-18)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 19042)
+
+Matrix products: default
+
+locale:
+[1] LC_COLLATE=English_Australia.1252  LC_CTYPE=English_Australia.1252   
+[3] LC_MONETARY=English_Australia.1252 LC_NUMERIC=C                      
+[5] LC_TIME=English_Australia.1252    
+
+attached base packages:
+[1] stats4    parallel  stats     graphics  grDevices utils     datasets 
+[8] methods   base     
+
+other attached packages:
+ [1] patchwork_1.1.1      kableExtra_1.3.4     rrvgo_1.4.4         
+ [4] UpSetR_1.4.0         eulerr_6.1.1         ggrepel_0.9.1       
+ [7] stringi_1.7.5        httr_1.4.2           wesanderson_0.3.6   
+[10] rvest_1.0.2          forcats_0.5.1        stringr_1.4.0       
+[13] dplyr_1.0.7          purrr_0.3.4          readr_2.0.2         
+[16] tidyr_1.1.4          tibble_3.1.5         ggplot2_3.3.5       
+[19] tidyverse_1.3.1      topGO_2.44.0         SparseM_1.81        
+[22] GO.db_3.13.0         AnnotationDbi_1.54.1 IRanges_2.26.0      
+[25] S4Vectors_0.30.2     Biobase_2.52.0       graph_1.70.0        
+[28] BiocGenerics_0.38.0  workflowr_1.6.2     
+
+loaded via a namespace (and not attached):
+  [1] colorspace_2.0-2       ellipsis_0.3.2         rprojroot_2.0.2       
+  [4] XVector_0.32.0         fs_1.5.0               rstudioapi_0.13       
+  [7] farver_2.1.0           bit64_4.0.5            fansi_0.5.0           
+ [10] lubridate_1.8.0        xml2_1.3.2             cachem_1.0.6          
+ [13] GOSemSim_2.18.1        knitr_1.36             polyclip_1.10-0       
+ [16] jsonlite_1.7.2         broom_0.7.9            gridBase_0.4-7        
+ [19] dbplyr_2.1.1           png_0.1-7              pheatmap_1.0.12       
+ [22] shiny_1.7.1            compiler_4.1.0         backports_1.2.1       
+ [25] assertthat_0.2.1       fastmap_1.1.0          cli_3.0.1             
+ [28] later_1.3.0            htmltools_0.5.2        tools_4.1.0           
+ [31] igraph_1.2.7           NLP_0.2-1              gtable_0.3.0          
+ [34] glue_1.4.2             GenomeInfoDbData_1.2.6 Rcpp_1.0.7            
+ [37] slam_0.1-48            cellranger_1.1.0       jquerylib_0.1.4       
+ [40] vctrs_0.3.8            Biostrings_2.60.2      writexl_1.4.0         
+ [43] svglite_2.1.0          polylabelr_0.2.0       xfun_0.27             
+ [46] mime_0.12              lifecycle_1.0.1        zlibbioc_1.38.0       
+ [49] scales_1.1.1           treemap_2.4-3          vroom_1.5.5           
+ [52] hms_1.1.1              promises_1.2.0.1       RColorBrewer_1.1-2    
+ [55] curl_4.3.2             yaml_2.2.1             memoise_2.0.0         
+ [58] gridExtra_2.3          sass_0.4.0             RSQLite_2.2.8         
+ [61] highr_0.9              GenomeInfoDb_1.28.4    systemfonts_1.0.4     
+ [64] rlang_0.4.12           pkgconfig_2.0.3        matrixStats_0.61.0    
+ [67] bitops_1.0-7           evaluate_0.14          lattice_0.20-44       
+ [70] labeling_0.4.2         cowplot_1.1.1          bit_4.0.4             
+ [73] tidyselect_1.1.1       plyr_1.8.6             magrittr_2.0.1        
+ [76] R6_2.5.1               generics_0.1.1         DBI_1.1.1             
+ [79] pillar_1.6.4           haven_2.4.3            whisker_0.4           
+ [82] withr_2.4.2            KEGGREST_1.32.0        RCurl_1.98-1.5        
+ [85] modelr_0.1.8           crayon_1.4.1           wordcloud_2.6         
+ [88] utf8_1.2.2             tzdb_0.1.2             rmarkdown_2.11        
+ [91] grid_4.1.0             readxl_1.3.1           data.table_1.14.2     
+ [94] blob_1.2.2             git2r_0.28.0           webshot_0.5.2         
+ [97] reprex_2.0.1           digest_0.6.28          xtable_1.8-4          
+[100] tm_0.7-8               httpuv_1.6.3           munsell_0.5.0         
+[103] viridisLite_0.4.0      bslib_0.3.1           </code></pre>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+http://docs.mathjax.org/en/latest/configuration.html.  This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
