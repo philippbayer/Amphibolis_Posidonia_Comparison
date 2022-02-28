@@ -194,7 +194,7 @@ for (f in list.files('./output/', pattern='*.csv')){
 
 OK we have a list with all results in a big list. Now we can plot!
 
-```{r warning=FALSE, echo=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE}
 # lots of warnings and messages here so I'm hiding these
 plot_list <- list()
 for (f in names(results_list)) {
