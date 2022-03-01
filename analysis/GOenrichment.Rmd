@@ -24,7 +24,8 @@ knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 # Lost in seagrasses
 
 The GO enrichment does not work well on my laptop so I'm setting this to eval=FALSE and run it on a remote server.
-The script which writes the input files is a Python script in the scripts/ folder: findClustersUniqueToAquatic.py. This script parses Orthofinder output to pull out genome-specific groups and genes.
+
+This document takes the output of [Orthofinder](Orthofinder.html)
 
 ```{r eval=FALSE}
 # give properly formatted background in format: GO:0005838	GSBRNA2T00088508001;GSBRNA2T00088313001;GSBRNA2T00035842001 
