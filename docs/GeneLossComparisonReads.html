@@ -385,7 +385,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-02-23
+<strong>Last updated:</strong> 2022-03-08
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -476,16 +476,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree9b5946749e9a370a7bd1d185df8df76ba424af1ftargetblank9b59467a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/9b5946749e9a370a7bd1d185df8df76ba424af1f" target="_blank">9b59467</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree41fff3190716c5ba35958c19dfb914d7678033c7targetblank41fff31a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/41fff3190716c5ba35958c19dfb914d7678033c7" target="_blank">41fff31</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree9b5946749e9a370a7bd1d185df8df76ba424af1ftargetblank9b59467a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree41fff3190716c5ba35958c19dfb914d7678033c7targetblank41fff31a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/9b5946749e9a370a7bd1d185df8df76ba424af1f" target="_blank">9b59467</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/41fff3190716c5ba35958c19dfb914d7678033c7" target="_blank">41fff31</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -495,7 +495,16 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    analysis/OTT.nb.html
+    Ignored:    analysis/plotNDH.nb.html
     Ignored:    analysis/plotRgenes.nb.html
+
+Untracked files:
+    Untracked:  analysis/plotNDH.Rmd
+    Untracked:  output/patched_gene_loss.png
+
+Unstaged changes:
+    Modified:   analysis/Orthofinder.Rmd
+    Modified:   analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -534,6 +543,57 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/41fff3190716c5ba35958c19dfb914d7678033c7/analysis/GeneLossComparisonReads.Rmd" target="_blank">41fff31</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-03-08
+</td>
+<td>
+workflowr::wflow_publish(files = “analysis/GeneLossComparisonReads.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/2243fa6f83122faa64f19637843dc53e8297085b/docs/GeneLossComparisonReads.html" target="_blank">2243fa6</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-02-23
+</td>
+<td>
+muh files
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/1a19f93c6cc6e16710da94489015d41577864bff/docs/GeneLossComparisonReads.html" target="_blank">1a19f93</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-02-23
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -714,7 +774,8 @@ Attaching package: &#39;patchwork&#39;</code></pre>
                     &quot;FLP&quot;,            3.2,          8.77,                  4.42,            0,          0
              )</code></pre>
 <pre class="r"><code>stomata_long &lt;- stomata %&gt;% pivot_longer(-Gene.symbol, values_to = &#39;Coverage&#39;, names_to=&#39;Species&#39;) %&gt;% 
-  mutate(Species = gsub(&#39;\\.\\.&#39;, &#39;. &#39;, Species))</code></pre>
+  mutate(Species = gsub(&#39;\\.\\.&#39;, &#39;. &#39;, Species)) %&gt;% 
+  filter(Species != &#39;H. ovalis&#39;)</code></pre>
 <pre class="r"><code>stom_p &lt;- stomata_long %&gt;% ggplot(aes(x=forcats::fct_rev(Species), y=Coverage, fill=Species, color=Species)) + 
   geom_boxplot(
     aes(fill = after_scale(colorspace::lighten(fill, .9))),
@@ -731,6 +792,27 @@ Attaching package: &#39;patchwork&#39;</code></pre>
 
 stom_p</code></pre>
 <p><img src="figure/GeneLossComparisonReads.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>label &lt;- stomata_long #%&gt;% mutate(Gene.symbol = stringr::str_to_lower(Gene.symbol)) 
+label &lt;- label %&gt;% 
+  mutate(mylabel = case_when(Coverage &gt;= 100 ~ &#39;&#39;,
+                             Coverage == 0 ~ &#39;&#39;,
+                                    TRUE ~ as.character(Coverage)))
+
+
+stom_heat &lt;- stomata_long %&gt;% 
+  #mutate(Gene.symbol = stringr::str_to_lower(Gene.symbol)) %&gt;% 
+  ggplot(aes(x=Species, y=factor(Gene.symbol, level=rev(unique(Gene.symbol))), fill=Coverage)) + 
+  geom_tile(alpha=0.9, color=&#39;white&#39;) + 
+  geom_text(aes(label=mylabel), data=label, size=3.5) + 
+  theme(axis.text.y = element_text(face = &quot;italic&quot;),
+        axis.text.x = element_text(face=&#39;italic&#39;),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        legend.position = &quot;none&quot;) +
+  scale_fill_continuous(limits=c(0,100))
+
+stom_heat</code></pre>
+<p><img src="figure/GeneLossComparisonReads.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="ethylene" class="section level1">
 <h1>Ethylene</h1>
@@ -763,7 +845,8 @@ stom_p</code></pre>
                     &quot;MYC4&quot;,              0,          3.84,       8.19,        20.96,      11.75
               )</code></pre>
 <pre class="r"><code>ethylene_long &lt;- ethylene %&gt;% pivot_longer(-Gene.symbol, values_to = &#39;Coverage&#39;, names_to=&#39;Species&#39;) %&gt;% 
-  mutate(Species = gsub(&#39;\\.\\.&#39;, &#39;. &#39;, Species))</code></pre>
+  mutate(Species = gsub(&#39;\\.\\.&#39;, &#39;. &#39;, Species)) %&gt;% 
+  filter(Species != &#39;H. ovalis&#39;)</code></pre>
 <pre class="r"><code>eth_p &lt;- ethylene_long %&gt;% ggplot(aes(x=forcats::fct_rev(Species), y=Coverage, fill=Species, color=Species)) + 
   geom_boxplot(
     aes(fill = after_scale(colorspace::lighten(fill, .9))),
@@ -779,7 +862,22 @@ stom_p</code></pre>
   coord_flip() +
   xlab(&#39;Species&#39;)
 eth_p</code></pre>
-<p><img src="figure/GeneLossComparisonReads.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /> # NDH genes</p>
+<p><img src="figure/GeneLossComparisonReads.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>eth_heat &lt;- ethylene_long %&gt;% 
+  dplyr::filter(Gene.symbol != &#39;ndhB-2&#39;) %&gt;% 
+  mutate(Gene.symbol = stringr::str_to_lower(Gene.symbol)) %&gt;% 
+  ggplot(aes(x=Species, y=factor(Gene.symbol, level=rev(unique(Gene.symbol))), fill=Coverage)) + 
+  geom_tile() + 
+  ylab(&#39;Gene&#39;) +
+  theme(axis.text.y = element_text(face = &quot;italic&quot;),
+        axis.text.x = element_text(face=&#39;italic&#39;)) +
+  scale_fill_continuous(limits=c(0,100))
+
+eth_heat</code></pre>
+<p><img src="figure/GeneLossComparisonReads.Rmd/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="ndh-genes" class="section level1">
+<h1>NDH genes</h1>
 <pre class="r"><code>ndh &lt;- tibble::tribble(
          ~Gene.symbol, ~A..antarctica, ~P..australis, ~H..ovalis, ~Z..muelleri, ~Z..marina,
                &quot;NDHL&quot;,              0,             0,          0,        16.67,      16.67,
@@ -813,7 +911,8 @@ eth_p</code></pre>
                &quot;NDF5&quot;,              0,             0,          0,            0,          0
          )</code></pre>
 <pre class="r"><code>ndh_long &lt;- ndh %&gt;% pivot_longer(-Gene.symbol, values_to = &#39;Coverage&#39;, names_to=&#39;Species&#39;) %&gt;% 
-  mutate(Species = gsub(&#39;\\.\\.&#39;, &#39;. &#39;, Species))</code></pre>
+  mutate(Species = gsub(&#39;\\.\\.&#39;, &#39;. &#39;, Species)) %&gt;% 
+  filter(Species != &#39;H. ovalis&#39;)</code></pre>
 <pre class="r"><code>ndh_p &lt;- ndh_long %&gt;% ggplot(aes(x=forcats::fct_rev(Species), y=Coverage, fill=Species, color=Species)) + 
   geom_boxplot(
     aes( fill = after_scale(colorspace::lighten(fill, .9))),
@@ -829,7 +928,29 @@ eth_p</code></pre>
   coord_flip() +
   xlab(&#39;Species&#39;)
 ndh_p</code></pre>
-<p><img src="figure/GeneLossComparisonReads.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/GeneLossComparisonReads.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>label &lt;- ndh_long
+label &lt;- label %&gt;% 
+  mutate(mylabel = case_when(Coverage &gt;= 100 ~ &#39;&#39;,
+                             Coverage == 0 ~ &#39;&#39;,
+                                    TRUE ~ as.character(Coverage)))
+
+
+ndh_heat &lt;- ndh_long %&gt;% 
+  dplyr::filter(Gene.symbol != &#39;ndhB-2&#39;) %&gt;% 
+  mutate(Gene.symbol = stringr::str_to_lower(Gene.symbol)) %&gt;% 
+  ggplot(aes(x=Species, y=factor(Gene.symbol, level=rev(unique(Gene.symbol))), fill=Coverage)) + 
+  geom_tile() + 
+  geom_tile(alpha=0.9, color=&#39;white&#39;) + 
+  #geom_text(data=label, aes(label=mylabel), size=3.5) +
+  theme(axis.text.y = element_text(face = &quot;italic&quot;),
+        axis.text.x = element_text(face = &#39;italic&#39;),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank())  +
+  scale_fill_continuous(limits=c(0,100))
+
+ndh_heat</code></pre>
+<p><img src="figure/GeneLossComparisonReads.Rmd/unnamed-chunk-12-1.png" width="960" style="display: block; margin: auto;" /></p>
 <p>The following data is slightly different because it compares lengths of annotated genes in the chloroplast assembly.</p>
 <pre class="r"><code>ndh_chloro &lt;- tibble::tribble(
   ~Gene.symbol, ~A..antarctica, ~H..ovalis, ~P..australis, ~Z..marina, ~Z..muelleri,
@@ -847,7 +968,8 @@ ndh_p</code></pre>
         &quot;ndhK&quot;,             55,          0,         109.3,      109.8,        109.8
   )</code></pre>
 <pre class="r"><code>ndh_chl_long &lt;- ndh_chloro %&gt;% pivot_longer(-Gene.symbol, values_to = &#39;Coverage&#39;, names_to=&#39;Species&#39;) %&gt;% 
-  mutate(Species = gsub(&#39;\\.\\.&#39;, &#39;. &#39;, Species))</code></pre>
+  mutate(Species = gsub(&#39;\\.\\.&#39;, &#39;. &#39;, Species)) %&gt;% 
+  filter(Species != &#39;H. ovalis&#39;)</code></pre>
 <p>Stylistic choice - if the new gene is longer than the Arabidopsis one, set to 100%.</p>
 <pre class="r"><code>ndh_chl_p &lt;- ndh_chl_long %&gt;%
   mutate(Coverage = case_when(Coverage &gt; 100 ~ 100,
@@ -867,7 +989,30 @@ ndh_p</code></pre>
   xlab(&#39;Species&#39;) +
   coord_flip()
 ndh_chl_p</code></pre>
-<p><img src="figure/GeneLossComparisonReads.Rmd/unnamed-chunk-12-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/GeneLossComparisonReads.Rmd/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>label &lt;- ndh_chl_long %&gt;% filter(Gene.symbol != &#39;ndhB-2&#39;)
+label &lt;- label %&gt;% 
+  mutate(mylabel = case_when(Coverage &gt;= 100 ~ &#39;&#39;,
+                             Coverage == 0 ~ &#39;&#39;,
+                                    TRUE ~ as.character(Coverage)))
+
+ndh_chl_heat &lt;- ndh_chl_long %&gt;% 
+  dplyr::filter(Gene.symbol != &#39;ndhB-2&#39;) %&gt;% 
+  mutate(Coverage = case_when(Coverage &gt; 100 ~ 100,
+                              TRUE ~ Coverage)) %&gt;% 
+  ggplot(aes(x=Species, y=factor(Gene.symbol, level=rev(unique(Gene.symbol))), fill=Coverage)) + 
+  geom_tile(alpha=0.9, color=&#39;white&#39;) + 
+  geom_text(data=label, aes(label=mylabel), size=3.5) +
+  ylab(&#39;Gene&#39;) +
+  theme(axis.text.y = element_text(face = &quot;italic&quot;),
+        axis.text.x = element_text(face = &#39;italic&#39;),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        legend.position = &quot;none&quot;) +
+  scale_fill_continuous(limits=c(0,100))
+  
+ndh_chl_heat</code></pre>
+<p><img src="figure/GeneLossComparisonReads.Rmd/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="all-together" class="section level1">
 <h1>all together</h1>
@@ -879,7 +1024,16 @@ ndh_chl_p</code></pre>
 #                                         axis.ticks.y = element_blank(),
 #                                         axis.title.y = element_blank() )
 patchwork+ plot_annotation(tag_levels = &quot;A&quot;)</code></pre>
-<p><img src="figure/GeneLossComparisonReads.Rmd/unnamed-chunk-13-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p><img src="figure/GeneLossComparisonReads.Rmd/unnamed-chunk-17-1.png" width="960" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>patchwork &lt;- (eth_p + ndh_chl_heat)/
+ (ndh_p + stom_heat  )
+#patchwork[[2]] = patchwork[[2]] + theme(axis.title.x = element_blank() )
+#patchwork[[1]] = patchwork[[1]] + theme(axis.title.x = element_blank() )
+puh &lt;- patchwork+ plot_annotation(tag_levels = &quot;A&quot;) #+ plot_layout(guides=&#39;none&#39;)
+puh</code></pre>
+<p><img src="figure/GeneLossComparisonReads.Rmd/unnamed-chunk-18-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>cowplot::save_plot(filename = &#39;output/patched_gene_loss.png&#39;, plot = puh, base_height = 7)</code></pre>
+<p>Hmmmmmmmmm</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
