@@ -204,7 +204,7 @@ joined_counts %>% writexl::write_xlsx('data/arabidopsis_gene_level_counts.xlsx')
 ```
 
 
-# FINAL version redoing - terrestrial vs aquatics vs seagrasses
+# FINAL version redoing - terrestrial vs duckweeds vs algae vs seagrasses
 
 Plotting all species separately is messy as I have so many species. I'm joining the species into three groups: aquatics, terrestrials, and seagrasses!
 
@@ -265,7 +265,7 @@ xgroup <- upset(fromList(mylistgroup), order.by='freq', nsets = length(groups) -
 xgroup
 ```
 
-MUCH better. The biggest chunk of orthogroups is not in aquatics or seagrasses with 13562 orthogroups. 3845 orthogroups are in duckweeds, seagrasses, terrestrials, but not algae - 2217 orthogroups are unique in seagrasses.
+MUCH better. The biggest chunk of orthogroups is only in terrestrials with 13562 orthogroups. 3845 orthogroups are in duckweeds, seagrasses, terrestrials, but not algae - 2217 orthogroups are unique in seagrasses.
 
 OK now we need to do the GOenrichment for those four groups.
 
