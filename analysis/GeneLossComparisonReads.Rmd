@@ -45,7 +45,8 @@ stomata <- tibble::tribble(
 
 ```{r}
 stomata_long <- stomata %>% pivot_longer(-Gene.symbol, values_to = 'Coverage', names_to='Species') %>% 
-  mutate(Species = gsub('\\.\\.', '. ', Species))
+  mutate(Species = gsub('\\.\\.', '. ', Species)) %>% 
+  filter(Species != 'H. ovalis')
 ```
 
 ```{r}
@@ -64,6 +65,29 @@ stom_p <- stomata_long %>% ggplot(aes(x=forcats::fct_rev(Species), y=Coverage, f
   coord_flip() + xlab('Species')
 
 stom_p
+```
+
+```{r}
+label <- stomata_long #%>% mutate(Gene.symbol = stringr::str_to_lower(Gene.symbol)) 
+label <- label %>% 
+  mutate(mylabel = case_when(Coverage >= 100 ~ '',
+                             Coverage == 0 ~ '',
+                                    TRUE ~ as.character(Coverage)))
+
+
+stom_heat <- stomata_long %>% 
+  #mutate(Gene.symbol = stringr::str_to_lower(Gene.symbol)) %>% 
+  ggplot(aes(x=Species, y=factor(Gene.symbol, level=rev(unique(Gene.symbol))), fill=Coverage)) + 
+  geom_tile(alpha=0.9, color='white') + 
+  geom_text(aes(label=mylabel), data=label, size=3.5) + 
+  theme(axis.text.y = element_text(face = "italic"),
+        axis.text.x = element_text(face='italic'),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        legend.position = "none") +
+  scale_fill_continuous(limits=c(0,100))
+
+stom_heat
 ```
 
 # Ethylene
@@ -102,7 +126,8 @@ ethylene <- tibble::tribble(
 
 ```{r}
 ethylene_long <- ethylene %>% pivot_longer(-Gene.symbol, values_to = 'Coverage', names_to='Species') %>% 
-  mutate(Species = gsub('\\.\\.', '. ', Species))
+  mutate(Species = gsub('\\.\\.', '. ', Species)) %>% 
+  filter(Species != 'H. ovalis')
 ```
 
 ```{r}
@@ -122,6 +147,21 @@ eth_p <- ethylene_long %>% ggplot(aes(x=forcats::fct_rev(Species), y=Coverage, f
   xlab('Species')
 eth_p
 ```
+
+```{r}
+eth_heat <- ethylene_long %>% 
+  dplyr::filter(Gene.symbol != 'ndhB-2') %>% 
+  mutate(Gene.symbol = stringr::str_to_lower(Gene.symbol)) %>% 
+  ggplot(aes(x=Species, y=factor(Gene.symbol, level=rev(unique(Gene.symbol))), fill=Coverage)) + 
+  geom_tile() + 
+  ylab('Gene') +
+  theme(axis.text.y = element_text(face = "italic"),
+        axis.text.x = element_text(face='italic')) +
+  scale_fill_continuous(limits=c(0,100))
+
+eth_heat
+```
+
 # NDH genes
 
 ```{r}
@@ -163,7 +203,8 @@ ndh <- tibble::tribble(
 
 ```{r}
 ndh_long <- ndh %>% pivot_longer(-Gene.symbol, values_to = 'Coverage', names_to='Species') %>% 
-  mutate(Species = gsub('\\.\\.', '. ', Species))
+  mutate(Species = gsub('\\.\\.', '. ', Species)) %>% 
+  filter(Species != 'H. ovalis')
 ```
 
 ```{r}
@@ -182,6 +223,29 @@ ndh_p <- ndh_long %>% ggplot(aes(x=forcats::fct_rev(Species), y=Coverage, fill=S
   coord_flip() +
   xlab('Species')
 ndh_p
+```
+```{r fig.width=10}
+label <- ndh_long
+label <- label %>% 
+  mutate(mylabel = case_when(Coverage >= 100 ~ '',
+                             Coverage == 0 ~ '',
+                                    TRUE ~ as.character(Coverage)))
+
+
+ndh_heat <- ndh_long %>% 
+  dplyr::filter(Gene.symbol != 'ndhB-2') %>% 
+  mutate(Gene.symbol = stringr::str_to_lower(Gene.symbol)) %>% 
+  ggplot(aes(x=Species, y=factor(Gene.symbol, level=rev(unique(Gene.symbol))), fill=Coverage)) + 
+  geom_tile() + 
+  geom_tile(alpha=0.9, color='white') + 
+  #geom_text(data=label, aes(label=mylabel), size=3.5) +
+  theme(axis.text.y = element_text(face = "italic"),
+        axis.text.x = element_text(face = 'italic'),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank())  +
+  scale_fill_continuous(limits=c(0,100))
+
+ndh_heat
 ```
 
 The following data is slightly different because it compares lengths of annotated genes in the chloroplast assembly.
@@ -208,7 +272,8 @@ ndh_chloro <- tibble::tribble(
 
 ```{r}
 ndh_chl_long <- ndh_chloro %>% pivot_longer(-Gene.symbol, values_to = 'Coverage', names_to='Species') %>% 
-  mutate(Species = gsub('\\.\\.', '. ', Species))
+  mutate(Species = gsub('\\.\\.', '. ', Species)) %>% 
+  filter(Species != 'H. ovalis')
 ```
 
 Stylistic choice - if the new gene is longer than the Arabidopsis one, set to 100%.
@@ -234,6 +299,32 @@ ndh_chl_p <- ndh_chl_long %>%
 ndh_chl_p
 ```
 
+```{r}
+label <- ndh_chl_long %>% filter(Gene.symbol != 'ndhB-2')
+label <- label %>% 
+  mutate(mylabel = case_when(Coverage >= 100 ~ '',
+                             Coverage == 0 ~ '',
+                                    TRUE ~ as.character(Coverage)))
+
+ndh_chl_heat <- ndh_chl_long %>% 
+  dplyr::filter(Gene.symbol != 'ndhB-2') %>% 
+  mutate(Coverage = case_when(Coverage > 100 ~ 100,
+                              TRUE ~ Coverage)) %>% 
+  ggplot(aes(x=Species, y=factor(Gene.symbol, level=rev(unique(Gene.symbol))), fill=Coverage)) + 
+  geom_tile(alpha=0.9, color='white') + 
+  geom_text(data=label, aes(label=mylabel), size=3.5) +
+  ylab('Gene') +
+  theme(axis.text.y = element_text(face = "italic"),
+        axis.text.x = element_text(face = 'italic'),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        legend.position = "none") +
+  scale_fill_continuous(limits=c(0,100))
+  
+ndh_chl_heat
+```
+
+
 # all together
 
 ```{r fig.width=10}
@@ -248,4 +339,14 @@ patchwork+ plot_annotation(tag_levels = "A")
 ```
 
 
+```{r fig.height=7}
+patchwork <- (eth_p + ndh_chl_heat)/
+ (ndh_p + stom_heat  )
+#patchwork[[2]] = patchwork[[2]] + theme(axis.title.x = element_blank() )
+#patchwork[[1]] = patchwork[[1]] + theme(axis.title.x = element_blank() )
+puh <- patchwork+ plot_annotation(tag_levels = "A") #+ plot_layout(guides='none')
+puh
+cowplot::save_plot(filename = 'output/patched_gene_loss.png', plot = puh, base_height = 7)
+```
 
+Hmmmmmmmmm
