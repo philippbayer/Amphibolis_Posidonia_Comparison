@@ -387,7 +387,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-02-25
+<strong>Last updated:</strong> 2022-03-08
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -478,16 +478,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree5fa37b7aa8ee4ae02b145e616f82bebedefea69etargetblank5fa37b7a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/5fa37b7aa8ee4ae02b145e616f82bebedefea69e" target="_blank">5fa37b7</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree309567ac01c00d11b657cb12e0827fee71b4b241targetblank309567aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/309567ac01c00d11b657cb12e0827fee71b4b241" target="_blank">309567a</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree5fa37b7aa8ee4ae02b145e616f82bebedefea69etargetblank5fa37b7a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree309567ac01c00d11b657cb12e0827fee71b4b241targetblank309567aa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/5fa37b7aa8ee4ae02b145e616f82bebedefea69e" target="_blank">5fa37b7</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/309567ac01c00d11b657cb12e0827fee71b4b241" target="_blank">309567a</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -497,13 +497,18 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    analysis/OTT.nb.html
+    Ignored:    analysis/figure/
     Ignored:    analysis/plotRgenes.nb.html
 
+Untracked files:
+    Untracked:  data/Lost_present_gene_lists/Genes_only_in_Algae.txt
+    Untracked:  data/Lost_present_gene_lists/Genes_only_in_Duckweeds.txt
+    Untracked:  output/group_venn_image.Rdata
+    Untracked:  output/seagrass_venn_image.Rdata
+
 Unstaged changes:
-    Modified:   data/Lost_present_gene_lists/Genes_lost_in_A_antarctica_not_other_seagrasses.txt
-    Modified:   data/Lost_present_gene_lists/Genes_lost_in_P_australis_not_other_seagrasses.txt
-    Modified:   data/Lost_present_gene_lists/Genes_lost_in_Z_marina_not_other_seagrasses.txt
-    Modified:   data/Lost_present_gene_lists/Genes_lost_in_Z_muelleri_not_other_seagrasses.txt
+    Modified:   data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses.txt
+    Modified:   data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses_and_Terrestrials.txt
     Modified:   data/arabidopsis_gene_level_comparison.xlsx
     Modified:   data/arabidopsis_gene_level_comparison_only_losts.xlsx
     Modified:   data/arabidopsis_gene_level_counts.xlsx
@@ -545,6 +550,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/309567ac01c00d11b657cb12e0827fee71b4b241/analysis/Orthofinder.Rmd" target="_blank">309567a</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-03-08
+</td>
+<td>
+split aquatics up
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/679f242b0ea240b5785bd2ce773fb0d664231395/docs/Orthofinder.html" target="_blank">679f242</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-02-25
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1287,13 +1326,20 @@ joined_counts %&gt;% writexl::write_xlsx(&#39;data/arabidopsis_gene_level_counts
       &#39;Z. mays&#39;
     ) ~ &#39;Terrestrials&#39;,
     name %in% c(
-      &#39;C. reinhardtii&#39;,
       &#39;L. gibba&#39;,
       &#39;S. polyrhiza&#39;,
-      &#39;O. lucimarinus&#39;,
       &#39;W. australis&#39;
-    ) ~ &#39;Aquatics&#39;,
-    name %in% c(&#39;P. australis&#39;, &#39;Z. muelleri&#39;, &#39;Z. marina&#39;, &#39;A. antarctica&#39;) ~ &#39;Seagrasses&#39;
+    ) ~ &#39;Duckweeds&#39;,
+    name %in% c(
+      &#39;C. reinhardtii&#39;,
+      &#39;O. lucimarinus&#39;
+    ) ~ &#39;Algae&#39;,
+    name %in% c(
+      &#39;P. australis&#39;,
+      &#39;Z. muelleri&#39;,
+      &#39;Z. marina&#39;,
+      &#39;A. antarctica&#39;
+      ) ~ &#39;Seagrasses&#39;
   )) </code></pre>
 <pre class="r"><code># now I want the data in this format:
 # listInput &lt;- list(one = c(1, 2, 3, 5, 7, 8, 11, 12, 13), two = c(1, 2, 4, 5, 
@@ -1306,9 +1352,9 @@ mylistgroup &lt;- lapply(mylistgroup, unique)</code></pre>
 <pre class="r"><code>xgroup &lt;- upset(fromList(mylistgroup), order.by=&#39;freq&#39;, nsets = length(groups) - 1)</code></pre>
 <pre class="r"><code>xgroup</code></pre>
 <p><img src="figure/Orthofinder.Rmd/unnamed-chunk-28-1.png" width="960" style="display: block; margin: auto;" /></p>
-<p>MUCH better. The biggest chunk of orthogroups is not in aquatics or seagrasses with 13562 orthogroups. 3437 orthogroups are unique to aquatics, but not in seagrasses - 1183 orthogroups are unique in seagrasses, but not in aquatics. 404 + 3437 + 2217 orthogroups are not in terrestrials.</p>
-<p>OK now we need to do the GOenrichment for those three groups.</p>
-<p>Let’s also make an Venn plot, we have only three groups:</p>
+<p>MUCH better. The biggest chunk of orthogroups is not in aquatics or seagrasses with 13562 orthogroups. 3845 orthogroups are in duckweeds, seagrasses, terrestrials, but not algae - 2217 orthogroups are unique in seagrasses.</p>
+<p>OK now we need to do the GOenrichment for those four groups.</p>
+<p>Let’s also make an Venn plot, we have only four groups:</p>
 <pre class="r"><code># code from https://github.com/gaospecial/ggVennDiagram/blob/4cb2aa13c7beae469f9b9836c5d4f94610bd872e/R/ggVennDiagram.R to customise
 venn &lt;- Venn(mylistgroup)
 data &lt;- process_data(venn)
@@ -1360,45 +1406,51 @@ group_venn</code></pre>
       &#39;Z. mays&#39;
     ) ~ &#39;Terrestrials&#39;,
     name %in% c(
-      &#39;C. reinhardtii&#39;,
       &#39;L. gibba&#39;,
       &#39;S. polyrhiza&#39;,
-      &#39;O. lucimarinus&#39;,
       &#39;W. australis&#39;
-    ) ~ &#39;Aquatics&#39;,
-    name %in% c(&#39;P. australis&#39;, &#39;Z. muelleri&#39;, &#39;Z. marina&#39;, &#39;A. antarctica&#39;) ~ &#39;Seagrasses&#39;
+    ) ~ &#39;Duckweeds&#39;,
+    name %in% c(
+      &#39;C. reinhardtii&#39;,
+      &#39;O. lucimarinus&#39;
+    ) ~ &#39;Algae&#39;,
+    name %in% c(
+      &#39;P. australis&#39;,
+      &#39;Z. muelleri&#39;, &#39;Z. marina&#39;, &#39;A. antarctica&#39;) ~ &#39;Seagrasses&#39;
   )) </code></pre>
 <p>mylistgroup now looks like this: key is Aquatics, Seagrasses, Terrestrials, values are OG00000, OG00001, OG00002 etc.</p>
-<pre class="r"><code>present_aquatics_only &lt;- setdiff(setdiff(mylistgroup$Aquatics, mylistgroup$Terrestrials), 
-                         mylistgroup$Seagrasses)
-present_seagrasses_only &lt;- setdiff(setdiff(mylistgroup$Seagrasses, mylistgroup$Aquatics), 
-                           mylistgroup$Terrestrials)
-present_terrestrials_only &lt;- setdiff(setdiff(mylistgroup$Terrestrials, mylistgroup$Aquatics),
-                             mylistgroup$Seagrasses)
-print(cbind(length(present_aquatics_only), length(present_seagrasses_only), length(present_terrestrials_only)))</code></pre>
-<pre><code>     [,1] [,2]  [,3]
-[1,] 3437 2217 13562</code></pre>
-<p>OK those numbers fit with the above Venn diagram. I now have three lists of orthogroup names.</p>
+<pre class="r"><code>present_algae_only &lt;- setdiff(setdiff(setdiff(mylistgroup$Algae, mylistgroup$Duckweeds), 
+                         mylistgroup$Seagrasses), mylistgroup$Terrestrials)
+present_seagrasses_only &lt;- setdiff(setdiff(setdiff(mylistgroup$Seagrasses, mylistgroup$Duckweeds),                            mylistgroup$Terrestrials), mylistgroup$Algae)
+present_terrestrials_only &lt;- setdiff(setdiff(setdiff(mylistgroup$Terrestrials, mylistgroup$Duckweeds), mylistgroup$Seagrasses), mylistgroup$Algae)
+present_duckweeds_only &lt;- setdiff(setdiff(setdiff(mylistgroup$Duckweeds, mylistgroup$Terrestrials), mylistgroup$Seagrasses), mylistgroup$Algae)
+
+print(cbind(length(present_algae_only), length(present_seagrasses_only), length(present_terrestrials_only), length(present_duckweeds_only)))</code></pre>
+<pre><code>     [,1] [,2]  [,3] [,4]
+[1,] 1668 2217 13562 1765</code></pre>
+<p>OK those numbers fit with the above Venn diagram. I now have four lists of orthogroup names.</p>
 <p>I also want the orthogroups present in aquatics + seagrasses, NOT terrestrials</p>
-<pre class="r"><code>present_seagrass_and_aquatics_only &lt;- setdiff(intersect(mylistgroup$Aquatics, mylistgroup$Seagrasses), 
+<pre class="r"><code>present_seagrass_and_aquatics_only &lt;- setdiff(intersect(intersect(mylistgroup$Duckweeds, mylistgroup$Seagrasses), mylistgroup$Algae),
         mylistgroup$Terrestrials)
 print(length(present_seagrass_and_aquatics_only))</code></pre>
-<pre><code>[1] 404</code></pre>
+<pre><code>[1] 2</code></pre>
 <p>That’s the tiny intersection of genes shared between aquatics and seagrasses, let’s also get the union of seagrass genes, aquatic genes, and their intersection</p>
-<pre class="r"><code>present_seagrass_and_aquatics_union &lt;- union(mylistgroup$Aquatics, mylistgroup$Seagrasses)
+<pre class="r"><code>present_seagrass_and_aquatics_union &lt;- union(mylistgroup$Algae, union(mylistgroup$Duckweeds, mylistgroup$Seagrasses))
 print(length(present_seagrass_and_aquatics_union))</code></pre>
 <pre><code>[1] 17574</code></pre>
 <p>OK let’s also get the intersection in the middle</p>
-<pre class="r"><code>present_all &lt;- intersect(intersect(mylistgroup$Terrestrials, mylistgroup$Aquatics), mylistgroup$Seagrasses)
+<pre class="r"><code>present_all &lt;- intersect(intersect(mylistgroup$Algae, intersect(mylistgroup$Terrestrials, mylistgroup$Duckweeds)), mylistgroup$Seagrasses)
 length(present_all)</code></pre>
-<pre><code>[1] 9061</code></pre>
+<pre><code>[1] 5136</code></pre>
 <p>Now we pull out these gene IDs and write them out for files to continue in <a href="GOenrichment.html">GOenrichment</a>.</p>
 <pre class="r"><code># gene_per_spec has the genes per orthogroup, we need to join with the various set-results we&#39;ve made
 genes_in_all &lt;- gene_per_spec %&gt;% filter(Orthogroup %in% present_all) %&gt;% separate_rows(value, sep=&#39;,&#39;) %&gt;% pull(value) %&gt;% str_trim()
 genes_only_in_aquatics_and_seagrasses &lt;- gene_per_spec %&gt;% filter(Orthogroup %in% present_seagrass_and_aquatics_only) %&gt;% separate_rows(value, sep=&#39;,&#39;) %&gt;% pull(value) %&gt;% str_trim()
+
 genes_present_seagrass_and_aquatics_union &lt;- gene_per_spec %&gt;% filter(Orthogroup %in% present_seagrass_and_aquatics_union) %&gt;% separate_rows(value, sep=&#39;,&#39;) %&gt;% pull(value) %&gt;% str_trim()
 
-genes_only_in_aquatics &lt;- gene_per_spec %&gt;% filter(Orthogroup %in% present_aquatics_only) %&gt;% separate_rows(value, sep=&#39;,&#39;) %&gt;% pull(value) %&gt;% str_trim()
+genes_only_in_duckweeds &lt;- gene_per_spec %&gt;% filter(Orthogroup %in% present_duckweeds_only) %&gt;% separate_rows(value, sep=&#39;,&#39;) %&gt;% pull(value) %&gt;% str_trim()
+genes_only_in_algae &lt;- gene_per_spec %&gt;% filter(Orthogroup %in% present_algae_only) %&gt;% separate_rows(value, sep=&#39;,&#39;) %&gt;% pull(value) %&gt;% str_trim()
 genes_only_in_seagrasses &lt;- gene_per_spec %&gt;% filter(Orthogroup %in% present_seagrasses_only) %&gt;% separate_rows(value, sep=&#39;,&#39;) %&gt;% pull(value) %&gt;% str_trim()
 genes_only_in_terrestrials &lt;- gene_per_spec %&gt;% filter(Orthogroup %in% present_terrestrials_only) %&gt;% separate_rows(value, sep=&#39;,&#39;) %&gt;% pull(value) %&gt;% str_trim()</code></pre>
 <p>Now we have a bunch of lists, we can write them into files for the <a href="GOenrichment.html">GO enrichment part</a></p>
@@ -1410,9 +1462,14 @@ fileConn&lt;-file(&#39;data/Lost_present_gene_lists/Genes_only_in_Seagrasses.txt
 writeLines(genes_only_in_seagrasses, fileConn)
 close(fileConn)
 
-fileConn&lt;-file(&#39;data/Lost_present_gene_lists/Genes_only_in_Aquatics.txt&#39;)
-writeLines(genes_only_in_aquatics, fileConn)
+fileConn&lt;-file(&#39;data/Lost_present_gene_lists/Genes_only_in_Duckweeds.txt&#39;)
+writeLines(genes_only_in_duckweeds, fileConn)
 close(fileConn)
+
+fileConn&lt;-file(&#39;data/Lost_present_gene_lists/Genes_only_in_Algae.txt&#39;)
+writeLines(genes_only_in_algae, fileConn)
+close(fileConn)
+
 
 fileConn&lt;-file(&#39;data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses.txt&#39;)
 writeLines(genes_only_in_aquatics_and_seagrasses, fileConn)
@@ -1467,9 +1524,16 @@ seagrass_venn &lt;- ggplot() +
   theme(legend.position = &quot;none&quot;) + 
   scale_x_continuous(expand = expansion(mult = .2)) #trick from https://github.com/gaospecial/ggVennDiagram/blob/9435aa0ab4abb470c670ecb938c71576461ccedc/vignettes/using-ggVennDiagram.Rmd#L65
 seagrass_venn</code></pre>
-<p><img src="figure/Orthofinder.Rmd/unnamed-chunk-39-1.png" width="768" style="display: block; margin: auto;" /> # Both Venns together</p>
+<p><img src="figure/Orthofinder.Rmd/unnamed-chunk-39-1.png" width="768" style="display: block; margin: auto;" /></p>
+</div>
+</div>
+<div id="both-venns-together" class="section level1">
+<h1>Both Venns together</h1>
+<p>Let’s save both Venns so I can combine them with other plots in other Rmds.</p>
+<pre class="r"><code>save(group_venn, file=&#39;output/group_venn_image.Rdata&#39;)
+save(seagrass_venn, file=&#39;output/seagrass_venn_image.Rdata&#39;)</code></pre>
 <pre class="r"><code>group_venn / seagrass_venn +  plot_annotation(tag_levels = &#39;A&#39;)</code></pre>
-<p><img src="figure/Orthofinder.Rmd/unnamed-chunk-40-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="figure/Orthofinder.Rmd/unnamed-chunk-41-1.png" width="768" style="display: block; margin: auto;" /></p>
 <p>OK now as above, we dig out the gene names.</p>
 <pre class="r"><code># gene_per_spec has the genes per orthogroup, we need to join with the various set-results we&#39;ve made
 groups_only_in_A_antarctica &lt;- setdiff(setdiff(setdiff(big_list[[&#39;A. antarctica&#39;]], big_list[[&#39;P. australis&#39;]]), big_list[[&#39;Z. marina&#39;]]), big_list[[&#39;Z. muelleri&#39;]])
@@ -1597,7 +1661,6 @@ loaded via a namespace (and not attached):
 [73] assertthat_0.2.1   xfun_0.27          broom_0.7.9        e1071_1.7-9       
 [77] later_1.3.0        class_7.3-19       RVenn_1.1.0        viridisLite_0.4.0 
 [81] units_0.7-2        writexl_1.4.0      ellipsis_0.3.2    </code></pre>
-</div>
 </div>
 </div>
 
