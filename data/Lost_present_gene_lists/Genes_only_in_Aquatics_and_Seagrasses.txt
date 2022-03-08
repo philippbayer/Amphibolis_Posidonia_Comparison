@@ -1,0 +1,11 @@
+Cre02.g073300.t1.1
+maker-scf7180003860549-augustus-gene-0.0-mRNA-1
+Sp14g00596
+Waus00102g00759.1
+Waus00106g01146.1
+Waus00106g01146.2
+Waus00106g01146.3
+genemark-scf7180000528244-processed-gene-0.19-mRNA-1
+maker-scf131-augustus-gene-2.132.mRNA1
+maker-713_155456_66845_148865--0.39-mRNA-1
+Ol02g02810
