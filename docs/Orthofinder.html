@@ -478,16 +478,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree309567ac01c00d11b657cb12e0827fee71b4b241targetblank309567aa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/309567ac01c00d11b657cb12e0827fee71b4b241" target="_blank">309567a</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreee4c19dac30055486109ba7f30fd00c221c85ea9etargetblanke4c19daa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/e4c19dac30055486109ba7f30fd00c221c85ea9e" target="_blank">e4c19da</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree309567ac01c00d11b657cb12e0827fee71b4b241targetblank309567aa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreee4c19dac30055486109ba7f30fd00c221c85ea9etargetblanke4c19daa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/309567ac01c00d11b657cb12e0827fee71b4b241" target="_blank">309567a</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/e4c19dac30055486109ba7f30fd00c221c85ea9e" target="_blank">e4c19da</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -497,21 +497,10 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
     Ignored:    analysis/OTT.nb.html
-    Ignored:    analysis/figure/
     Ignored:    analysis/plotRgenes.nb.html
 
-Untracked files:
-    Untracked:  data/Lost_present_gene_lists/Genes_only_in_Algae.txt
-    Untracked:  data/Lost_present_gene_lists/Genes_only_in_Duckweeds.txt
-    Untracked:  output/group_venn_image.Rdata
-    Untracked:  output/seagrass_venn_image.Rdata
-
 Unstaged changes:
-    Modified:   data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses.txt
-    Modified:   data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses_and_Terrestrials.txt
-    Modified:   data/arabidopsis_gene_level_comparison.xlsx
-    Modified:   data/arabidopsis_gene_level_comparison_only_losts.xlsx
-    Modified:   data/arabidopsis_gene_level_counts.xlsx
+    Modified:   output/patched_gene_loss.png
 
 </code></pre>
 <p>
@@ -550,6 +539,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/96396379891598d18c01c2514f15f73176dc9bfd/analysis/Orthofinder.Rmd" target="_blank">9639637</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-03-08
+</td>
+<td>
+Add files
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/e65ff999afebf6f916febd96d216bf50c061524c/docs/Orthofinder.html" target="_blank">e65ff99</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-03-08
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1308,8 +1331,8 @@ head(counts)</code></pre>
   select(-starts_with(&#39;Lost_i&#39;))
 joined_counts %&gt;% writexl::write_xlsx(&#39;data/arabidopsis_gene_level_counts.xlsx&#39;)</code></pre>
 </div>
-<div id="final-version-redoing---terrestrial-vs-aquatics-vs-seagrasses" class="section level1">
-<h1>FINAL version redoing - terrestrial vs aquatics vs seagrasses</h1>
+<div id="final-version-redoing---terrestrial-vs-duckweeds-vs-algae-vs-seagrasses" class="section level1">
+<h1>FINAL version redoing - terrestrial vs duckweeds vs algae vs seagrasses</h1>
 <p>Plotting all species separately is messy as I have so many species. I’m joining the species into three groups: aquatics, terrestrials, and seagrasses!</p>
 <pre class="r"><code>per_group_spec &lt;-
   per_spec %&gt;% mutate(group = case_when(
@@ -1352,7 +1375,7 @@ mylistgroup &lt;- lapply(mylistgroup, unique)</code></pre>
 <pre class="r"><code>xgroup &lt;- upset(fromList(mylistgroup), order.by=&#39;freq&#39;, nsets = length(groups) - 1)</code></pre>
 <pre class="r"><code>xgroup</code></pre>
 <p><img src="figure/Orthofinder.Rmd/unnamed-chunk-28-1.png" width="960" style="display: block; margin: auto;" /></p>
-<p>MUCH better. The biggest chunk of orthogroups is not in aquatics or seagrasses with 13562 orthogroups. 3845 orthogroups are in duckweeds, seagrasses, terrestrials, but not algae - 2217 orthogroups are unique in seagrasses.</p>
+<p>MUCH better. The biggest chunk of orthogroups is only in terrestrials with 13562 orthogroups. 3845 orthogroups are in duckweeds, seagrasses, terrestrials, but not algae - 2217 orthogroups are unique in seagrasses.</p>
 <p>OK now we need to do the GOenrichment for those four groups.</p>
 <p>Let’s also make an Venn plot, we have only four groups:</p>
 <pre class="r"><code># code from https://github.com/gaospecial/ggVennDiagram/blob/4cb2aa13c7beae469f9b9836c5d4f94610bd872e/R/ggVennDiagram.R to customise
