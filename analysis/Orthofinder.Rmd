@@ -224,13 +224,20 @@ per_group_spec <-
       'Z. mays'
     ) ~ 'Terrestrials',
     name %in% c(
-      'C. reinhardtii',
       'L. gibba',
       'S. polyrhiza',
-      'O. lucimarinus',
       'W. australis'
-    ) ~ 'Aquatics',
-    name %in% c('P. australis', 'Z. muelleri', 'Z. marina', 'A. antarctica') ~ 'Seagrasses'
+    ) ~ 'Duckweeds',
+    name %in% c(
+      'C. reinhardtii',
+      'O. lucimarinus'
+    ) ~ 'Algae',
+    name %in% c(
+      'P. australis',
+      'Z. muelleri',
+      'Z. marina',
+      'A. antarctica'
+      ) ~ 'Seagrasses'
   )) 
 ```
 
@@ -258,11 +265,11 @@ xgroup <- upset(fromList(mylistgroup), order.by='freq', nsets = length(groups) -
 xgroup
 ```
 
-MUCH better. The biggest chunk of orthogroups is not in aquatics or seagrasses with 13562 orthogroups. 3437 orthogroups are unique to aquatics, but not in seagrasses - 1183 orthogroups are unique in seagrasses, but not in aquatics. 404 + 3437 + 2217 orthogroups are not in terrestrials.
+MUCH better. The biggest chunk of orthogroups is not in aquatics or seagrasses with 13562 orthogroups. 3845 orthogroups are in duckweeds, seagrasses, terrestrials, but not algae - 2217 orthogroups are unique in seagrasses.
 
-OK now we need to do the GOenrichment for those three groups.
+OK now we need to do the GOenrichment for those four groups.
 
-Let's also make an Venn plot, we have only three groups:
+Let's also make an Venn plot, we have only four groups:
 ```{r fig.width=8}
 
 # code from https://github.com/gaospecial/ggVennDiagram/blob/4cb2aa13c7beae469f9b9836c5d4f94610bd872e/R/ggVennDiagram.R to customise
@@ -320,13 +327,17 @@ gene_per_spec <- groups %>% pivot_longer(-Orthogroup) %>%
       'Z. mays'
     ) ~ 'Terrestrials',
     name %in% c(
-      'C. reinhardtii',
       'L. gibba',
       'S. polyrhiza',
-      'O. lucimarinus',
       'W. australis'
-    ) ~ 'Aquatics',
-    name %in% c('P. australis', 'Z. muelleri', 'Z. marina', 'A. antarctica') ~ 'Seagrasses'
+    ) ~ 'Duckweeds',
+    name %in% c(
+      'C. reinhardtii',
+      'O. lucimarinus'
+    ) ~ 'Algae',
+    name %in% c(
+      'P. australis',
+      'Z. muelleri', 'Z. marina', 'A. antarctica') ~ 'Seagrasses'
   )) 
 ```
 
@@ -334,35 +345,35 @@ mylistgroup now looks like this:
 key is Aquatics, Seagrasses, Terrestrials, values are OG00000, OG00001, OG00002 etc.
 
 ```{r}
-present_aquatics_only <- setdiff(setdiff(mylistgroup$Aquatics, mylistgroup$Terrestrials), 
-                         mylistgroup$Seagrasses)
-present_seagrasses_only <- setdiff(setdiff(mylistgroup$Seagrasses, mylistgroup$Aquatics), 
-                           mylistgroup$Terrestrials)
-present_terrestrials_only <- setdiff(setdiff(mylistgroup$Terrestrials, mylistgroup$Aquatics),
-                             mylistgroup$Seagrasses)
-print(cbind(length(present_aquatics_only), length(present_seagrasses_only), length(present_terrestrials_only)))
+present_algae_only <- setdiff(setdiff(setdiff(mylistgroup$Algae, mylistgroup$Duckweeds), 
+                         mylistgroup$Seagrasses), mylistgroup$Terrestrials)
+present_seagrasses_only <- setdiff(setdiff(setdiff(mylistgroup$Seagrasses, mylistgroup$Duckweeds),                            mylistgroup$Terrestrials), mylistgroup$Algae)
+present_terrestrials_only <- setdiff(setdiff(setdiff(mylistgroup$Terrestrials, mylistgroup$Duckweeds), mylistgroup$Seagrasses), mylistgroup$Algae)
+present_duckweeds_only <- setdiff(setdiff(setdiff(mylistgroup$Duckweeds, mylistgroup$Terrestrials), mylistgroup$Seagrasses), mylistgroup$Algae)
+
+print(cbind(length(present_algae_only), length(present_seagrasses_only), length(present_terrestrials_only), length(present_duckweeds_only)))
 
 ```
-OK those numbers fit with the above Venn diagram. I now have three lists of orthogroup names.
+OK those numbers fit with the above Venn diagram. I now have four lists of orthogroup names.
 
 I also want the orthogroups present in aquatics + seagrasses, NOT terrestrials
 
 ```{r}
-present_seagrass_and_aquatics_only <- setdiff(intersect(mylistgroup$Aquatics, mylistgroup$Seagrasses), 
+present_seagrass_and_aquatics_only <- setdiff(intersect(intersect(mylistgroup$Duckweeds, mylistgroup$Seagrasses), mylistgroup$Algae),
         mylistgroup$Terrestrials)
 print(length(present_seagrass_and_aquatics_only))
 ```
 That's the tiny intersection of genes shared between aquatics and seagrasses, let's also get the union of seagrass genes, aquatic genes, and their intersection
 
 ```{r}
-present_seagrass_and_aquatics_union <- union(mylistgroup$Aquatics, mylistgroup$Seagrasses)
+present_seagrass_and_aquatics_union <- union(mylistgroup$Algae, union(mylistgroup$Duckweeds, mylistgroup$Seagrasses))
 print(length(present_seagrass_and_aquatics_union))
 ```
 
 OK let's also get the intersection in the middle
 
 ```{r}
-present_all <- intersect(intersect(mylistgroup$Terrestrials, mylistgroup$Aquatics), mylistgroup$Seagrasses)
+present_all <- intersect(intersect(mylistgroup$Algae, intersect(mylistgroup$Terrestrials, mylistgroup$Duckweeds)), mylistgroup$Seagrasses)
 length(present_all)
 ```
 
@@ -373,9 +384,11 @@ Now we pull out these gene IDs and write them out for files to continue in [GOen
 # gene_per_spec has the genes per orthogroup, we need to join with the various set-results we've made
 genes_in_all <- gene_per_spec %>% filter(Orthogroup %in% present_all) %>% separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
 genes_only_in_aquatics_and_seagrasses <- gene_per_spec %>% filter(Orthogroup %in% present_seagrass_and_aquatics_only) %>% separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
+
 genes_present_seagrass_and_aquatics_union <- gene_per_spec %>% filter(Orthogroup %in% present_seagrass_and_aquatics_union) %>% separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
 
-genes_only_in_aquatics <- gene_per_spec %>% filter(Orthogroup %in% present_aquatics_only) %>% separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
+genes_only_in_duckweeds <- gene_per_spec %>% filter(Orthogroup %in% present_duckweeds_only) %>% separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
+genes_only_in_algae <- gene_per_spec %>% filter(Orthogroup %in% present_algae_only) %>% separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
 genes_only_in_seagrasses <- gene_per_spec %>% filter(Orthogroup %in% present_seagrasses_only) %>% separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
 genes_only_in_terrestrials <- gene_per_spec %>% filter(Orthogroup %in% present_terrestrials_only) %>% separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
 ```
@@ -391,9 +404,14 @@ fileConn<-file('data/Lost_present_gene_lists/Genes_only_in_Seagrasses.txt')
 writeLines(genes_only_in_seagrasses, fileConn)
 close(fileConn)
 
-fileConn<-file('data/Lost_present_gene_lists/Genes_only_in_Aquatics.txt')
-writeLines(genes_only_in_aquatics, fileConn)
+fileConn<-file('data/Lost_present_gene_lists/Genes_only_in_Duckweeds.txt')
+writeLines(genes_only_in_duckweeds, fileConn)
 close(fileConn)
+
+fileConn<-file('data/Lost_present_gene_lists/Genes_only_in_Algae.txt')
+writeLines(genes_only_in_algae, fileConn)
+close(fileConn)
+
 
 fileConn<-file('data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses.txt')
 writeLines(genes_only_in_aquatics_and_seagrasses, fileConn)
@@ -463,11 +481,20 @@ seagrass_venn <- ggplot() +
   scale_x_continuous(expand = expansion(mult = .2)) #trick from https://github.com/gaospecial/ggVennDiagram/blob/9435aa0ab4abb470c670ecb938c71576461ccedc/vignettes/using-ggVennDiagram.Rmd#L65
 seagrass_venn
 ```
+
+
+
 # Both Venns together
+
+Let's save both Venns so I can combine them with other plots in other Rmds.
+
+```{r}
+save(group_venn, file='output/group_venn_image.Rdata')
+save(seagrass_venn, file='output/seagrass_venn_image.Rdata')
+```
 
 ```{r fig.height=10, fig.width=8}
 group_venn / seagrass_venn +  plot_annotation(tag_levels = 'A')
-
 ```
 
 OK now as above, we dig out the gene names.
