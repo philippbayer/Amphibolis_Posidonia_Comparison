@@ -156,7 +156,6 @@ p3 + myhist
 # Quick summary stats
 
 ```{r}
-df %>% group_by(Genome, Class) %>% summarise(sum=sum(Count)) %>% kbl() %>%
-  kable_styling()
+df %>% group_by(Genome, Class) %>% summarise(sum=sum(Count)) %>% pivot_wider(names_from = c('Class'), values_from = sum) %>% kbl() %>% kable_styling()
 ```
 
