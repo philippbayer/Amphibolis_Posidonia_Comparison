@@ -10,14 +10,16 @@ editor_options:
 
 This website collects comparisons of *Amphibolis* and *Posidonia* comparative analyses.
 
-[Repeat comparison plots](plot.html)
+[Repeat comparison plots](plot.html) - Comparing genome sizes and repeat/TE content
 
-[Phylogenies](OTT.html)
+[Phylogenies](OTT.html) - plotting just phylogenies
 
-[Clustering results](Orthofinder.html)
+[Clustering results](Orthofinder.html) - analysing Orthofinder clustering results
 
-[R gene plotting](plotRgenes.html)
+[R gene plotting](plotRgenes.html) - making phylogenies and showing R-gene number differences
 
-[Gene Loss comparison by reads](GeneLossComparisonReads.html)
+[Gene Loss comparison by reads](GeneLossComparisonReads.html) - making heatmaps and barcharts to compare read alignments
 
-[GO enrichment](GOenrichment.html)
+[GO enrichment](GOenrichment.html) - running topGO and REVIGO to make nice plots of GO-enrichment
+
+[GO and Ortho](GO_and_ortho.html) - merging plots from GO enrichment and Orthofinder analysis

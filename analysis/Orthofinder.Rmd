@@ -476,7 +476,7 @@ seagrass_venn <- ggplot() +
                              size = NA,
                              lineheight = 0.85,
                              label.size = NA) +
-  scale_fill_gradientn(colours=wes_palette("Zissou1", 100, type = "continuous")) + 
+  scale_fill_gradientn(colours=wes_palette("Zissou1", 3, type = "continuous")) + 
   theme(legend.position = "none") + 
   scale_x_continuous(expand = expansion(mult = .2)) #trick from https://github.com/gaospecial/ggVennDiagram/blob/9435aa0ab4abb470c670ecb938c71576461ccedc/vignettes/using-ggVennDiagram.Rmd#L65
 seagrass_venn
@@ -522,27 +522,38 @@ genes_only_in_Z_muelleri <- gene_per_spec %>%
   filter(name == 'Z. muelleri', Orthogroup %in% groups_only_in_Z_muelleri) %>% 
   separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
 
-groups_in_all_seagrasses <- union(union(union(big_list[['Z. muelleri']], big_list[['A. antarctica']]), big_list[['P. australis']]), big_list[['Z. marina']])
+groups_in_all_seagrasses_union <- union(union(union(big_list[['Z. muelleri']], big_list[['A. antarctica']]), big_list[['P. australis']]), big_list[['Z. marina']])
+genes_in_all_seagrasses_union <- gene_per_spec %>% 
+  filter(name %in% c('A. antarctica', 'P. australis', 'Z. muelleri', 'Z. marina'), Orthogroup %in% groups_in_all_seagrasses_union) %>% 
+  separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
 
-groups_lost_in_A_antarctica <- setdiff(groups_in_all_seagrasses, big_list[['A. antarctica']])
+groups_in_all_seagrasses_intersect <- intersect(intersect(intersect(big_list[['Z. muelleri']], big_list[['A. antarctica']]), big_list[['P. australis']]), big_list[['Z. marina']])
+genes_in_all_seagrasses_intersect <- gene_per_spec %>% 
+  filter(name %in% c('A. antarctica', 'P. australis', 'Z. muelleri', 'Z. marina'), Orthogroup %in% groups_in_all_seagrasses_intersect) %>% 
+  separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
+
+
+groups_lost_in_A_antarctica <- setdiff(groups_in_all_seagrasses_union, big_list[['A. antarctica']])
 genes_lost_in_A_antarctica <- gene_per_spec %>% 
   filter(name != 'A. antarctica', Orthogroup %in% groups_lost_in_A_antarctica) %>% 
   separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
 
-groups_lost_in_P_australis <- setdiff(groups_in_all_seagrasses, big_list[['P. australis']])
+groups_lost_in_P_australis <- setdiff(groups_in_all_seagrasses_union, big_list[['P. australis']])
 genes_lost_in_P_australis <- gene_per_spec %>% 
   filter(name != 'P. australis', Orthogroup %in% groups_lost_in_P_australis) %>% 
   separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
 
-groups_lost_in_Z_marina <- setdiff(groups_in_all_seagrasses, big_list[['Z. marina']])
+groups_lost_in_Z_marina <- setdiff(groups_in_all_seagrasses_union, big_list[['Z. marina']])
 genes_lost_in_Z_marina <- gene_per_spec %>% 
   filter(name != 'Z. marina', Orthogroup %in% groups_lost_in_Z_marina) %>% 
   separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
 
-groups_lost_in_Z_muelleri <- setdiff(groups_in_all_seagrasses, big_list[['Z. muelleri']])
+groups_lost_in_Z_muelleri <- setdiff(groups_in_all_seagrasses_union, big_list[['Z. muelleri']])
 genes_lost_in_Z_muelleri <- gene_per_spec %>% 
   filter(name != 'Z. muelleri', Orthogroup %in% groups_lost_in_Z_muelleri) %>% 
   separate_rows(value, sep=',') %>% pull(value) %>% str_trim()
+
+
 ```
 
 Now we have a bunch of lists, we can write them into files for the [GO enrichment part](GOenrichment.html)
@@ -554,6 +565,14 @@ close(fileConn)
 
 fileConn<-file('data/Lost_present_gene_lists/Genes_only_in_P_australis_not_other_seagrasses.txt')
 writeLines(genes_only_in_P_australis, fileConn)
+close(fileConn)
+
+fileConn <- file('data/Lost_present_gene_lists/Genes_in_all_seagrasses_union.txt')
+writeLines(genes_in_all_seagrasses_union, fileConn)
+close(fileConn)
+
+fileConn <- file('data/Lost_present_gene_lists/Genes_in_all_seagrasses_intersect.txt')
+writeLines(genes_in_all_seagrasses_intersect, fileConn)
 close(fileConn)
 
 fileConn<-file('data/Lost_present_gene_lists/Genes_only_in_Z_marina_not_other_seagrasses.txt')
