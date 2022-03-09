@@ -60,7 +60,7 @@ compare <- function(genelistfile, outname, allgenes, annAT) {
 }
 
 ```
-# Comparing the three big groups
+# Comparing the four big groups
 
 ```{r eval=FALSE}
 # all genes shared - this runs out of memory
@@ -70,11 +70,14 @@ compare <- function(genelistfile, outname, allgenes, annAT) {
 # Union is below
 compare('Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses.txt', 'output/GO_results_genes_in_Aquatics_and_Seagrasses_NOT_Terrestrials.csv', allgenes, annAT)
 
-# Genes only in aquatics
-compare('Lost_present_gene_lists/Genes_only_in_Aquatics.txt', 'output/GO_results_genes_in_Aquatics_NOT_Seagrasses_NOT_Terrestrials.csv', allgenes, annAT)
+# Genes only in algae
+compare('Lost_present_gene_lists/Genes_only_in_Algae.txt', 'output/GO_results_genes_in_Algae_NOT_Duckweeds_NOT_Seagrasses_NOT_Terrestrials.csv', allgenes, annAT)
 
 # Genes only in seagrasses
-compare('Lost_present_gene_lists/Genes_only_in_Seagrasses.txt', 'output/GO_results_genes_in_Seagrasses_NOT_Aquatics_NOT_Terrestrials.csv', allgenes, annAT)
+compare('Lost_present_gene_lists/Genes_only_in_Seagrasses.txt', 'output/GO_results_genes_in_Seagrasses_NOT_Algae_NOT_Duckweeds_NOT_Terrestrials.csv', allgenes, annAT)
+
+# Genes only in duckweeds
+compare('Lost_present_gene_lists/Genes_only_in_Duckweeds.txt', 'output/GO_results_genes_in_Duckweeds_NOT_Algae_NOT_Seagrasses_NOT_Terrestrials.csv', allgenes, annAT)
 
 # Genes only in terrestrials
 compare('Lost_present_gene_lists/Genes_only_in_Terrestrials.txt', 'output/GO_results_genes_in_Terrestrials_NOT_Aquatics_NOT_Seagrasses.csv', allgenes, annAT)
@@ -91,7 +94,7 @@ For the seagrass-only comparisons, I'm using a Seagrass-only background as that 
 
 ```{r eval=FALSE}
 # give properly formatted background in format: GO:0005838	GSBRNA2T00088508001;GSBRNA2T00088313001;GSBRNA2T00035842001 
-#sannAT <- readMappings('SEAGRASSBACKGROUND.txt', sep="\t", IDsep=";")
+#sannAT <- readMappings('SEAGRASSBACKGROUND.txt', sep="\t", IDsep=";")  
 #save(sannAT, file='sannAtObject.RData')
 
 load('sannAtObject.RData')
@@ -207,9 +210,10 @@ for (f in names(results_list)) {
   if (one.data[1,] == '<html>') {next} # some datasets result in error
   one.data <- one.data [(one.data$plot_X != "null" & one.data$plot_Y != "null") & (! is.na(one.data$frequency)) & (one.data$value != 'null'), ];
   one.data <- suppressMessages(type_convert(one.data)) # guess data types, but also: shush
-  top_ten_values <- one.data %>% arrange(value) %>% head(10) %>% pull(term_ID) 
+  top_ten_values <- one.data %>% arrange(value) %>% head(8) %>% pull(term_ID) 
+  
   one.data <- one.data %>% mutate(description2 = case_when(
-    term_ID %in% top_ten_values ~ description, 
+    term_ID %in% top_ten_values ~ str_wrap(description, width=10), 
     TRUE ~ ''))
   p1 <-
     ggplot(data = one.data, aes(plot_X, plot_Y, label = description2)) +
@@ -224,8 +228,10 @@ for (f in names(results_list)) {
       colour = I (alpha ("black", 0.6))
     ) +
     scale_size_area() +
-    geom_label_repel(max.overlaps = Inf, box.padding = 0.5,
-                     aes(point.size = log_size), alpha=0.9) +
+    geom_label_repel(max.overlaps=15,
+                     point.padding = 0,
+                     min.segment.length = 0, # draw all line segments
+                     aes(point.size=log_size), alpha=0.9) + 
     theme_minimal() +
     labs(color = 'log(p-value)',
          size = 'Frequency') +
@@ -252,7 +258,7 @@ Let's also pull these terms out as tables. `Value` is the unadjusted p-value (-3
 ```{r results='asis'}
 for( i in names(results_list)) {
   print(i)
-  print(results_list[[i]] %>% filter(Eliminated == FALSE) %>% select(TermID, Name, Value) %>% arrange(Value) %>% kbl() %>%  kable_styling())
+  print(results_list[[i]] %>% dplyr::filter(Eliminated == FALSE) %>% dplyr::select(TermID, Name, Value) %>% arrange(Value) %>% kbl() %>%  kable_styling())
   cat("\n")
 }
 
@@ -277,10 +283,14 @@ Let me also try and make some patchworks.
 patchy <- (plot_list[["GO_results_genes_in_Terrestrials_NOT_Aquatics_NOT_Seagrasses.csv"]] + theme(legend.position = "none")) /
   plot_list[["GO_results_genes_union_Aquatics_and_Seagrasses_NOT_Terrestrials.csv"]] + plot_layout(guides = 'collect') + plot_annotation(tag_levels = 'A')
 patchy
+
+save(plot_list, file = 'output/all_GO_plots.Rdata') # save so I can put them together later
+
 cowplot::save_plot('output/GO_results_terrestrials_vs_union_aquatics_seagrasses.png', patchy, base_height=7)
 ```
 
 OK I'll better make this figure for the seagrasses alone, it's quite messy this way.
+
 
 # Seagrass-specific loss
 

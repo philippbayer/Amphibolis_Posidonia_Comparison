@@ -1,0 +1,40 @@
+---
+title: "Visualising gene differences based on read alignments"
+author: "Philipp Bayer"
+date: "9th March 2022"
+output: html_document
+---
+
+```{r setup}
+library(tidyverse)
+
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+
+```
+
+In this one I just merge some plots from the Orthofinder and GO enrichment Rmds, which I have saved as Rdata objects.
+
+```{r}
+load('output/all_GO_plots.Rdata')
+load('output/group_venn_image.Rdata')
+load('output/seagrass_venn_image.Rdata')
+```
+```{r}
+group_venn
+```
+```{r}
+seagrass_venn
+```
+
+OK now we can make patchworks with these Venn diagrams and their associated GO-terms
+```{r fig.width=8, fig.height=10}
+sum1 <- group_venn / (plot_list$GO_results_genes_in_Terrestrials_NOT_Aquatics_NOT_Seagrasses.csv + theme(legend.position="bottom")) +  plot_annotation(tag_levels = 'A') +plot_layout(heights=c(1.5,1))
+sum1
+cowplot::save_plot(sum1, filename = 'output/patchwork_terrestrials_gene_loss.png', base_height = 10, base_width = 8)
+```
+
+```{r fig.width=8, fig.height=10}
+sum2 <- seagrass_venn / (plot_list$GO_results_genes_union_Aquatics_and_Seagrasses_NOT_Terrestrials.csv + theme(legend.position="bottom")) +  plot_annotation(tag_levels = 'A') +plot_layout(heights=c(1.5,1))
+sum2
+cowplot::save_plot(sum2, filename = 'output/patchwork_seagrass_gene_loss.png', base_height = 10, base_width = 8)
+```
