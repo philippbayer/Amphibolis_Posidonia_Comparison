@@ -105,3 +105,6 @@ final_p
 cowplot::save_plot(final_p, filename = 'output/SOS3_phylogeny.png', base_width=10)
 ```
 
+
+
+"However, apparent photosynthesis is still maintained at a salinity 15% that of normal seawater and at temperatures of 3 and 30°C, consistent with the ecological role of Z. muelleri as an intertidal species." https://www.sciencedirect.com/science/article/abs/pii/0304377085900634
