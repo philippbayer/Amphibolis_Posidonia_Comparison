@@ -7,7 +7,7 @@ output: html_document
 
 ```{r setup}
 library(tidyverse)
-
+library(patchwork)
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 
 ```
@@ -34,7 +34,7 @@ cowplot::save_plot(sum1, filename = 'output/patchwork_terrestrials_gene_loss.png
 ```
 
 ```{r fig.width=8, fig.height=10}
-sum2 <- seagrass_venn / (plot_list$GO_results_genes_union_Aquatics_and_Seagrasses_NOT_Terrestrials.csv + theme(legend.position="bottom")) +  plot_annotation(tag_levels = 'A') +plot_layout(heights=c(1.5,1))
+sum2 <- seagrass_venn / (plot_list$GO_results_genes_in_all_seagrasses_vs_seagrassesBackground_intersect.csv + theme(legend.position="bottom")) +  plot_annotation(tag_levels = 'A') +plot_layout(heights=c(1.5,1))
 sum2
 cowplot::save_plot(sum2, filename = 'output/patchwork_seagrass_gene_loss.png', base_height = 10, base_width = 8)
 ```

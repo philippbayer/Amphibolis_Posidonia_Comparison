@@ -85,6 +85,14 @@ compare('Lost_present_gene_lists/Genes_only_in_Terrestrials.txt', 'output/GO_res
 # Genes union of Seagrass and Aquatics
 compare('Lost_present_gene_lists/Genes_union_of_Seagrass_and_Aquatics_union.txt', 'output/GO_results_genes_union_Aquatics_and_Seagrasses_NOT_Terrestrials.csv', allgenes, annAT)
 
+
+# Genes only in seagrasses- seagrass-specific
+compare('Lost_present_gene_lists/Genes_in_all_seagrasses_intersect.txt', 'output/GO_results_genes_in_all_seagrasses_vs_backgroundAll_intersect.csv', allgenes, annAT)
+
+compare('Lost_present_gene_lists/Genes_in_all_seagrasses_union.txt', 'output/GO_results_genes_in_all_seagrasses_vs_backgroundAll_union.csv', allgenes, annAT)
+
+
+
 ```
 # Seagrass only comparisons
 
@@ -104,6 +112,7 @@ sallgenes <- unique(unlist(sannAT))
 # lost in seagrasses
 
 ```{r eval=FALSE}
+
 compare('Lost_present_gene_lists/Genes_lost_in_A_antarctica_not_other_seagrasses.txt', 'output/GO_results_genes_lost_A_antarctica_not_other_seagrasses.csv', sallgenes, sannAT)
 
 compare('Lost_present_gene_lists/Genes_lost_in_Z_marina_not_other_seagrasses.txt', 'output/GO_results_genes_lost_Z_marina_not_other_seagrasses.csv', sallgenes, sannAT)
@@ -116,6 +125,10 @@ compare('Lost_present_gene_lists/Genes_lost_in_Z_muelleri_not_other_seagrasses.t
 # Present in seagrasses
 
 ```{r eval=FALSE}
+compare('Lost_present_gene_lists/Genes_in_all_seagrasses_intersect.txt', 'output/GO_results_genes_in_all_seagrasses_vs_seagrassesBackground_intersect.csv', sallgenes, sannAT)
+
+compare('Lost_present_gene_lists/Genes_in_all_seagrasses_union.txt', 'output/GO_results_genes_in_all_seagrasses_vs_seagrassesBackground_union.csv', sallgenes, sannAT)
+
 compare('Lost_present_gene_lists/Genes_only_in_Z_marina_not_other_seagrasses.txt', 'output/GO_results_genes_only_Z_marina_not_other_seagrasses.csv', sallgenes, sannAT)
 
 compare('Lost_present_gene_lists/Genes_only_in_Z_muelleri_not_other_seagrasses.txt', 'output/GO_results_genes_only_Z_muelleri_not_other_seagrasses.csv', sallgenes, sannAT)
