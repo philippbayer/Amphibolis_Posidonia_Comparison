@@ -1,0 +1,107 @@
+---
+title: "Visualsing MSAs"
+author: "Philipp Bayer"
+date: "10 March 2022"
+output: html_document
+---
+
+I found some interesting gene clusters. Let's look at them
+
+```{r setup, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(ggmsa)
+library(Biostrings)
+library(ape)
+library(ggtree)
+library(treeio)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+```{r fig.width=12}
+ggmsa('data/OG0000189.RiceAraSeagrasses.aln.fasta', start = 221, end = 260, char_width = 0.5, seq_name = T) + geom_seqlogo() + geom_msaBar()
+```
+
+```{r}
+
+x <- readAAStringSet('data/OG0000189.RiceAraSeagrasses.aln.fasta')
+d <- as.dist(stringDist(x, method = "hamming")/width(x)[1])
+tree <- bionj(d)
+p <- ggtree(tree) + geom_tiplab()
+ggtree(tree) + geom_tiplab()
+```
+
+```{r fig.width=10}
+data = tidy_msa('data/OG0000189.RiceAraSeagrasses.aln.fasta', 221, 260)
+p + geom_facet(geom = geom_msa, data = data,  panel = 'Multiple Sequence Alignment (221-260AA)',
+               font = NULL, color = "Chemistry_AA") +
+    xlim_tree(1)
+```
+
+
+Let's use a RAXML made tree
+
+Commands run, after I shortened protein IDs manually. I pulled out the rice/Arabidopsis/seagrass proteins manually from the OG0000189.fa Orthofinder produced, and shortened their names so they fit into Phylip format.
+
+```muscle -in OG0000189.RiceAraSeagrasses.fa -out OG0000189.RiceAraSeagrasses.phy -phyi ```
+
+```raxmlHPC -p12345 -m PROTGAMMAAUTO -s OG0000189.RiceAraSeagrasses.phy -n AUTO```
+
+
+```{r}
+treestring <- '((3O.sativa:0.11386470583955717040,4O.sativa:0.03615896391829190315):0.07379737996482453599,(5O.sativa:0.33751444720146173140,((7A.thalian:0.45696796911334131019,((8Z.mueller:0.33996861614583556710,15Z.marina:0.16088168380872580610):0.31923212677234219514,10P.austra:0.57486248434538900209):0.22324965676023655892):0.10039129162924786964,((13Z.marina:0.11346816437532522559,(12Z.muelle:0.00973855109814669891,10Z.muelle:0.02645894329604922546):0.09840311662577182206):0.35332170475064506032,((14Z.marina:0.12821969530885793387,(9Z.mueller:0.06883167458475099310,11Z.muelle:0.02355162378347611801):0.15839770535961147924):0.63099939044074537797,(1A.amphibo:0.53760770644490452064,6P.austral:0.07001018412366488697):0.08839123570898912985):0.05074368132159561007):0.09141392275039983417):0.12967268161775510893):0.11320488597472283532,2O.sativa:1.70657194075952300949):0.0;'
+plot(ape::read.tree(text=treestring))
+p2 <- ggtree(ape::read.tree(text=treestring)) + geom_tiplab()
+
+```
+
+That's very different from the above dendrogram!
+
+```{r fig.width=10}
+data2 <- data %>% mutate(name = str_sub(name, 1, 10), 
+                         name = str_trim(name))
+p2 + geom_facet(geom = geom_msa, data = data2,  panel = 'Multiple Sequence Alignment (221-260AA)',
+               font = NULL, color = "Chemistry_AA") +
+    xlim_tree(2)
+```
+
+Good! I used blastp with Swissprot to see whether I could get 'official' gene names for some of these, especially the *O. sativa*. I uploaded the fasta in data/OG000189.fa to blastp/swissprot, and pulled out new names where available.
+
+Hits are to: A. thaliana Calcineurin B-like protein 4 (CBL4, Alternative name: SOS3)
+O. sativa Calcineurin B-like protein 8 (CBL8)
+O. sativa Calcineurin B-like protein 4 (CBL4)
+
+Let's rename the tree and the MSA data table using `rename_taxa`
+```{r}
+trees <- ape::read.tree(text=treestring)
+old_names <- trees$tip.label
+# [1] "3O.sativa"  "4O.sativa"  "5O.sativa"  "7A.thalian" "8Z.mueller" "15Z.marina" "10P.austra" "13Z.marina"
+# [9] "12Z.muelle" "10Z.muelle" "14Z.marina" "9Z.mueller" "11Z.muelle" "1A.amphibo" "6P.austral" "2O.sativa"
+new_names  <- c( 'OsCBL8', 'OsCBL7.1', 'OsCBL4', 'AtSOS3', 'ZmuSOS3', 'ZmaSOS3', 'PaSOS3', 'ZmaSOS3.2', 'ZmuSOS3.2', 'ZmuSOS3.3', 'ZmaSOS3.3', 'ZmuSOS3.2', 'ZmuSOS3.4', 'AaSOS3', 'PaSOS3', 'OsCBL7.2')
+rename_df <- data.frame(old = old_names, new = new_names)
+rename_df
+
+trees <- rename_taxa(trees, rename_df, old, new)
+p3 <- ggtree(trees) + geom_tiplab(fontface='italic')
+
+p3
+```
+
+```{r}
+#str_replace_all takes a named vector
+replace_vector <- new_names
+names(replace_vector) <- old_names
+data2 <- data2 %>% mutate(name = str_replace_all(name, replace_vector))
+```
+
+
+```{r fig.width=10}
+final_p <- p3 + geom_facet(geom = geom_msa, data = data2,  panel = 'Multiple Sequence Alignment (221-260AA)',
+               font = NULL, color = "Chemistry_AA") +
+    xlim_tree(2)
+final_p
+```
+
+```{r}
+cowplot::save_plot(final_p, filename = 'output/SOS3_phylogeny.png', base_width=10)
+```
+
