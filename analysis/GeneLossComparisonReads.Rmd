@@ -8,7 +8,7 @@ output: html_document
 Here I compare read alignment differences with known Arabidopsis genes.
 
 
-```{r setup}
+```{r setup, message=FALSE}
 library(tidyverse)
 library(cowplot)
 theme_set(theme_cowplot())

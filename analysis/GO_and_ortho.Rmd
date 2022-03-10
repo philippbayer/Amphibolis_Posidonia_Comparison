@@ -5,7 +5,7 @@ date: "9th March 2022"
 output: html_document
 ---
 
-```{r setup}
+```{r setup, message=FALSE}
 library(tidyverse)
 library(patchwork)
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())

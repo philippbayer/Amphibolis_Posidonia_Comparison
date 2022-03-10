@@ -7,7 +7,7 @@ output: html_document
 
 Here I use Orthofinder results to pull out genes unique to seagrasses, unique to duckweeds, and make some nice summary tables
 
-```{r setup}
+```{r setup, message=FALSE}
 library(tidyverse)
 library(cowplot)
 theme_set(theme_cowplot())
