@@ -383,7 +383,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-03-08
+<strong>Last updated:</strong> 2022-03-10
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -474,16 +474,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreec706dc87d203321d0714dedc08fd289355b8a18dtargetblankc706dc8a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/c706dc87d203321d0714dedc08fd289355b8a18d" target="_blank">c706dc8</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreed4cd8657f0c6fa05905725b88248d64e8845f1f9targetblankd4cd865a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/d4cd8657f0c6fa05905725b88248d64e8845f1f9" target="_blank">d4cd865</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreec706dc87d203321d0714dedc08fd289355b8a18dtargetblankc706dc8a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreed4cd8657f0c6fa05905725b88248d64e8845f1f9targetblankd4cd865a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/c706dc87d203321d0714dedc08fd289355b8a18d" target="_blank">c706dc8</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/d4cd8657f0c6fa05905725b88248d64e8845f1f9" target="_blank">d4cd865</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -496,7 +496,34 @@ Ignored files:
     Ignored:    analysis/plotRgenes.nb.html
 
 Unstaged changes:
-    Modified:   analysis/Orthofinder.Rmd
+    Modified:   data/arabidopsis_gene_level_comparison.xlsx
+    Modified:   data/arabidopsis_gene_level_comparison_only_losts.xlsx
+    Modified:   data/arabidopsis_gene_level_counts.xlsx
+    Modified:   output/GO_results_genes_in_Algae_NOT_Duckweeds_NOT_Seagrasses_NOT_Terrestrials.csv.png
+    Modified:   output/GO_results_genes_in_Aquatics_NOT_Seagrasses_NOT_Terrestrials.csv.png
+    Modified:   output/GO_results_genes_in_Duckweeds_NOT_Algae_NOT_Seagrasses_NOT_Terrestrials.csv.png
+    Modified:   output/GO_results_genes_in_Seagrasses_NOT_Algae_NOT_Duckweeds_NOT_Terrestrials.csv.png
+    Modified:   output/GO_results_genes_in_Seagrasses_NOT_Aquatics_NOT_Terrestrials.csv.png
+    Modified:   output/GO_results_genes_in_Terrestrials_NOT_Aquatics_NOT_Seagrasses.csv.png
+    Modified:   output/GO_results_genes_in_all_seagrasses_vs_backgroundAll_intersect.csv.png
+    Modified:   output/GO_results_genes_in_all_seagrasses_vs_backgroundAll_union.csv.png
+    Modified:   output/GO_results_genes_in_all_seagrasses_vs_seagrassesBackground_intersect.csv.png
+    Modified:   output/GO_results_genes_lost_A_antarctica_not_other_seagrasses.csv.png
+    Modified:   output/GO_results_genes_lost_P_australis_not_other_seagrasses.csv.png
+    Modified:   output/GO_results_genes_lost_Z_marina_not_other_seagrasses.csv.png
+    Modified:   output/GO_results_genes_lost_Z_muelleri_not_other_seagrasses.csv.png
+    Modified:   output/GO_results_genes_only_P_australis_not_other_seagrasses.csv.png
+    Modified:   output/GO_results_genes_only_Z_marina_not_other_seagrasses.csv.png
+    Modified:   output/GO_results_genes_only_Z_muelleri_not_other_seagrasses.csv.png
+    Modified:   output/GO_results_genes_union_Aquatics_and_Seagrasses_NOT_Terrestrials.csv.png
+    Modified:   output/GO_results_terrestrials_vs_union_aquatics_seagrasses.png
+    Modified:   output/Lost_GO_terms_in_five_species.PlantSpecific.xlsx
+    Modified:   output/Lost_GO_terms_in_five_species.xlsx
+    Modified:   output/Seagrasses_shared_lost_genes.xlsx
+    Modified:   output/all_GO_plots.Rdata
+    Modified:   output/patched_gene_loss.png
+    Modified:   output/patchwork_seagrass_gene_loss.png
+    Modified:   output/patchwork_terrestrials_gene_loss.png
 
 </code></pre>
 <p>
@@ -535,6 +562,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/d4cd8657f0c6fa05905725b88248d64e8845f1f9/analysis/plotRgenes.Rmd" target="_blank">d4cd865</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-03-10
+</td>
+<td>
+make the setup blocks nicer
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/46c7d2a1bd2144075f63492a05d8615990d174a6/docs/plotRgenes.html" target="_blank">46c7d2a</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-03-08
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -765,11 +826,6 @@ wflow_publish(files = c("analysis/*"))
 </div>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <pre><code>Warning: package &#39;tidyverse&#39; was built under R version 4.1.1</code></pre>
-<pre><code>-- Attaching packages --------------------------------------- tidyverse 1.3.1 --</code></pre>
-<pre><code>v ggplot2 3.3.5     v purrr   0.3.4
-v tibble  3.1.5     v dplyr   1.0.7
-v tidyr   1.1.4     v stringr 1.4.0
-v readr   2.0.2     v forcats 0.5.1</code></pre>
 <pre><code>Warning: package &#39;ggplot2&#39; was built under R version 4.1.1</code></pre>
 <pre><code>Warning: package &#39;tibble&#39; was built under R version 4.1.1</code></pre>
 <pre><code>Warning: package &#39;tidyr&#39; was built under R version 4.1.1</code></pre>
@@ -778,38 +834,13 @@ v readr   2.0.2     v forcats 0.5.1</code></pre>
 <pre><code>Warning: package &#39;dplyr&#39; was built under R version 4.1.1</code></pre>
 <pre><code>Warning: package &#39;stringr&#39; was built under R version 4.1.1</code></pre>
 <pre><code>Warning: package &#39;forcats&#39; was built under R version 4.1.1</code></pre>
-<pre><code>-- Conflicts ------------------------------------------ tidyverse_conflicts() --
-x dplyr::filter() masks stats::filter()
-x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>library(wesanderson)</code></pre>
 <pre><code>Warning: package &#39;wesanderson&#39; was built under R version 4.1.1</code></pre>
-<pre class="r"><code>library(ggtree)</code></pre>
-<pre><code>ggtree v3.0.4  For help: https://yulab-smu.top/treedata-book/
-
-If you use ggtree in published research, please cite the most appropriate paper(s):
-
-1. Guangchuang Yu. Using ggtree to visualize data on tree-like structures. Current Protocols in Bioinformatics, 2020, 69:e96. doi:10.1002/cpbi.96
-2. Guangchuang Yu, Tommy Tsan-Yuk Lam, Huachen Zhu, Yi Guan. Two methods for mapping and visualizing associated data on phylogeny using ggtree. Molecular Biology and Evolution 2018, 35(12):3041-3043. doi:10.1093/molbev/msy194
-3. Guangchuang Yu, David Smith, Huachen Zhu, Yi Guan, Tommy Tsan-Yuk Lam. ggtree: an R package for visualization and annotation of phylogenetic trees with their covariates and other associated data. Methods in Ecology and Evolution 2017, 8(1):28-36. doi:10.1111/2041-210X.12628</code></pre>
-<pre><code>
-Attaching package: &#39;ggtree&#39;</code></pre>
-<pre><code>The following object is masked from &#39;package:tidyr&#39;:
-
-    expand</code></pre>
-<pre class="r"><code>library(ggtreeExtra)</code></pre>
+<pre class="r"><code>library(ggtree)
+library(ggtreeExtra)</code></pre>
 <pre><code>Warning: package &#39;ggtreeExtra&#39; was built under R version 4.1.1</code></pre>
-<pre><code>ggtreeExtra v1.2.3  For help: https://yulab-smu.top/treedata-book/
-
-If you use ggtreeExtra in published research, please cite the paper:
-
-S Xu, Z Dai, P Guo, X Fu, S Liu, L Zhou, W Tang, T Feng, M Chen, L Zhan, T Wu, E Hu, Y Jiang, X Bo, G Yu. ggtreeExtra: Compact visualization of richly annotated phylogenetic data. Molecular Biology and Evolution 2021, 38(9):4039-4042. doi: 10.1093/molbev/msab166</code></pre>
 <pre class="r"><code>library(kableExtra)</code></pre>
 <pre><code>Warning: package &#39;kableExtra&#39; was built under R version 4.1.2</code></pre>
-<pre><code>
-Attaching package: &#39;kableExtra&#39;</code></pre>
-<pre><code>The following object is masked from &#39;package:dplyr&#39;:
-
-    group_rows</code></pre>
 <pre class="r"><code>knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())</code></pre>
 <div id="visualising-r-gene-differences-here" class="section level1">
 <h1>Visualising R-gene differences here</h1>
