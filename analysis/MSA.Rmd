@@ -76,7 +76,7 @@ trees <- ape::read.tree(text=treestring)
 old_names <- trees$tip.label
 # [1] "3O.sativa"  "4O.sativa"  "5O.sativa"  "7A.thalian" "8Z.mueller" "15Z.marina" "10P.austra" "13Z.marina"
 # [9] "12Z.muelle" "10Z.muelle" "14Z.marina" "9Z.mueller" "11Z.muelle" "1A.amphibo" "6P.austral" "2O.sativa"
-new_names  <- c( 'OsCBL8', 'OsCBL7.1', 'OsCBL4', 'AtSOS3', 'ZmuSOS3', 'ZmaSOS3', 'PaSOS3', 'ZmaSOS3.2', 'ZmuSOS3.2', 'ZmuSOS3.3', 'ZmaSOS3.3', 'ZmuSOS3.2', 'ZmuSOS3.4', 'AaSOS3', 'PaSOS3', 'OsCBL7.2')
+new_names  <- c( 'OsCBL8', 'OsCBL7.1', 'OsCBL4', 'AtSOS3', 'ZmuSOS3', 'ZmaSOS3', 'PaSOS3', 'ZmaSOS3.2', 'ZmuSOS3.2', 'ZmuSOS3.3', 'ZmaSOS3.3', 'ZmuSOS3.2', 'ZmuSOS3.4', 'AaSOS3', 'PaSOS3.2', 'OsCBL7.2')
 rename_df <- data.frame(old = old_names, new = new_names)
 rename_df
 
