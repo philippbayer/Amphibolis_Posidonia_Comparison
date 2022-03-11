@@ -1,5 +1,5 @@
 ---
-title: "Visualsing MSAs"
+title: "Visualising MSAs"
 author: "Philipp Bayer"
 date: "10 March 2022"
 output: html_document
@@ -76,7 +76,7 @@ trees <- ape::read.tree(text=treestring)
 old_names <- trees$tip.label
 # [1] "3O.sativa"  "4O.sativa"  "5O.sativa"  "7A.thalian" "8Z.mueller" "15Z.marina" "10P.austra" "13Z.marina"
 # [9] "12Z.muelle" "10Z.muelle" "14Z.marina" "9Z.mueller" "11Z.muelle" "1A.amphibo" "6P.austral" "2O.sativa"
-new_names  <- c( 'OsCBL8', 'OsCBL7.1', 'OsCBL4', 'AtSOS3', 'ZmuSOS3', 'ZmaSOS3', 'PaSOS3', 'ZmaSOS3.2', 'ZmuSOS3.2', 'ZmuSOS3.3', 'ZmaSOS3.3', 'ZmuSOS3.2', 'ZmuSOS3.4', 'AaSOS3', 'PaSOS3.2', 'OsCBL7.2')
+new_names  <- c( 'OsCBL8', 'OsCBL7.1', 'OsCBL4', 'AtSOS3', 'ZmuSOS3', 'ZmaSOS3', 'PaSOS3', 'ZmaSOS3.2', 'ZmuSOS3.2', 'ZmuSOS3.3', 'ZmaSOS3.2', 'ZmuSOS3.4', 'ZmuSOS3.5', 'AaSOS3', 'PaSOS3.2', 'OsCBL7.2')
 rename_df <- data.frame(old = old_names, new = new_names)
 rename_df
 
@@ -108,3 +108,81 @@ cowplot::save_plot(final_p, filename = 'output/SOS3_phylogeny.png', base_width=1
 
 
 "However, apparent photosynthesis is still maintained at a salinity 15% that of normal seawater and at temperatures of 3 and 30°C, consistent with the ecological role of Z. muelleri as an intertidal species." https://www.sciencedirect.com/science/article/abs/pii/0304377085900634
+
+
+Now let's also add support values.
+
+I ran this based on `Using RAxML-NG in Practice`
+
+```
+ # to get best model
+modeltest-ng -i OG0000189.RiceAraSeagrasses.aln.fasta -t ml -d aa -p 8
+
+ # to get fixed fasta
+raxml-ng --msa OG0000189.RiceAraSeagrasses.aln.fasta --model JTT-DCMUT+G4 --check
+
+# to make a regular tree
+raxml-ng --msa OG0000189.RiceAraSeagrasses.aln.fasta.raxml.reduced.phy --model JTT-DCMUT+G4 --prefix T3 --threads 2 --seed 2 
+
+# make 200 bootstrap trees, does not converge
+raxml-ng --msa OG0000189.RiceAraSeagrasses.aln.fasta.raxml.reduced.phy --model JTT-DCMUT+G4 --prefix T8 --threads 8 --seed 2 --bootstrap --bs-trees 200 
+
+# make another 400  with different seed
+raxml-ng --msa OG0000189.RiceAraSeagrasses.aln.fasta.raxml.reduced.phy --model JTT-DCMUT+G4 --prefix T11 --threads 8 --seed 333 --bootstrap --bs-trees 400 
+
+# check whether they converge with <3% WRF cutoff
+raxml-ng --bsconverge --bs-trees allbootstraps --prefix T12 --seed 2 --threads 1 --bs-cutoff 0.03
+
+#yes, after 550 - close one!
+
+# to make the final trees with bootstrap values
+
+cat T8.raxml.bootstraps T11.raxml.bootstraps > allbootstraps
+
+raxml-ng --support --tree T3.raxml.bestTree --bs-trees allbootstraps --prefix T13 --redo
+```
+
+
+
+
+```{r}
+newtree <- '((((((12Z.muelleri_maker-6084_47488_1_44441--0.5-mRNA-1:0.009685,10Z.muelleri_maker-8016_47756--0.9-mRNA-1:0.026505)99:0.098293,13Z.marina_Zosma01g02330:0.113268)99:0.354433,(((11Z.muelleri_maker-8016_47756--0.8-mRNA-1:0.023273,9Z.muelleri_maker-2123_50249_30746_38748--0.4-mRNA-1:0.068317)99:0.153634,14Z.marina_Zosma01g02340:0.129762)100:0.616637,(1A.amphibolis_maker-scf7180000542070-augustus-gene-0.0-mRNA-1:0.518908,6P.australis_maker-scf7180003728898-augustus-gene-0.1-mRNA-1:0.074916)72:0.082830)22:0.047398)31:0.080205,((2O.sativa_LOC_Os03g33570.1:1.647537,(3O.sativa_LOC_Os02g18930.1:0.113637,4O.sativa_LOC_Os02g18880.1:0.035299)53:0.061341)66:0.111396,5O.sativa_LOC_Os05g45810.1:0.344545)75:0.137407)42:0.100482,7A.thaliana_AT5G24270.1:0.448151)83:0.209634,(15Z.marina_Zosma06g25260:0.152988,8Z.muelleri_snap_masked-14205_19045--0.3-mRNA-1:0.336420)100:0.314204,10P.australis_maker-scf7180004080271-augustus-gene-0.8-mRNA-1:0.580458)83:0.0;'
+
+tree3 <- ape::read.tree(text=newtree, branch.label='support')
+
+p3 <- ggtree(tree3) + geom_tiplab()
+p3
+```
+
+OK the nodes are now named differently due to raxml-ng, time to fix again
+
+```{r}
+old_names <- tree3$tip.label
+
+# [1] "3O.sativa"  "4O.sativa"  "5O.sativa"  "7A.thalian" "8Z.mueller" "15Z.marina" "10P.austra" "13Z.marina"
+# [9] "12Z.muelle" "10Z.muelle" "14Z.marina" "9Z.mueller" "11Z.muelle" "1A.amphibo" "6P.austral" "2O.sativa"
+#new_names  <- c( 'OsCBL8', 'OsCBL7.1', 'OsCBL4', 'AtSOS3', 'ZmuSOS3', 'ZmaSOS3', 'PaSOS3', 'ZmaSOS3.2',
+#                 'ZmuSOS3.2', 'ZmuSOS3.3', 'ZmaSOS3.3', 'ZmuSOS3.2', 'ZmuSOS3.4', 'AaSOS3', 'PaSOS3.2', 'OsCBL7.2')
+new_names  <- c('ZmuSOS3.2', 'ZmuSOS3.3', 'ZmaSOS3.2', 'ZmuSOS3.4', 'ZmuSOS3.5', 'ZmaSOS3.2','AaSOS3',  
+                'PaSOS3.2', 'OsCBL7.2', 'OsCBL8', 'OsCBL7.1', 'OsCBL4', 'AtSOS3', 'ZmaSOS3', 'ZmuSOS3', 'PaSOS3')
+rename_df <- data.frame(old = old_names, new = new_names)
+
+
+tree3 <- rename_taxa(tree3, rename_df, old, new)
+p3 <- ggtree(tree3) + geom_tiplab(fontface='italic')
+p3 <- p3 + geom_nodelab(aes(subset=label>80))
+```
+
+
+
+```{r fig.width = 10}
+replace_vector <- new_names
+names(replace_vector) <- old_names
+
+data3 <- data2 %>% mutate(name = str_replace(name, ' ', '_'),
+                          name = str_replace_all(name, replace_vector))
+p3 + geom_facet(geom = geom_msa, data = data3,  panel = 'Multiple Sequence Alignment (221-260AA)',
+               font = NULL, color = "Chemistry_AA") +
+    xlim_tree(3)
+```
+

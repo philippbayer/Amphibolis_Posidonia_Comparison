@@ -79,13 +79,15 @@ stom_heat <- stomata_long %>%
   #mutate(Gene.symbol = stringr::str_to_lower(Gene.symbol)) %>% 
   ggplot(aes(x=Species, y=factor(Gene.symbol, level=rev(unique(Gene.symbol))), fill=Coverage)) + 
   geom_tile(alpha=0.9, color='white') + 
-  geom_text(aes(label=mylabel), data=label, size=3.5) + 
+  #geom_text(aes(label=mylabel), data=label, size=3.5) + 
   theme(axis.text.y = element_text(face = "italic"),
         axis.text.x = element_text(face='italic'),
         axis.title.x = element_blank(),
         axis.title.y = element_blank(),
-        legend.position = "none") +
-  scale_fill_continuous(limits=c(0,100))
+        #legend.position = "none"
+        ) +
+  #scale_fill_continuous(limits=c(0,100)) +
+  scale_fill_distiller(palette='Spectral', limits=c(0,100))#palette= 'Rdbu', limits=c(0,100), type = 'discrete')
 
 stom_heat
 ```
@@ -151,13 +153,18 @@ eth_p
 ```{r}
 eth_heat <- ethylene_long %>% 
   dplyr::filter(Gene.symbol != 'ndhB-2') %>% 
-  mutate(Gene.symbol = stringr::str_to_lower(Gene.symbol)) %>% 
+  #mutate(Gene.symbol = stringr::str_to_lower(Gene.symbol)) %>% 
   ggplot(aes(x=Species, y=factor(Gene.symbol, level=rev(unique(Gene.symbol))), fill=Coverage)) + 
   geom_tile() + 
   ylab('Gene') +
   theme(axis.text.y = element_text(face = "italic"),
-        axis.text.x = element_text(face='italic')) +
-  scale_fill_continuous(limits=c(0,100))
+        axis.text.x = element_text(face='italic'),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+       #legend.position = "none"
+       ) +
+  #scale_fill_continuous(limits=c(0,100)) +
+  scale_fill_distiller(palette='Spectral', limits=c(0,100))#palette= 'Rdbu', limits=c(0,100), type = 'discrete')
 
 eth_heat
 ```
@@ -167,22 +174,22 @@ eth_heat
 ```{r}
 ndh <- tibble::tribble(
          ~Gene.symbol, ~A..antarctica, ~P..australis, ~H..ovalis, ~Z..muelleri, ~Z..marina,
-               "NDHL",              0,             0,          0,        16.67,      16.67,
-               "NDHM",              0,             0,          0,        36.24,       34.4,
-               "NDHN",          48.73,             0,          0,        66.35,      59.68,
-               "NDHO",              0,             0,          0,        33.54,      22.22,
-               "NDHS",          12.35,         28.29,          0,         34.4,      30.15,
-               "NDHT",              0,          8.67,          0,        19.47,      16.67,
-               "NDHU",              0,             0,          0,         9.89,          0,
-              "PNSB1",           4.26,         42.42,          0,         32.4,      31.24,
-              "PNSB2",              0,             0,          0,            0,          0,
-              "PNSB3",              0,          8.46,          0,        16.26,       9.76,
-              "PNSB4",              0,         19.13,          0,        18.75,      18.75,
-              "PNSL1",              0,             0,          0,            0,          0,
-              "PNSL2",          16.58,             0,          0,        45.03,      15.01,
-              "PNSL3",              0,             0,          0,            0,          0,
-              "PNSL4",           7.19,         23.55,          0,        31.04,      45.11,
-              "PNSL5",          52.82,         62.82,      57.31,        48.72,      46.28,
+               "ndhL",              0,             0,          0,        16.67,      16.67,
+               "ndhM",              0,             0,          0,        36.24,       34.4,
+               "ndhN",          48.73,             0,          0,        66.35,      59.68,
+               "ndhO",              0,             0,          0,        33.54,      22.22,
+               "ndhS",          12.35,         28.29,          0,         34.4,      30.15,
+               "ndhT",              0,          8.67,          0,        19.47,      16.67,
+               "ndhU",              0,             0,          0,         9.89,          0,
+              "PnsB1",           4.26,         42.42,          0,         32.4,      31.24,
+              "PnsB2",              0,             0,          0,            0,          0,
+              "PnsB3",              0,          8.46,          0,        16.26,       9.76,
+              "PnsB4",              0,         19.13,          0,        18.75,      18.75,
+              "PnsL1",              0,             0,          0,            0,          0,
+              "PnsL2",          16.58,             0,          0,        45.03,      15.01,
+              "PnsL3",              0,             0,          0,            0,          0,
+              "PnsL4",           7.19,         23.55,          0,        31.04,      45.11,
+              "PnsL5",          52.82,         62.82,      57.31,        48.72,      46.28,
                "CRR6",              0,             0,          0,        43.86,      33.06,
                "CRR7",              0,             0,          0,            0,          0,
               "Lhca5",              0,         35.15,          0,        18.29,      27.76,
@@ -234,7 +241,7 @@ label <- label %>%
 
 ndh_heat <- ndh_long %>% 
   dplyr::filter(Gene.symbol != 'ndhB-2') %>% 
-  mutate(Gene.symbol = stringr::str_to_lower(Gene.symbol)) %>% 
+  #mutate(Gene.symbol = stringr::str_to_lower(Gene.symbol)) %>% 
   ggplot(aes(x=Species, y=factor(Gene.symbol, level=rev(unique(Gene.symbol))), fill=Coverage)) + 
   geom_tile() + 
   geom_tile(alpha=0.9, color='white') + 
@@ -242,8 +249,12 @@ ndh_heat <- ndh_long %>%
   theme(axis.text.y = element_text(face = "italic"),
         axis.text.x = element_text(face = 'italic'),
         axis.title.x = element_blank(),
-        axis.title.y = element_blank())  +
-  scale_fill_continuous(limits=c(0,100))
+        axis.title.y = element_blank(),
+        #legend.position = "none"
+        )  +
+  #scale_fill_continuous(limits=c(0,100)) +
+  scale_fill_distiller(palette='Spectral', limits=c(0,100))#palette= 'Rdbu', limits=c(0,100), type = 'discrete')
+
 
 ndh_heat
 ```
@@ -312,14 +323,17 @@ ndh_chl_heat <- ndh_chl_long %>%
                               TRUE ~ Coverage)) %>% 
   ggplot(aes(x=Species, y=factor(Gene.symbol, level=rev(unique(Gene.symbol))), fill=Coverage)) + 
   geom_tile(alpha=0.9, color='white') + 
-  geom_text(data=label, aes(label=mylabel), size=3.5) +
+  #geom_text(data=label, aes(label=mylabel), size=3.5) +
   ylab('Gene') +
   theme(axis.text.y = element_text(face = "italic"),
         axis.text.x = element_text(face = 'italic'),
         axis.title.x = element_blank(),
         axis.title.y = element_blank(),
-        legend.position = "none") +
-  scale_fill_continuous(limits=c(0,100))
+        #legend.position = "none"
+        ) +
+#  scale_fill_continuous(limits=c(0,100)) +
+    scale_fill_distiller(palette='Spectral', limits=c(0,100))#palette= 'Rdbu', limits=c(0,100), type = 'discrete')
+
   
 ndh_chl_heat
 ```
@@ -344,9 +358,21 @@ patchwork <- (eth_p + ndh_chl_heat)/
  (ndh_p + stom_heat  )
 #patchwork[[2]] = patchwork[[2]] + theme(axis.title.x = element_blank() )
 #patchwork[[1]] = patchwork[[1]] + theme(axis.title.x = element_blank() )
-puh <- patchwork+ plot_annotation(tag_levels = "A") #+ plot_layout(guides='none')
+puh <- patchwork+ plot_annotation(tag_levels = "A") + plot_layout(guides='collect')
 puh
 cowplot::save_plot(filename = 'output/patched_gene_loss.png', plot = puh, base_height = 7)
 ```
 
 Hmmmmmmmmm
+
+```{r fig.width=10}
+
+patchwork <- (eth_heat + ndh_chl_heat)/
+ ( ndh_heat + stom_heat  ) & theme(axis.text = element_text(size = 8))
+#patchwork[[2]] = patchwork[[2]] + theme(axis.title.x = element_blank() )
+#patchwork[[1]] = patchwork[[1]] + theme(axis.title.x = element_blank() )
+puh <- patchwork+ plot_annotation(tag_levels = "A") + plot_layout(guides='collect')
+puh
+cowplot::save_plot(filename = 'output/patched_gene_loss_heatmaps.png', plot = puh, base_height = 8)
+```
+
