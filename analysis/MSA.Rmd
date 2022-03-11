@@ -31,7 +31,7 @@ ggtree(tree) + geom_tiplab()
 ```
 
 ```{r fig.width=10}
-data = tidy_msa('data/OG0000189.RiceAraSeagrasses.aln.fasta', 221, 260)
+data <- tidy_msa('data/OG0000189.RiceAraSeagrasses.aln.fasta', 221, 260)
 p + geom_facet(geom = geom_msa, data = data,  panel = 'Multiple Sequence Alignment (221-260AA)',
                font = NULL, color = "Chemistry_AA") +
     xlim_tree(1)
@@ -163,7 +163,7 @@ old_names <- tree3$tip.label
 # [9] "12Z.muelle" "10Z.muelle" "14Z.marina" "9Z.mueller" "11Z.muelle" "1A.amphibo" "6P.austral" "2O.sativa"
 #new_names  <- c( 'OsCBL8', 'OsCBL7.1', 'OsCBL4', 'AtSOS3', 'ZmuSOS3', 'ZmaSOS3', 'PaSOS3', 'ZmaSOS3.2',
 #                 'ZmuSOS3.2', 'ZmuSOS3.3', 'ZmaSOS3.3', 'ZmuSOS3.2', 'ZmuSOS3.4', 'AaSOS3', 'PaSOS3.2', 'OsCBL7.2')
-new_names  <- c('ZmuSOS3.2', 'ZmuSOS3.3', 'ZmaSOS3.2', 'ZmuSOS3.4', 'ZmuSOS3.5', 'ZmaSOS3.2','AaSOS3',  
+new_names  <- c('ZmuSOS3.2', 'ZmuSOS3.3', 'ZmaSOS3.2', 'ZmuSOS3.4', 'ZmuSOS3.5', 'ZmaSOS3.3','AaSOS3',  
                 'PaSOS3.2', 'OsCBL7.2', 'OsCBL8', 'OsCBL7.1', 'OsCBL4', 'AtSOS3', 'ZmaSOS3', 'ZmuSOS3', 'PaSOS3')
 rename_df <- data.frame(old = old_names, new = new_names)
 
@@ -171,6 +171,7 @@ rename_df <- data.frame(old = old_names, new = new_names)
 tree3 <- rename_taxa(tree3, rename_df, old, new)
 p3 <- ggtree(tree3) + geom_tiplab(fontface='italic')
 p3 <- p3 + geom_nodelab(aes(subset=label>80))
+p3
 ```
 
 
@@ -179,7 +180,8 @@ p3 <- p3 + geom_nodelab(aes(subset=label>80))
 replace_vector <- new_names
 names(replace_vector) <- old_names
 
-data3 <- data2 %>% mutate(name = str_replace(name, ' ', '_'),
+data <- tidy_msa('data/OG0000189.RiceAraSeagrasses.aln.fasta', 221, 260)
+data3 <- data %>% mutate(name = str_replace(name, ' ', '_'),
                           name = str_replace_all(name, replace_vector))
 p3 + geom_facet(geom = geom_msa, data = data3,  panel = 'Multiple Sequence Alignment (221-260AA)',
                font = NULL, color = "Chemistry_AA") +
