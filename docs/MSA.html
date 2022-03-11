@@ -476,16 +476,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree76a65cd561c5fc2fbf7ca549a5a68b86243be3cctargetblank76a65cda"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/76a65cd561c5fc2fbf7ca549a5a68b86243be3cc" target="_blank">76a65cd</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreee9128f4b398d11ba3e7f9e73501d4c00991a4e43targetblanke9128f4a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/e9128f4b398d11ba3e7f9e73501d4c00991a4e43" target="_blank">e9128f4</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree76a65cd561c5fc2fbf7ca549a5a68b86243be3cctargetblank76a65cda" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreee9128f4b398d11ba3e7f9e73501d4c00991a4e43targetblanke9128f4a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/76a65cd561c5fc2fbf7ca549a5a68b86243be3cc" target="_blank">76a65cd</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/e9128f4b398d11ba3e7f9e73501d4c00991a4e43" target="_blank">e9128f4</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -542,6 +542,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/e9128f4b398d11ba3e7f9e73501d4c00991a4e43/analysis/MSA.Rmd" target="_blank">e9128f4</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-03-11
+</td>
+<td>
+fix MSA
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/56d032ac636f2ebf920a54a697f24d8f3237ccc3/docs/MSA.html" target="_blank">56d032a</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-03-11
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -685,7 +719,7 @@ tree &lt;- bionj(d)
 p &lt;- ggtree(tree) + geom_tiplab()
 ggtree(tree) + geom_tiplab()</code></pre>
 <p><img src="figure/MSA.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>data = tidy_msa(&#39;data/OG0000189.RiceAraSeagrasses.aln.fasta&#39;, 221, 260)
+<pre class="r"><code>data &lt;- tidy_msa(&#39;data/OG0000189.RiceAraSeagrasses.aln.fasta&#39;, 221, 260)
 p + geom_facet(geom = geom_msa, data = data,  panel = &#39;Multiple Sequence Alignment (221-260AA)&#39;,
                font = NULL, color = &quot;Chemistry_AA&quot;) +
     xlim_tree(1)</code></pre>
@@ -792,18 +826,21 @@ p3</code></pre>
 # [9] &quot;12Z.muelle&quot; &quot;10Z.muelle&quot; &quot;14Z.marina&quot; &quot;9Z.mueller&quot; &quot;11Z.muelle&quot; &quot;1A.amphibo&quot; &quot;6P.austral&quot; &quot;2O.sativa&quot;
 #new_names  &lt;- c( &#39;OsCBL8&#39;, &#39;OsCBL7.1&#39;, &#39;OsCBL4&#39;, &#39;AtSOS3&#39;, &#39;ZmuSOS3&#39;, &#39;ZmaSOS3&#39;, &#39;PaSOS3&#39;, &#39;ZmaSOS3.2&#39;,
 #                 &#39;ZmuSOS3.2&#39;, &#39;ZmuSOS3.3&#39;, &#39;ZmaSOS3.3&#39;, &#39;ZmuSOS3.2&#39;, &#39;ZmuSOS3.4&#39;, &#39;AaSOS3&#39;, &#39;PaSOS3.2&#39;, &#39;OsCBL7.2&#39;)
-new_names  &lt;- c(&#39;ZmuSOS3.2&#39;, &#39;ZmuSOS3.3&#39;, &#39;ZmaSOS3.2&#39;, &#39;ZmuSOS3.4&#39;, &#39;ZmuSOS3.5&#39;, &#39;ZmaSOS3.2&#39;,&#39;AaSOS3&#39;,  
+new_names  &lt;- c(&#39;ZmuSOS3.2&#39;, &#39;ZmuSOS3.3&#39;, &#39;ZmaSOS3.2&#39;, &#39;ZmuSOS3.4&#39;, &#39;ZmuSOS3.5&#39;, &#39;ZmaSOS3.3&#39;,&#39;AaSOS3&#39;,  
                 &#39;PaSOS3.2&#39;, &#39;OsCBL7.2&#39;, &#39;OsCBL8&#39;, &#39;OsCBL7.1&#39;, &#39;OsCBL4&#39;, &#39;AtSOS3&#39;, &#39;ZmaSOS3&#39;, &#39;ZmuSOS3&#39;, &#39;PaSOS3&#39;)
 rename_df &lt;- data.frame(old = old_names, new = new_names)
 
 
 tree3 &lt;- rename_taxa(tree3, rename_df, old, new)
 p3 &lt;- ggtree(tree3) + geom_tiplab(fontface=&#39;italic&#39;)
-p3 &lt;- p3 + geom_nodelab(aes(subset=label&gt;80))</code></pre>
+p3 &lt;- p3 + geom_nodelab(aes(subset=label&gt;80))
+p3</code></pre>
+<p><img src="figure/MSA.Rmd/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>replace_vector &lt;- new_names
 names(replace_vector) &lt;- old_names
 
-data3 &lt;- data2 %&gt;% mutate(name = str_replace(name, &#39; &#39;, &#39;_&#39;),
+data &lt;- tidy_msa(&#39;data/OG0000189.RiceAraSeagrasses.aln.fasta&#39;, 221, 260)
+data3 &lt;- data %&gt;% mutate(name = str_replace(name, &#39; &#39;, &#39;_&#39;),
                           name = str_replace_all(name, replace_vector))
 p3 + geom_facet(geom = geom_msa, data = data3,  panel = &#39;Multiple Sequence Alignment (221-260AA)&#39;,
                font = NULL, color = &quot;Chemistry_AA&quot;) +
