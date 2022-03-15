@@ -1,0 +1,92 @@
+---
+title: "Visualising 3D structures"
+author: "Philipp Bayer"
+date: "15 March 2022"
+output: html_document
+---
+
+Let's compare some 3D structures from the interesting genes in [MSA](MSA.html)
+
+```{r message=FALSE, warning=FALSE}
+library(bio3d)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+
+```
+
+# SOS3
+
+First, let's just load one of them 
+```{r}
+# the 'real' one from X-ray crystallography
+ara_SOS3_real <- read.pdb('data/SOS3_OG0000189/Arabidopsis_SOS3_1v1f.pdb')
+# the alphafold ones
+
+amphibolis_SOS3_alpha <- read.pdb('data/SOS3_OG0000189/Amphibolis_fixed_SOS3_40588.result/Amphibolis_fixed_SOS3_40588_unrelaxed_rank_1_model_4.pdb')
+posi_SOS3_alpha <- read.pdb('data/SOS3_OG0000189/6P_australis_SOS3_dcfd4.result/6P_australis_SOS3_dcfd4_unrelaxed_rank_1_model_1.pdb')
+```
+
+
+```{r}
+ara_SOS3_gaps <- gap.inspect(ara_SOS3_real$xyz)
+ara.xyz <- ara_SOS3_real$xyz[ara_SOS3_gaps$f.inds]
+
+amphi_gaps <- gap.inspect(amphibolis_SOS3_alpha$xyz)
+amph.xyz <- amphibolis_SOS3_alpha$xyz[amphi_gaps$f.inds]
+
+a <- torsion.xyz(ara.xyz, atm.inc=1)
+b <- torsion.xyz(amph.xyz, atm.inc=1)
+d.ab <- wrap.tor(a-b)
+d.ab[is.na(d.ab)] <- 0
+plot.bio3d(abs(d.ab), typ="h", xlab="Residue No.", 
+           ylab = "Difference Angle")
+
+```
+```{r}
+posi_SOS3_gaphs <- gap.inspect(posi_SOS3_alpha$xyz)
+posi.xyz <- posi_SOS3_alpha$xyz[posi_SOS3_gaphs$f.inds]
+
+a <- torsion.xyz(posi.xyz, atm.inc=1)
+b <- torsion.xyz(amph.xyz, atm.inc=1)
+d.ab <- wrap.tor(a-b)
+d.ab[is.na(d.ab)] <- 0
+plot.bio3d(abs(d.ab), typ="h", xlab="Residue No.", 
+           ylab = "Difference Angle")
+
+```
+
+
+```{r}
+library(r3dmol)
+
+m_glimpse(ara_SOS3_real, outline = FALSE) %>% 
+  m_spin()
+```
+
+```{r}
+
+m_glimpse(posi_SOS3_alpha, outline = FALSE) %>% 
+  m_spin()
+```
+
+
+```{r}
+m1 <- r3dmol() %>%
+  m_add_model(data = posi_SOS3_alpha, format = "pdb") %>%
+  m_zoom_to()
+m2 <- r3dmol() %>%
+  m_add_model(data = amphibolis_SOS3_alpha, format = "pdb") %>%
+  m_zoom_to()
+m3 <- r3dmol() %>%
+  m_add_model(data = '1v1f', format = "pdb") %>%
+  m_zoom_to()
+m_grid(
+  viewer = list(m1, m2, m3),
+  rows = 2,
+  cols = 2,
+  #control_all = TRUE,
+  #viewer_config = m_viewer_spec(
+  #  backgroundColor = "lightblue"
+  #)
+)
+```
+
