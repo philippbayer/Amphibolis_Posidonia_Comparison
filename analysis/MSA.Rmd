@@ -18,12 +18,12 @@ knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 ```
 
 ```{r fig.width=12}
-ggmsa('data/OG0000189.RiceAraSeagrasses.aln.fasta', start = 221, end = 260, char_width = 0.5, seq_name = T) + geom_seqlogo() + geom_msaBar()
+ggmsa('data/SOS3_OG0000189/OG0000189.RiceAraSeagrasses.aln.fasta', start = 221, end = 260, char_width = 0.5, seq_name = T) + geom_seqlogo() + geom_msaBar()
 ```
 
 ```{r}
 
-x <- readAAStringSet('data/OG0000189.RiceAraSeagrasses.aln.fasta')
+x <- readAAStringSet('data/SOS3_OG0000189/OG0000189.RiceAraSeagrasses.aln.fasta')
 d <- as.dist(stringDist(x, method = "hamming")/width(x)[1])
 tree <- bionj(d)
 p <- ggtree(tree) + geom_tiplab()
@@ -31,7 +31,7 @@ ggtree(tree) + geom_tiplab()
 ```
 
 ```{r fig.width=10}
-data <- tidy_msa('data/OG0000189.RiceAraSeagrasses.aln.fasta', 221, 260)
+data <- tidy_msa('data/SOS3_OG0000189/OG0000189.RiceAraSeagrasses.aln.fasta', 221, 260)
 p + geom_facet(geom = geom_msa, data = data,  panel = 'Multiple Sequence Alignment (221-260AA)',
                font = NULL, color = "Chemistry_AA") +
     xlim_tree(1)
@@ -51,7 +51,7 @@ Commands run, after I shortened protein IDs manually. I pulled out the rice/Arab
 treestring <- '((3O.sativa:0.11386470583955717040,4O.sativa:0.03615896391829190315):0.07379737996482453599,(5O.sativa:0.33751444720146173140,((7A.thalian:0.45696796911334131019,((8Z.mueller:0.33996861614583556710,15Z.marina:0.16088168380872580610):0.31923212677234219514,10P.austra:0.57486248434538900209):0.22324965676023655892):0.10039129162924786964,((13Z.marina:0.11346816437532522559,(12Z.muelle:0.00973855109814669891,10Z.muelle:0.02645894329604922546):0.09840311662577182206):0.35332170475064506032,((14Z.marina:0.12821969530885793387,(9Z.mueller:0.06883167458475099310,11Z.muelle:0.02355162378347611801):0.15839770535961147924):0.63099939044074537797,(1A.amphibo:0.53760770644490452064,6P.austral:0.07001018412366488697):0.08839123570898912985):0.05074368132159561007):0.09141392275039983417):0.12967268161775510893):0.11320488597472283532,2O.sativa:1.70657194075952300949):0.0;'
 plot(ape::read.tree(text=treestring))
 p2 <- ggtree(ape::read.tree(text=treestring)) + geom_tiplab()
-
+p2
 ```
 
 That's very different from the above dendrogram!
@@ -73,12 +73,27 @@ O. sativa Calcineurin B-like protein 4 (CBL4)
 Let's rename the tree and the MSA data table using `rename_taxa`
 ```{r}
 trees <- ape::read.tree(text=treestring)
-old_names <- trees$tip.label
-# [1] "3O.sativa"  "4O.sativa"  "5O.sativa"  "7A.thalian" "8Z.mueller" "15Z.marina" "10P.austra" "13Z.marina"
-# [9] "12Z.muelle" "10Z.muelle" "14Z.marina" "9Z.mueller" "11Z.muelle" "1A.amphibo" "6P.austral" "2O.sativa"
-new_names  <- c( 'OsCBL8', 'OsCBL7.1', 'OsCBL4', 'AtSOS3', 'ZmuSOS3', 'ZmaSOS3', 'PaSOS3', 'ZmaSOS3.2', 'ZmuSOS3.2', 'ZmuSOS3.3', 'ZmaSOS3.2', 'ZmuSOS3.4', 'ZmuSOS3.5', 'AaSOS3', 'PaSOS3.2', 'OsCBL7.2')
-rename_df <- data.frame(old = old_names, new = new_names)
-rename_df
+
+rename_df <- tibble::tribble(
+                       ~old,        ~new,
+                "3O.sativa",    "OsCBL8",
+                "4O.sativa",  "OsCBL7.1",
+                "5O.sativa",    "OsCBL4",
+               "7A.thalian",    "AtSOS3",
+               "8Z.mueller",   "ZmuSOS3",
+               "15Z.marina",   "ZmaSOS3",
+               "10P.austra",    "PaSOS3",
+               "13Z.marina", "ZmaSOS3.2",
+               "12Z.muelle", "ZmuSOS3.2",
+               "10Z.muelle", "ZmuSOS3.3",
+               "14Z.marina", "ZmaSOS3.2",
+               "9Z.mueller", "ZmuSOS3.4",
+               "11Z.muelle", "ZmuSOS3.5",
+               "1A.amphibo",    "AaSOS3",
+               "6P.austral",  "PaSOS3.2",
+                "2O.sativa",  "OsCBL7.2"
+               )
+
 
 trees <- rename_taxa(trees, rename_df, old, new)
 p3 <- ggtree(trees) + geom_tiplab(fontface='italic')
@@ -88,8 +103,8 @@ p3
 
 ```{r}
 #str_replace_all takes a named vector
-replace_vector <- new_names
-names(replace_vector) <- old_names
+replace_vector <- rename_df$new
+names(replace_vector) <- rename_df$old
 data2 <- data2 %>% mutate(name = str_replace_all(name, replace_vector))
 ```
 
@@ -114,7 +129,9 @@ Now let's also add support values.
 
 I ran this based on `Using RAxML-NG in Practice`
 
+## Phylogeny for the SOS3 cluster
 ```
+
  # to get best model
 modeltest-ng -i OG0000189.RiceAraSeagrasses.aln.fasta -t ml -d aa -p 8
 
@@ -133,13 +150,23 @@ raxml-ng --msa OG0000189.RiceAraSeagrasses.aln.fasta.raxml.reduced.phy --model J
 # check whether they converge with <3% WRF cutoff
 raxml-ng --bsconverge --bs-trees allbootstraps --prefix T12 --seed 2 --threads 1 --bs-cutoff 0.03
 
-#yes, after 550 - close one!
 
 # to make the final trees with bootstrap values
 
 cat T8.raxml.bootstraps T11.raxml.bootstraps > allbootstraps
 
-raxml-ng --support --tree T3.raxml.bestTree --bs-trees allbootstraps --prefix T13 --redo
+raxml-ng --support --tree T3.raxml.bestTree --bs-trees allbootstraps --prefix T13 
+
+#yes, after 550 - close one!
+
+# let's make another 400 so we can have a nice 1000 bootstraps - different seed again!
+
+raxml-ng --msa OG0000189.RiceAraSeagrasses.aln.fasta.raxml.reduced.phy --model JTT-DCMUT+G4 --prefix T14 --threads 8 --seed 1234 --bs-trees 400  --bootstrap
+
+cat T8.raxml.bootstraps T11.raxml.bootstraps T14.raxml.bootstraps > allbootstraps
+raxml-ng --support --tree T3.raxml.bestTree --bs-trees allbootstraps --prefix T15 
+
+
 ```
 
 
@@ -180,11 +207,66 @@ p3
 replace_vector <- new_names
 names(replace_vector) <- old_names
 
-data <- tidy_msa('data/OG0000189.RiceAraSeagrasses.aln.fasta', 221, 260)
+data <- tidy_msa('data/SOS3_OG0000189/OG0000189.RiceAraSeagrasses.aln.fasta', 221, 260)
 data3 <- data %>% mutate(name = str_replace(name, ' ', '_'),
                           name = str_replace_all(name, replace_vector))
 p3 + geom_facet(geom = geom_msa, data = data3,  panel = 'Multiple Sequence Alignment (221-260AA)',
                font = NULL, color = "Chemistry_AA") +
     xlim_tree(3)
+```
+## Phylogeny for the EIN3 cluster
+
+First, to align the sequences again:
+
+```
+modeltest-ng reports JTT+I+G4+F
+
+raxml-ng --msa OG0000629.RiceAraSeagrasses.aln.fa --model JTT+I+G4+F
+
+
+ # to get fixed fasta - all good!!
+raxml-ng --msa OG0000629.RiceAraSeagrasses.aln.fa --model JTT+I+G4+F --check
+
+# to make a regular tree
+raxml-ng --msa OG0000629.RiceAraSeagrasses.aln.fa --model JTT+I+G4+F --prefix T3 --threads 2 --seed 2 
+
+# make 1000 bootstrap trees
+raxml-ng --msa OG0000629.RiceAraSeagrasses.aln.fa --model JTT+I+G4+F --prefix T8 --threads 16 --seed 2 --bootstrap --bs-trees 1000 
+
+# check whether they converge with <3% WRF cutoff
+raxml-ng --bsconverge --bs-trees T8.raxml.bootstraps --prefix T12 --seed 2 --threads 1 --bs-cutoff 0.03
+
+# it actually converged with 50 trees. haha.
+
+# to make the final trees with bootstrap values
+
+raxml-ng --support --tree T3.raxml.bestTree --bs-trees allbootstraps --prefix T13 
+```
+
+There we go:
+
+```{r}
+tree3 <- ape::read.tree(text='(((LOC_Os07g48630.1:0.641123,(LOC_Os03g20780.1:0.007239,LOC_Os03g20790.1:0.001048)100:0.214718)100:0.418001,(((Zosma02g24210:0.119273,(maker-1834_92013--0.52-mRNA-1:0.074816,augustus_masked-5412_21708--0.0-mRNA-1:0.082668)97:0.073791)100:0.640955,augustus_masked-scf7180003860583-processed-gene-0.3-mRNA-1:0.182720)89:0.114788,(maker-3356_51779--0.18-mRNA-1:0.661393,Zosma01g42670:0.320772)100:0.468870)67:0.098845)100:0.660268,AT3G20770.1:0.149857,AT2G27050.1:0.250165)100:0.0;', branch.label='support')
+
+rename_df <- tibble::tribble(
+                                                       ~old,        ~new,
+                                         "LOC_Os07g48630.1",    "OsEIL2",
+                                         "LOC_Os03g20780.1",    "OsEIL1",
+                                         "LOC_Os03g20790.1",  "OsEIL1.2",
+                                            "Zosma02g24210", "ZmaEIN3.1",
+                            "maker-1834_92013--0.52-mRNA-1", "ZmuEIN3.1",
+                   "augustus_masked-5412_21708--0.0-mRNA-1", "ZmuEIN3.2",
+"augustus_masked-scf7180003860583-processed-gene-0.3-mRNA-1",   "PaEIN3",
+                            "maker-3356_51779--0.18-mRNA-1", "ZmuEIN3.3",
+                                            "Zosma01g42670", "ZmaEIN3.2",
+                                              "AT3G20770.1",    "AtEIN3",
+                                              "AT2G27050.1",    "AtEIL1"
+               )
+
+tree3 <- rename_taxa(tree3, rename_df, old, new)
+
+p3 <-  ggtree(tree3) + geom_tiplab(fontface='italic')
+p3 <- p3 + geom_nodelab(aes(subset=label>80))
+p3 + xlim_tree(2.1)
 ```
 
