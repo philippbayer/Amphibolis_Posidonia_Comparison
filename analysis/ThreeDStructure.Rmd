@@ -18,11 +18,12 @@ knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 First, let's just load one of them 
 ```{r}
 # the 'real' one from X-ray crystallography
-ara_SOS3_real <- read.pdb('data/SOS3_OG0000189/Arabidopsis_SOS3_1v1f.pdb')
+ara_SOS3_real <- read.pdb('data//SOS3_OG0000189/Arabidopsis_SOS3_1v1f.pdb')
 # the alphafold ones
 
-amphibolis_SOS3_alpha <- read.pdb('data/SOS3_OG0000189/Amphibolis_fixed_SOS3_40588.result/Amphibolis_fixed_SOS3_40588_unrelaxed_rank_1_model_4.pdb')
-posi_SOS3_alpha <- read.pdb('data/SOS3_OG0000189/6P_australis_SOS3_dcfd4.result/6P_australis_SOS3_dcfd4_unrelaxed_rank_1_model_1.pdb')
+amphibolis_SOS3_alpha <- read.pdb('data//SOS3_OG0000189/Amphibolis_fixed_SOS3_40588.result/Amphibolis_fixed_SOS3_40588_unrelaxed_rank_1_model_4.pdb')
+posi_SOS3_alpha <- read.pdb('data//SOS3_OG0000189/6P_australis_SOS3_dcfd4.result/6P_australis_SOS3_dcfd4_unrelaxed_rank_1_model_1.pdb')
+rice_SOS3_alpha <- read.pdb('data//SOS3_OG0000189/LOC_Os05g45810.1_colabfold_test_77dbc.result/test_77dbc_unrelaxed_rank_1_model_4.pdb')
 ```
 
 
@@ -63,7 +64,11 @@ m_glimpse(ara_SOS3_real, outline = FALSE) %>%
 ```
 
 ```{r}
+m_glimpse(rice_SOS3_alpha, outline = FALSE) %>% 
+  m_spin()
+```
 
+```{r}
 m_glimpse(posi_SOS3_alpha, outline = FALSE) %>% 
   m_spin()
 ```
@@ -71,22 +76,83 @@ m_glimpse(posi_SOS3_alpha, outline = FALSE) %>%
 
 ```{r}
 m1 <- r3dmol() %>%
-  m_add_model(data = posi_SOS3_alpha, format = "pdb") %>%
-  m_zoom_to()
+  m_add_model(data = 'data//SOS3_OG0000189/6P_australis_SOS3_dcfd4.result/6P_australis_SOS3_dcfd4_unrelaxed_rank_1_model_1.pdb', format = "pdb") %>% 
+    m_zoom_to() %>% 
+    m_set_style(style = m_style_cartoon(color = "spectrum"))
+
 m2 <- r3dmol() %>%
-  m_add_model(data = amphibolis_SOS3_alpha, format = "pdb") %>%
-  m_zoom_to()
+  m_add_model(data = 'data//SOS3_OG0000189/Amphibolis_fixed_SOS3_40588.result/Amphibolis_fixed_SOS3_40588_unrelaxed_rank_1_model_4.pdb', format = "pdb") %>%
+  m_zoom_to() %>% 
+  m_set_style(style = m_style_cartoon(color = "spectrum"))
+
 m3 <- r3dmol() %>%
-  m_add_model(data = '1v1f', format = "pdb") %>%
-  m_zoom_to()
+  m_add_model(data = m_fetch_pdb('1v1f'), format = "pdb") %>%
+  m_zoom_to() %>% 
+  m_set_style(style = m_style_cartoon(color = "spectrum"))
+
+m4 <- r3dmol() %>%
+    m_add_model(data = "data//SOS3_OG0000189/LOC_Os05g45810.1_colabfold_test_77dbc.result/test_77dbc_unrelaxed_rank_1_model_4.pdb", format = "pdb") %>%
+    m_zoom_to() %>% 
+  m_set_style(style = m_style_cartoon(color = "spectrum"))
+
 m_grid(
-  viewer = list(m1, m2, m3),
+  viewer = list(m1, m2, m3, m4),
   rows = 2,
   cols = 2,
-  #control_all = TRUE,
-  #viewer_config = m_viewer_spec(
-  #  backgroundColor = "lightblue"
-  #)
+  control_all = TRUE,
+  viewer_config = m_viewer_spec(
+    backgroundColor = "lightblue"
+  )
 )
+```
+
+
+Let's compare these properly
+
+```{r}
+files <- c('data//SOS3_OG0000189/Amphibolis_fixed_SOS3_40588.result/Amphibolis_fixed_SOS3_40588_unrelaxed_rank_1_model_4.pdb','data//SOS3_OG0000189/6P_australis_SOS3_dcfd4.result/6P_australis_SOS3_dcfd4_unrelaxed_rank_1_model_1.pdb')
+pdbs <- pdbaln(files, exefile='msa')
+#xyz <- pdbfit( posi_SOS3_alpha, rice_SOS3_alpha, core.inds )
+```
+
+```{r}
+core <- core.find(pdbs)
+col=rep("black", length(core$volume))
+col[core$volume<2]="pink"; col[core$volume<1]="red"
+plot(core, col=col)
+core.inds <- print(core, vol=1.0)
+```
+
+```{r}
+xyz <- pdbfit( pdbs, core.inds, outpath = 'output/quick_fit.pdb' )
+rd <- rmsd(xyz)
+hist(rd, breaks=40, xlab="RMSD (Å)", main="Histogram of RMSD")
+```
+
+```{r}
+gaps.xyz2 <- gap.inspect(pdbs$xyz[c(1,2), ])
+a.xyz <- pdbs$xyz[1, gaps.xyz2$f.inds]
+b.xyz <- pdbs$xyz[2, gaps.xyz2$f.inds]
+a <- torsion.xyz(a.xyz, atm.inc=1)
+b <- torsion.xyz(b.xyz, atm.inc=1)
+d.ab <- wrap.tor(a-b)
+d.ab[is.na(d.ab)] <- 0
+plot.bio3d(abs(d.ab), typ="h", xlab="Residue No.", 
+           ylab = "Difference Angle")
+```
+
+MUCH better.
+```{r}
+a <- dm.xyz(a.xyz)
+b <- dm.xyz(b.xyz)
+
+plot.dmat( (a - b), nlevels=10, grid.col="gray", xlab="1tag", ylab="1tnd")
+```
+
+```{r}
+gaps.pos <- gap.inspect(pdbs$xyz)
+pc.xray <- pca.xyz(xyz[, gaps.pos$f.inds])
+pc.xray
+plot(pc.xray)
 ```
 
