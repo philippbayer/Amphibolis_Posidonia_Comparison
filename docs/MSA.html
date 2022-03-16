@@ -385,7 +385,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-03-11
+<strong>Last updated:</strong> 2022-03-16
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -476,16 +476,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreee9128f4b398d11ba3e7f9e73501d4c00991a4e43targetblanke9128f4a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/e9128f4b398d11ba3e7f9e73501d4c00991a4e43" target="_blank">e9128f4</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreea02475f1f812ed36772cdc0e32fc5cb908e9d288targetblanka02475fa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/a02475f1f812ed36772cdc0e32fc5cb908e9d288" target="_blank">a02475f</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreee9128f4b398d11ba3e7f9e73501d4c00991a4e43targetblanke9128f4a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreea02475f1f812ed36772cdc0e32fc5cb908e9d288targetblanka02475fa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/e9128f4b398d11ba3e7f9e73501d4c00991a4e43" target="_blank">e9128f4</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/a02475f1f812ed36772cdc0e32fc5cb908e9d288" target="_blank">a02475f</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -498,12 +498,16 @@ Ignored files:
     Ignored:    analysis/plotRgenes.nb.html
 
 Untracked files:
-    Untracked:  data/OG0000189.RiceAraSeagrasses.aln.fasta.raxml.reduced.phy
-    Untracked:  output/patched_gene_loss_heatmaps.png
+    Untracked:  analysis/aln.fa
+    Untracked:  data/EIN3_OG0000629/
+    Untracked:  data/SOS3_OG0000189/
+    Untracked:  output/quick_fit.pdb/
 
 Unstaged changes:
-    Modified:   output/SOS3_phylogeny.png
-    Modified:   output/patched_gene_loss.png
+    Modified:   analysis/ThreeDStructure.Rmd
+    Deleted:    data/OG0000189.RiceAraSeagrasses.aln.fasta
+    Deleted:    data/OG0000189.RiceAraSeagrasses.aln.fasta.raxml.reduced.phy
+    Deleted:    data/OG0000189.RiceAraSeagrasses.fa
 
 </code></pre>
 <p>
@@ -542,6 +546,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/a02475f1f812ed36772cdc0e32fc5cb908e9d288/analysis/MSA.Rmd" target="_blank">a02475f</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-03-16
+</td>
+<td>
+fix MSA code to be nicer
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/61333e05bd0c6af1532c7b6b37035d6b57ba7d45/docs/MSA.html" target="_blank">61333e0</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-03-11
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -710,16 +748,16 @@ library(ape)
 library(ggtree)
 library(treeio)
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())</code></pre>
-<pre class="r"><code>ggmsa(&#39;data/OG0000189.RiceAraSeagrasses.aln.fasta&#39;, start = 221, end = 260, char_width = 0.5, seq_name = T) + geom_seqlogo() + geom_msaBar()</code></pre>
+<pre class="r"><code>ggmsa(&#39;data/SOS3_OG0000189/OG0000189.RiceAraSeagrasses.aln.fasta&#39;, start = 221, end = 260, char_width = 0.5, seq_name = T) + geom_seqlogo() + geom_msaBar()</code></pre>
 <pre><code>Coordinate system already present. Adding new coordinate system, which will replace the existing one.</code></pre>
 <p><img src="figure/MSA.Rmd/unnamed-chunk-1-1.png" width="1152" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>x &lt;- readAAStringSet(&#39;data/OG0000189.RiceAraSeagrasses.aln.fasta&#39;)
+<pre class="r"><code>x &lt;- readAAStringSet(&#39;data/SOS3_OG0000189/OG0000189.RiceAraSeagrasses.aln.fasta&#39;)
 d &lt;- as.dist(stringDist(x, method = &quot;hamming&quot;)/width(x)[1])
 tree &lt;- bionj(d)
 p &lt;- ggtree(tree) + geom_tiplab()
 ggtree(tree) + geom_tiplab()</code></pre>
 <p><img src="figure/MSA.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>data &lt;- tidy_msa(&#39;data/OG0000189.RiceAraSeagrasses.aln.fasta&#39;, 221, 260)
+<pre class="r"><code>data &lt;- tidy_msa(&#39;data/SOS3_OG0000189/OG0000189.RiceAraSeagrasses.aln.fasta&#39;, 221, 260)
 p + geom_facet(geom = geom_msa, data = data,  panel = &#39;Multiple Sequence Alignment (221-260AA)&#39;,
                font = NULL, color = &quot;Chemistry_AA&quot;) +
     xlim_tree(1)</code></pre>
@@ -732,7 +770,9 @@ p + geom_facet(geom = geom_msa, data = data,  panel = &#39;Multiple Sequence Ali
 <pre class="r"><code>treestring &lt;- &#39;((3O.sativa:0.11386470583955717040,4O.sativa:0.03615896391829190315):0.07379737996482453599,(5O.sativa:0.33751444720146173140,((7A.thalian:0.45696796911334131019,((8Z.mueller:0.33996861614583556710,15Z.marina:0.16088168380872580610):0.31923212677234219514,10P.austra:0.57486248434538900209):0.22324965676023655892):0.10039129162924786964,((13Z.marina:0.11346816437532522559,(12Z.muelle:0.00973855109814669891,10Z.muelle:0.02645894329604922546):0.09840311662577182206):0.35332170475064506032,((14Z.marina:0.12821969530885793387,(9Z.mueller:0.06883167458475099310,11Z.muelle:0.02355162378347611801):0.15839770535961147924):0.63099939044074537797,(1A.amphibo:0.53760770644490452064,6P.austral:0.07001018412366488697):0.08839123570898912985):0.05074368132159561007):0.09141392275039983417):0.12967268161775510893):0.11320488597472283532,2O.sativa:1.70657194075952300949):0.0;&#39;
 plot(ape::read.tree(text=treestring))</code></pre>
 <p><img src="figure/MSA.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
-<pre class="r"><code>p2 &lt;- ggtree(ape::read.tree(text=treestring)) + geom_tiplab()</code></pre>
+<pre class="r"><code>p2 &lt;- ggtree(ape::read.tree(text=treestring)) + geom_tiplab()
+p2</code></pre>
+<p><img src="figure/MSA.Rmd/unnamed-chunk-4-2.png" width="672" style="display: block; margin: auto;" /></p>
 <p>That’s very different from the above dendrogram!</p>
 <pre class="r"><code>data2 &lt;- data %&gt;% mutate(name = str_sub(name, 1, 10), 
                          name = str_trim(name))
@@ -745,37 +785,36 @@ p2 + geom_facet(geom = geom_msa, data = data2,  panel = &#39;Multiple Sequence A
 <p>Hits are to: A. thaliana Calcineurin B-like protein 4 (CBL4, Alternative name: SOS3) O. sativa Calcineurin B-like protein 8 (CBL8) O. sativa Calcineurin B-like protein 4 (CBL4)</p>
 <p>Let’s rename the tree and the MSA data table using <code>rename_taxa</code></p>
 <pre class="r"><code>trees &lt;- ape::read.tree(text=treestring)
-old_names &lt;- trees$tip.label
-# [1] &quot;3O.sativa&quot;  &quot;4O.sativa&quot;  &quot;5O.sativa&quot;  &quot;7A.thalian&quot; &quot;8Z.mueller&quot; &quot;15Z.marina&quot; &quot;10P.austra&quot; &quot;13Z.marina&quot;
-# [9] &quot;12Z.muelle&quot; &quot;10Z.muelle&quot; &quot;14Z.marina&quot; &quot;9Z.mueller&quot; &quot;11Z.muelle&quot; &quot;1A.amphibo&quot; &quot;6P.austral&quot; &quot;2O.sativa&quot;
-new_names  &lt;- c( &#39;OsCBL8&#39;, &#39;OsCBL7.1&#39;, &#39;OsCBL4&#39;, &#39;AtSOS3&#39;, &#39;ZmuSOS3&#39;, &#39;ZmaSOS3&#39;, &#39;PaSOS3&#39;, &#39;ZmaSOS3.2&#39;, &#39;ZmuSOS3.2&#39;, &#39;ZmuSOS3.3&#39;, &#39;ZmaSOS3.2&#39;, &#39;ZmuSOS3.4&#39;, &#39;ZmuSOS3.5&#39;, &#39;AaSOS3&#39;, &#39;PaSOS3.2&#39;, &#39;OsCBL7.2&#39;)
-rename_df &lt;- data.frame(old = old_names, new = new_names)
-rename_df</code></pre>
-<pre><code>          old       new
-1   3O.sativa    OsCBL8
-2   4O.sativa  OsCBL7.1
-3   5O.sativa    OsCBL4
-4  7A.thalian    AtSOS3
-5  8Z.mueller   ZmuSOS3
-6  15Z.marina   ZmaSOS3
-7  10P.austra    PaSOS3
-8  13Z.marina ZmaSOS3.2
-9  12Z.muelle ZmuSOS3.2
-10 10Z.muelle ZmuSOS3.3
-11 14Z.marina ZmaSOS3.2
-12 9Z.mueller ZmuSOS3.4
-13 11Z.muelle ZmuSOS3.5
-14 1A.amphibo    AaSOS3
-15 6P.austral  PaSOS3.2
-16  2O.sativa  OsCBL7.2</code></pre>
-<pre class="r"><code>trees &lt;- rename_taxa(trees, rename_df, old, new)
+
+rename_df &lt;- tibble::tribble(
+                       ~old,        ~new,
+                &quot;3O.sativa&quot;,    &quot;OsCBL8&quot;,
+                &quot;4O.sativa&quot;,  &quot;OsCBL7.1&quot;,
+                &quot;5O.sativa&quot;,    &quot;OsCBL4&quot;,
+               &quot;7A.thalian&quot;,    &quot;AtSOS3&quot;,
+               &quot;8Z.mueller&quot;,   &quot;ZmuSOS3&quot;,
+               &quot;15Z.marina&quot;,   &quot;ZmaSOS3&quot;,
+               &quot;10P.austra&quot;,    &quot;PaSOS3&quot;,
+               &quot;13Z.marina&quot;, &quot;ZmaSOS3.2&quot;,
+               &quot;12Z.muelle&quot;, &quot;ZmuSOS3.2&quot;,
+               &quot;10Z.muelle&quot;, &quot;ZmuSOS3.3&quot;,
+               &quot;14Z.marina&quot;, &quot;ZmaSOS3.2&quot;,
+               &quot;9Z.mueller&quot;, &quot;ZmuSOS3.4&quot;,
+               &quot;11Z.muelle&quot;, &quot;ZmuSOS3.5&quot;,
+               &quot;1A.amphibo&quot;,    &quot;AaSOS3&quot;,
+               &quot;6P.austral&quot;,  &quot;PaSOS3.2&quot;,
+                &quot;2O.sativa&quot;,  &quot;OsCBL7.2&quot;
+               )
+
+
+trees &lt;- rename_taxa(trees, rename_df, old, new)
 p3 &lt;- ggtree(trees) + geom_tiplab(fontface=&#39;italic&#39;)
 
 p3</code></pre>
 <p><img src="figure/MSA.Rmd/unnamed-chunk-6-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>#str_replace_all takes a named vector
-replace_vector &lt;- new_names
-names(replace_vector) &lt;- old_names
+replace_vector &lt;- rename_df$new
+names(replace_vector) &lt;- rename_df$old
 data2 &lt;- data2 %&gt;% mutate(name = str_replace_all(name, replace_vector))</code></pre>
 <pre class="r"><code>final_p &lt;- p3 + geom_facet(geom = geom_msa, data = data2,  panel = &#39;Multiple Sequence Alignment (221-260AA)&#39;,
                font = NULL, color = &quot;Chemistry_AA&quot;) +
@@ -787,7 +826,10 @@ data2 &lt;- data2 %&gt;% mutate(name = str_replace_all(name, replace_vector))</c
 <p>“However, apparent photosynthesis is still maintained at a salinity 15% that of normal seawater and at temperatures of 3 and 30°C, consistent with the ecological role of Z. muelleri as an intertidal species.” <a href="https://www.sciencedirect.com/science/article/abs/pii/0304377085900634" class="uri">https://www.sciencedirect.com/science/article/abs/pii/0304377085900634</a></p>
 <p>Now let’s also add support values.</p>
 <p>I ran this based on <code>Using RAxML-NG in Practice</code></p>
-<pre><code> # to get best model
+<div id="phylogeny-for-the-sos3-cluster" class="section level2">
+<h2>Phylogeny for the SOS3 cluster</h2>
+<pre><code>
+ # to get best model
 modeltest-ng -i OG0000189.RiceAraSeagrasses.aln.fasta -t ml -d aa -p 8
 
  # to get fixed fasta
@@ -805,13 +847,23 @@ raxml-ng --msa OG0000189.RiceAraSeagrasses.aln.fasta.raxml.reduced.phy --model J
 # check whether they converge with &lt;3% WRF cutoff
 raxml-ng --bsconverge --bs-trees allbootstraps --prefix T12 --seed 2 --threads 1 --bs-cutoff 0.03
 
-#yes, after 550 - close one!
 
 # to make the final trees with bootstrap values
 
 cat T8.raxml.bootstraps T11.raxml.bootstraps &gt; allbootstraps
 
-raxml-ng --support --tree T3.raxml.bestTree --bs-trees allbootstraps --prefix T13 --redo</code></pre>
+raxml-ng --support --tree T3.raxml.bestTree --bs-trees allbootstraps --prefix T13 
+
+#yes, after 550 - close one!
+
+# let&#39;s make another 400 so we can have a nice 1000 bootstraps - different seed again!
+
+raxml-ng --msa OG0000189.RiceAraSeagrasses.aln.fasta.raxml.reduced.phy --model JTT-DCMUT+G4 --prefix T14 --threads 8 --seed 1234 --bs-trees 400  --bootstrap
+
+cat T8.raxml.bootstraps T11.raxml.bootstraps T14.raxml.bootstraps &gt; allbootstraps
+raxml-ng --support --tree T3.raxml.bestTree --bs-trees allbootstraps --prefix T15 
+
+</code></pre>
 <pre class="r"><code>newtree &lt;- &#39;((((((12Z.muelleri_maker-6084_47488_1_44441--0.5-mRNA-1:0.009685,10Z.muelleri_maker-8016_47756--0.9-mRNA-1:0.026505)99:0.098293,13Z.marina_Zosma01g02330:0.113268)99:0.354433,(((11Z.muelleri_maker-8016_47756--0.8-mRNA-1:0.023273,9Z.muelleri_maker-2123_50249_30746_38748--0.4-mRNA-1:0.068317)99:0.153634,14Z.marina_Zosma01g02340:0.129762)100:0.616637,(1A.amphibolis_maker-scf7180000542070-augustus-gene-0.0-mRNA-1:0.518908,6P.australis_maker-scf7180003728898-augustus-gene-0.1-mRNA-1:0.074916)72:0.082830)22:0.047398)31:0.080205,((2O.sativa_LOC_Os03g33570.1:1.647537,(3O.sativa_LOC_Os02g18930.1:0.113637,4O.sativa_LOC_Os02g18880.1:0.035299)53:0.061341)66:0.111396,5O.sativa_LOC_Os05g45810.1:0.344545)75:0.137407)42:0.100482,7A.thaliana_AT5G24270.1:0.448151)83:0.209634,(15Z.marina_Zosma06g25260:0.152988,8Z.muelleri_snap_masked-14205_19045--0.3-mRNA-1:0.336420)100:0.314204,10P.australis_maker-scf7180004080271-augustus-gene-0.8-mRNA-1:0.580458)83:0.0;&#39;
 
 tree3 &lt;- ape::read.tree(text=newtree, branch.label=&#39;support&#39;)
@@ -839,14 +891,61 @@ p3</code></pre>
 <pre class="r"><code>replace_vector &lt;- new_names
 names(replace_vector) &lt;- old_names
 
-data &lt;- tidy_msa(&#39;data/OG0000189.RiceAraSeagrasses.aln.fasta&#39;, 221, 260)
+data &lt;- tidy_msa(&#39;data/SOS3_OG0000189/OG0000189.RiceAraSeagrasses.aln.fasta&#39;, 221, 260)
 data3 &lt;- data %&gt;% mutate(name = str_replace(name, &#39; &#39;, &#39;_&#39;),
                           name = str_replace_all(name, replace_vector))
 p3 + geom_facet(geom = geom_msa, data = data3,  panel = &#39;Multiple Sequence Alignment (221-260AA)&#39;,
                font = NULL, color = &quot;Chemistry_AA&quot;) +
     xlim_tree(3)</code></pre>
 <pre><code>Warning: Unknown or uninitialised column: `name`.</code></pre>
-<p><img src="figure/MSA.Rmd/unnamed-chunk-12-1.png" width="960" style="display: block; margin: auto;" /></p>
+<p><img src="figure/MSA.Rmd/unnamed-chunk-12-1.png" width="960" style="display: block; margin: auto;" /> ## Phylogeny for the EIN3 cluster</p>
+<p>First, to align the sequences again:</p>
+<pre><code>modeltest-ng reports JTT+I+G4+F
+
+raxml-ng --msa OG0000629.RiceAraSeagrasses.aln.fa --model JTT+I+G4+F
+
+
+ # to get fixed fasta - all good!!
+raxml-ng --msa OG0000629.RiceAraSeagrasses.aln.fa --model JTT+I+G4+F --check
+
+# to make a regular tree
+raxml-ng --msa OG0000629.RiceAraSeagrasses.aln.fa --model JTT+I+G4+F --prefix T3 --threads 2 --seed 2 
+
+# make 1000 bootstrap trees
+raxml-ng --msa OG0000629.RiceAraSeagrasses.aln.fa --model JTT+I+G4+F --prefix T8 --threads 16 --seed 2 --bootstrap --bs-trees 1000 
+
+# check whether they converge with &lt;3% WRF cutoff
+raxml-ng --bsconverge --bs-trees T8.raxml.bootstraps --prefix T12 --seed 2 --threads 1 --bs-cutoff 0.03
+
+# it actually converged with 50 trees. haha.
+
+# to make the final trees with bootstrap values
+
+raxml-ng --support --tree T3.raxml.bestTree --bs-trees allbootstraps --prefix T13 </code></pre>
+<p>There we go:</p>
+<pre class="r"><code>tree3 &lt;- ape::read.tree(text=&#39;(((LOC_Os07g48630.1:0.641123,(LOC_Os03g20780.1:0.007239,LOC_Os03g20790.1:0.001048)100:0.214718)100:0.418001,(((Zosma02g24210:0.119273,(maker-1834_92013--0.52-mRNA-1:0.074816,augustus_masked-5412_21708--0.0-mRNA-1:0.082668)97:0.073791)100:0.640955,augustus_masked-scf7180003860583-processed-gene-0.3-mRNA-1:0.182720)89:0.114788,(maker-3356_51779--0.18-mRNA-1:0.661393,Zosma01g42670:0.320772)100:0.468870)67:0.098845)100:0.660268,AT3G20770.1:0.149857,AT2G27050.1:0.250165)100:0.0;&#39;, branch.label=&#39;support&#39;)
+
+rename_df &lt;- tibble::tribble(
+                                                       ~old,        ~new,
+                                         &quot;LOC_Os07g48630.1&quot;,    &quot;OsEIL2&quot;,
+                                         &quot;LOC_Os03g20780.1&quot;,    &quot;OsEIL1&quot;,
+                                         &quot;LOC_Os03g20790.1&quot;,  &quot;OsEIL1.2&quot;,
+                                            &quot;Zosma02g24210&quot;, &quot;ZmaEIN3.1&quot;,
+                            &quot;maker-1834_92013--0.52-mRNA-1&quot;, &quot;ZmuEIN3.1&quot;,
+                   &quot;augustus_masked-5412_21708--0.0-mRNA-1&quot;, &quot;ZmuEIN3.2&quot;,
+&quot;augustus_masked-scf7180003860583-processed-gene-0.3-mRNA-1&quot;,   &quot;PaEIN3&quot;,
+                            &quot;maker-3356_51779--0.18-mRNA-1&quot;, &quot;ZmuEIN3.3&quot;,
+                                            &quot;Zosma01g42670&quot;, &quot;ZmaEIN3.2&quot;,
+                                              &quot;AT3G20770.1&quot;,    &quot;AtEIN3&quot;,
+                                              &quot;AT2G27050.1&quot;,    &quot;AtEIL1&quot;
+               )
+
+tree3 &lt;- rename_taxa(tree3, rename_df, old, new)
+
+p3 &lt;-  ggtree(tree3) + geom_tiplab(fontface=&#39;italic&#39;)
+p3 &lt;- p3 + geom_nodelab(aes(subset=label&gt;80))
+p3 + xlim_tree(2.1)</code></pre>
+<p><img src="figure/MSA.Rmd/unnamed-chunk-13-1.png" width="672" style="display: block; margin: auto;" /></p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -875,7 +974,7 @@ other attached packages:
  [4] Biostrings_2.60.2   GenomeInfoDb_1.28.4 XVector_0.32.0     
  [7] IRanges_2.26.0      S4Vectors_0.30.2    BiocGenerics_0.38.0
 [10] ggmsa_1.1.5         forcats_0.5.1       stringr_1.4.0      
-[13] dplyr_1.0.7         purrr_0.3.4         readr_2.0.2        
+[13] dplyr_1.0.7         purrr_0.3.4         readr_2.1.2        
 [16] tidyr_1.1.4         tibble_3.1.5        ggplot2_3.3.5      
 [19] tidyverse_1.3.1     workflowr_1.6.2    
 
@@ -890,7 +989,7 @@ loaded via a namespace (and not attached):
 [22] assertthat_0.2.1       fastmap_1.1.0          lazyeval_0.2.2        
 [25] cli_3.2.0              later_1.3.0            tweenr_1.0.2          
 [28] htmltools_0.5.2        tools_4.1.0            gtable_0.3.0          
-[31] glue_1.4.2             GenomeInfoDbData_1.2.6 maps_3.4.0            
+[31] glue_1.6.2             GenomeInfoDbData_1.2.6 maps_3.4.0            
 [34] Rcpp_1.0.7             cellranger_1.1.0       jquerylib_0.1.4       
 [37] vctrs_0.3.8            ggalt_0.4.0            nlme_3.1-152          
 [40] extrafontdb_1.0        xfun_0.27              rvest_1.0.2           
@@ -912,6 +1011,7 @@ loaded via a namespace (and not attached):
 [88] reprex_2.0.1           digest_0.6.28          httpuv_1.6.3          
 [91] gridGraphics_0.5-1     munsell_0.5.0          ggplotify_0.1.0       
 [94] bslib_0.3.1           </code></pre>
+</div>
 </div>
 
 
