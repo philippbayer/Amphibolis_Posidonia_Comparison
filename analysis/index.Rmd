@@ -24,4 +24,6 @@ This website collects comparisons of *Amphibolis* and *Posidonia* comparative an
 
 [GO and Ortho](GO_and_ortho.html) - merging plots from GO enrichment and Orthofinder analysis
 
-[MSA visualisation](MSA.html) - visualising MSAs and phylogenies for gene clusters of interest (*SOS3*)
+[MSA visualisation](MSA.html) - visualising MSAs and phylogenies for gene clusters of interest (*SOS3*, *EIN3*)
+
+[3D structure](ThreeDStructure.html) - visualising the predicted 3D structure of *SOS3*/*EIN3*
