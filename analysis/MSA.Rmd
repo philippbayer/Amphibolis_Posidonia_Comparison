@@ -31,9 +31,9 @@ ggtree(tree) + geom_tiplab()
 ```
 
 ```{r fig.width=10}
-data <- tidy_msa('data/SOS3_OG0000189/OG0000189.RiceAraSeagrasses.aln.fasta', 221, 260)
-p + geom_facet(geom = geom_msa, data = data,  panel = 'Multiple Sequence Alignment (221-260AA)',
-               font = NULL, color = "Chemistry_AA") +
+data <- tidy_msa('data/SOS3_OG0000189/OG0000189.RiceAraSeagrasses.aln.fasta', 221, 300)
+p + geom_facet(geom = geom_msa, data = data,  panel = 'Multiple Sequence Alignment (221-300AA)',
+               font = NULL, color = "Clustal", by_conversation= TRUE) +
     xlim_tree(1)
 ```
 
@@ -60,7 +60,7 @@ That's very different from the above dendrogram!
 data2 <- data %>% mutate(name = str_sub(name, 1, 10), 
                          name = str_trim(name))
 p2 + geom_facet(geom = geom_msa, data = data2,  panel = 'Multiple Sequence Alignment (221-260AA)',
-               font = NULL, color = "Chemistry_AA") +
+               font = NULL, color = "Clustal") +
     xlim_tree(2)
 ```
 
@@ -214,6 +214,12 @@ p3 + geom_facet(geom = geom_msa, data = data3,  panel = 'Multiple Sequence Align
                font = NULL, color = "Chemistry_AA") +
     xlim_tree(3)
 ```
+
+```{r fig.width=10}
+msaplot(p3, 'data/SOS3_OG0000189/OG0000189.RiceAraSeagrasses.aln.NamesFixed.fasta',
+        offset = 0.5) + theme(legend.position='none')
+```
+
 ## Phylogeny for the EIN3 cluster
 
 First, to align the sequences again:
@@ -268,5 +274,63 @@ tree3 <- rename_taxa(tree3, rename_df, old, new)
 p3 <-  ggtree(tree3) + geom_tiplab(fontface='italic')
 p3 <- p3 + geom_nodelab(aes(subset=label>80))
 p3 + xlim_tree(2.1)
+```
+
+```{r}
+msaplot(p3, './data/EIN3_OG0000629/OG0000629.RiceAraSeagrasses.aln.NamesFixed.fa',
+        offset = 0.5)  + theme(legend.position='none')
+
+```
+
+```{r}
+domains <- tibble::tribble(
+                                                                    ~Gene,     ~Pfam, ~Start, ~End,   ~Evalue,
+                                                          "Zosma01g42670", "PF04873",     3L, 246L,  2.9e-117,
+                                                            "AT2G27050.1", "PF04873",    49L, 298L,  2.6e-130,
+                                                       "LOC_Os03g20780.1", "PF04873",    78L, 332L,  1.4e-132,
+             "augustus_masked-scf7180003860583-processed-gene-0.3-mRNA-1", "PF04873",    76L, 325L,  1.9e-131,
+                                          "maker-1834_92013--0.52-mRNA-1", "PF04873",   136L, 408L,    2e-123,
+                                                       "LOC_Os07g48630.1", "PF04873",    81L, 338L,  3.7e-129,
+                                                            "AT3G20770.1", "PF04873",    49L, 296L,  4.8e-129,
+                                 "augustus_masked-5412_21708--0.0-mRNA-1", "PF04873",    16L, 285L,  2.2e-123,
+                                          "maker-3356_51779--0.18-mRNA-1", "PF04873",    85L, 125L,     2e-12,
+                                                       "LOC_Os03g20790.1", "PF04873",    78L, 332L,  1.4e-132,
+                                                          "Zosma02g24210", "PF04873",     1L, 206L,  1.9e-113
+             )
+domains$length <- domains$End - domains$Start
+replace_vector <- rename_df$new
+names(replace_vector) <- rename_df$old
+domains <- domains %>% mutate(Gene = str_replace_all(Gene, replace_vector))
+domains
+```
+
+```{r}
+g <- domains %>% left_join(rename_df, by=c('Gene'='new')) %>%  ggplot(aes(y = Gene, yend=Gene, x=Start,  xend=End,  color=Evalue)) + geom_segment(size=2) + theme_minimal() + xlab(expression(paste("Position of ", italic("EIN3"))))
+g
+```
+
+```{r fig.width=10}
+library(aplot)
+g <- g + theme(axis.title.y=element_blank(),
+               axis.text.y = element_blank(),
+                legend.position='none')
+
+g %>% insert_left(p3, width=2.5)
+```
+
+```{r fig.width=10}
+library(patchwork)
+# let's make a patchwork
+# PROBLEM: patchwork does not automatically sort, so we'll have to sort the plot `g` manually 
+
+plot_order <- p3[['data']] %>% filter(isTip == TRUE) %>% select(label, y) %>% arrange(desc(y))
+g <- domains %>% left_join(rename_df, by=c('Gene'='new')) %>%  ggplot(aes(y = factor(Gene, levels = plot_order$label), yend=Gene, x=Start,  xend=End,  color=Evalue)) + geom_segment(size=2) + theme_minimal() + xlab(expression(paste("Position of ", italic("EIN3"))))+ theme(axis.title.y=element_blank(),
+               axis.text.y = element_blank(),
+                legend.position='none')
+g
+
+msaplot(p3, './data/EIN3_OG0000629/OG0000629.RiceAraSeagrasses.aln.NamesFixed.fa',
+        offset = 0.5)  + theme(legend.position='none') + g  + 
+  plot_layout(widths = c(3.5, 1)) 
 ```
 
