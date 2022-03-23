@@ -26,36 +26,6 @@ posi_SOS3_alpha <- read.pdb('data//SOS3_OG0000189/6P_australis_SOS3_dcfd4.result
 rice_SOS3_alpha <- read.pdb('data//SOS3_OG0000189/LOC_Os05g45810.1_colabfold_test_77dbc.result/test_77dbc_unrelaxed_rank_1_model_4.pdb')
 ```
 
-
-```{r}
-ara_SOS3_gaps <- gap.inspect(ara_SOS3_real$xyz)
-ara.xyz <- ara_SOS3_real$xyz[ara_SOS3_gaps$f.inds]
-
-amphi_gaps <- gap.inspect(amphibolis_SOS3_alpha$xyz)
-amph.xyz <- amphibolis_SOS3_alpha$xyz[amphi_gaps$f.inds]
-
-a <- torsion.xyz(ara.xyz, atm.inc=1)
-b <- torsion.xyz(amph.xyz, atm.inc=1)
-d.ab <- wrap.tor(a-b)
-d.ab[is.na(d.ab)] <- 0
-plot.bio3d(abs(d.ab), typ="h", xlab="Residue No.", 
-           ylab = "Difference Angle")
-
-```
-```{r}
-posi_SOS3_gaphs <- gap.inspect(posi_SOS3_alpha$xyz)
-posi.xyz <- posi_SOS3_alpha$xyz[posi_SOS3_gaphs$f.inds]
-
-a <- torsion.xyz(posi.xyz, atm.inc=1)
-b <- torsion.xyz(amph.xyz, atm.inc=1)
-d.ab <- wrap.tor(a-b)
-d.ab[is.na(d.ab)] <- 0
-plot.bio3d(abs(d.ab), typ="h", xlab="Residue No.", 
-           ylab = "Difference Angle")
-
-```
-
-
 ```{r}
 library(r3dmol)
 
@@ -155,4 +125,9 @@ pc.xray <- pca.xyz(xyz[, gaps.pos$f.inds])
 pc.xray
 plot(pc.xray)
 ```
+
+
+OK cool - now we can align all proteins and make proper plots!
+
+
 
