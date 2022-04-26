@@ -27,6 +27,12 @@ groups <- read_tsv('./data/Orthogroups.tsv.gz')
 names(groups) <- c('Orthogroup', 'A. antarctica', 'A. trichopada', 'B. distachyon', 'C. reinhardtii', 'L. gibba', 'O. sativa', 'P. australis', 'P. patens', 'P. trichocarpa', 'S. moellendorffii', 'S. polyrhiza', 'A. thaliana', 'T. parvula', 'V. vinifera', 'Z. mays', 'Z. muelleri', 'Z. marina', 'O. lucimarinus', 'W. australis')
 ```
 
+Remove L. gibba
+
+```{r}
+groups$`L. gibba` <- NULL
+```
+
 ```{r}
 # for upsetr, we need to know only which OG-groups are shared between species, the actual genes don't matter
 per_spec <- groups %>% pivot_longer(-Orthogroup) %>% 
@@ -133,7 +139,7 @@ zmar_groups <- groups %>%  select(Orthogroup, `Z. marina`) %>% filter(!is.na(`Z.
 zmuel_groups <- groups %>%  select(Orthogroup, `Z. muelleri`) %>% filter(!is.na(`Z. muelleri`)) %>% separate_rows(Orthogroup, `Z. muelleri`, convert=T, sep = ', ')
 w_australis_groups <- groups %>%  select(Orthogroup, `W. australis`) %>% filter(!is.na(`W. australis`)) %>% separate_rows(Orthogroup, `W. australis`, convert=T, sep = ', ')
 s_polyrhiza_groups <- groups %>%  select(Orthogroup, `S. polyrhiza`) %>% filter(!is.na(`S. polyrhiza`)) %>% separate_rows(Orthogroup, `S. polyrhiza`, convert=T, sep = ', ')
-l_gibba_groups <- groups %>%  select(Orthogroup, `L. gibba`) %>% filter(!is.na(`L. gibba`)) %>% separate_rows(Orthogroup, `L. gibba`, convert=T, sep = ', ')
+#l_gibba_groups <- groups %>%  select(Orthogroup, `L. gibba`) %>% filter(!is.na(`L. gibba`)) %>% separate_rows(Orthogroup, `L. gibba`, convert=T, sep = ', ')
 rice_groups<- groups %>%  select(Orthogroup, `O. sativa`) %>% filter(!is.na(`O. sativa`)) %>% separate_rows(Orthogroup, `O. sativa`, convert=T, sep = ', ')
 ```
 
@@ -151,8 +157,8 @@ big_joined <- ara_joined %>% mutate(
                               TRUE ~ F),
   present_in_spolyrhiza = case_when(Orthogroup %in% unique(s_polyrhiza_groups$Orthogroup) ~ T,
                               TRUE ~ F),
-  present_in_lgibba = case_when(Orthogroup %in% unique(l_gibba_groups$Orthogroup) ~ T,
-                              TRUE ~ F),
+ # present_in_lgibba = case_when(Orthogroup %in% unique(l_gibba_groups$Orthogroup) ~ T,
+#                              TRUE ~ F),
   present_in_rice = case_when(Orthogroup %in% unique(rice_groups$Orthogroup) ~ T,
                               TRUE ~ F)
   )
@@ -163,7 +169,9 @@ Done :) Now we have a big table with all *A. thaliana* gene functions and whethe
 Let's also add counts - how often is this gene lost?
 ```{r}
 big_joined <- big_joined %>% mutate(Lost_in_Seagrasses = 4 - (present_in_posi + present_in_zmuel + present_in_zmar + present_in_amphi),
-                      Lost_in_duckweeds=3 - (present_in_lgibba + present_in_spolyrhiza + present_in_waustralis),
+                      #Lost_in_duckweeds=3 - (present_in_lgibba + present_in_spolyrhiza + present_in_waustralis),
+                      Lost_in_duckweeds=2 - (present_in_spolyrhiza + present_in_waustralis),
+
                       Lost_in_both = (Lost_in_Seagrasses + Lost_in_duckweeds))
 ```
 
@@ -184,7 +192,7 @@ posi_count <- posi_groups %>% count(Orthogroup)
 amphi_count <- amphi_groups %>% count(Orthogroup)
 zmar_count <- zmar_groups %>% count(Orthogroup)
 zmuel_count <- zmuel_groups %>% count(Orthogroup)
-lgibba_count <- l_gibba_groups %>% count(Orthogroup)
+#lgibba_count <- l_gibba_groups %>% count(Orthogroup)
 s_polyrhi_count <- s_polyrhiza_groups %>% count(Orthogroup)
 w_aus_count <- w_australis_groups %>% count(Orthogroup)
 rice_count <- rice_groups %>% count(Orthogroup)
@@ -192,8 +200,12 @@ rice_count <- rice_groups %>% count(Orthogroup)
 
 
 ```{r}
-counts <- plyr::join_all(list(ara_count, posi_count, amphi_count, zmar_count, zmuel_count, lgibba_count, s_polyrhi_count, w_aus_count, rice_count), by='Orthogroup', type='left') 
-names(counts) <- c('Orthogroup', 'A. thaliana', 'P. australis', 'A. antarctica', 'Z. marina', 'Z. muelleri', 'L. gibba', 'S. polyrhiza', 'W. australis', 'O. sativa')
+counts <- plyr::join_all(list(ara_count, posi_count, amphi_count, zmar_count, zmuel_count, 
+                              #lgibba_count, 
+                              s_polyrhi_count, w_aus_count, rice_count), by='Orthogroup', type='left') 
+names(counts) <- c('Orthogroup', 'A. thaliana', 'P. australis', 'A. antarctica', 'Z. marina', 'Z. muelleri', 
+                   #'L. gibba', 
+                   'S. polyrhiza', 'W. australis', 'O. sativa')
 head(counts)
 ```
 
@@ -224,7 +236,7 @@ per_group_spec <-
       'Z. mays'
     ) ~ 'Terrestrials',
     name %in% c(
-      'L. gibba',
+      #'L. gibba',
       'S. polyrhiza',
       'W. australis'
     ) ~ 'Duckweeds',
@@ -327,7 +339,7 @@ gene_per_spec <- groups %>% pivot_longer(-Orthogroup) %>%
       'Z. mays'
     ) ~ 'Terrestrials',
     name %in% c(
-      'L. gibba',
+     # 'L. gibba',
       'S. polyrhiza',
       'W. australis'
     ) ~ 'Duckweeds',
