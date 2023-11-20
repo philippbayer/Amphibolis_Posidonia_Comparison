@@ -258,7 +258,8 @@ amph_pos_tax_cat |> separate(Species, into = c('Species', 'Species_score'), sep 
 
 There we go :) Which MAGs are those?
 ```{r}
-amph_pos_tax_cat |> filter(str_detect(Species, 'Acidihalobacter'))
+amph_pos_tax_cat |> filter(str_detect(Species, 'Acidihalobacter')) |> knitr::kable()
+
 ```
 
 ```{r}
@@ -305,7 +306,7 @@ count_diffs <- genessplit |>
 ```
 
 ```{r}
-count_diffs |> filter(`Posidonia australis` <100)
+count_diffs |> filter(`Posidonia australis` <100) |> head() |> knitr::kable()
 ```
 
 We hypothesise that the ACC precursor-existing genes in Amphibolis lead to different microbiomes. ACC is broken down by ACC deaminases, which are present in Amphibolis but not Posidonia. Let's see if we can find ACC deaminases in the metagenomes (*acdS*).
@@ -332,7 +333,7 @@ What are those acdS-containing MAGs?
 
 
 ```{r}
-genessplit |> filter(gene == 'acdS') |> left_join(amph_pos_tax, by=c('sample', 'MAG'), multiple = 'any')
+genessplit |> filter(gene == 'acdS') |> left_join(amph_pos_tax, by=c('sample', 'MAG'), multiple = 'any') |> knitr::kable()
 ```
 Lots of unknown taxonomies :( 
 
