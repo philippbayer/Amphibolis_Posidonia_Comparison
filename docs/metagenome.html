@@ -368,7 +368,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -379,8 +379,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -393,9 +393,9 @@ aria-hidden="true"></span> </a>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong>
@@ -419,21 +419,18 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
@@ -524,15 +521,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreea69854c8dc1a2aec59d15967e5c44f924fd17ecatargetblanka69854ca">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree3ae555e2b12fdc54ee84a670920b75f5529ec278targetblank3ae555ea">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/a69854c8dc1a2aec59d15967e5c44f924fd17eca" target="_blank">a69854c</a>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/3ae555e2b12fdc54ee84a670920b75f5529ec278" target="_blank">3ae555e</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreea69854c8dc1a2aec59d15967e5c44f924fd17ecatargetblanka69854ca"
+id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree3ae555e2b12fdc54ee84a670920b75f5529ec278targetblank3ae555ea"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -542,7 +539,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/a69854c8dc1a2aec59d15967e5c44f924fd17eca" target="_blank">a69854c</a>.
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/3ae555e2b12fdc54ee84a670920b75f5529ec278" target="_blank">3ae555e</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -560,11 +557,6 @@ Ignored files:
     Ignored:    .Rproj.user/
     Ignored:    renv/library/
     Ignored:    renv/staging/
-
-Unstaged changes:
-    Modified:   analysis/index.Rmd
-    Modified:   analysis/metagenome.Rmd
-    Modified:   renv.lock
 
 </code></pre>
 <p>
@@ -610,6 +602,58 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/3ae555e2b12fdc54ee84a670920b75f5529ec278/analysis/metagenome.Rmd" target="_blank">3ae555e</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-20
+</td>
+<td>
+workflowr::wflow_publish(files = c("analysis/index.Rmd",
+"analysis/metagenome.Rmd"))
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/b5757aca73563d447eacd4fe551f766217368fc7/analysis/metagenome.Rmd" target="_blank">b5757ac</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-20
+</td>
+<td>
+Expand metagenome analysis
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/b5757aca73563d447eacd4fe551f766217368fc7/docs/metagenome.html" target="_blank">b5757ac</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-20
+</td>
+<td>
+Expand metagenome analysis
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -753,8 +797,45 @@ samples</p>
 plot_orders_gtdb(amph_pos_tax)</code></pre>
 <pre><code>`summarise()` has grouped output by &#39;sample&#39;, &#39;Tissue&#39;, &#39;Sample_species&#39;, &#39;n&#39;.
 You can override using the `.groups` argument.</code></pre>
-<p><img src="figure/metagenome.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" />
-Let’s also make an Upset plot of that</p>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-7-1">
+Past versions of unnamed-chunk-7-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-7-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/b5757aca73563d447eacd4fe551f766217368fc7/docs/figure/metagenome.Rmd/unnamed-chunk-7-1.png" target="_blank">b5757ac</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-20
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Let’s also make an Upset plot of that</p>
 <pre class="r"><code>tmp &lt;- amph_pos_tax |&gt; 
   group_by(sample) |&gt; 
   mutate(order = str_replace_all(order, &#39;o__&#39;,&#39;&#39;)) |&gt; 
@@ -835,6 +916,43 @@ $PASB3
 [1] &quot;Granulosicoccales&quot; &quot;Rhodobacterales&quot;  </code></pre>
 <pre class="r"><code>upset(fromList(tmp))</code></pre>
 <p><img src="figure/metagenome.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-9-1">
+Past versions of unnamed-chunk-9-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-9-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/b5757aca73563d447eacd4fe551f766217368fc7/docs/figure/metagenome.Rmd/unnamed-chunk-9-1.png" target="_blank">b5757ac</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-20
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="gtdb-by-family" class="section level2">
 <h2>GTDB by family</h2>
@@ -851,6 +969,43 @@ $PASB3
   facet_wrap(~Tissue) + coord_flip() + 
   ylab(&#39;Number of contigs&#39;) + xlab(&#39;Sample&#39;)</code></pre>
 <p><img src="figure/metagenome.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-1">
+Past versions of unnamed-chunk-10-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-10-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/b5757aca73563d447eacd4fe551f766217368fc7/docs/figure/metagenome.Rmd/unnamed-chunk-10-1.png" target="_blank">b5757ac</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-20
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>amph_pos_tax |&gt; group_by(sample, species) |&gt; filter(species != &#39;s__&#39;) |&gt; 
   count(species)</code></pre>
 <pre><code># A tibble: 0 × 3
@@ -938,6 +1093,43 @@ plot_orders_cat(amph_pos_tax_cat)</code></pre>
 <pre><code>`summarise()` has grouped output by &#39;sample&#39;, &#39;Tissue&#39;, &#39;Sample_species&#39;, &#39;n&#39;.
 You can override using the `.groups` argument.</code></pre>
 <p><img src="figure/metagenome.Rmd/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-15-1">
+Past versions of unnamed-chunk-15-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-15-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/b5757aca73563d447eacd4fe551f766217368fc7/docs/figure/metagenome.Rmd/unnamed-chunk-15-1.png" target="_blank">b5757ac</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-20
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div id="cat-by-family" class="section level2">
 <h2>CAT by family</h2>
@@ -956,6 +1148,43 @@ You can override using the `.groups` argument.</code></pre>
 <pre><code>Warning: Expected 2 pieces. Additional pieces discarded in 178 rows [3, 4, 5, 26, 29,
 30, 33, 47, 56, 75, 79, 81, 82, 84, 88, 92, 93, 95, 97, 101, ...].</code></pre>
 <p><img src="figure/metagenome.Rmd/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-16-1">
+Past versions of unnamed-chunk-16-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-16-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/b5757aca73563d447eacd4fe551f766217368fc7/docs/figure/metagenome.Rmd/unnamed-chunk-16-1.png" target="_blank">b5757ac</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-20
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>amph_pos_tax_cat |&gt; separate(Species, into = c(&#39;Species&#39;, &#39;Species_score&#39;), sep =&#39;:&#39;) |&gt; filter(!is.na(Species)) |&gt;  group_by(sample, Species) |&gt; 
   count(Species)</code></pre>
 <pre><code># A tibble: 68 × 3
@@ -984,18 +1213,121 @@ You can override using the `.groups` argument.</code></pre>
 3 AR3    Acidihalobacter ferrooxydans     1
 4 AR4    Acidihalobacter ferrooxydans     1</code></pre>
 <p>There we go :) Which MAGs are those?</p>
-<pre class="r"><code>amph_pos_tax_cat |&gt; filter(str_detect(Species, &#39;Acidihalobacter&#39;))</code></pre>
-<pre><code># A tibble: 4 × 16
-  sample MAG   classification `number of ORFs in bin` number of ORFs classific…¹
-  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;                            &lt;dbl&gt;                      &lt;dbl&gt;
-1 AR1    36    classified                        3947                       3706
-2 AR2    57    classified                        5702                       5052
-3 AR3    6     classified                        3558                       3381
-4 AR4    41    classified                        3552                       3379
-# ℹ abbreviated name: ¹​`number of ORFs classification is based on`
-# ℹ 11 more variables: lineage &lt;chr&gt;, `lineage scores` &lt;chr&gt;,
-#   Superkingdom &lt;chr&gt;, Class &lt;chr&gt;, Order &lt;chr&gt;, Family &lt;chr&gt;, Genus &lt;chr&gt;,
-#   Species &lt;chr&gt;, Sample_replicate &lt;dbl&gt;, Sample_species &lt;chr&gt;, Tissue &lt;chr&gt;</code></pre>
+<pre class="r"><code>amph_pos_tax_cat |&gt; filter(str_detect(Species, &#39;Acidihalobacter&#39;)) |&gt; knitr::kable()</code></pre>
+<table>
+<colgroup>
+<col width="1%" />
+<col width="1%" />
+<col width="3%" />
+<col width="5%" />
+<col width="11%" />
+<col width="13%" />
+<col width="11%" />
+<col width="3%" />
+<col width="6%" />
+<col width="5%" />
+<col width="7%" />
+<col width="5%" />
+<col width="9%" />
+<col width="4%" />
+<col width="5%" />
+<col width="1%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">sample</th>
+<th align="left">MAG</th>
+<th align="left">classification</th>
+<th align="right">number of ORFs in bin</th>
+<th align="right">number of ORFs classification is based on</th>
+<th align="left">lineage</th>
+<th align="left">lineage scores</th>
+<th align="left">Superkingdom</th>
+<th align="left">Class</th>
+<th align="left">Order</th>
+<th align="left">Family</th>
+<th align="left">Genus</th>
+<th align="left">Species</th>
+<th align="right">Sample_replicate</th>
+<th align="left">Sample_species</th>
+<th align="left">Tissue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">AR1</td>
+<td align="left">36</td>
+<td align="left">classified</td>
+<td align="right">3947</td>
+<td align="right">3706</td>
+<td align="left">1;131567;2;1224;1236;135613;72276;1765964;1765967</td>
+<td align="left">1.00;0.99;0.99;0.93;0.79;0.69;0.68;0.67;0.46</td>
+<td align="left">Bacteria: 0.99</td>
+<td align="left">Gammaproteobacteria: 0.79</td>
+<td align="left">Chromatiales: 0.69</td>
+<td align="left">Ectothiorhodospiraceae: 0.68</td>
+<td align="left">Acidihalobacter: 0.67</td>
+<td align="left">Acidihalobacter ferrooxydans: 0.46</td>
+<td align="right">1</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Root</td>
+</tr>
+<tr class="even">
+<td align="left">AR2</td>
+<td align="left">57</td>
+<td align="left">classified</td>
+<td align="right">5702</td>
+<td align="right">5052</td>
+<td align="left">1;131567;2;1224;1236;135613;72276;1765964;1765967</td>
+<td align="left">1.00;0.99;0.98;0.86;0.70;0.54;0.53;0.52;0.35</td>
+<td align="left">Bacteria: 0.98</td>
+<td align="left">Gammaproteobacteria: 0.70</td>
+<td align="left">Chromatiales: 0.54</td>
+<td align="left">Ectothiorhodospiraceae: 0.53</td>
+<td align="left">Acidihalobacter: 0.52</td>
+<td align="left">Acidihalobacter ferrooxydans: 0.35</td>
+<td align="right">2</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Root</td>
+</tr>
+<tr class="odd">
+<td align="left">AR3</td>
+<td align="left">6</td>
+<td align="left">classified</td>
+<td align="right">3558</td>
+<td align="right">3381</td>
+<td align="left">1;131567;2;1224;1236;135613;72276;1765964;1765967</td>
+<td align="left">1.00;0.99;0.99;0.94;0.82;0.75;0.73;0.73;0.49</td>
+<td align="left">Bacteria: 0.99</td>
+<td align="left">Gammaproteobacteria: 0.82</td>
+<td align="left">Chromatiales: 0.75</td>
+<td align="left">Ectothiorhodospiraceae: 0.73</td>
+<td align="left">Acidihalobacter: 0.73</td>
+<td align="left">Acidihalobacter ferrooxydans: 0.49</td>
+<td align="right">3</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Root</td>
+</tr>
+<tr class="even">
+<td align="left">AR4</td>
+<td align="left">41</td>
+<td align="left">classified</td>
+<td align="right">3552</td>
+<td align="right">3379</td>
+<td align="left">1;131567;2;1224;1236;135613;72276;1765964;1765967</td>
+<td align="left">1.00;0.99;0.99;0.94;0.82;0.74;0.73;0.72;0.49</td>
+<td align="left">Bacteria: 0.99</td>
+<td align="left">Gammaproteobacteria: 0.82</td>
+<td align="left">Chromatiales: 0.74</td>
+<td align="left">Ectothiorhodospiraceae: 0.73</td>
+<td align="left">Acidihalobacter: 0.72</td>
+<td align="left">Acidihalobacter ferrooxydans: 0.49</td>
+<td align="right">4</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Root</td>
+</tr>
+</tbody>
+</table>
 <pre class="r"><code>amph_pos_tax_cat |&gt; filter(str_detect(Family, &#39;Ectothiorhodospiraceae&#39;))</code></pre>
 <pre><code># A tibble: 4 × 16
   sample MAG   classification `number of ORFs in bin` number of ORFs classific…¹
@@ -1052,22 +1384,55 @@ chr (8): filename, locus_tag, ftype, length_bp, gene, EC_number, COG, product
   pivot_wider(names_from = Sample_species, values_from = n) |&gt; 
   mutate(difference = `Amphibolis antarctica` - `Posidonia australis`) |&gt; 
   arrange(desc(difference))</code></pre>
-<pre class="r"><code>count_diffs |&gt; filter(`Posidonia australis` &lt;100)</code></pre>
-<pre><code># A tibble: 5,172 × 4
-# Groups:   gene [5,172]
-   gene  `Amphibolis antarctica` `Posidonia australis` difference
-   &lt;chr&gt;                   &lt;int&gt;                 &lt;int&gt;      &lt;int&gt;
- 1 betI                      408                    80        328
- 2 korA                      396                    76        320
- 3 malT                      374                    63        311
- 4 htpG                      392                    92        300
- 5 mftC                      382                    95        287
- 6 recD2                     362                    78        284
- 7 zwf                       367                    84        283
- 8 queG                      369                    91        278
- 9 mglA                      373                    97        276
-10 gdhA                      359                    84        275
-# ℹ 5,162 more rows</code></pre>
+<pre class="r"><code>count_diffs |&gt; filter(`Posidonia australis` &lt;100) |&gt; head() |&gt; knitr::kable()</code></pre>
+<table>
+<thead>
+<tr class="header">
+<th align="left">gene</th>
+<th align="right">Amphibolis antarctica</th>
+<th align="right">Posidonia australis</th>
+<th align="right">difference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">betI</td>
+<td align="right">408</td>
+<td align="right">80</td>
+<td align="right">328</td>
+</tr>
+<tr class="even">
+<td align="left">korA</td>
+<td align="right">396</td>
+<td align="right">76</td>
+<td align="right">320</td>
+</tr>
+<tr class="odd">
+<td align="left">malT</td>
+<td align="right">374</td>
+<td align="right">63</td>
+<td align="right">311</td>
+</tr>
+<tr class="even">
+<td align="left">htpG</td>
+<td align="right">392</td>
+<td align="right">92</td>
+<td align="right">300</td>
+</tr>
+<tr class="odd">
+<td align="left">mftC</td>
+<td align="right">382</td>
+<td align="right">95</td>
+<td align="right">287</td>
+</tr>
+<tr class="even">
+<td align="left">recD2</td>
+<td align="right">362</td>
+<td align="right">78</td>
+<td align="right">284</td>
+</tr>
+</tbody>
+</table>
 <p>We hypothesise that the ACC precursor-existing genes in Amphibolis
 lead to different microbiomes. ACC is broken down by ACC deaminases,
 which are present in Amphibolis but not Posidonia. Let’s see if we can
@@ -1088,28 +1453,1553 @@ find ACC deaminases in the metagenomes (<em>acdS</em>).</p>
         strip.text.x =  element_markdown(),
         axis.title.x = element_markdown())</code></pre>
 <p><img src="figure/metagenome.Rmd/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-27-1">
+Past versions of unnamed-chunk-27-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-27-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/b5757aca73563d447eacd4fe551f766217368fc7/docs/figure/metagenome.Rmd/unnamed-chunk-27-1.png" target="_blank">b5757ac</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-20
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>What are those acdS-containing MAGs?</p>
-<pre class="r"><code>genessplit |&gt; filter(gene == &#39;acdS&#39;) |&gt; left_join(amph_pos_tax, by=c(&#39;sample&#39;, &#39;MAG&#39;), multiple = &#39;any&#39;)</code></pre>
-<pre><code># A tibble: 32 × 41
-   sample MAG   locus_tag ftype length_bp gene  gene_copy_number EC_number COG  
-   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;            &lt;chr&gt;     &lt;chr&gt;
- 1 AR1    20    DKHMKEDN… CDS   1014      acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
- 2 AR1    47    BGAOAMKE… CDS   1017      acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
- 3 AR1    63    NHMBFEEI… CDS   1014      acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
- 4 AR2    50    BOJIEKPI… CDS   1017      acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
- 5 AR3    14    AIHODAJD… CDS   1014      acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
- 6 AR3    27    OKIFEOJJ… CDS   1014      acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
- 7 AR3    40    FMKMBAOD… CDS   1206      acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
- 8 AR3    73    KKDHNOJN… CDS   1020      acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
- 9 AR3    81    MCEFDNIP… CDS   450       acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
-10 AR4    58    DIBNLNHP… CDS   1017      acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
-# ℹ 22 more rows
-# ℹ 32 more variables: product &lt;chr&gt;, Sample_replicate.x &lt;dbl&gt;,
-#   Sample_species.x &lt;chr&gt;, Tissue.x &lt;chr&gt;, domain &lt;chr&gt;, phylum &lt;chr&gt;,
-#   class &lt;chr&gt;, order &lt;chr&gt;, family &lt;chr&gt;, genus &lt;chr&gt;, species &lt;chr&gt;,
-#   fastani_reference &lt;chr&gt;, fastani_reference_radius &lt;chr&gt;,
-#   fastani_taxonomy &lt;chr&gt;, fastani_ani &lt;chr&gt;, fastani_af &lt;chr&gt;,
-#   closest_placement_reference &lt;chr&gt;, closest_placement_radius &lt;chr&gt;, …</code></pre>
+<pre class="r"><code>genessplit |&gt; filter(gene == &#39;acdS&#39;) |&gt; left_join(amph_pos_tax, by=c(&#39;sample&#39;, &#39;MAG&#39;), multiple = &#39;any&#39;) |&gt; knitr::kable()</code></pre>
+<table>
+<colgroup>
+<col width="0%" />
+<col width="0%" />
+<col width="1%" />
+<col width="0%" />
+<col width="0%" />
+<col width="0%" />
+<col width="1%" />
+<col width="0%" />
+<col width="0%" />
+<col width="3%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+<col width="0%" />
+<col width="1%" />
+<col width="2%" />
+<col width="1%" />
+<col width="1%" />
+<col width="0%" />
+<col width="2%" />
+<col width="2%" />
+<col width="11%" />
+<col width="1%" />
+<col width="1%" />
+<col width="10%" />
+<col width="4%" />
+<col width="0%" />
+<col width="17%" />
+<col width="1%" />
+<col width="1%" />
+<col width="0%" />
+<col width="4%" />
+<col width="1%" />
+<col width="1%" />
+<col width="1%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">sample</th>
+<th align="left">MAG</th>
+<th align="left">locus_tag</th>
+<th align="left">ftype</th>
+<th align="left">length_bp</th>
+<th align="left">gene</th>
+<th align="left">gene_copy_number</th>
+<th align="left">EC_number</th>
+<th align="left">COG</th>
+<th align="left">product</th>
+<th align="right">Sample_replicate.x</th>
+<th align="left">Sample_species.x</th>
+<th align="left">Tissue.x</th>
+<th align="left">domain</th>
+<th align="left">phylum</th>
+<th align="left">class</th>
+<th align="left">order</th>
+<th align="left">family</th>
+<th align="left">genus</th>
+<th align="left">species</th>
+<th align="left">fastani_reference</th>
+<th align="left">fastani_reference_radius</th>
+<th align="left">fastani_taxonomy</th>
+<th align="left">fastani_ani</th>
+<th align="left">fastani_af</th>
+<th align="left">closest_placement_reference</th>
+<th align="left">closest_placement_radius</th>
+<th align="left">closest_placement_taxonomy</th>
+<th align="left">closest_placement_ani</th>
+<th align="left">closest_placement_af</th>
+<th align="left">pplacer_taxonomy</th>
+<th align="left">classification_method</th>
+<th align="left">note</th>
+<th
+align="left">other_related_references(genome_id,species_name,radius,ANI,AF)</th>
+<th align="right">msa_percent</th>
+<th align="right">translation_table</th>
+<th align="right">red_value</th>
+<th align="left">warnings</th>
+<th align="right">Sample_replicate.y</th>
+<th align="left">Sample_species.y</th>
+<th align="left">Tissue.y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">AR1</td>
+<td align="left">20</td>
+<td align="left">DKHMKEDN_06522</td>
+<td align="left">CDS</td>
+<td align="left">1014</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">1</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Root</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">AR1</td>
+<td align="left">47</td>
+<td align="left">BGAOAMKE_02990</td>
+<td align="left">CDS</td>
+<td align="left">1017</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">1</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Root</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">AR1</td>
+<td align="left">63</td>
+<td align="left">NHMBFEEI_02351</td>
+<td align="left">CDS</td>
+<td align="left">1014</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">1</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Root</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">AR2</td>
+<td align="left">50</td>
+<td align="left">BOJIEKPI_04502</td>
+<td align="left">CDS</td>
+<td align="left">1017</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">2</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Root</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">AR3</td>
+<td align="left">14</td>
+<td align="left">AIHODAJD_01310</td>
+<td align="left">CDS</td>
+<td align="left">1014</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">3</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Root</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">AR3</td>
+<td align="left">27</td>
+<td align="left">OKIFEOJJ_02417</td>
+<td align="left">CDS</td>
+<td align="left">1014</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">3</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Root</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">AR3</td>
+<td align="left">40</td>
+<td align="left">FMKMBAOD_01701</td>
+<td align="left">CDS</td>
+<td align="left">1206</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">3</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Root</td>
+<td align="left">d__Bacteria</td>
+<td align="left">p__Desulfobacterota</td>
+<td align="left">c__Desulfarculia</td>
+<td align="left">o__Desulfarculales</td>
+<td align="left">f__Desulfarculaceae</td>
+<td align="left">g__Desulfocarbo</td>
+<td align="left">s__</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">GCF_001184205.1</td>
+<td align="left">95.0</td>
+<td
+align="left">d__Bacteria;p__Desulfobacterota;c__Desulfarculia;o__Desulfarculales;f__Desulfarculaceae;g__Desulfocarbo;s__Desulfocarbo
+indianensis</td>
+<td align="left">80.56</td>
+<td align="left">0.55</td>
+<td
+align="left">d__Bacteria;p__Desulfobacterota;c__Desulfarculia;o__Desulfarculales;f__Desulfarculaceae;g<strong>;s</strong></td>
+<td align="left">taxonomic classification defined by topology and
+ANI</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="right">83.32</td>
+<td align="right">11</td>
+<td align="right">0.9207634</td>
+<td align="left">N/A</td>
+<td align="right">3</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Root</td>
+</tr>
+<tr class="even">
+<td align="left">AR3</td>
+<td align="left">73</td>
+<td align="left">KKDHNOJN_03268</td>
+<td align="left">CDS</td>
+<td align="left">1020</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">3</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Root</td>
+<td align="left">d__Bacteria</td>
+<td align="left">p__Chloroflexota</td>
+<td align="left">c__Anaerolineae</td>
+<td align="left">o__SBR1031</td>
+<td align="left">f__UBA3940</td>
+<td align="left">g__</td>
+<td align="left">s__</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td
+align="left">d__Bacteria;p__Chloroflexota;c__Anaerolineae;o__SBR1031;f__UBA3940;g<strong>;s</strong></td>
+<td align="left">taxonomic classification fully defined by topology</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="right">87.39</td>
+<td align="right">11</td>
+<td align="right">0.8196529</td>
+<td align="left">N/A</td>
+<td align="right">3</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Root</td>
+</tr>
+<tr class="odd">
+<td align="left">AR3</td>
+<td align="left">81</td>
+<td align="left">MCEFDNIP_01072</td>
+<td align="left">CDS</td>
+<td align="left">450</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">3</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Root</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">AR4</td>
+<td align="left">58</td>
+<td align="left">DIBNLNHP_00637</td>
+<td align="left">CDS</td>
+<td align="left">1017</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">4</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Root</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">ARZ1</td>
+<td align="left">11</td>
+<td align="left">BJHMODOA_03098</td>
+<td align="left">CDS</td>
+<td align="left">1014</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">1</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Rhizome</td>
+<td align="left">d__Bacteria</td>
+<td align="left">p__Desulfobacterota</td>
+<td align="left">c__Desulfobacteria</td>
+<td align="left">o__Desulfobacterales</td>
+<td align="left">f__Desulfosarcinaceae</td>
+<td align="left">g__</td>
+<td align="left">s__</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td
+align="left">d__Bacteria;p__Desulfobacterota;c__Desulfobacteria;o__Desulfobacterales;f__Desulfosarcinaceae;g<strong>;s</strong></td>
+<td align="left">taxonomic classification fully defined by topology</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="right">82.41</td>
+<td align="right">11</td>
+<td align="right">0.8240578</td>
+<td align="left">Genome has more than 11.7% of markers with multiple
+hits</td>
+<td align="right">1</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Rhizome</td>
+</tr>
+<tr class="even">
+<td align="left">ARZ2</td>
+<td align="left">17</td>
+<td align="left">FMKMFIHB_02180</td>
+<td align="left">CDS</td>
+<td align="left">294</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">2</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Rhizome</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">ARZ2</td>
+<td align="left">5</td>
+<td align="left">OLJLPPPD_02508</td>
+<td align="left">CDS</td>
+<td align="left">1014</td>
+<td align="left">acdS</td>
+<td align="left">1</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">2</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Rhizome</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">ARZ2</td>
+<td align="left">5</td>
+<td align="left">OLJLPPPD_07778</td>
+<td align="left">CDS</td>
+<td align="left">1017</td>
+<td align="left">acdS</td>
+<td align="left">2</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">2</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Rhizome</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">ARZ4</td>
+<td align="left">10</td>
+<td align="left">IODBOAAD_01716</td>
+<td align="left">CDS</td>
+<td align="left">1014</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">4</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Rhizome</td>
+<td align="left">d__Bacteria</td>
+<td align="left">p__Actinobacteriota</td>
+<td align="left">c__Acidimicrobiia</td>
+<td align="left">o__Acidimicrobiales</td>
+<td align="left">f__SZUA-35</td>
+<td align="left">g__CADEDH01</td>
+<td align="left">s__</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">GCA_902826025.1</td>
+<td align="left">95.0</td>
+<td
+align="left">d__Bacteria;p__Actinobacteriota;c__Acidimicrobiia;o__Acidimicrobiales;f__SZUA-35;g__CADEDH01;s__CADEDH01
+sp902826025</td>
+<td align="left">78.07</td>
+<td align="left">0.37</td>
+<td
+align="left">d__Bacteria;p__Actinobacteriota;c__Acidimicrobiia;o__Acidimicrobiales;f__SZUA-35;g<strong>;s</strong></td>
+<td align="left">taxonomic classification defined by topology and
+ANI</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="right">83.62</td>
+<td align="right">11</td>
+<td align="right">0.8691864</td>
+<td align="left">N/A</td>
+<td align="right">4</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Rhizome</td>
+</tr>
+<tr class="even">
+<td align="left">ARZ4</td>
+<td align="left">15</td>
+<td align="left">MGGPOGNO_00561</td>
+<td align="left">CDS</td>
+<td align="left">294</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">4</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Rhizome</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">AS1</td>
+<td align="left">9</td>
+<td align="left">LBHBPACF_04841</td>
+<td align="left">CDS</td>
+<td align="left">1044</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">1</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Shoot/Leaf</td>
+<td align="left">d__Bacteria</td>
+<td align="left">p__Proteobacteria</td>
+<td align="left">c__Gammaproteobacteria</td>
+<td align="left">o__Arenicellales</td>
+<td align="left">f__Arenicellaceae</td>
+<td align="left">g__</td>
+<td align="left">s__</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td
+align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Arenicellales;f__Arenicellaceae;g<strong>;s</strong></td>
+<td align="left">taxonomic novelty determined using RED</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="right">55.33</td>
+<td align="right">11</td>
+<td align="right">0.7901209</td>
+<td align="left">N/A</td>
+<td align="right">1</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Shoot/Leaf</td>
+</tr>
+<tr class="even">
+<td align="left">AS2</td>
+<td align="left">24</td>
+<td align="left">KIMMHMKH_01726</td>
+<td align="left">CDS</td>
+<td align="left">759</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">2</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Shoot/Leaf</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">AS3</td>
+<td align="left">4</td>
+<td align="left">JMLBOELL_02752</td>
+<td align="left">CDS</td>
+<td align="left">1038</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">3</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Shoot/Leaf</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">AS4</td>
+<td align="left">16</td>
+<td align="left">DBHNGLOI_00802</td>
+<td align="left">CDS</td>
+<td align="left">786</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">4</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Shoot/Leaf</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">AS4</td>
+<td align="left">20</td>
+<td align="left">LNPAPPIA_02154</td>
+<td align="left">CDS</td>
+<td align="left">1044</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">4</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Shoot/Leaf</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left">ASB1</td>
+<td align="left">3</td>
+<td align="left">OFIFNHEM_00574</td>
+<td align="left">CDS</td>
+<td align="left">1044</td>
+<td align="left">acdS</td>
+<td align="left">1</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">1</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Shoot/Leaf Biofilm</td>
+<td align="left">d__Bacteria</td>
+<td align="left">p__Proteobacteria</td>
+<td align="left">c__Gammaproteobacteria</td>
+<td align="left">o__Granulosicoccales</td>
+<td align="left">f__Granulosicoccaceae</td>
+<td align="left">g__</td>
+<td align="left">s__</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td
+align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Granulosicoccales;f__Granulosicoccaceae;g<strong>;s</strong></td>
+<td align="left">taxonomic novelty determined using RED</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="right">50.43</td>
+<td align="right">11</td>
+<td align="right">0.8452805</td>
+<td align="left">N/A</td>
+<td align="right">1</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Shoot/Leaf Biofilm</td>
+</tr>
+<tr class="odd">
+<td align="left">ASB1</td>
+<td align="left">3</td>
+<td align="left">OFIFNHEM_03206</td>
+<td align="left">CDS</td>
+<td align="left">1044</td>
+<td align="left">acdS</td>
+<td align="left">2</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">1</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Shoot/Leaf Biofilm</td>
+<td align="left">d__Bacteria</td>
+<td align="left">p__Proteobacteria</td>
+<td align="left">c__Gammaproteobacteria</td>
+<td align="left">o__Granulosicoccales</td>
+<td align="left">f__Granulosicoccaceae</td>
+<td align="left">g__</td>
+<td align="left">s__</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td
+align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Granulosicoccales;f__Granulosicoccaceae;g<strong>;s</strong></td>
+<td align="left">taxonomic novelty determined using RED</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="right">50.43</td>
+<td align="right">11</td>
+<td align="right">0.8452805</td>
+<td align="left">N/A</td>
+<td align="right">1</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Shoot/Leaf Biofilm</td>
+</tr>
+<tr class="even">
+<td align="left">ASB2</td>
+<td align="left">25</td>
+<td align="left">GKJLHJPG_02215</td>
+<td align="left">CDS</td>
+<td align="left">1044</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">2</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Shoot/Leaf Biofilm</td>
+<td align="left">d__Bacteria</td>
+<td align="left">p__Proteobacteria</td>
+<td align="left">c__Alphaproteobacteria</td>
+<td align="left">o__Rhodobacterales</td>
+<td align="left">f__Rhodobacteraceae</td>
+<td align="left">g__</td>
+<td align="left">s__</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td
+align="left">d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Rhodobacterales;f__Rhodobacteraceae;g<strong>;s</strong></td>
+<td align="left">taxonomic novelty determined using RED</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="right">32.64</td>
+<td align="right">11</td>
+<td align="right">0.8550519</td>
+<td align="left">N/A</td>
+<td align="right">2</td>
+<td align="left">Amphibolis antarctica</td>
+<td align="left">Shoot/Leaf Biofilm</td>
+</tr>
+<tr class="odd">
+<td align="left">PAS1</td>
+<td align="left">10</td>
+<td align="left">CHDPEFPL_01776</td>
+<td align="left">CDS</td>
+<td align="left">1014</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">1</td>
+<td align="left">Posidonia australis</td>
+<td align="left">Shoot/Leaf</td>
+<td align="left">d__Bacteria</td>
+<td align="left">p__Proteobacteria</td>
+<td align="left">c__Gammaproteobacteria</td>
+<td align="left">o__Granulosicoccales</td>
+<td align="left">f__Granulosicoccaceae</td>
+<td align="left">g__Granulosicoccus</td>
+<td align="left">s__</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td
+align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Granulosicoccales;f__Granulosicoccaceae;g<strong>Granulosicoccus;s</strong></td>
+<td align="left">ANI</td>
+<td align="left">N/A</td>
+<td align="left">GCF_002215215.1, s__Granulosicoccus antarcticus, 95.0,
+76.59, 0.05; GCA_013002205.1, s__Granulosicoccus sp013002205, 95.0,
+76.29, 0.04; GCA_002746645.1, s__Granulosicoccus sp002746645, 95.0,
+75.91, 0.01</td>
+<td align="right">68.04</td>
+<td align="right">11</td>
+<td align="right">0.9247789</td>
+<td align="left">N/A</td>
+<td align="right">1</td>
+<td align="left">Posidonia australis</td>
+<td align="left">Shoot/Leaf</td>
+</tr>
+<tr class="even">
+<td align="left">PAS2</td>
+<td align="left">2</td>
+<td align="left">NCBGNEEP_04020</td>
+<td align="left">CDS</td>
+<td align="left">1014</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">2</td>
+<td align="left">Posidonia australis</td>
+<td align="left">Shoot/Leaf</td>
+<td align="left">d__Bacteria</td>
+<td align="left">p__Proteobacteria</td>
+<td align="left">c__Gammaproteobacteria</td>
+<td align="left">o__Granulosicoccales</td>
+<td align="left">f__Granulosicoccaceae</td>
+<td align="left">g__Granulosicoccus</td>
+<td align="left">s__</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td
+align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Granulosicoccales;f__Granulosicoccaceae;g<strong>Granulosicoccus;s</strong></td>
+<td align="left">ANI</td>
+<td align="left">N/A</td>
+<td align="left">GCA_002746645.1, s__Granulosicoccus sp002746645, 95.0,
+77.93, 0.01; GCF_002215215.1, s__Granulosicoccus antarcticus, 95.0,
+76.62, 0.06; GCA_013002205.1, s__Granulosicoccus sp013002205, 95.0,
+76.51, 0.06</td>
+<td align="right">63.17</td>
+<td align="right">11</td>
+<td align="right">0.9224254</td>
+<td align="left">Genome has more than 17.5% of markers with multiple
+hits</td>
+<td align="right">2</td>
+<td align="left">Posidonia australis</td>
+<td align="left">Shoot/Leaf</td>
+</tr>
+<tr class="odd">
+<td align="left">PAS4</td>
+<td align="left">11</td>
+<td align="left">BFPAMIHD_02736</td>
+<td align="left">CDS</td>
+<td align="left">1014</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">4</td>
+<td align="left">Posidonia australis</td>
+<td align="left">Shoot/Leaf</td>
+<td align="left">d__Bacteria</td>
+<td align="left">p__Proteobacteria</td>
+<td align="left">c__Gammaproteobacteria</td>
+<td align="left">o__Granulosicoccales</td>
+<td align="left">f__Granulosicoccaceae</td>
+<td align="left">g__Granulosicoccus</td>
+<td align="left">s__</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td
+align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Granulosicoccales;f__Granulosicoccaceae;g<strong>Granulosicoccus;s</strong></td>
+<td align="left">ANI</td>
+<td align="left">N/A</td>
+<td align="left">GCA_002746645.1, s__Granulosicoccus sp002746645, 95.0,
+76.81, 0.02; GCF_002215215.1, s__Granulosicoccus antarcticus, 95.0,
+76.58, 0.06; GCA_013002205.1, s__Granulosicoccus sp013002205, 95.0,
+76.37, 0.07</td>
+<td align="right">86.70</td>
+<td align="right">11</td>
+<td align="right">0.9211233</td>
+<td align="left">N/A</td>
+<td align="right">4</td>
+<td align="left">Posidonia australis</td>
+<td align="left">Shoot/Leaf</td>
+</tr>
+<tr class="even">
+<td align="left">PAS4</td>
+<td align="left">12</td>
+<td align="left">DBFKPNEP_00192</td>
+<td align="left">CDS</td>
+<td align="left">1023</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">4</td>
+<td align="left">Posidonia australis</td>
+<td align="left">Shoot/Leaf</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="right">NA</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">PASB1</td>
+<td align="left">12</td>
+<td align="left">FCNNIBFF_01476</td>
+<td align="left">CDS</td>
+<td align="left">1014</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">1</td>
+<td align="left">Posidonia australis</td>
+<td align="left">Shoot/Leaf Biofilm</td>
+<td align="left">d__Bacteria</td>
+<td align="left">p__Bacteroidota</td>
+<td align="left">c__Bacteroidia</td>
+<td align="left">o__Flavobacteriales</td>
+<td align="left">f__Flavobacteriaceae</td>
+<td align="left">g__Croceitalea</td>
+<td align="left">s__</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">GCF_001306415.1</td>
+<td align="left">95.0</td>
+<td
+align="left">d__Bacteria;p__Bacteroidota;c__Bacteroidia;o__Flavobacteriales;f__Flavobacteriaceae;g__Croceitalea;s__Croceitalea
+dokdonensis</td>
+<td align="left">77.12</td>
+<td align="left">0.16</td>
+<td
+align="left">d__Bacteria;p__Bacteroidota;c__Bacteroidia;o__Flavobacteriales;f__Flavobacteriaceae;g<strong>Croceitalea;s</strong></td>
+<td align="left">taxonomic classification defined by topology and
+ANI</td>
+<td align="left">N/A</td>
+<td align="left">GCA_013001145.1, s__Croceitalea sp013001145, 95.0,
+76.81, 0.2</td>
+<td align="right">91.24</td>
+<td align="right">11</td>
+<td align="right">0.9618021</td>
+<td align="left">N/A</td>
+<td align="right">1</td>
+<td align="left">Posidonia australis</td>
+<td align="left">Shoot/Leaf Biofilm</td>
+</tr>
+<tr class="even">
+<td align="left">PASB1</td>
+<td align="left">8</td>
+<td align="left">APPEIGNM_00826</td>
+<td align="left">CDS</td>
+<td align="left">1044</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">1</td>
+<td align="left">Posidonia australis</td>
+<td align="left">Shoot/Leaf Biofilm</td>
+<td align="left">d__Bacteria</td>
+<td align="left">p__Proteobacteria</td>
+<td align="left">c__Alphaproteobacteria</td>
+<td align="left">o__Rhodobacterales</td>
+<td align="left">f__Rhodobacteraceae</td>
+<td align="left">g__</td>
+<td align="left">s__</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td
+align="left">d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Rhodobacterales;f__Rhodobacteraceae;g<strong>;s</strong></td>
+<td align="left">taxonomic classification fully defined by topology</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="right">63.81</td>
+<td align="right">11</td>
+<td align="right">0.8362940</td>
+<td align="left">N/A</td>
+<td align="right">1</td>
+<td align="left">Posidonia australis</td>
+<td align="left">Shoot/Leaf Biofilm</td>
+</tr>
+<tr class="odd">
+<td align="left">PASB3</td>
+<td align="left">5</td>
+<td align="left">LBPDOBCG_01279</td>
+<td align="left">CDS</td>
+<td align="left">1092</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">3</td>
+<td align="left">Posidonia australis</td>
+<td align="left">Shoot/Leaf Biofilm</td>
+<td align="left">d__Bacteria</td>
+<td align="left">p__Proteobacteria</td>
+<td align="left">c__Gammaproteobacteria</td>
+<td align="left">o__Granulosicoccales</td>
+<td align="left">f__Granulosicoccaceae</td>
+<td align="left">g__Granulosicoccus</td>
+<td align="left">s__</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td
+align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Granulosicoccales;f__Granulosicoccaceae;g<strong>Granulosicoccus;s</strong></td>
+<td align="left">ANI</td>
+<td align="left">N/A</td>
+<td align="left">GCA_013002205.1, s__Granulosicoccus sp013002205, 95.0,
+77.03, 0.04; GCF_002215215.1, s__Granulosicoccus antarcticus, 95.0,
+76.75, 0.05; GCA_002746645.1, s__Granulosicoccus sp002746645, 95.0,
+76.38, 0.02</td>
+<td align="right">76.89</td>
+<td align="right">11</td>
+<td align="right">0.9149777</td>
+<td align="left">N/A</td>
+<td align="right">3</td>
+<td align="left">Posidonia australis</td>
+<td align="left">Shoot/Leaf Biofilm</td>
+</tr>
+<tr class="even">
+<td align="left">PASB3</td>
+<td align="left">9</td>
+<td align="left">PELECGGA_02313</td>
+<td align="left">CDS</td>
+<td align="left">1014</td>
+<td align="left">acdS</td>
+<td align="left">NA</td>
+<td align="left">3.5.99.7</td>
+<td align="left">NA</td>
+<td align="left">1-aminocyclopropane-1-carboxylate deaminase</td>
+<td align="right">3</td>
+<td align="left">Posidonia australis</td>
+<td align="left">Shoot/Leaf Biofilm</td>
+<td align="left">d__Bacteria</td>
+<td align="left">p__Proteobacteria</td>
+<td align="left">c__Gammaproteobacteria</td>
+<td align="left">o__UBA4575</td>
+<td align="left">f__UBA4575</td>
+<td align="left">g__JABDMD01</td>
+<td align="left">s__</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td
+align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__UBA4575;f__UBA4575;g<strong>;s</strong></td>
+<td align="left">taxonomic novelty determined using RED</td>
+<td align="left">N/A</td>
+<td align="left">N/A</td>
+<td align="right">71.37</td>
+<td align="right">11</td>
+<td align="right">0.9234002</td>
+<td align="left">N/A</td>
+<td align="right">3</td>
+<td align="left">Posidonia australis</td>
+<td align="left">Shoot/Leaf Biofilm</td>
+</tr>
+</tbody>
+</table>
 <p>Lots of unknown taxonomies :(</p>
 <pre class="r"><code>genessplit |&gt; filter(gene == &#39;acdS&#39;) |&gt; left_join(amph_pos_tax, by=c(&#39;sample&#39;, &#39;MAG&#39;), multiple = &#39;any&#39;) |&gt; 
   select(-c(Tissue.y, Sample_species.y)) |&gt;
@@ -1118,6 +3008,43 @@ find ACC deaminases in the metagenomes (<em>acdS</em>).</p>
 <pre><code>`summarise()` has grouped output by &#39;sample&#39;, &#39;Tissue&#39;, &#39;Sample_species&#39;, &#39;n&#39;.
 You can override using the `.groups` argument.</code></pre>
 <p><img src="figure/metagenome.Rmd/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-29-1">
+Past versions of unnamed-chunk-29-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-29-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/b5757aca73563d447eacd4fe551f766217368fc7/docs/figure/metagenome.Rmd/unnamed-chunk-29-1.png" target="_blank">b5757ac</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-20
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>  #select(sample, MAG, domain:species)</code></pre>
 <pre class="r"><code>genessplit |&gt; filter(gene == &#39;acdS&#39;) |&gt; 
   left_join(amph_pos_tax_cat, by=c(&#39;sample&#39;, &#39;MAG&#39;)) |&gt; 
@@ -1129,6 +3056,43 @@ You can override using the `.groups` argument.</code></pre>
 <pre><code>`summarise()` has grouped output by &#39;sample&#39;, &#39;Tissue&#39;, &#39;Sample_species&#39;, &#39;n&#39;.
 You can override using the `.groups` argument.</code></pre>
 <p><img src="figure/metagenome.Rmd/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-30-1">
+Past versions of unnamed-chunk-30-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-30-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/b5757aca73563d447eacd4fe551f766217368fc7/docs/figure/metagenome.Rmd/unnamed-chunk-30-1.png" target="_blank">b5757ac</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-20
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>  #select(sample, MAG, Superkingdom:Species) |&gt; </code></pre>
 <br>
 <p>
