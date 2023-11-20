@@ -2,3 +2,4 @@ all_cat.summary.tsv.gz filter=lfs diff=lfs merge=lfs -text
 all_genes.tsv.gz filter=lfs diff=lfs merge=lfs -text
 all_gtdb.summary.tsv.gz filter=lfs diff=lfs merge=lfs -text
 no_hypothetical.all_genes.tsv.gz filter=lfs diff=lfs merge=lfs -text
+all_cat.summary.reformatted.tsv.gz filter=lfs diff=lfs merge=lfs -text

@@ -13,3 +13,100 @@ knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 ```
 
 Here we compare metagenomes (taxonomy and genes) across Amphibolis vs the others.
+
+```{r}
+metadata <- read_tsv('./data/metagenome/samples.tsv')
+metadata <- metadata |> rename(Sample_species = Species,
+                               Sample_replicate = Replicate) |> 
+  mutate(Tissue = str_to_title(Tissue))
+```
+
+# Taxonomies
+
+We have two taxonomies: one based on CAT, one based on GTDB. GTDB is less complete but more accurate. Let's see what they look like.
+
+# GTDB
+```{r}
+tax <- read_tsv('./data/metagenome/all_gtdb.summary.tsv.gz')
+```
+
+```{r}
+clean_tax <- tax |> 
+  separate(user_genome, into = c('sample', 'MAG'), sep='\\.') |> 
+  separate(classification, into = c('domain', 'phylum', 
+                                    'class', 'order', 
+                                    'family', 'genus', 
+                                    'species'), sep=';') |> 
+  mutate(sample = str_replace_all(sample, 'MEGAHIT-', ''), 
+         sample = str_replace_all(sample, '_L2', ''))
+         
+clean_tax <- clean_tax |> left_join(metadata, by = c('sample'='Sample'))
+```
+
+Next, we keep only Posidonia australis and Amphibolis antarctica samples
+
+```{r}
+amph_pos_tax <- clean_tax |> filter(Sample_species %in% c('Amphibolis antarctica', 'Posidonia australis'))
+```
+
+## GTDB by order
+
+```{r}
+amph_pos_tax |> 
+  group_by(sample, Tissue) |> 
+  mutate(order = str_replace_all(order, 'o__','')) |> 
+  count(order) |> 
+  filter ( n > 1) |> 
+  filter(order != '' ) |> 
+  ggplot(aes(x = sample, y = n, fill=order)) +
+  geom_col() + 
+  theme_minimal() + 
+  #theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
+  facet_wrap(~Tissue) + coord_flip() + 
+  ylab('Number of contigs') + xlab('Sample')
+```
+
+## GTDB by family
+
+
+```{r}
+amph_pos_tax |> 
+  group_by(sample, Tissue) |> 
+  mutate(family = str_replace_all(family, 'f__','')) |> 
+  count(family) |> 
+  filter ( n > 1) |> 
+  filter(family != '' ) |> 
+  ggplot(aes(x = sample, y = n, fill=family)) +
+  geom_col() + 
+  theme_minimal() + 
+  #theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
+  facet_wrap(~Tissue) + coord_flip() + 
+  ylab('Number of contigs') + xlab('Sample')
+```
+Let's do the same using CAT
+
+# CAT
+
+
+```{r}
+tax_cat <- read_tsv('./data/metagenome/all_cat.summary.tsv.gz', guess_max = 100000)
+```
+
+```{r}
+clean_tax_cat <- tax_cat |> 
+  separate(`# bin`, into = c('sample', 'MAG'), sep='\\.') |> 
+  separate(full_lineage_names, into = c('root', 'root2', 
+                                    'superkingdom', 'clade', 
+                                    'phylum', 'subphylum', 
+                                    'class'), sep='\t') |> 
+  mutate(sample = str_replace_all(sample, 'MEGAHIT-', ''), 
+         sample = str_replace_all(sample, '_L2', ''))
+         
+clean_tax <- clean_tax |> left_join(metadata, by = c('sample'='Sample'))
+```
+
+Next, we keep only Posidonia australis and Amphibolis antarctica samples
+
+```{r}
+amph_pos_tax <- clean_tax |> filter(Sample_species %in% c('Amphibolis antarctica', 'Posidonia australis'))
+```

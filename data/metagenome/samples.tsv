@@ -1,0 +1,66 @@
+Sample	Replicate	Species	Tissue
+HS1	1	Halophila 	shoot/leaf
+HS2	2	Halophila 	shoot/leaf
+HS3	3	Halophila 	shoot/leaf
+HS4	4	Halophila 	shoot/leaf
+AS1	1	Amphibolis antarctica 	shoot/leaf
+AS2	2	Amphibolis antarctica 	shoot/leaf
+AS3	3	Amphibolis antarctica 	shoot/leaf
+AS4	4	Amphibolis antarctica 	shoot/leaf
+PAS1	1	Posidonia australis 	shoot/leaf
+PAS2	2	Posidonia australis 	shoot/leaf
+PAS3	3	Posidonia australis 	shoot/leaf
+PAS4	4	Posidonia australis 	shoot/leaf
+PSS1	1	Posidonia sinuosa 	shoot/leaf
+PSS2	2	Posidonia sinuosa 	shoot/leaf
+PSS3	3	Posidonia sinuosa 	shoot/leaf
+PSS4	4	Posidonia sinuosa 	shoot/leaf
+HSB1	1	Halophila 	shoot/leaf biofilm
+HSB2	2	Halophila 	shoot/leaf biofilm
+HSB3	3	Halophila 	shoot/leaf biofilm
+HSB4	4	Halophila 	shoot/leaf biofilm
+ASB1	1	Amphibolis antarctica 	shoot/leaf biofilm
+ASB2	2	Amphibolis antarctica 	shoot/leaf biofilm
+ASB3	3	Amphibolis antarctica 	shoot/leaf biofilm
+ASB4	4	Amphibolis antarctica 	shoot/leaf biofilm
+PASB1	1	Posidonia australis 	shoot/leaf biofilm
+PASB2	2	Posidonia australis 	shoot/leaf biofilm
+PASB3	3	Posidonia australis 	shoot/leaf biofilm
+PASB4	4	Posidonia australis 	shoot/leaf biofilm
+PSSB1	1	Posidonia sinuosa 	shoot/leaf biofilm
+PSSB2	2	Posidonia sinuosa 	shoot/leaf biofilm 
+PSSB3	3	Posidonia sinuosa 	shoot/leaf biofilm 
+PSSB4	4	Posidonia sinuosa 	shoot/leaf biofilm
+HR1	1	Halophila 	root
+HR2	2	Halophila 	root
+HR3	3	Halophila 	root
+HR4	4	Halophila 	root
+AR1	1	Amphibolis antarctica 	root
+AR2	2	Amphibolis antarctica 	root
+AR3	3	Amphibolis antarctica 	root
+AR4	4	Amphibolis antarctica 	root
+PAR1	1	Posidonia australis 	root
+PAR2	2	Posidonia australis 	root
+PAR31	3	Posidonia australis 	root
+PAR4	4	Posidonia australis 	root
+PSR1	1	Posidonia sinuosa 	root
+PSR2	2	Posidonia sinuosa 	root
+PSR3	3	Posidonia sinuosa 	root
+PSR4	4	Posidonia sinuosa 	root
+HRZ1	1	Halophila 	rhizome
+HRZ2	2	Halophila 	rhizome
+HRZ3	3	Halophila 	rhizome
+HRZ4	4	Halophila 	rhizome
+ARZ1	1	Amphibolis antarctica 	rhizome
+ARZ2	2	Amphibolis antarctica 	rhizome
+ARZ3	3	Amphibolis antarctica 	rhizome
+ARZ4	4	Amphibolis antarctica 	rhizome
+PARZ1	1	Posidonia australis 	rhizome
+PARZ2	2	Posidonia australis 	rhizome
+PARZ3	3	Posidonia australis 	rhizome
+PARZ4	4	Posidonia australis 	rhizome
+PSRZ1	1	Posidonia sinuosa 	rhizome
+PSRZ2	2	Posidonia sinuosa 	rhizome
+PSRZ3	3	Posidonia sinuosa 	rhizome
+PSRZ4	4	Posidonia sinuosa 	rhizome
+
