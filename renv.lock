@@ -1353,6 +1353,21 @@
       ],
       "Hash": "e9839af82cc43fda486a638b68b439b2"
     },
+    "ggtext": {
+      "Package": "ggtext",
+      "Version": "0.1.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "ggplot2",
+        "grid",
+        "gridtext",
+        "rlang",
+        "scales"
+      ],
+      "Hash": "c5ba8f5056487403a299b91984be86ca"
+    },
     "ggtree": {
       "Package": "ggtree",
       "Version": "3.8.2",
@@ -1524,6 +1539,26 @@
         "grid"
       ],
       "Hash": "5b79228594f02385d4df4979284879ae"
+    },
+    "gridtext": {
+      "Package": "gridtext",
+      "Version": "0.1.5",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "Rcpp",
+        "curl",
+        "grDevices",
+        "grid",
+        "jpeg",
+        "markdown",
+        "png",
+        "rlang",
+        "stringr",
+        "xml2"
+      ],
+      "Hash": "05e4f5fffb1eecfeaac9ea0b7f255fef"
     },
     "gtable": {
       "Package": "gtable",
@@ -1702,6 +1737,16 @@
       ],
       "Hash": "0080607b4a1a7b28979aecef976d8bc2"
     },
+    "jpeg": {
+      "Package": "jpeg",
+      "Version": "0.1-10",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "031a0b683d001a7519202f0628fc0358"
+    },
     "jquerylib": {
       "Package": "jquerylib",
       "Version": "0.1.4",
@@ -1861,6 +1906,19 @@
       ],
       "Hash": "49575d57c53981f0f033a84239d75085"
     },
+    "markdown": {
+      "Package": "markdown",
+      "Version": "1.11",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "commonmark",
+        "utils",
+        "xfun"
+      ],
+      "Hash": "82b8d62b5451f8adea7d11a99dfea633"
+    },
     "matrixStats": {
       "Package": "matrixStats",
       "Version": "1.1.0",
@@ -1898,6 +1956,25 @@
         "utils"
       ],
       "Hash": "086028ca0460d0c368028d3bda58f31b"
+    },
+    "microshades": {
+      "Package": "microshades",
+      "Version": "1.11",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "KarstensLab",
+      "RemoteRepo": "microshades",
+      "RemoteRef": "main",
+      "RemoteSha": "adfacf1d485da33b5c3ed6fa53370eae05345169",
+      "Requirements": [
+        "dplyr",
+        "forcats",
+        "purrr",
+        "tidyr",
+        "tidyselect"
+      ],
+      "Hash": "6ac9ce0cadb94a6f1ec31abb74578d35"
     },
     "mime": {
       "Package": "mime",

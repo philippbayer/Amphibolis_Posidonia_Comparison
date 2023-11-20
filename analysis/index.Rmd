@@ -27,3 +27,5 @@ This website collects comparisons of *Amphibolis* and *Posidonia* comparative an
 [MSA visualisation](MSA.html) - visualising MSAs and phylogenies for gene clusters of interest (*SOS3*, *EIN3*)
 
 [3D structure](ThreeDStructure.html) - visualising the predicted 3D structure of *SOS3*/*EIN3*
+
+[Metagenomics]('metagenome.html') - visualising metagenome differences across Posidonia/Amphibolis

@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Philipp Bayer" />
+
+
+<title>Visualising metagenome differences</title>
+
+<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Amphibolis Posidonia Comparison</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison">
+    <span class="fa fa-github"></span>
+     
+    Source code
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Visualising metagenome differences</h1>
+<h4 class="author">Philipp Bayer</h4>
+<h4 class="date">20th Nov 2023</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2023-11-20
+</p>
+<p>
+<strong>Checks:</strong> <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> 1
+</p>
+<p>
+<strong>Knit directory:</strong>
+<code>Amphibolis_Posidonia_Comparison/</code> <span
+class="glyphicon glyphicon-question-sign" aria-hidden="true"
+title="This is the local directory in which the code in this file was executed.">
+</span>
+</p>
+<p>
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
+analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.1). The <em>Checks</em> tab describes the reproducibility checks
+that were applied when the results were created. The <em>Past
+versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguncommittedchanges"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20210414code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20210414)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20210414code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20210414)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreea69854c8dc1a2aec59d15967e5c44f924fd17ecatargetblanka69854ca">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Repository version:</strong>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/a69854c8dc1a2aec59d15967e5c44f924fd17eca" target="_blank">a69854c</a>
+</a>
+</p>
+</div>
+<div
+id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreea69854c8dc1a2aec59d15967e5c44f924fd17ecatargetblanka69854ca"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development
+and connecting the code version to the results is critical for
+reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/a69854c8dc1a2aec59d15967e5c44f924fd17eca" target="_blank">a69854c</a>.
+See the <em>Past versions</em> tab to see a history of the changes made
+to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for
+the analysis have been committed to Git prior to generating the results
+(you can use <code>wflow_publish</code> or
+<code>wflow_git_commit</code>). workflowr only checks the R Markdown
+file, but you know if there are other scripts or data files that it
+depends on. Below is the status of the Git repository when the results
+were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .Rproj.user/
+    Ignored:    renv/library/
+    Ignored:    renv/staging/
+
+Unstaged changes:
+    Modified:   analysis/index.Rmd
+    Modified:   analysis/metagenome.Rmd
+    Modified:   renv.lock
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not
+included in this status report because it is ok for generated content to
+have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the repository in which changes were
+made to the R Markdown (<code>analysis/metagenome.Rmd</code>) and HTML
+(<code>docs/metagenome.html</code>) files. If you’ve configured a remote
+Git repository (see <code>?wflow_git_remote</code>), click on the
+hyperlinks in the table below to view the files as they were in that
+past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/bf735ee5606e05092c049f92b6c8832bd222b562/analysis/metagenome.Rmd" target="_blank">bf735ee</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-20
+</td>
+<td>
+Add reformatted CAT for easier plotting
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/f0e4ba70a2ebae0b9debe7ce0bebf2595f3d9ea4/analysis/metagenome.Rmd" target="_blank">f0e4ba7</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-20
+</td>
+<td>
+add metagenomics files. add renv.
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<pre class="r"><code>library(tidyverse)
+library(UpSetR)
+library(microshades)
+library(ggtext)
+library(patchwork)
+library(scales)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())</code></pre>
+<pre class="r"><code>trunc_str &lt;- function(latin_name) {
+  tmp &lt;- str_split(latin_name, pattern = &#39; &#39;)[[1]]
+  return(paste0(substring(tmp[1], 1, 1), &#39;. &#39;, tmp[2]))
+}</code></pre>
+<p>Here we compare metagenomes (taxonomy and genes) across Amphibolis vs
+the others.</p>
+<pre class="r"><code>metadata &lt;- read_tsv(&#39;./data/metagenome/samples.tsv&#39;)</code></pre>
+<pre><code>Rows: 64 Columns: 4
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: &quot;\t&quot;
+chr (3): Sample, Species, Tissue
+dbl (1): Replicate
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>metadata &lt;- metadata |&gt; rename(Sample_species = Species,
+                               Sample_replicate = Replicate) |&gt; 
+  mutate(Tissue = str_to_title(Tissue))</code></pre>
+<div id="taxonomies" class="section level1">
+<h1>Taxonomies</h1>
+<p>We have two taxonomies: one based on CAT, one based on GTDB. GTDB is
+less complete but more accurate. Let’s see what they look like.</p>
+</div>
+<div id="gtdb" class="section level1">
+<h1>GTDB</h1>
+<pre class="r"><code>tax &lt;- read_tsv(&#39;./data/metagenome/all_gtdb.summary.tsv.gz&#39;)</code></pre>
+<pre><code>Rows: 520 Columns: 20
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: &quot;\t&quot;
+chr (17): user_genome, classification, fastani_reference, fastani_reference_...
+dbl  (3): msa_percent, translation_table, red_value
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>clean_tax &lt;- tax |&gt; 
+  separate(user_genome, into = c(&#39;sample&#39;, &#39;MAG&#39;), sep=&#39;\\.&#39;) |&gt; 
+  separate(classification, into = c(&#39;domain&#39;, &#39;phylum&#39;, 
+                                    &#39;class&#39;, &#39;order&#39;, 
+                                    &#39;family&#39;, &#39;genus&#39;, 
+                                    &#39;species&#39;), sep=&#39;;&#39;) |&gt; 
+  mutate(sample = str_replace_all(sample, &#39;MEGAHIT-&#39;, &#39;&#39;), 
+         sample = str_replace_all(sample, &#39;_L2&#39;, &#39;&#39;))
+         
+clean_tax &lt;- clean_tax |&gt; left_join(metadata, by = c(&#39;sample&#39;=&#39;Sample&#39;))</code></pre>
+<p>Next, we keep only Posidonia australis and Amphibolis antarctica
+samples</p>
+<pre class="r"><code>amph_pos_tax &lt;- clean_tax |&gt; filter(Sample_species %in% c(&#39;Amphibolis antarctica&#39;, &#39;Posidonia australis&#39;))</code></pre>
+<div id="gtdb-by-order" class="section level2">
+<h2>GTDB by order</h2>
+<pre class="r"><code>colors &lt;-c(microshades_palette(&quot;micro_blue&quot;, 4, lightest = FALSE), 
+           microshades_palette(&quot;micro_purple&quot;, 4, lightest = FALSE),
+           microshades_palette(&quot;micro_green&quot;, 4, lightest = FALSE),
+          microshades_palette(&quot;micro_orange&quot;, 4, lightest = FALSE))</code></pre>
+<pre class="r"><code>plot_orders_gtdb &lt;- function(amph_pos_tax, group_remainder = TRUE) {
+  temp &lt;- amph_pos_tax |&gt; 
+    group_by(sample, Tissue, Sample_species) |&gt; 
+    mutate(Sample_species = trunc_str(Sample_species)) |&gt; 
+    mutate(Sample_species = paste0(&#39;*&#39;, Sample_species, &#39;*&#39;)) |&gt; 
+    mutate(order = str_replace_all(order, &#39;o__&#39;,&#39;&#39;)) |&gt; 
+    count(order) 
+  if(group_remainder) {
+    temp &lt;- temp |&gt; 
+    mutate(counted_orders = case_when(n == 1 ~ &#39;Remainder&#39;,
+                                      TRUE ~ order))
+  } else {
+      temp &lt;- temp |&gt; 
+        mutate(counted_orders = order)
+  }
+  temp &lt;- temp |&gt; 
+    select(-order) |&gt; 
+    group_by(sample, Tissue, Sample_species, n, counted_orders) |&gt; 
+    summarise(n = sum(n)) |&gt; 
+    filter(counted_orders != &#39;&#39; )
+  
+  uniques &lt;- c(setdiff(unique(temp$counted_orders), c(&#39;Remainder&#39;)), &#39;Remainder&#39;)
+  temp |&gt; 
+    mutate(counted_orders = factor(counted_orders, levels=uniques)) |&gt; 
+    mutate(sample = str_remove(sample, &quot;[A-Z]+&quot;)) |&gt; 
+    mutate(sample = str_replace(sample, &#39;31&#39;, &#39;3&#39;)) |&gt; 
+    ggplot(aes(x = factor(sample, levels=rev(unique(sample))), y = n, fill=counted_orders)) +
+    geom_col() + 
+    theme_minimal() + 
+    facet_wrap(~Tissue+Sample_species, scales = &#39;free_y&#39;, ncol=2) + 
+    coord_flip() + 
+    ylab(&#39;Number of contigs&#39;) + xlab(&#39;Replicate&#39;) +
+    labs(fill = &#39;Order&#39;) +
+    scale_y_continuous(breaks=pretty_breaks())  +
+    # move legend position to bottom
+    theme(legend.position = &quot;bottom&quot;,
+          strip.text.x = element_markdown()) +
+    scale_fill_manual(values = colors)
+}
+plot_orders_gtdb(amph_pos_tax)</code></pre>
+<pre><code>`summarise()` has grouped output by &#39;sample&#39;, &#39;Tissue&#39;, &#39;Sample_species&#39;, &#39;n&#39;.
+You can override using the `.groups` argument.</code></pre>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" />
+Let’s also make an Upset plot of that</p>
+<pre class="r"><code>tmp &lt;- amph_pos_tax |&gt; 
+  group_by(sample) |&gt; 
+  mutate(order = str_replace_all(order, &#39;o__&#39;,&#39;&#39;)) |&gt; 
+  count(order) |&gt; 
+  filter(order != &#39;&#39; ) |&gt;
+  filter ( n &gt; 1) |&gt; 
+  summarise(named_vec = list(order)) %&gt;%
+  deframe()
+tmp</code></pre>
+<pre><code>$AR1
+[1] &quot;Acidimicrobiales&quot;  &quot;Chromatiales&quot;      &quot;Desulfobacterales&quot;
+[4] &quot;Rhizobiales&quot;      
+
+$AR2
+[1] &quot;Acidimicrobiales&quot;  &quot;Actinomycetales&quot;   &quot;Chromatiales&quot;     
+[4] &quot;Desulfobacterales&quot; &quot;Rhizobiales&quot;       &quot;Xanthomonadales&quot;  
+
+$AR3
+[1] &quot;Acidimicrobiales&quot;  &quot;Chromatiales&quot;      &quot;Desulfobacterales&quot;
+[4] &quot;UBA5794&quot;           &quot;Xanthomonadales&quot;  
+
+$AR4
+[1] &quot;Chromatiales&quot;      &quot;Desulfobacterales&quot; &quot;Rhizobiales&quot;      
+
+$ARZ1
+[1] &quot;Arenicellales&quot;     &quot;Chromatiales&quot;      &quot;Desulfobacterales&quot;
+
+$ARZ2
+[1] &quot;Chromatiales&quot;      &quot;Desulfobacterales&quot;
+
+$ARZ3
+[1] &quot;Desulfobacterales&quot;
+
+$ARZ4
+[1] &quot;Chromatiales&quot;      &quot;Desulfobacterales&quot;
+
+$AS1
+[1] &quot;Rhodobacterales&quot;
+
+$AS4
+[1] &quot;Acidimicrobiales&quot; &quot;Rhodobacterales&quot; 
+
+$ASB1
+[1] &quot;Acidimicrobiales&quot; &quot;Rhodobacterales&quot; 
+
+$ASB2
+[1] &quot;Rhodobacterales&quot;
+
+$PAR1
+[1] &quot;Chromatiales&quot;
+
+$PAR2
+[1] &quot;Bacteroidales&quot;     &quot;Chromatiales&quot;      &quot;Desulfobacterales&quot;
+
+$PAR31
+[1] &quot;Desulfobacterales&quot;
+
+$PARZ2
+[1] &quot;Desulfobacterales&quot;
+
+$PARZ3
+[1] &quot;Chromatiales&quot;      &quot;Desulfobacterales&quot;
+
+$PARZ4
+[1] &quot;Desulfobacterales&quot;
+
+$PAS2
+[1] &quot;Rhodobacterales&quot;
+
+$PASB1
+[1] &quot;Granulosicoccales&quot; &quot;Rhodobacterales&quot;  
+
+$PASB2
+[1] &quot;Flavobacteriales&quot;  &quot;Granulosicoccales&quot; &quot;Rhodobacterales&quot;  
+[4] &quot;Thiotrichales&quot;    
+
+$PASB3
+[1] &quot;Granulosicoccales&quot; &quot;Rhodobacterales&quot;  </code></pre>
+<pre class="r"><code>upset(fromList(tmp))</code></pre>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="gtdb-by-family" class="section level2">
+<h2>GTDB by family</h2>
+<pre class="r"><code>amph_pos_tax |&gt; 
+  group_by(sample, Tissue) |&gt; 
+  mutate(family = str_replace_all(family, &#39;f__&#39;,&#39;&#39;)) |&gt; 
+  count(family) |&gt; 
+  filter ( n &gt; 1) |&gt; 
+  filter(family != &#39;&#39; ) |&gt; 
+  ggplot(aes(x = sample, y = n, fill=family)) +
+  geom_col() + 
+  theme_minimal() + 
+  #theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
+  facet_wrap(~Tissue) + coord_flip() + 
+  ylab(&#39;Number of contigs&#39;) + xlab(&#39;Sample&#39;)</code></pre>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>amph_pos_tax |&gt; group_by(sample, species) |&gt; filter(species != &#39;s__&#39;) |&gt; 
+  count(species)</code></pre>
+<pre><code># A tibble: 0 × 3
+# Groups:   sample, species [0]
+# ℹ 3 variables: sample &lt;chr&gt;, species &lt;chr&gt;, n &lt;int&gt;</code></pre>
+</div>
+</div>
+<div id="cat" class="section level1">
+<h1>CAT</h1>
+<p>Let’s do the same using CAT</p>
+<pre class="r"><code>tax_cat &lt;- read_tsv(&#39;./data/metagenome/all_cat.summary.reformatted.tsv.gz&#39;)</code></pre>
+<pre><code>Warning: One or more parsing issues, call `problems()` on your data frame for details,
+e.g.:
+  dat &lt;- vroom(...)
+  problems(dat)</code></pre>
+<pre><code>Rows: 1454 Columns: 12
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: &quot;\t&quot;
+chr (10): # bin, classification, lineage, lineage scores, Superkingdom, Clas...
+dbl  (2): number of ORFs in bin, number of ORFs classification is based on
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>clean_tax_cat &lt;- tax_cat |&gt; 
+  separate(`# bin`, into = c(&#39;sample&#39;, &#39;MAG&#39;, &#39;fa&#39;), sep=&#39;\\.&#39;) |&gt; 
+  mutate(sample = str_replace_all(sample, &#39;MEGAHIT-&#39;, &#39;&#39;), 
+         sample = str_replace_all(sample, &#39;_L2&#39;, &#39;&#39;)) |&gt; 
+  select(-fa)
+         
+clean_tax_cat &lt;- clean_tax_cat |&gt; left_join(metadata, by = c(&#39;sample&#39;=&#39;Sample&#39;))</code></pre>
+<p>Next, we keep only Posidonia australis and Amphibolis antarctica
+samples</p>
+<pre class="r"><code>amph_pos_tax_cat &lt;- clean_tax_cat |&gt; filter(Sample_species %in% c(&#39;Amphibolis antarctica&#39;, &#39;Posidonia australis&#39;))</code></pre>
+<div id="cat-by-order" class="section level2">
+<h2>CAT by order</h2>
+<pre class="r"><code>plot_orders_cat &lt;-
+  function(amph_pos_tax_cat, group_remainder = TRUE) {
+    temp &lt;- amph_pos_tax_cat |&gt;
+      separate(Order, into = c(&#39;Order&#39;, &#39;Order_score&#39;)) |&gt;
+      rename(order = Order) |&gt;
+      group_by(sample, Tissue, Sample_species) |&gt;
+      mutate(Sample_species = trunc_str(Sample_species)) |&gt;
+      mutate(Sample_species = paste0(&#39;*&#39;, Sample_species, &#39;*&#39;)) |&gt;
+      count(order)
+    if (group_remainder) {
+      temp &lt;- temp |&gt;
+        mutate(counted_orders = case_when(n == 1 ~ &#39;Remainder&#39;,
+                                          TRUE ~ order))
+    } else {
+      temp &lt;- temp |&gt;
+        mutate(counted_orders = order)
+    }
+    temp &lt;- temp |&gt;
+      select(-order) |&gt;
+      group_by(sample, Tissue, Sample_species, n, counted_orders) |&gt;
+      summarise(n = sum(n)) |&gt;
+      filter(counted_orders != &#39;&#39;)
+    
+    uniques &lt;-
+      c(setdiff(unique(temp$counted_orders), c(&#39;Remainder&#39;)), &#39;Remainder&#39;)
+    temp |&gt;
+      mutate(counted_orders = factor(counted_orders, levels = uniques)) |&gt;
+      mutate(sample = str_remove(sample, &quot;[A-Z]+&quot;)) |&gt;
+      mutate(sample = str_replace(sample, &#39;31&#39;, &#39;3&#39;)) |&gt;
+      ggplot(aes(
+        x = factor(sample, levels = rev(unique(sample))),
+        y = n,
+        fill = counted_orders
+      )) +
+      geom_col() +
+      theme_minimal() +
+      facet_wrap( ~ Sample_species + Tissue, ncol = 2, scales = &#39;free_y&#39;) +
+      coord_flip() +
+      ylab(&#39;Number of contigs&#39;) + xlab(&#39;Replicate&#39;) +
+      labs(fill = &#39;Order&#39;) +
+      scale_y_continuous(breaks = pretty_breaks())  +
+      # move legend position to bottom
+      theme(legend.position = &quot;bottom&quot;,
+            strip.text.x = element_markdown()) +
+      scale_fill_manual(values = colors)
+  }
+plot_orders_cat(amph_pos_tax_cat)</code></pre>
+<pre><code>Warning: Expected 2 pieces. Additional pieces discarded in 345 rows [1, 2, 3, 4, 5, 7,
+8, 11, 13, 14, 15, 17, 22, 25, 26, 27, 29, 30, 33, 34, ...].</code></pre>
+<pre><code>`summarise()` has grouped output by &#39;sample&#39;, &#39;Tissue&#39;, &#39;Sample_species&#39;, &#39;n&#39;.
+You can override using the `.groups` argument.</code></pre>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="cat-by-family" class="section level2">
+<h2>CAT by family</h2>
+<pre class="r"><code>amph_pos_tax_cat |&gt; 
+  separate(Family, into = c(&#39;Family&#39;, &#39;Family_score&#39;)) |&gt; 
+  group_by(sample, Tissue) |&gt; 
+  count(Family) |&gt; 
+  filter ( n &gt; 1) |&gt; 
+  filter(Family != &#39;&#39; ) |&gt; 
+  ggplot(aes(x = sample, y = n, fill=Family)) +
+  geom_col() + 
+  theme_minimal() + 
+  #theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
+  facet_wrap(~Tissue) + coord_flip() + 
+  ylab(&#39;Number of contigs&#39;) + xlab(&#39;Sample&#39;)</code></pre>
+<pre><code>Warning: Expected 2 pieces. Additional pieces discarded in 178 rows [3, 4, 5, 26, 29,
+30, 33, 47, 56, 75, 79, 81, 82, 84, 88, 92, 93, 95, 97, 101, ...].</code></pre>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>amph_pos_tax_cat |&gt; separate(Species, into = c(&#39;Species&#39;, &#39;Species_score&#39;), sep =&#39;:&#39;) |&gt; filter(!is.na(Species)) |&gt;  group_by(sample, Species) |&gt; 
+  count(Species)</code></pre>
+<pre><code># A tibble: 68 × 3
+# Groups:   sample, Species [68]
+   sample Species                                n
+   &lt;chr&gt;  &lt;chr&gt;                              &lt;int&gt;
+ 1 AR1    Acidihalobacter ferrooxydans           1
+ 2 AR1    Deltaproteobacteria bacterium          1
+ 3 AR1    Desulfobacterales bacterium            1
+ 4 AR1    Gammaproteobacteria bacterium          1
+ 5 AR1    Solirubrobacterales bacterium 70-9     1
+ 6 AR1    Spirochaetaceae bacterium 4572_59      1
+ 7 AR2    Acidihalobacter ferrooxydans           1
+ 8 AR2    Desulfobacterales bacterium            1
+ 9 AR2    Flammeovirgaceae bacterium             1
+10 AR2    Gammaproteobacteria bacterium          2
+# ℹ 58 more rows</code></pre>
+<pre class="r"><code>amph_pos_tax_cat |&gt; separate(Species, into = c(&#39;Species&#39;, &#39;Species_score&#39;), sep =&#39;:&#39;) |&gt; filter(!is.na(Species)) |&gt;  group_by(sample, Species) |&gt; 
+  count(Species) |&gt; filter(str_detect(Species, &#39;Acidihalobacter&#39;))</code></pre>
+<pre><code># A tibble: 4 × 3
+# Groups:   sample, Species [4]
+  sample Species                          n
+  &lt;chr&gt;  &lt;chr&gt;                        &lt;int&gt;
+1 AR1    Acidihalobacter ferrooxydans     1
+2 AR2    Acidihalobacter ferrooxydans     1
+3 AR3    Acidihalobacter ferrooxydans     1
+4 AR4    Acidihalobacter ferrooxydans     1</code></pre>
+<p>There we go :) Which MAGs are those?</p>
+<pre class="r"><code>amph_pos_tax_cat |&gt; filter(str_detect(Species, &#39;Acidihalobacter&#39;))</code></pre>
+<pre><code># A tibble: 4 × 16
+  sample MAG   classification `number of ORFs in bin` number of ORFs classific…¹
+  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;                            &lt;dbl&gt;                      &lt;dbl&gt;
+1 AR1    36    classified                        3947                       3706
+2 AR2    57    classified                        5702                       5052
+3 AR3    6     classified                        3558                       3381
+4 AR4    41    classified                        3552                       3379
+# ℹ abbreviated name: ¹​`number of ORFs classification is based on`
+# ℹ 11 more variables: lineage &lt;chr&gt;, `lineage scores` &lt;chr&gt;,
+#   Superkingdom &lt;chr&gt;, Class &lt;chr&gt;, Order &lt;chr&gt;, Family &lt;chr&gt;, Genus &lt;chr&gt;,
+#   Species &lt;chr&gt;, Sample_replicate &lt;dbl&gt;, Sample_species &lt;chr&gt;, Tissue &lt;chr&gt;</code></pre>
+<pre class="r"><code>amph_pos_tax_cat |&gt; filter(str_detect(Family, &#39;Ectothiorhodospiraceae&#39;))</code></pre>
+<pre><code># A tibble: 4 × 16
+  sample MAG   classification `number of ORFs in bin` number of ORFs classific…¹
+  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;                            &lt;dbl&gt;                      &lt;dbl&gt;
+1 AR1    36    classified                        3947                       3706
+2 AR2    57    classified                        5702                       5052
+3 AR3    6     classified                        3558                       3381
+4 AR4    41    classified                        3552                       3379
+# ℹ abbreviated name: ¹​`number of ORFs classification is based on`
+# ℹ 11 more variables: lineage &lt;chr&gt;, `lineage scores` &lt;chr&gt;,
+#   Superkingdom &lt;chr&gt;, Class &lt;chr&gt;, Order &lt;chr&gt;, Family &lt;chr&gt;, Genus &lt;chr&gt;,
+#   Species &lt;chr&gt;, Sample_replicate &lt;dbl&gt;, Sample_species &lt;chr&gt;, Tissue &lt;chr&gt;</code></pre>
+<p>Are these in the GTDB classification?</p>
+<pre class="r"><code>amph_pos_tax |&gt; filter(str_detect(family, &#39;Ectothiorhodospiraceae&#39;))</code></pre>
+<pre><code># A tibble: 0 × 30
+# ℹ 30 variables: sample &lt;chr&gt;, MAG &lt;chr&gt;, domain &lt;chr&gt;, phylum &lt;chr&gt;,
+#   class &lt;chr&gt;, order &lt;chr&gt;, family &lt;chr&gt;, genus &lt;chr&gt;, species &lt;chr&gt;,
+#   fastani_reference &lt;chr&gt;, fastani_reference_radius &lt;chr&gt;,
+#   fastani_taxonomy &lt;chr&gt;, fastani_ani &lt;chr&gt;, fastani_af &lt;chr&gt;,
+#   closest_placement_reference &lt;chr&gt;, closest_placement_radius &lt;chr&gt;,
+#   closest_placement_taxonomy &lt;chr&gt;, closest_placement_ani &lt;chr&gt;,
+#   closest_placement_af &lt;chr&gt;, pplacer_taxonomy &lt;chr&gt;, …</code></pre>
+<p>Nope!</p>
+</div>
+</div>
+<div id="gene-comparison" class="section level1">
+<h1>Gene comparison</h1>
+<p>Let’s compare gene presence/absence by names first</p>
+<pre class="r"><code>genes &lt;- read_tsv(&#39;././data/metagenome/no_hypothetical.all_genes.tsv.gz&#39;)</code></pre>
+<pre><code>Rows: 1362907 Columns: 8
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: &quot;\t&quot;
+chr (8): filename, locus_tag, ftype, length_bp, gene, EC_number, COG, product
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>genes &lt;- genes |&gt; 
+  separate(filename, into = c(&#39;sample&#39;, &#39;MAG&#39;), sep=&#39;\\.&#39;, extra = &#39;drop&#39;) |&gt;  # get rid of extra filenaming stuff
+  mutate(sample = str_replace(sample, &#39;MEGAHIT-&#39;, &#39;&#39;)) |&gt; 
+  separate(MAG, into = c(&#39;MAG&#39;, &#39;rest&#39;), sep =&#39;/&#39;) |&gt; 
+  select(-rest)</code></pre>
+<pre><code>Warning: Expected 2 pieces. Missing pieces filled with `NA` in 1443 rows [2106, 4306,
+7036, 7144, 7539, 10011, 12436, 12584, 13618, 17164, 17303, 19074, 21967,
+22288, 28457, 30064, 32221, 32315, 34439, 34480, ...].</code></pre>
+<pre class="r"><code>genessplit &lt;- genes |&gt; separate(gene, into = c(&#39;gene&#39;, &#39;gene_copy_number&#39;), sep=&#39;_&#39;)</code></pre>
+<pre><code>Warning: Expected 2 pieces. Missing pieces filled with `NA` in 692502 rows [2, 3, 5, 6,
+7, 10, 12, 13, 14, 15, 17, 18, 25, 26, 30, 31, 33, 35, 36, 37, ...].</code></pre>
+<pre class="r"><code>genessplit &lt;- genessplit |&gt; mutate(sample = str_replace(sample, &#39;_L2&#39;, &#39;&#39;)) |&gt; 
+  left_join(metadata, by = c(&#39;sample&#39;=&#39;Sample&#39;)) |&gt; 
+  filter(Sample_species %in% c(&#39;Amphibolis antarctica&#39;, &#39;Posidonia australis&#39;))</code></pre>
+<pre class="r"><code>count_diffs &lt;- genessplit |&gt; 
+  group_by(Sample_species, gene) |&gt; 
+  count(gene) |&gt; 
+  pivot_wider(names_from = Sample_species, values_from = n) |&gt; 
+  mutate(difference = `Amphibolis antarctica` - `Posidonia australis`) |&gt; 
+  arrange(desc(difference))</code></pre>
+<pre class="r"><code>count_diffs |&gt; filter(`Posidonia australis` &lt;100)</code></pre>
+<pre><code># A tibble: 5,172 × 4
+# Groups:   gene [5,172]
+   gene  `Amphibolis antarctica` `Posidonia australis` difference
+   &lt;chr&gt;                   &lt;int&gt;                 &lt;int&gt;      &lt;int&gt;
+ 1 betI                      408                    80        328
+ 2 korA                      396                    76        320
+ 3 malT                      374                    63        311
+ 4 htpG                      392                    92        300
+ 5 mftC                      382                    95        287
+ 6 recD2                     362                    78        284
+ 7 zwf                       367                    84        283
+ 8 queG                      369                    91        278
+ 9 mglA                      373                    97        276
+10 gdhA                      359                    84        275
+# ℹ 5,162 more rows</code></pre>
+<p>We hypothesise that the ACC precursor-existing genes in Amphibolis
+lead to different microbiomes. ACC is broken down by ACC deaminases,
+which are present in Amphibolis but not Posidonia. Let’s see if we can
+find ACC deaminases in the metagenomes (<em>acdS</em>).</p>
+<pre class="r"><code>genessplit |&gt; filter(gene == &#39;acdS&#39;) |&gt; 
+  group_by(Sample_species, Tissue, Sample_replicate) |&gt; 
+  count(gene) |&gt; 
+  mutate(Sample_species = trunc_str(Sample_species)) |&gt; 
+  mutate(Sample_species = paste0(&#39;*&#39;, Sample_species, &#39;*&#39;)) |&gt; 
+  ggplot(aes(x= interaction(factor(Sample_replicate, levels=4:1), Tissue), y = n, fill = Sample_species)) + 
+  geom_col() + 
+  facet_wrap(~Sample_species) +
+  coord_flip()+ theme_minimal() + 
+  scale_y_continuous(breaks=pretty_breaks()) +
+  ylab(&#39;Total number of *acdS*-containing MAGs&#39;) +
+  xlab(&#39;Sample species&#39;) + 
+  theme(legend.position = &#39;none&#39;,
+        strip.text.x =  element_markdown(),
+        axis.title.x = element_markdown())</code></pre>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>What are those acdS-containing MAGs?</p>
+<pre class="r"><code>genessplit |&gt; filter(gene == &#39;acdS&#39;) |&gt; left_join(amph_pos_tax, by=c(&#39;sample&#39;, &#39;MAG&#39;), multiple = &#39;any&#39;)</code></pre>
+<pre><code># A tibble: 32 × 41
+   sample MAG   locus_tag ftype length_bp gene  gene_copy_number EC_number COG  
+   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;            &lt;chr&gt;     &lt;chr&gt;
+ 1 AR1    20    DKHMKEDN… CDS   1014      acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
+ 2 AR1    47    BGAOAMKE… CDS   1017      acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
+ 3 AR1    63    NHMBFEEI… CDS   1014      acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
+ 4 AR2    50    BOJIEKPI… CDS   1017      acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
+ 5 AR3    14    AIHODAJD… CDS   1014      acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
+ 6 AR3    27    OKIFEOJJ… CDS   1014      acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
+ 7 AR3    40    FMKMBAOD… CDS   1206      acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
+ 8 AR3    73    KKDHNOJN… CDS   1020      acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
+ 9 AR3    81    MCEFDNIP… CDS   450       acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
+10 AR4    58    DIBNLNHP… CDS   1017      acdS  &lt;NA&gt;             3.5.99.7  &lt;NA&gt; 
+# ℹ 22 more rows
+# ℹ 32 more variables: product &lt;chr&gt;, Sample_replicate.x &lt;dbl&gt;,
+#   Sample_species.x &lt;chr&gt;, Tissue.x &lt;chr&gt;, domain &lt;chr&gt;, phylum &lt;chr&gt;,
+#   class &lt;chr&gt;, order &lt;chr&gt;, family &lt;chr&gt;, genus &lt;chr&gt;, species &lt;chr&gt;,
+#   fastani_reference &lt;chr&gt;, fastani_reference_radius &lt;chr&gt;,
+#   fastani_taxonomy &lt;chr&gt;, fastani_ani &lt;chr&gt;, fastani_af &lt;chr&gt;,
+#   closest_placement_reference &lt;chr&gt;, closest_placement_radius &lt;chr&gt;, …</code></pre>
+<p>Lots of unknown taxonomies :(</p>
+<pre class="r"><code>genessplit |&gt; filter(gene == &#39;acdS&#39;) |&gt; left_join(amph_pos_tax, by=c(&#39;sample&#39;, &#39;MAG&#39;), multiple = &#39;any&#39;) |&gt; 
+  select(-c(Tissue.y, Sample_species.y)) |&gt;
+  rename(Tissue = Tissue.x, Sample_species = Sample_species.x) |&gt; 
+  plot_orders_gtdb(group_remainder = FALSE)</code></pre>
+<pre><code>`summarise()` has grouped output by &#39;sample&#39;, &#39;Tissue&#39;, &#39;Sample_species&#39;, &#39;n&#39;.
+You can override using the `.groups` argument.</code></pre>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>  #select(sample, MAG, domain:species)</code></pre>
+<pre class="r"><code>genessplit |&gt; filter(gene == &#39;acdS&#39;) |&gt; 
+  left_join(amph_pos_tax_cat, by=c(&#39;sample&#39;, &#39;MAG&#39;)) |&gt; 
+    select(-c(Tissue.y, Sample_species.y)) |&gt;
+  rename(Tissue = Tissue.x, Sample_species = Sample_species.x) |&gt; 
+  plot_orders_cat(group_remainder = FALSE) #</code></pre>
+<pre><code>Warning: Expected 2 pieces. Additional pieces discarded in 19 rows [1, 7, 8, 12, 16, 17,
+18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31].</code></pre>
+<pre><code>`summarise()` has grouped output by &#39;sample&#39;, &#39;Tissue&#39;, &#39;Sample_species&#39;, &#39;n&#39;.
+You can override using the `.groups` argument.</code></pre>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>  #select(sample, MAG, Superkingdom:Species) |&gt; </code></pre>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 4.3.2 (2023-10-31)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 20.04.6 LTS
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0 
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
+
+locale:
+ [1] LC_CTYPE=en_AU.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_AU.UTF-8        LC_COLLATE=en_AU.UTF-8    
+ [5] LC_MONETARY=en_AU.UTF-8    LC_MESSAGES=en_AU.UTF-8   
+ [7] LC_PAPER=en_AU.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_AU.UTF-8 LC_IDENTIFICATION=C       
+
+time zone: Australia/Perth
+tzcode source: system (glibc)
+
+attached base packages:
+[1] stats     graphics  grDevices datasets  utils     methods   base     
+
+other attached packages:
+ [1] scales_1.2.1     patchwork_1.1.2  ggtext_0.1.2     microshades_1.11
+ [5] UpSetR_1.4.0     lubridate_1.9.2  forcats_1.0.0    stringr_1.5.0   
+ [9] dplyr_1.1.2      purrr_1.0.1      readr_2.1.4      tidyr_1.3.0     
+[13] tibble_3.2.1     ggplot2_3.4.2    tidyverse_2.0.0  workflowr_1.7.1 
+
+loaded via a namespace (and not attached):
+ [1] gtable_0.3.3        xfun_0.39           bslib_0.4.2        
+ [4] processx_3.8.1      callr_3.7.3         tzdb_0.4.0         
+ [7] vctrs_0.6.2         tools_4.3.2         ps_1.7.5           
+[10] generics_0.1.3      parallel_4.3.2      fansi_1.0.4        
+[13] highr_0.10          pkgconfig_2.0.3     lifecycle_1.0.3    
+[16] farver_2.1.1        compiler_4.3.2      git2r_0.32.0       
+[19] munsell_0.5.0       getPass_0.2-2       httpuv_1.6.11      
+[22] htmltools_0.5.5     sass_0.4.6          yaml_2.3.7         
+[25] crayon_1.5.2        later_1.3.1         pillar_1.9.0       
+[28] jquerylib_0.1.4     whisker_0.4.1       cachem_1.0.8       
+[31] commonmark_1.9.0    tidyselect_1.2.0    digest_0.6.31      
+[34] stringi_1.7.12      labeling_0.4.2      cowplot_1.1.1      
+[37] rprojroot_2.0.3     fastmap_1.1.1       grid_4.3.2         
+[40] colorspace_2.1-0    cli_3.6.1           magrittr_2.0.3     
+[43] utf8_1.2.3          withr_2.5.0         promises_1.2.0.1   
+[46] bit64_4.0.5         timechange_0.2.0    rmarkdown_2.21     
+[49] httr_1.4.6          bit_4.0.5           gridExtra_2.3      
+[52] hms_1.1.3           evaluate_0.21       knitr_1.42         
+[55] markdown_1.11       rlang_1.1.1         gridtext_0.1.5     
+[58] Rcpp_1.0.10         glue_1.6.2          BiocManager_1.30.20
+[61] xml2_1.3.4          renv_1.0.2          vroom_1.6.3        
+[64] rstudioapi_0.14     jsonlite_1.8.4      R6_2.5.1           
+[67] plyr_1.8.8          fs_1.6.2           </code></pre>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

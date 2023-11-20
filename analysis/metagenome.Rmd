@@ -7,10 +7,23 @@ output: html_document
 
 ```{r setup, message=FALSE}
 library(tidyverse)
+library(UpSetR)
+library(microshades)
+library(ggtext)
 library(patchwork)
+library(scales)
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 
 ```
+
+```{r}
+trunc_str <- function(latin_name) {
+  tmp <- str_split(latin_name, pattern = ' ')[[1]]
+  return(paste0(substring(tmp[1], 1, 1), '. ', tmp[2]))
+}
+
+```
+
 
 Here we compare metagenomes (taxonomy and genes) across Amphibolis vs the others.
 
@@ -52,19 +65,72 @@ amph_pos_tax <- clean_tax |> filter(Sample_species %in% c('Amphibolis antarctica
 ## GTDB by order
 
 ```{r}
-amph_pos_tax |> 
-  group_by(sample, Tissue) |> 
+colors <-c(microshades_palette("micro_blue", 4, lightest = FALSE), 
+           microshades_palette("micro_purple", 4, lightest = FALSE),
+           microshades_palette("micro_green", 4, lightest = FALSE),
+          microshades_palette("micro_orange", 4, lightest = FALSE))
+
+```
+
+```{r fig.height=6}
+plot_orders_gtdb <- function(amph_pos_tax, group_remainder = TRUE) {
+  temp <- amph_pos_tax |> 
+    group_by(sample, Tissue, Sample_species) |> 
+    mutate(Sample_species = trunc_str(Sample_species)) |> 
+    mutate(Sample_species = paste0('*', Sample_species, '*')) |> 
+    mutate(order = str_replace_all(order, 'o__','')) |> 
+    count(order) 
+  if(group_remainder) {
+    temp <- temp |> 
+    mutate(counted_orders = case_when(n == 1 ~ 'Remainder',
+                                      TRUE ~ order))
+  } else {
+      temp <- temp |> 
+        mutate(counted_orders = order)
+  }
+  temp <- temp |> 
+    select(-order) |> 
+    group_by(sample, Tissue, Sample_species, n, counted_orders) |> 
+    summarise(n = sum(n)) |> 
+    filter(counted_orders != '' )
+  
+  uniques <- c(setdiff(unique(temp$counted_orders), c('Remainder')), 'Remainder')
+  temp |> 
+    mutate(counted_orders = factor(counted_orders, levels=uniques)) |> 
+    mutate(sample = str_remove(sample, "[A-Z]+")) |> 
+    mutate(sample = str_replace(sample, '31', '3')) |> 
+    ggplot(aes(x = factor(sample, levels=rev(unique(sample))), y = n, fill=counted_orders)) +
+    geom_col() + 
+    theme_minimal() + 
+    facet_wrap(~Tissue+Sample_species, scales = 'free_y', ncol=2) + 
+    coord_flip() + 
+    ylab('Number of contigs') + xlab('Replicate') +
+    labs(fill = 'Order') +
+    scale_y_continuous(breaks=pretty_breaks())  +
+    # move legend position to bottom
+    theme(legend.position = "bottom",
+          strip.text.x = element_markdown()) +
+    scale_fill_manual(values = colors)
+}
+plot_orders_gtdb(amph_pos_tax)
+```
+Let's also make an Upset plot of that
+
+```{r}
+tmp <- amph_pos_tax |> 
+  group_by(sample) |> 
   mutate(order = str_replace_all(order, 'o__','')) |> 
   count(order) |> 
+  filter(order != '' ) |>
   filter ( n > 1) |> 
-  filter(order != '' ) |> 
-  ggplot(aes(x = sample, y = n, fill=order)) +
-  geom_col() + 
-  theme_minimal() + 
-  #theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
-  facet_wrap(~Tissue) + coord_flip() + 
-  ylab('Number of contigs') + xlab('Sample')
+  summarise(named_vec = list(order)) %>%
+  deframe()
+tmp
 ```
+```{r}
+upset(fromList(tmp))
+```
+
 
 ## GTDB by family
 
@@ -83,30 +149,208 @@ amph_pos_tax |>
   facet_wrap(~Tissue) + coord_flip() + 
   ylab('Number of contigs') + xlab('Sample')
 ```
-Let's do the same using CAT
+```{r}
+amph_pos_tax |> group_by(sample, species) |> filter(species != 's__') |> 
+  count(species)
+```
 
 # CAT
+Let's do the same using CAT
 
 
 ```{r}
-tax_cat <- read_tsv('./data/metagenome/all_cat.summary.tsv.gz', guess_max = 100000)
+tax_cat <- read_tsv('./data/metagenome/all_cat.summary.reformatted.tsv.gz')
 ```
 
 ```{r}
 clean_tax_cat <- tax_cat |> 
-  separate(`# bin`, into = c('sample', 'MAG'), sep='\\.') |> 
-  separate(full_lineage_names, into = c('root', 'root2', 
-                                    'superkingdom', 'clade', 
-                                    'phylum', 'subphylum', 
-                                    'class'), sep='\t') |> 
+  separate(`# bin`, into = c('sample', 'MAG', 'fa'), sep='\\.') |> 
   mutate(sample = str_replace_all(sample, 'MEGAHIT-', ''), 
-         sample = str_replace_all(sample, '_L2', ''))
+         sample = str_replace_all(sample, '_L2', '')) |> 
+  select(-fa)
          
-clean_tax <- clean_tax |> left_join(metadata, by = c('sample'='Sample'))
+clean_tax_cat <- clean_tax_cat |> left_join(metadata, by = c('sample'='Sample'))
 ```
 
 Next, we keep only Posidonia australis and Amphibolis antarctica samples
 
 ```{r}
-amph_pos_tax <- clean_tax |> filter(Sample_species %in% c('Amphibolis antarctica', 'Posidonia australis'))
+amph_pos_tax_cat <- clean_tax_cat |> filter(Sample_species %in% c('Amphibolis antarctica', 'Posidonia australis'))
+```
+
+## CAT by order
+
+```{r fig.height=6}
+plot_orders_cat <-
+  function(amph_pos_tax_cat, group_remainder = TRUE) {
+    temp <- amph_pos_tax_cat |>
+      separate(Order, into = c('Order', 'Order_score')) |>
+      rename(order = Order) |>
+      group_by(sample, Tissue, Sample_species) |>
+      mutate(Sample_species = trunc_str(Sample_species)) |>
+      mutate(Sample_species = paste0('*', Sample_species, '*')) |>
+      count(order)
+    if (group_remainder) {
+      temp <- temp |>
+        mutate(counted_orders = case_when(n == 1 ~ 'Remainder',
+                                          TRUE ~ order))
+    } else {
+      temp <- temp |>
+        mutate(counted_orders = order)
+    }
+    temp <- temp |>
+      select(-order) |>
+      group_by(sample, Tissue, Sample_species, n, counted_orders) |>
+      summarise(n = sum(n)) |>
+      filter(counted_orders != '')
+    
+    uniques <-
+      c(setdiff(unique(temp$counted_orders), c('Remainder')), 'Remainder')
+    temp |>
+      mutate(counted_orders = factor(counted_orders, levels = uniques)) |>
+      mutate(sample = str_remove(sample, "[A-Z]+")) |>
+      mutate(sample = str_replace(sample, '31', '3')) |>
+      ggplot(aes(
+        x = factor(sample, levels = rev(unique(sample))),
+        y = n,
+        fill = counted_orders
+      )) +
+      geom_col() +
+      theme_minimal() +
+      facet_wrap( ~ Sample_species + Tissue, ncol = 2, scales = 'free_y') +
+      coord_flip() +
+      ylab('Number of contigs') + xlab('Replicate') +
+      labs(fill = 'Order') +
+      scale_y_continuous(breaks = pretty_breaks())  +
+      # move legend position to bottom
+      theme(legend.position = "bottom",
+            strip.text.x = element_markdown()) +
+      scale_fill_manual(values = colors)
+  }
+plot_orders_cat(amph_pos_tax_cat)
+```
+
+## CAT by family
+
+```{r}
+amph_pos_tax_cat |> 
+  separate(Family, into = c('Family', 'Family_score')) |> 
+  group_by(sample, Tissue) |> 
+  count(Family) |> 
+  filter ( n > 1) |> 
+  filter(Family != '' ) |> 
+  ggplot(aes(x = sample, y = n, fill=Family)) +
+  geom_col() + 
+  theme_minimal() + 
+  #theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
+  facet_wrap(~Tissue) + coord_flip() + 
+  ylab('Number of contigs') + xlab('Sample')
+```
+
+```{r}
+amph_pos_tax_cat |> separate(Species, into = c('Species', 'Species_score'), sep =':') |> filter(!is.na(Species)) |>  group_by(sample, Species) |> 
+  count(Species)
+```
+```{r}
+amph_pos_tax_cat |> separate(Species, into = c('Species', 'Species_score'), sep =':') |> filter(!is.na(Species)) |>  group_by(sample, Species) |> 
+  count(Species) |> filter(str_detect(Species, 'Acidihalobacter'))
+```
+
+There we go :) Which MAGs are those?
+```{r}
+amph_pos_tax_cat |> filter(str_detect(Species, 'Acidihalobacter'))
+```
+
+```{r}
+amph_pos_tax_cat |> filter(str_detect(Family, 'Ectothiorhodospiraceae'))
+```
+Are these in the GTDB classification?
+```{r}
+amph_pos_tax |> filter(str_detect(family, 'Ectothiorhodospiraceae'))
+```
+Nope!
+
+# Gene comparison
+
+Let's compare gene presence/absence by names first
+
+```{r}
+genes <- read_tsv('././data/metagenome/no_hypothetical.all_genes.tsv.gz')
+
+genes <- genes |> 
+  separate(filename, into = c('sample', 'MAG'), sep='\\.', extra = 'drop') |>  # get rid of extra filenaming stuff
+  mutate(sample = str_replace(sample, 'MEGAHIT-', '')) |> 
+  separate(MAG, into = c('MAG', 'rest'), sep ='/') |> 
+  select(-rest)
+```
+
+```{r}
+genessplit <- genes |> separate(gene, into = c('gene', 'gene_copy_number'), sep='_')
+```
+
+```{r}
+genessplit <- genessplit |> mutate(sample = str_replace(sample, '_L2', '')) |> 
+  left_join(metadata, by = c('sample'='Sample')) |> 
+  filter(Sample_species %in% c('Amphibolis antarctica', 'Posidonia australis'))
+
+```
+
+```{r}
+count_diffs <- genessplit |> 
+  group_by(Sample_species, gene) |> 
+  count(gene) |> 
+  pivot_wider(names_from = Sample_species, values_from = n) |> 
+  mutate(difference = `Amphibolis antarctica` - `Posidonia australis`) |> 
+  arrange(desc(difference))
+```
+
+```{r}
+count_diffs |> filter(`Posidonia australis` <100)
+```
+
+We hypothesise that the ACC precursor-existing genes in Amphibolis lead to different microbiomes. ACC is broken down by ACC deaminases, which are present in Amphibolis but not Posidonia. Let's see if we can find ACC deaminases in the metagenomes (*acdS*).
+
+```{r}
+genessplit |> filter(gene == 'acdS') |> 
+  group_by(Sample_species, Tissue, Sample_replicate) |> 
+  count(gene) |> 
+  mutate(Sample_species = trunc_str(Sample_species)) |> 
+  mutate(Sample_species = paste0('*', Sample_species, '*')) |> 
+  ggplot(aes(x= interaction(factor(Sample_replicate, levels=4:1), Tissue), y = n, fill = Sample_species)) + 
+  geom_col() + 
+  facet_wrap(~Sample_species) +
+  coord_flip()+ theme_minimal() + 
+  scale_y_continuous(breaks=pretty_breaks()) +
+  ylab('Total number of *acdS*-containing MAGs') +
+  xlab('Sample species') + 
+  theme(legend.position = 'none',
+        strip.text.x =  element_markdown(),
+        axis.title.x = element_markdown())
+```
+
+What are those acdS-containing MAGs?
+
+
+```{r}
+genessplit |> filter(gene == 'acdS') |> left_join(amph_pos_tax, by=c('sample', 'MAG'), multiple = 'any')
+```
+Lots of unknown taxonomies :( 
+
+```{r}
+genessplit |> filter(gene == 'acdS') |> left_join(amph_pos_tax, by=c('sample', 'MAG'), multiple = 'any') |> 
+  select(-c(Tissue.y, Sample_species.y)) |>
+  rename(Tissue = Tissue.x, Sample_species = Sample_species.x) |> 
+  plot_orders_gtdb(group_remainder = FALSE)
+  #select(sample, MAG, domain:species)
+```
+
+
+```{r}
+genessplit |> filter(gene == 'acdS') |> 
+  left_join(amph_pos_tax_cat, by=c('sample', 'MAG')) |> 
+    select(-c(Tissue.y, Sample_species.y)) |>
+  rename(Tissue = Tissue.x, Sample_species = Sample_species.x) |> 
+  plot_orders_cat(group_remainder = FALSE) #
+  #select(sample, MAG, Superkingdom:Species) |> 
+  
 ```
