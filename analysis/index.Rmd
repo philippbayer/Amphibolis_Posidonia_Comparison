@@ -28,4 +28,4 @@ This website collects comparisons of *Amphibolis* and *Posidonia* comparative an
 
 [3D structure](ThreeDStructure.html) - visualising the predicted 3D structure of *SOS3*/*EIN3*
 
-[Metagenomics]('metagenome.html') - visualising metagenome differences across Posidonia/Amphibolis
+[Metagenomics](metagenome.html) - visualising metagenome differences across Posidonia/Amphibolis
