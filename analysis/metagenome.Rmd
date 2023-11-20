@@ -1,0 +1,15 @@
+---
+title: "Visualising metagenome differences"
+author: "Philipp Bayer"
+date: "20th Nov 2023"
+output: html_document
+---
+
+```{r setup, message=FALSE}
+library(tidyverse)
+library(patchwork)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+
+```
+
+Here we compare metagenomes (taxonomy and genes) across Amphibolis vs the others.

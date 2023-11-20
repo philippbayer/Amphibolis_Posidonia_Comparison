@@ -1,0 +1,29 @@
+---
+title: "Visualising metagenome differences"
+author: "Philipp Bayer"
+date: "20th Nov 2023"
+output: html_document
+---
+
+```{r setup, message=FALSE}
+library(tidyverse)
+library(patchwork)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+
+```
+
+Here we compare metagenomes (taxonomy and genes) across Amphibolis vs the others
+
+
+OK now we can make patchworks with these Venn diagrams and their associated GO-terms
+```{r fig.width=8, fig.height=10}
+sum1 <- group_venn / (plot_list$GO_results_genes_in_Terrestrials_NOT_Aquatics_NOT_Seagrasses.csv + theme(legend.position="bottom")) +  plot_annotation(tag_levels = 'A') +plot_layout(heights=c(1.5,1))
+sum1
+cowplot::save_plot(sum1, filename = 'output/patchwork_terrestrials_gene_loss.png', base_height = 10, base_width = 8)
+```
+
+```{r fig.width=8, fig.height=10}
+sum2 <- seagrass_venn / (plot_list$GO_results_genes_in_all_seagrasses_vs_seagrassesBackground_intersect.csv + theme(legend.position="bottom")) +  plot_annotation(tag_levels = 'A') +plot_layout(heights=c(1.5,1))
+sum2
+cowplot::save_plot(sum2, filename = 'output/patchwork_seagrass_gene_loss.png', base_height = 10, base_width = 8)
+```
