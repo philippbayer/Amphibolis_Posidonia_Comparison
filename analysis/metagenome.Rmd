@@ -399,7 +399,36 @@ genessplit |> filter(str_detect(gene, 'nifH') | str_detect(gene, 'acdS') | str_d
 
 ```
 
+```{r}
+genessplit |> filter(str_detect(gene, 'nifH') | str_detect(gene, 'acdS') | str_detect(gene, 'sctC')) |> 
+  mutate(gene_class = case_when(str_detect(gene, 'nifH') ~ '*nifH*',
+                                str_detect(gene, 'acdS') ~ '*acdS*',
+                                str_detect(gene, 'sctC') ~ '*sctC*')) |>
+  #group_by(Sample_species, Tissue, Sample_replicate, MAG) |> 
+  #summarise(gene_class = paste0(sort(unique(gene_class)), collapse = ' & ')) |>
+  group_by(Sample_species, Tissue, Sample_replicate) |> 
+  count(gene_class) |> 
+  mutate(Sample_species = trunc_str(Sample_species)) |> 
+  mutate(Sample_species = paste0('*', Sample_species, '*')) |> 
+  ggplot(aes(x=factor(Tissue, levels=rev(c('Shoot/Leaf', 'Shoot/Leaf Biofilm', 'Rhizome', 'Root'))), y=n, fill=Sample_species)) + 
+  geom_boxplot(outlier.shape = NA) +
+  facet_wrap(~factor(gene_class, levels=c('*acdS*', '*nifH*', '*sctC*')), scales = 'free_x') + 
+  geom_point(position = position_jitterdodge(), aes(color=Sample_species)) +
+  coord_flip() +
+  theme_minimal() +
+  labs(color='Species', fill='Species') +
+  theme(axis.text.y =  element_markdown(),legend.text = element_markdown(),
+        strip.text.x = element_markdown()) +
+  ylab('Count of MAGs') + xlab('Species')
+```
+I like this one more. The differences are stronger.
+
+
+# Statistic test
+
 Can we make a simple association test?
+
+First, a general one:
 
 ```{r}
 tmp <- genessplit |> filter(str_detect(gene, 'nifH') | str_detect(gene, 'acdS') | str_detect(gene, 'sctC')) |> 
@@ -413,3 +442,52 @@ summary(lm(n ~ gene_class + Sample_species + Sample_replicate + Tissue, data=tmp
 ```
 
 OK! So we have an association with gene_class, which is obvious, but we also have an association with species (great!) and root-tissue (also great!)
+
+## Subtests
+Now let's make the specific ones; nifh, acdS, and sctC counts within Tissue=root across both species
+
+### nifH
+```{r}
+tmp <- genessplit |> filter(str_detect(gene, 'nifH') & str_detect(Tissue, 'Root')) |> 
+  mutate(gene_class = case_when(str_detect(gene, 'nifH') ~ 'nifH')) |> 
+  group_by(Sample_species, Sample_replicate) |> count(gene_class) 
+tmp  
+```
+
+```{r}
+t.test(n ~ Sample_species, data=tmp)
+```
+
+P < 0.0005
+
+### sctC
+
+```{r}
+tmp <- genessplit |> filter(str_detect(gene, 'sctC') & str_detect(Tissue, 'Root')) |> 
+  mutate(gene_class = case_when(str_detect(gene, 'sctC') ~ 'sctC')) |> 
+  group_by(Sample_species, Sample_replicate) |> count(gene_class) 
+tmp  
+```
+
+```{r}
+t.test(n ~ Sample_species, data=tmp)
+```
+
+p < 0.005
+
+### acdS
+
+```{r}
+tmp <- genessplit |> filter(str_detect(gene, 'acdS') & str_detect(Tissue, 'Root')) |> 
+  mutate(gene_class = case_when(str_detect(gene, 'acdS') ~ 'acdS')) |> 
+  group_by(Sample_species, Sample_replicate) |> count(gene_class) 
+tmp 
+```
+
+can't run t-test, only one group present!
+
+```{r}
+# t.test(n ~ Sample_species, data=tmp)
+```
+
+
