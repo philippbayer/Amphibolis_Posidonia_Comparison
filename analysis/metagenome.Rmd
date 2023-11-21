@@ -75,7 +75,10 @@ colors <-c(microshades_palette("micro_blue", 4, lightest = FALSE),
            microshades_palette("micro_purple", 4, lightest = FALSE),
            microshades_palette("micro_green", 4, lightest = FALSE),
            microshades_palette("micro_orange", 4, lightest = FALSE))
-
+names(colors) <- c("Rhizobiales", "Clostridiales", "Desulfobacterales", "Chitinophagales", 
+"Chromatiales", "Solirubrobacterales", "Xanthomonadales", "Acidimicrobiales", 
+"Rhodobacterales", "Corallinales", "Ceramiales", "Alismatales", 
+"Thiotrichales", "Flavobacteriales", "Remainder", "Unclassified")
 ```
 
 ```{r fig.height=6}
