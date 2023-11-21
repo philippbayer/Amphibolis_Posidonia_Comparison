@@ -524,15 +524,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree920282de0009dadba09c0cfbbe9a0e5a626ba70ftargetblank920282da">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreeaa839e6748d519edbaf8fc8a4a9e88e68817369atargetblankaa839e6a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/920282de0009dadba09c0cfbbe9a0e5a626ba70f" target="_blank">920282d</a>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/aa839e6748d519edbaf8fc8a4a9e88e68817369a" target="_blank">aa839e6</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree920282de0009dadba09c0cfbbe9a0e5a626ba70ftargetblank920282da"
+id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreeaa839e6748d519edbaf8fc8a4a9e88e68817369atargetblankaa839e6a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -542,7 +542,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/920282de0009dadba09c0cfbbe9a0e5a626ba70f" target="_blank">920282d</a>.
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/aa839e6748d519edbaf8fc8a4a9e88e68817369a" target="_blank">aa839e6</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -560,6 +560,9 @@ Ignored files:
     Ignored:    .Rproj.user/
     Ignored:    renv/library/
     Ignored:    renv/staging/
+
+Untracked files:
+    Untracked:  data/metagenome/MAG_counts.tsv
 
 Unstaged changes:
     Modified:   analysis/metagenome.Rmd
@@ -608,6 +611,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/aa839e6748d519edbaf8fc8a4a9e88e68817369a/analysis/metagenome.Rmd" target="_blank">aa839e6</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-21
+</td>
+<td>
+add missing ifles
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/aa839e6748d519edbaf8fc8a4a9e88e68817369a/docs/metagenome.html" target="_blank">aa839e6</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-21
+</td>
+<td>
+add missing ifles
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -753,10 +790,8 @@ add metagenomics files. add renv.
 </div>
 </div>
 <pre class="r"><code>library(tidyverse)
-library(UpSetR)
 library(microshades)
 library(ggtext)
-library(patchwork)
 library(scales)
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())</code></pre>
 <pre class="r"><code>trunc_str &lt;- function(latin_name) {
@@ -793,6 +828,18 @@ dbl  (3): msa_percent, translation_table, red_value
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<p>Need to put some extra work in; MAGs with no classification are not
+in the output file.</p>
+<pre class="r"><code>all_mag_counts &lt;- read_tsv(&#39;./data/metagenome/MAG_counts.tsv&#39;) |&gt; mutate(Sample = str_replace(Sample, &#39;_L2&#39;, &#39;&#39;)) |&gt; 
+  rename(TotalMAGs = MAGs)</code></pre>
+<pre><code>Rows: 64 Columns: 2
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: &quot;\t&quot;
+chr (1): Sample
+dbl (1): MAGs
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <pre class="r"><code>clean_tax &lt;- tax |&gt; 
   separate(user_genome, into = c(&#39;sample&#39;, &#39;MAG&#39;), sep=&#39;\\.&#39;) |&gt; 
   separate(classification, into = c(&#39;domain&#39;, &#39;phylum&#39;, 
@@ -805,16 +852,17 @@ dbl  (3): msa_percent, translation_table, red_value
 clean_tax &lt;- clean_tax |&gt; left_join(metadata, by = c(&#39;sample&#39;=&#39;Sample&#39;))</code></pre>
 <p>Next, we keep only Posidonia australis and Amphibolis antarctica
 samples</p>
-<pre class="r"><code>amph_pos_tax &lt;- clean_tax |&gt; filter(Sample_species %in% c(&#39;Amphibolis antarctica&#39;, &#39;Posidonia australis&#39;))</code></pre>
+<pre class="r"><code>amph_pos_tax &lt;- clean_tax |&gt; filter(Sample_species %in% c(&#39;Amphibolis antarctica&#39;, &#39;Posidonia australis&#39;)) |&gt; 
+  left_join(all_mag_counts, by = c(&#39;sample&#39;=&#39;Sample&#39;))</code></pre>
 <div id="gtdb-by-order" class="section level2">
 <h2>GTDB by order</h2>
 <pre class="r"><code>colors &lt;-c(microshades_palette(&quot;micro_blue&quot;, 4, lightest = FALSE), 
            microshades_palette(&quot;micro_purple&quot;, 4, lightest = FALSE),
            microshades_palette(&quot;micro_green&quot;, 4, lightest = FALSE),
-          microshades_palette(&quot;micro_orange&quot;, 4, lightest = FALSE))</code></pre>
+           microshades_palette(&quot;micro_orange&quot;, 4, lightest = FALSE))</code></pre>
 <pre class="r"><code>plot_orders_gtdb &lt;- function(amph_pos_tax, group_remainder = TRUE) {
   temp &lt;- amph_pos_tax |&gt; 
-    group_by(sample, Tissue, Sample_species) |&gt; 
+    group_by(sample, Tissue, Sample_species,TotalMAGs) |&gt; 
     mutate(Sample_species = trunc_str(Sample_species)) |&gt; 
     mutate(Sample_species = paste0(&#39;*&#39;, Sample_species, &#39;*&#39;)) |&gt; 
     mutate(order = str_replace_all(order, &#39;o__&#39;,&#39;&#39;)) |&gt; 
@@ -827,14 +875,27 @@ samples</p>
       temp &lt;- temp |&gt; 
         mutate(counted_orders = order)
   }
-  temp &lt;- temp |&gt; 
+  temp2 &lt;- temp |&gt; 
     select(-order) |&gt; 
     group_by(sample, Tissue, Sample_species, n, counted_orders) |&gt; 
     summarise(n = sum(n)) |&gt; 
     filter(counted_orders != &#39;&#39; )
-  
-  uniques &lt;- c(setdiff(unique(temp$counted_orders), c(&#39;Remainder&#39;)), &#39;Remainder&#39;)
-  temp |&gt; 
+  # we need to count the unclassified MAGs that are not in the output
+  group_presents &lt;- temp2 |&gt; group_by(sample) |&gt; summarise(classifiedMAGs = sum(n))
+  missings &lt;- group_presents |&gt; 
+    left_join(temp |&gt; 
+                select(sample, TotalMAGs)) |&gt; 
+    unique() |&gt; 
+    mutate(unclassifiedMAGs = TotalMAGs - classifiedMAGs) |&gt; 
+    select(-c(classifiedMAGs,TotalMAGs)) |&gt;
+    rename(Unclassified = unclassifiedMAGs) |&gt;
+    pivot_longer(-c(sample, Tissue, Sample_species)) |&gt; 
+    rename(counted_orders=name, n=value)
+
+  temp2 &lt;-rbind(temp2, missings)
+
+  uniques &lt;- c(setdiff(unique(temp2$counted_orders), c(&#39;Unclassified&#39;, &#39;Remainder&#39;)), &#39;Remainder&#39;, &#39;Unclassified&#39;)
+  temp2 |&gt; 
     mutate(counted_orders = factor(counted_orders, levels=uniques)) |&gt; 
     mutate(sample = str_remove(sample, &quot;[A-Z]+&quot;)) |&gt; 
     mutate(sample = str_replace(sample, &#39;31&#39;, &#39;3&#39;)) |&gt; 
@@ -853,125 +914,25 @@ samples</p>
 }
 plot_orders_gtdb(amph_pos_tax)</code></pre>
 <pre><code>`summarise()` has grouped output by &#39;sample&#39;, &#39;Tissue&#39;, &#39;Sample_species&#39;, &#39;n&#39;.
-You can override using the `.groups` argument.</code></pre>
-<p><img src="figure/metagenome.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-7-1">
-Past versions of unnamed-chunk-7-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-7-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/b5757aca73563d447eacd4fe551f766217368fc7/docs/figure/metagenome.Rmd/unnamed-chunk-7-1.png" target="_blank">b5757ac</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-20
-</td>
-</tr>
-</tbody>
-</table>
+You can override using the `.groups` argument.
+Adding missing grouping variables: `Tissue`, `Sample_species`
+Joining with `by = join_by(sample)`</code></pre>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
 </div>
-</div>
-<p>Let’s also make an Upset plot of that</p>
-<pre class="r"><code>tmp &lt;- amph_pos_tax |&gt; 
-  group_by(sample) |&gt; 
-  mutate(order = str_replace_all(order, &#39;o__&#39;,&#39;&#39;)) |&gt; 
-  count(order) |&gt; 
-  filter(order != &#39;&#39; ) |&gt;
+<div id="gtdb-by-family" class="section level2">
+<h2>GTDB by family</h2>
+<pre class="r"><code>amph_pos_tax |&gt; 
+  group_by(sample, Tissue) |&gt; 
+  mutate(family = str_replace_all(family, &#39;f__&#39;,&#39;&#39;)) |&gt; 
+  count(family) |&gt; 
   filter ( n &gt; 1) |&gt; 
-  summarise(named_vec = list(order)) %&gt;%
-  deframe()
-tmp</code></pre>
-<pre><code>$AR1
-[1] &quot;Acidimicrobiales&quot;  &quot;Chromatiales&quot;      &quot;Desulfobacterales&quot;
-[4] &quot;Rhizobiales&quot;      
-
-$AR2
-[1] &quot;Acidimicrobiales&quot;  &quot;Actinomycetales&quot;   &quot;Chromatiales&quot;     
-[4] &quot;Desulfobacterales&quot; &quot;Rhizobiales&quot;       &quot;Xanthomonadales&quot;  
-
-$AR3
-[1] &quot;Acidimicrobiales&quot;  &quot;Chromatiales&quot;      &quot;Desulfobacterales&quot;
-[4] &quot;UBA5794&quot;           &quot;Xanthomonadales&quot;  
-
-$AR4
-[1] &quot;Chromatiales&quot;      &quot;Desulfobacterales&quot; &quot;Rhizobiales&quot;      
-
-$ARZ1
-[1] &quot;Arenicellales&quot;     &quot;Chromatiales&quot;      &quot;Desulfobacterales&quot;
-
-$ARZ2
-[1] &quot;Chromatiales&quot;      &quot;Desulfobacterales&quot;
-
-$ARZ3
-[1] &quot;Desulfobacterales&quot;
-
-$ARZ4
-[1] &quot;Chromatiales&quot;      &quot;Desulfobacterales&quot;
-
-$AS1
-[1] &quot;Rhodobacterales&quot;
-
-$AS4
-[1] &quot;Acidimicrobiales&quot; &quot;Rhodobacterales&quot; 
-
-$ASB1
-[1] &quot;Acidimicrobiales&quot; &quot;Rhodobacterales&quot; 
-
-$ASB2
-[1] &quot;Rhodobacterales&quot;
-
-$PAR1
-[1] &quot;Chromatiales&quot;
-
-$PAR2
-[1] &quot;Bacteroidales&quot;     &quot;Chromatiales&quot;      &quot;Desulfobacterales&quot;
-
-$PAR31
-[1] &quot;Desulfobacterales&quot;
-
-$PARZ2
-[1] &quot;Desulfobacterales&quot;
-
-$PARZ3
-[1] &quot;Chromatiales&quot;      &quot;Desulfobacterales&quot;
-
-$PARZ4
-[1] &quot;Desulfobacterales&quot;
-
-$PAS2
-[1] &quot;Rhodobacterales&quot;
-
-$PASB1
-[1] &quot;Granulosicoccales&quot; &quot;Rhodobacterales&quot;  
-
-$PASB2
-[1] &quot;Flavobacteriales&quot;  &quot;Granulosicoccales&quot; &quot;Rhodobacterales&quot;  
-[4] &quot;Thiotrichales&quot;    
-
-$PASB3
-[1] &quot;Granulosicoccales&quot; &quot;Rhodobacterales&quot;  </code></pre>
-<pre class="r"><code>upset(fromList(tmp))</code></pre>
+  filter(family != &#39;&#39; ) |&gt; 
+  ggplot(aes(x = sample, y = n, fill=family)) +
+  geom_col() + 
+  theme_minimal() + 
+  #theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
+  facet_wrap(~Tissue) + coord_flip() + 
+  ylab(&#39;Number of contigs&#39;) + xlab(&#39;Sample&#39;)</code></pre>
 <p><img src="figure/metagenome.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-9-1">
@@ -998,59 +959,6 @@ Date
 <tr>
 <td>
 <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/b5757aca73563d447eacd4fe551f766217368fc7/docs/figure/metagenome.Rmd/unnamed-chunk-9-1.png" target="_blank">b5757ac</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-20
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div id="gtdb-by-family" class="section level2">
-<h2>GTDB by family</h2>
-<pre class="r"><code>amph_pos_tax |&gt; 
-  group_by(sample, Tissue) |&gt; 
-  mutate(family = str_replace_all(family, &#39;f__&#39;,&#39;&#39;)) |&gt; 
-  count(family) |&gt; 
-  filter ( n &gt; 1) |&gt; 
-  filter(family != &#39;&#39; ) |&gt; 
-  ggplot(aes(x = sample, y = n, fill=family)) +
-  geom_col() + 
-  theme_minimal() + 
-  #theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
-  facet_wrap(~Tissue) + coord_flip() + 
-  ylab(&#39;Number of contigs&#39;) + xlab(&#39;Sample&#39;)</code></pre>
-<p><img src="figure/metagenome.Rmd/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-10-1">
-Past versions of unnamed-chunk-10-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-10-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/b5757aca73563d447eacd4fe551f766217368fc7/docs/figure/metagenome.Rmd/unnamed-chunk-10-1.png" target="_blank">b5757ac</a>
 </td>
 <td>
 Philipp Bayer
@@ -1092,7 +1000,7 @@ dbl  (2): number of ORFs in bin, number of ORFs classification is based on
          sample = str_replace_all(sample, &#39;_L2&#39;, &#39;&#39;)) |&gt; 
   select(-fa)
          
-clean_tax_cat &lt;- clean_tax_cat |&gt; left_join(metadata, by = c(&#39;sample&#39;=&#39;Sample&#39;))</code></pre>
+clean_tax_cat &lt;- clean_tax_cat |&gt; left_join(metadata, by = c(&#39;sample&#39;=&#39;Sample&#39;)) |&gt; left_join(all_mag_counts, by =c(&#39;sample&#39;=&#39;Sample&#39;))</code></pre>
 <p>Next, we keep only Posidonia australis and Amphibolis antarctica
 samples</p>
 <pre class="r"><code>amph_pos_tax_cat &lt;- clean_tax_cat |&gt; filter(Sample_species %in% c(&#39;Amphibolis antarctica&#39;, &#39;Posidonia australis&#39;))</code></pre>
@@ -1103,7 +1011,7 @@ samples</p>
     temp &lt;- amph_pos_tax_cat |&gt;
       separate(Order, into = c(&#39;Order&#39;, &#39;Order_score&#39;)) |&gt;
       rename(order = Order) |&gt;
-      group_by(sample, Tissue, Sample_species) |&gt;
+      group_by(sample, Tissue, Sample_species, TotalMAGs) |&gt;
       mutate(Sample_species = trunc_str(Sample_species)) |&gt;
       mutate(Sample_species = paste0(&#39;*&#39;, Sample_species, &#39;*&#39;)) |&gt;
       count(order)
@@ -1115,15 +1023,28 @@ samples</p>
       temp &lt;- temp |&gt;
         mutate(counted_orders = order)
     }
-    temp &lt;- temp |&gt;
+    temp2 &lt;- temp |&gt;
       select(-order) |&gt;
-      group_by(sample, Tissue, Sample_species, n, counted_orders) |&gt;
+      group_by(sample, Tissue, Sample_species, n, counted_orders,TotalMAGs) |&gt;
       summarise(n = sum(n)) |&gt;
       filter(counted_orders != &#39;&#39;)
-    
-    uniques &lt;-
-      c(setdiff(unique(temp$counted_orders), c(&#39;Remainder&#39;)), &#39;Remainder&#39;)
-    temp |&gt;
+      # we need to count the unclassified MAGs that are not in the output
+    group_presents &lt;- temp2 |&gt; group_by(sample) |&gt; summarise(classifiedMAGs = sum(n))
+    missings &lt;- group_presents |&gt; 
+      left_join(temp2) |&gt; 
+      select(classifiedMAGs, Tissue, Sample_species, sample, TotalMAGs)|&gt; 
+      unique() |&gt; 
+      mutate(unclassifiedMAGs = TotalMAGs - classifiedMAGs) |&gt; 
+      select(-c(classifiedMAGs,TotalMAGs)) |&gt;
+      rename(Unclassified = unclassifiedMAGs) |&gt;
+      pivot_longer(-c(sample, Tissue, Sample_species)) |&gt; 
+      rename(counted_orders=name, n=value)
+
+    temp2 &lt;-rbind(temp2, missings)
+
+   uniques &lt;- c(setdiff(unique(temp2$counted_orders), c(&#39;Unclassified&#39;, &#39;Remainder&#39;)), &#39;Remainder&#39;, &#39;Unclassified&#39;)
+ 
+    temp2 |&gt;
       mutate(counted_orders = factor(counted_orders, levels = uniques)) |&gt;
       mutate(sample = str_remove(sample, &quot;[A-Z]+&quot;)) |&gt;
       mutate(sample = str_replace(sample, &#39;31&#39;, &#39;3&#39;)) |&gt;
@@ -1147,8 +1068,27 @@ samples</p>
 plot_orders_cat(amph_pos_tax_cat)</code></pre>
 <pre><code>Warning: Expected 2 pieces. Additional pieces discarded in 345 rows [1, 2, 3, 4, 5, 7,
 8, 11, 13, 14, 15, 17, 22, 25, 26, 27, 29, 30, 33, 34, ...].</code></pre>
-<pre><code>`summarise()` has grouped output by &#39;sample&#39;, &#39;Tissue&#39;, &#39;Sample_species&#39;, &#39;n&#39;.
-You can override using the `.groups` argument.</code></pre>
+<pre><code>`summarise()` has grouped output by &#39;sample&#39;, &#39;Tissue&#39;, &#39;Sample_species&#39;, &#39;n&#39;,
+&#39;counted_orders&#39;. You can override using the `.groups` argument.
+Joining with `by = join_by(sample)`</code></pre>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="cat-by-family" class="section level2">
+<h2>CAT by family</h2>
+<pre class="r"><code>amph_pos_tax_cat |&gt; 
+  separate(Family, into = c(&#39;Family&#39;, &#39;Family_score&#39;)) |&gt; 
+  group_by(sample, Tissue) |&gt; 
+  count(Family) |&gt; 
+  filter ( n &gt; 1) |&gt; 
+  filter(Family != &#39;&#39; ) |&gt; 
+  ggplot(aes(x = sample, y = n, fill=Family)) +
+  geom_col() + 
+  theme_minimal() + 
+  #theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
+  facet_wrap(~Tissue) + coord_flip() + 
+  ylab(&#39;Number of contigs&#39;) + xlab(&#39;Sample&#39;)</code></pre>
+<pre><code>Warning: Expected 2 pieces. Additional pieces discarded in 178 rows [3, 4, 5, 26, 29,
+30, 33, 47, 56, 75, 79, 81, 82, 84, 88, 92, 93, 95, 97, 101, ...].</code></pre>
 <p><img src="figure/metagenome.Rmd/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-15-1">
@@ -1175,61 +1115,6 @@ Date
 <tr>
 <td>
 <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/b5757aca73563d447eacd4fe551f766217368fc7/docs/figure/metagenome.Rmd/unnamed-chunk-15-1.png" target="_blank">b5757ac</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-20
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div id="cat-by-family" class="section level2">
-<h2>CAT by family</h2>
-<pre class="r"><code>amph_pos_tax_cat |&gt; 
-  separate(Family, into = c(&#39;Family&#39;, &#39;Family_score&#39;)) |&gt; 
-  group_by(sample, Tissue) |&gt; 
-  count(Family) |&gt; 
-  filter ( n &gt; 1) |&gt; 
-  filter(Family != &#39;&#39; ) |&gt; 
-  ggplot(aes(x = sample, y = n, fill=Family)) +
-  geom_col() + 
-  theme_minimal() + 
-  #theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
-  facet_wrap(~Tissue) + coord_flip() + 
-  ylab(&#39;Number of contigs&#39;) + xlab(&#39;Sample&#39;)</code></pre>
-<pre><code>Warning: Expected 2 pieces. Additional pieces discarded in 178 rows [3, 4, 5, 26, 29,
-30, 33, 47, 56, 75, 79, 81, 82, 84, 88, 92, 93, 95, 97, 101, ...].</code></pre>
-<p><img src="figure/metagenome.Rmd/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-16-1">
-Past versions of unnamed-chunk-16-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-16-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/b5757aca73563d447eacd4fe551f766217368fc7/docs/figure/metagenome.Rmd/unnamed-chunk-16-1.png" target="_blank">b5757ac</a>
 </td>
 <td>
 Philipp Bayer
@@ -1271,24 +1156,25 @@ Philipp Bayer
 4 AR4    Acidihalobacter ferrooxydans     1</code></pre>
 <p>There we go :) Which MAGs are those?</p>
 <pre class="r"><code>amph_pos_tax_cat |&gt; filter(str_detect(Species, &#39;Acidihalobacter&#39;)) |&gt; knitr::kable()</code></pre>
-<table>
+<table style="width:100%;">
 <colgroup>
 <col width="1%" />
 <col width="1%" />
 <col width="3%" />
 <col width="5%" />
-<col width="11%" />
-<col width="13%" />
+<col width="10%" />
+<col width="12%" />
 <col width="11%" />
 <col width="3%" />
 <col width="6%" />
-<col width="5%" />
+<col width="4%" />
 <col width="7%" />
 <col width="5%" />
 <col width="9%" />
 <col width="4%" />
 <col width="5%" />
 <col width="1%" />
+<col width="2%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1308,6 +1194,7 @@ Philipp Bayer
 <th align="right">Sample_replicate</th>
 <th align="left">Sample_species</th>
 <th align="left">Tissue</th>
+<th align="right">TotalMAGs</th>
 </tr>
 </thead>
 <tbody>
@@ -1328,6 +1215,7 @@ Philipp Bayer
 <td align="right">1</td>
 <td align="left">Amphibolis antarctica</td>
 <td align="left">Root</td>
+<td align="right">76</td>
 </tr>
 <tr class="even">
 <td align="left">AR2</td>
@@ -1346,6 +1234,7 @@ Philipp Bayer
 <td align="right">2</td>
 <td align="left">Amphibolis antarctica</td>
 <td align="left">Root</td>
+<td align="right">79</td>
 </tr>
 <tr class="odd">
 <td align="left">AR3</td>
@@ -1364,6 +1253,7 @@ Philipp Bayer
 <td align="right">3</td>
 <td align="left">Amphibolis antarctica</td>
 <td align="left">Root</td>
+<td align="right">87</td>
 </tr>
 <tr class="even">
 <td align="left">AR4</td>
@@ -1382,11 +1272,12 @@ Philipp Bayer
 <td align="right">4</td>
 <td align="left">Amphibolis antarctica</td>
 <td align="left">Root</td>
+<td align="right">62</td>
 </tr>
 </tbody>
 </table>
 <pre class="r"><code>amph_pos_tax_cat |&gt; filter(str_detect(Family, &#39;Ectothiorhodospiraceae&#39;))</code></pre>
-<pre><code># A tibble: 4 × 16
+<pre><code># A tibble: 4 × 17
   sample MAG   classification `number of ORFs in bin` number of ORFs classific…¹
   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;                            &lt;dbl&gt;                      &lt;dbl&gt;
 1 AR1    36    classified                        3947                       3706
@@ -1394,13 +1285,14 @@ Philipp Bayer
 3 AR3    6     classified                        3558                       3381
 4 AR4    41    classified                        3552                       3379
 # ℹ abbreviated name: ¹​`number of ORFs classification is based on`
-# ℹ 11 more variables: lineage &lt;chr&gt;, `lineage scores` &lt;chr&gt;,
+# ℹ 12 more variables: lineage &lt;chr&gt;, `lineage scores` &lt;chr&gt;,
 #   Superkingdom &lt;chr&gt;, Class &lt;chr&gt;, Order &lt;chr&gt;, Family &lt;chr&gt;, Genus &lt;chr&gt;,
-#   Species &lt;chr&gt;, Sample_replicate &lt;dbl&gt;, Sample_species &lt;chr&gt;, Tissue &lt;chr&gt;</code></pre>
+#   Species &lt;chr&gt;, Sample_replicate &lt;dbl&gt;, Sample_species &lt;chr&gt;, Tissue &lt;chr&gt;,
+#   TotalMAGs &lt;dbl&gt;</code></pre>
 <p>Are these in the GTDB classification?</p>
 <pre class="r"><code>amph_pos_tax |&gt; filter(str_detect(family, &#39;Ectothiorhodospiraceae&#39;))</code></pre>
-<pre><code># A tibble: 0 × 30
-# ℹ 30 variables: sample &lt;chr&gt;, MAG &lt;chr&gt;, domain &lt;chr&gt;, phylum &lt;chr&gt;,
+<pre><code># A tibble: 0 × 31
+# ℹ 31 variables: sample &lt;chr&gt;, MAG &lt;chr&gt;, domain &lt;chr&gt;, phylum &lt;chr&gt;,
 #   class &lt;chr&gt;, order &lt;chr&gt;, family &lt;chr&gt;, genus &lt;chr&gt;, species &lt;chr&gt;,
 #   fastani_reference &lt;chr&gt;, fastani_reference_radius &lt;chr&gt;,
 #   fastani_taxonomy &lt;chr&gt;, fastani_ani &lt;chr&gt;, fastani_af &lt;chr&gt;,
@@ -1509,47 +1401,10 @@ find ACC deaminases in the metagenomes (<em>acdS</em>).</p>
   theme(legend.position = &#39;none&#39;,
         strip.text.x =  element_markdown(),
         axis.title.x = element_markdown())</code></pre>
-<p><img src="figure/metagenome.Rmd/unnamed-chunk-27-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-27-1">
-Past versions of unnamed-chunk-27-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-27-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/b5757aca73563d447eacd4fe551f766217368fc7/docs/figure/metagenome.Rmd/unnamed-chunk-27-1.png" target="_blank">b5757ac</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-20
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>What are those acdS-containing MAGs?</p>
 <pre class="r"><code>genessplit |&gt; filter(gene == &#39;acdS&#39;) |&gt; left_join(amph_pos_tax, by=c(&#39;sample&#39;, &#39;MAG&#39;), multiple = &#39;any&#39;) |&gt; knitr::kable()</code></pre>
-<table>
+<table style="width:100%;">
 <colgroup>
 <col width="0%" />
 <col width="0%" />
@@ -1592,6 +1447,7 @@ Philipp Bayer
 <col width="1%" />
 <col width="1%" />
 <col width="1%" />
+<col width="0%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1637,6 +1493,7 @@ align="left">other_related_references(genome_id,species_name,radius,ANI,AF)</th>
 <th align="right">Sample_replicate.y</th>
 <th align="left">Sample_species.y</th>
 <th align="left">Tissue.y</th>
+<th align="right">TotalMAGs</th>
 </tr>
 </thead>
 <tbody>
@@ -1682,6 +1539,7 @@ align="left">other_related_references(genome_id,species_name,radius,ANI,AF)</th>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="even">
 <td align="left">AR1</td>
@@ -1725,6 +1583,7 @@ align="left">other_related_references(genome_id,species_name,radius,ANI,AF)</th>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">AR1</td>
@@ -1768,6 +1627,7 @@ align="left">other_related_references(genome_id,species_name,radius,ANI,AF)</th>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="even">
 <td align="left">AR2</td>
@@ -1811,6 +1671,7 @@ align="left">other_related_references(genome_id,species_name,radius,ANI,AF)</th>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">AR3</td>
@@ -1854,6 +1715,7 @@ align="left">other_related_references(genome_id,species_name,radius,ANI,AF)</th>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="even">
 <td align="left">AR3</td>
@@ -1897,6 +1759,7 @@ align="left">other_related_references(genome_id,species_name,radius,ANI,AF)</th>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">AR3</td>
@@ -1944,6 +1807,7 @@ ANI</td>
 <td align="right">3</td>
 <td align="left">Amphibolis antarctica</td>
 <td align="left">Root</td>
+<td align="right">87</td>
 </tr>
 <tr class="even">
 <td align="left">AR3</td>
@@ -1988,6 +1852,7 @@ align="left">d__Bacteria;p__Chloroflexota;c__Anaerolineae;o__SBR1031;f__UBA3940;
 <td align="right">3</td>
 <td align="left">Amphibolis antarctica</td>
 <td align="left">Root</td>
+<td align="right">87</td>
 </tr>
 <tr class="odd">
 <td align="left">AR3</td>
@@ -2031,6 +1896,7 @@ align="left">d__Bacteria;p__Chloroflexota;c__Anaerolineae;o__SBR1031;f__UBA3940;
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="even">
 <td align="left">AR4</td>
@@ -2074,6 +1940,7 @@ align="left">d__Bacteria;p__Chloroflexota;c__Anaerolineae;o__SBR1031;f__UBA3940;
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">ARZ1</td>
@@ -2119,6 +1986,7 @@ hits</td>
 <td align="right">1</td>
 <td align="left">Amphibolis antarctica</td>
 <td align="left">Rhizome</td>
+<td align="right">29</td>
 </tr>
 <tr class="even">
 <td align="left">ARZ2</td>
@@ -2162,6 +2030,7 @@ hits</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">ARZ2</td>
@@ -2205,6 +2074,7 @@ hits</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="even">
 <td align="left">ARZ2</td>
@@ -2248,6 +2118,7 @@ hits</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">ARZ4</td>
@@ -2295,6 +2166,7 @@ ANI</td>
 <td align="right">4</td>
 <td align="left">Amphibolis antarctica</td>
 <td align="left">Rhizome</td>
+<td align="right">23</td>
 </tr>
 <tr class="even">
 <td align="left">ARZ4</td>
@@ -2338,6 +2210,7 @@ ANI</td>
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">AS1</td>
@@ -2382,6 +2255,7 @@ align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Arenicellal
 <td align="right">1</td>
 <td align="left">Amphibolis antarctica</td>
 <td align="left">Shoot/Leaf</td>
+<td align="right">21</td>
 </tr>
 <tr class="even">
 <td align="left">AS2</td>
@@ -2425,6 +2299,7 @@ align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Arenicellal
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">AS3</td>
@@ -2468,6 +2343,7 @@ align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Arenicellal
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="even">
 <td align="left">AS4</td>
@@ -2511,6 +2387,7 @@ align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Arenicellal
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">AS4</td>
@@ -2554,6 +2431,7 @@ align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Arenicellal
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="even">
 <td align="left">ASB1</td>
@@ -2598,6 +2476,7 @@ align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Granulosico
 <td align="right">1</td>
 <td align="left">Amphibolis antarctica</td>
 <td align="left">Shoot/Leaf Biofilm</td>
+<td align="right">20</td>
 </tr>
 <tr class="odd">
 <td align="left">ASB1</td>
@@ -2642,6 +2521,7 @@ align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Granulosico
 <td align="right">1</td>
 <td align="left">Amphibolis antarctica</td>
 <td align="left">Shoot/Leaf Biofilm</td>
+<td align="right">20</td>
 </tr>
 <tr class="even">
 <td align="left">ASB2</td>
@@ -2686,6 +2566,7 @@ align="left">d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Rhodobacter
 <td align="right">2</td>
 <td align="left">Amphibolis antarctica</td>
 <td align="left">Shoot/Leaf Biofilm</td>
+<td align="right">28</td>
 </tr>
 <tr class="odd">
 <td align="left">PAS1</td>
@@ -2733,6 +2614,7 @@ align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Granulosico
 <td align="right">1</td>
 <td align="left">Posidonia australis</td>
 <td align="left">Shoot/Leaf</td>
+<td align="right">13</td>
 </tr>
 <tr class="even">
 <td align="left">PAS2</td>
@@ -2781,6 +2663,7 @@ hits</td>
 <td align="right">2</td>
 <td align="left">Posidonia australis</td>
 <td align="left">Shoot/Leaf</td>
+<td align="right">13</td>
 </tr>
 <tr class="odd">
 <td align="left">PAS4</td>
@@ -2828,6 +2711,7 @@ align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Granulosico
 <td align="right">4</td>
 <td align="left">Posidonia australis</td>
 <td align="left">Shoot/Leaf</td>
+<td align="right">17</td>
 </tr>
 <tr class="even">
 <td align="left">PAS4</td>
@@ -2871,6 +2755,7 @@ align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Granulosico
 <td align="right">NA</td>
 <td align="left">NA</td>
 <td align="left">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
 <td align="left">PASB1</td>
@@ -2919,6 +2804,7 @@ ANI</td>
 <td align="right">1</td>
 <td align="left">Posidonia australis</td>
 <td align="left">Shoot/Leaf Biofilm</td>
+<td align="right">26</td>
 </tr>
 <tr class="even">
 <td align="left">PASB1</td>
@@ -2963,6 +2849,7 @@ align="left">d__Bacteria;p__Proteobacteria;c__Alphaproteobacteria;o__Rhodobacter
 <td align="right">1</td>
 <td align="left">Posidonia australis</td>
 <td align="left">Shoot/Leaf Biofilm</td>
+<td align="right">26</td>
 </tr>
 <tr class="odd">
 <td align="left">PASB3</td>
@@ -3010,6 +2897,7 @@ align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__Granulosico
 <td align="right">3</td>
 <td align="left">Posidonia australis</td>
 <td align="left">Shoot/Leaf Biofilm</td>
+<td align="right">14</td>
 </tr>
 <tr class="even">
 <td align="left">PASB3</td>
@@ -3054,6 +2942,7 @@ align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__UBA4575;f__
 <td align="right">3</td>
 <td align="left">Posidonia australis</td>
 <td align="left">Shoot/Leaf Biofilm</td>
+<td align="right">14</td>
 </tr>
 </tbody>
 </table>
@@ -3063,7 +2952,22 @@ align="left">d__Bacteria;p__Proteobacteria;c__Gammaproteobacteria;o__UBA4575;f__
   rename(Tissue = Tissue.x, Sample_species = Sample_species.x) |&gt; 
   plot_orders_gtdb(group_remainder = FALSE)</code></pre>
 <pre><code>`summarise()` has grouped output by &#39;sample&#39;, &#39;Tissue&#39;, &#39;Sample_species&#39;, &#39;n&#39;.
-You can override using the `.groups` argument.</code></pre>
+You can override using the `.groups` argument.
+Adding missing grouping variables: `Tissue`, `Sample_species`
+Joining with `by = join_by(sample)`</code></pre>
+<pre><code>Warning: Removed 3 rows containing missing values (`position_stack()`).</code></pre>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>  #select(sample, MAG, domain:species)</code></pre>
+<pre class="r"><code>genessplit |&gt; filter(gene == &#39;acdS&#39;) |&gt; 
+  left_join(amph_pos_tax_cat, by=c(&#39;sample&#39;, &#39;MAG&#39;)) |&gt; 
+    select(-c(Tissue.y, Sample_species.y)) |&gt;
+  rename(Tissue = Tissue.x, Sample_species = Sample_species.x) |&gt; 
+  plot_orders_cat(group_remainder = FALSE) #</code></pre>
+<pre><code>Warning: Expected 2 pieces. Additional pieces discarded in 19 rows [1, 7, 8, 12, 16, 17,
+18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31].</code></pre>
+<pre><code>`summarise()` has grouped output by &#39;sample&#39;, &#39;Tissue&#39;, &#39;Sample_species&#39;, &#39;n&#39;,
+&#39;counted_orders&#39;. You can override using the `.groups` argument.
+Joining with `by = join_by(sample)`</code></pre>
 <p><img src="figure/metagenome.Rmd/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-29-1">
@@ -3102,16 +3006,28 @@ Philipp Bayer
 </table>
 </div>
 </div>
-<pre class="r"><code>  #select(sample, MAG, domain:species)</code></pre>
-<pre class="r"><code>genessplit |&gt; filter(gene == &#39;acdS&#39;) |&gt; 
-  left_join(amph_pos_tax_cat, by=c(&#39;sample&#39;, &#39;MAG&#39;)) |&gt; 
-    select(-c(Tissue.y, Sample_species.y)) |&gt;
-  rename(Tissue = Tissue.x, Sample_species = Sample_species.x) |&gt; 
-  plot_orders_cat(group_remainder = FALSE) #</code></pre>
-<pre><code>Warning: Expected 2 pieces. Additional pieces discarded in 19 rows [1, 7, 8, 12, 16, 17,
-18, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31].</code></pre>
-<pre><code>`summarise()` has grouped output by &#39;sample&#39;, &#39;Tissue&#39;, &#39;Sample_species&#39;, &#39;n&#39;.
-You can override using the `.groups` argument.</code></pre>
+<pre class="r"><code>  #select(sample, MAG, Superkingdom:Species) |&gt; </code></pre>
+<p>Let’s chekc for nitrogen fixation genes (<em>nif</em>) - hypothesis
+is that Amphibolis roots contain more of these</p>
+<pre class="r"><code>genessplit |&gt; filter(str_detect(gene, &#39;nifH&#39;) | str_detect(gene, &#39;acdS&#39;) | str_detect(gene, &#39;sctC&#39;)) |&gt; 
+  mutate(gene_class = case_when(str_detect(gene, &#39;nifH&#39;) ~ &#39;*nifH*&#39;,
+                                str_detect(gene, &#39;acdS&#39;) ~ &#39;*acdS*&#39;,
+                                str_detect(gene, &#39;sctC&#39;) ~ &#39;*sctC*&#39;)) |&gt;
+  #group_by(Sample_species, Tissue, Sample_replicate, MAG) |&gt; 
+  #summarise(gene_class = paste0(sort(unique(gene_class)), collapse = &#39; &amp; &#39;)) |&gt;
+  group_by(Sample_species, Tissue, Sample_replicate) |&gt; 
+  count(gene_class) |&gt; 
+  mutate(Sample_species = trunc_str(Sample_species)) |&gt; 
+  mutate(Sample_species = paste0(&#39;*&#39;, Sample_species, &#39;*&#39;)) |&gt; 
+  ggplot(aes(x=factor(Sample_species, levels=rev(c(unique(Sample_species)))), y=n, fill=gene_class)) + 
+  geom_boxplot(outlier.shape = NA) +
+  facet_wrap(~factor(Tissue, levels=rev(c(unique(Tissue))))) + 
+  geom_point(position = position_jitterdodge(), aes(color=gene_class)) +
+  coord_flip() +
+  theme_minimal() +
+  labs(color=&#39;MAG gene content&#39;, fill=&#39;MAG gene content&#39;) +
+  theme(axis.text.y =  element_markdown(),legend.text = element_markdown()) +
+  ylab(&#39;Count of MAGs&#39;) + xlab(&#39;Species&#39;)</code></pre>
 <p><img src="figure/metagenome.Rmd/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-30-1">
@@ -3144,66 +3060,6 @@ Philipp Bayer
 </td>
 <td>
 2023-11-20
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<pre class="r"><code>  #select(sample, MAG, Superkingdom:Species) |&gt; </code></pre>
-<p>Let’s chekc for nitrogen fixation genes (<em>nif</em>) - hypothesis
-is that Amphibolis roots contain more of these</p>
-<pre class="r"><code>genessplit |&gt; filter(str_detect(gene, &#39;nifH&#39;) | str_detect(gene, &#39;acdS&#39;) | str_detect(gene, &#39;sctC&#39;)) |&gt; 
-  mutate(gene_class = case_when(str_detect(gene, &#39;nifH&#39;) ~ &#39;*nifH*&#39;,
-                                str_detect(gene, &#39;acdS&#39;) ~ &#39;*acdS*&#39;,
-                                str_detect(gene, &#39;sctC&#39;) ~ &#39;*sctC*&#39;)) |&gt;
-  #group_by(Sample_species, Tissue, Sample_replicate, MAG) |&gt; 
-  #summarise(gene_class = paste0(sort(unique(gene_class)), collapse = &#39; &amp; &#39;)) |&gt;
-  group_by(Sample_species, Tissue, Sample_replicate) |&gt; 
-  count(gene_class) |&gt; 
-  mutate(Sample_species = trunc_str(Sample_species)) |&gt; 
-  mutate(Sample_species = paste0(&#39;*&#39;, Sample_species, &#39;*&#39;)) |&gt; 
-  ggplot(aes(x=factor(Sample_species, levels=rev(c(unique(Sample_species)))), y=n, fill=gene_class)) + 
-  geom_boxplot(outlier.shape = NA) +
-  facet_wrap(~factor(Tissue, levels=rev(c(unique(Tissue))))) + 
-  geom_point(position = position_jitterdodge(), aes(color=gene_class)) +
-  coord_flip() +
-  theme_minimal() +
-  labs(color=&#39;MAG gene content&#39;, fill=&#39;MAG gene content&#39;) +
-  theme(axis.text.y =  element_markdown(),legend.text = element_markdown()) +
-  ylab(&#39;Count of MAGs&#39;) + xlab(&#39;Species&#39;)</code></pre>
-<p><img src="figure/metagenome.Rmd/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-31-1">
-Past versions of unnamed-chunk-31-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-31-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/920282de0009dadba09c0cfbbe9a0e5a626ba70f/docs/figure/metagenome.Rmd/unnamed-chunk-31-1.png" target="_blank">920282d</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-21
 </td>
 </tr>
 </tbody>
@@ -3279,10 +3135,10 @@ attached base packages:
 [1] stats     graphics  grDevices datasets  utils     methods   base     
 
 other attached packages:
- [1] scales_1.2.1     patchwork_1.1.2  ggtext_0.1.2     microshades_1.11
- [5] UpSetR_1.4.0     lubridate_1.9.2  forcats_1.0.0    stringr_1.5.0   
- [9] dplyr_1.1.2      purrr_1.0.1      readr_2.1.4      tidyr_1.3.0     
-[13] tibble_3.2.1     ggplot2_3.4.2    tidyverse_2.0.0  workflowr_1.7.1 
+ [1] scales_1.2.1     ggtext_0.1.2     microshades_1.11 lubridate_1.9.2 
+ [5] forcats_1.0.0    stringr_1.5.0    dplyr_1.1.2      purrr_1.0.1     
+ [9] readr_2.1.4      tidyr_1.3.0      tibble_3.2.1     ggplot2_3.4.2   
+[13] tidyverse_2.0.0  workflowr_1.7.1 
 
 loaded via a namespace (and not attached):
  [1] gtable_0.3.3        xfun_0.39           bslib_0.4.2        
@@ -3301,13 +3157,12 @@ loaded via a namespace (and not attached):
 [40] colorspace_2.1-0    cli_3.6.1           magrittr_2.0.3     
 [43] utf8_1.2.3          withr_2.5.0         promises_1.2.0.1   
 [46] bit64_4.0.5         timechange_0.2.0    rmarkdown_2.21     
-[49] httr_1.4.6          bit_4.0.5           gridExtra_2.3      
-[52] hms_1.1.3           evaluate_0.21       knitr_1.42         
-[55] markdown_1.11       rlang_1.1.1         gridtext_0.1.5     
-[58] Rcpp_1.0.10         glue_1.6.2          BiocManager_1.30.20
-[61] xml2_1.3.4          renv_1.0.2          vroom_1.6.3        
-[64] rstudioapi_0.14     jsonlite_1.8.4      R6_2.5.1           
-[67] plyr_1.8.8          fs_1.6.2           </code></pre>
+[49] httr_1.4.6          bit_4.0.5           hms_1.1.3          
+[52] evaluate_0.21       knitr_1.42          markdown_1.11      
+[55] rlang_1.1.1         gridtext_0.1.5      Rcpp_1.0.10        
+[58] glue_1.6.2          BiocManager_1.30.20 xml2_1.3.4         
+[61] renv_1.0.2          rstudioapi_0.14     vroom_1.6.3        
+[64] jsonlite_1.8.4      R6_2.5.1            fs_1.6.2           </code></pre>
 </div>
 </div>
 

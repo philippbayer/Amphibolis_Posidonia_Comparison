@@ -7,10 +7,8 @@ output: html_document
 
 ```{r setup, message=FALSE}
 library(tidyverse)
-library(UpSetR)
 library(microshades)
 library(ggtext)
-library(patchwork)
 library(scales)
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 
@@ -43,6 +41,13 @@ We have two taxonomies: one based on CAT, one based on GTDB. GTDB is less comple
 tax <- read_tsv('./data/metagenome/all_gtdb.summary.tsv.gz')
 ```
 
+Need to put some extra work in; MAGs with no classification are not in the output file.
+
+```{r}
+all_mag_counts <- read_tsv('./data/metagenome/MAG_counts.tsv') |> mutate(Sample = str_replace(Sample, '_L2', '')) |> 
+  rename(TotalMAGs = MAGs)
+```
+
 ```{r}
 clean_tax <- tax |> 
   separate(user_genome, into = c('sample', 'MAG'), sep='\\.') |> 
@@ -59,7 +64,8 @@ clean_tax <- clean_tax |> left_join(metadata, by = c('sample'='Sample'))
 Next, we keep only Posidonia australis and Amphibolis antarctica samples
 
 ```{r}
-amph_pos_tax <- clean_tax |> filter(Sample_species %in% c('Amphibolis antarctica', 'Posidonia australis'))
+amph_pos_tax <- clean_tax |> filter(Sample_species %in% c('Amphibolis antarctica', 'Posidonia australis')) |> 
+  left_join(all_mag_counts, by = c('sample'='Sample'))
 ```
 
 ## GTDB by order
@@ -68,14 +74,14 @@ amph_pos_tax <- clean_tax |> filter(Sample_species %in% c('Amphibolis antarctica
 colors <-c(microshades_palette("micro_blue", 4, lightest = FALSE), 
            microshades_palette("micro_purple", 4, lightest = FALSE),
            microshades_palette("micro_green", 4, lightest = FALSE),
-          microshades_palette("micro_orange", 4, lightest = FALSE))
+           microshades_palette("micro_orange", 4, lightest = FALSE))
 
 ```
 
 ```{r fig.height=6}
 plot_orders_gtdb <- function(amph_pos_tax, group_remainder = TRUE) {
   temp <- amph_pos_tax |> 
-    group_by(sample, Tissue, Sample_species) |> 
+    group_by(sample, Tissue, Sample_species,TotalMAGs) |> 
     mutate(Sample_species = trunc_str(Sample_species)) |> 
     mutate(Sample_species = paste0('*', Sample_species, '*')) |> 
     mutate(order = str_replace_all(order, 'o__','')) |> 
@@ -88,14 +94,27 @@ plot_orders_gtdb <- function(amph_pos_tax, group_remainder = TRUE) {
       temp <- temp |> 
         mutate(counted_orders = order)
   }
-  temp <- temp |> 
+  temp2 <- temp |> 
     select(-order) |> 
     group_by(sample, Tissue, Sample_species, n, counted_orders) |> 
     summarise(n = sum(n)) |> 
     filter(counted_orders != '' )
-  
-  uniques <- c(setdiff(unique(temp$counted_orders), c('Remainder')), 'Remainder')
-  temp |> 
+  # we need to count the unclassified MAGs that are not in the output
+  group_presents <- temp2 |> group_by(sample) |> summarise(classifiedMAGs = sum(n))
+  missings <- group_presents |> 
+    left_join(temp |> 
+                select(sample, TotalMAGs)) |> 
+    unique() |> 
+    mutate(unclassifiedMAGs = TotalMAGs - classifiedMAGs) |> 
+    select(-c(classifiedMAGs,TotalMAGs)) |>
+    rename(Unclassified = unclassifiedMAGs) |>
+    pivot_longer(-c(sample, Tissue, Sample_species)) |> 
+    rename(counted_orders=name, n=value)
+
+  temp2 <-rbind(temp2, missings)
+
+  uniques <- c(setdiff(unique(temp2$counted_orders), c('Unclassified', 'Remainder')), 'Remainder', 'Unclassified')
+  temp2 |> 
     mutate(counted_orders = factor(counted_orders, levels=uniques)) |> 
     mutate(sample = str_remove(sample, "[A-Z]+")) |> 
     mutate(sample = str_replace(sample, '31', '3')) |> 
@@ -114,23 +133,6 @@ plot_orders_gtdb <- function(amph_pos_tax, group_remainder = TRUE) {
 }
 plot_orders_gtdb(amph_pos_tax)
 ```
-Let's also make an Upset plot of that
-
-```{r}
-tmp <- amph_pos_tax |> 
-  group_by(sample) |> 
-  mutate(order = str_replace_all(order, 'o__','')) |> 
-  count(order) |> 
-  filter(order != '' ) |>
-  filter ( n > 1) |> 
-  summarise(named_vec = list(order)) %>%
-  deframe()
-tmp
-```
-```{r}
-upset(fromList(tmp))
-```
-
 
 ## GTDB by family
 
@@ -169,7 +171,7 @@ clean_tax_cat <- tax_cat |>
          sample = str_replace_all(sample, '_L2', '')) |> 
   select(-fa)
          
-clean_tax_cat <- clean_tax_cat |> left_join(metadata, by = c('sample'='Sample'))
+clean_tax_cat <- clean_tax_cat |> left_join(metadata, by = c('sample'='Sample')) |> left_join(all_mag_counts, by =c('sample'='Sample'))
 ```
 
 Next, we keep only Posidonia australis and Amphibolis antarctica samples
@@ -186,7 +188,7 @@ plot_orders_cat <-
     temp <- amph_pos_tax_cat |>
       separate(Order, into = c('Order', 'Order_score')) |>
       rename(order = Order) |>
-      group_by(sample, Tissue, Sample_species) |>
+      group_by(sample, Tissue, Sample_species, TotalMAGs) |>
       mutate(Sample_species = trunc_str(Sample_species)) |>
       mutate(Sample_species = paste0('*', Sample_species, '*')) |>
       count(order)
@@ -198,15 +200,28 @@ plot_orders_cat <-
       temp <- temp |>
         mutate(counted_orders = order)
     }
-    temp <- temp |>
+    temp2 <- temp |>
       select(-order) |>
-      group_by(sample, Tissue, Sample_species, n, counted_orders) |>
+      group_by(sample, Tissue, Sample_species, n, counted_orders,TotalMAGs) |>
       summarise(n = sum(n)) |>
       filter(counted_orders != '')
-    
-    uniques <-
-      c(setdiff(unique(temp$counted_orders), c('Remainder')), 'Remainder')
-    temp |>
+      # we need to count the unclassified MAGs that are not in the output
+    group_presents <- temp2 |> group_by(sample) |> summarise(classifiedMAGs = sum(n))
+    missings <- group_presents |> 
+      left_join(temp2) |> 
+      select(classifiedMAGs, Tissue, Sample_species, sample, TotalMAGs)|> 
+      unique() |> 
+      mutate(unclassifiedMAGs = TotalMAGs - classifiedMAGs) |> 
+      select(-c(classifiedMAGs,TotalMAGs)) |>
+      rename(Unclassified = unclassifiedMAGs) |>
+      pivot_longer(-c(sample, Tissue, Sample_species)) |> 
+      rename(counted_orders=name, n=value)
+
+    temp2 <-rbind(temp2, missings)
+
+   uniques <- c(setdiff(unique(temp2$counted_orders), c('Unclassified', 'Remainder')), 'Remainder', 'Unclassified')
+ 
+    temp2 |>
       mutate(counted_orders = factor(counted_orders, levels = uniques)) |>
       mutate(sample = str_remove(sample, "[A-Z]+")) |>
       mutate(sample = str_replace(sample, '31', '3')) |>
