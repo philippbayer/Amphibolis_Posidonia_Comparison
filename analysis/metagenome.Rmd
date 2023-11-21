@@ -369,15 +369,15 @@ genessplit |> filter(str_detect(gene, 'nifH') | str_detect(gene, 'acdS') | str_d
   count(gene_class) |> 
   mutate(Sample_species = trunc_str(Sample_species)) |> 
   mutate(Sample_species = paste0('*', Sample_species, '*')) |> 
-  ggplot(aes(x=Tissue, y=n, fill=gene_class)) + 
+  ggplot(aes(x=factor(Sample_species, levels=rev(c(unique(Sample_species)))), y=n, fill=gene_class)) + 
   geom_boxplot(outlier.shape = NA) +
-  facet_wrap(~Sample_species) + 
+  facet_wrap(~factor(Tissue, levels=rev(c(unique(Tissue))))) + 
   geom_point(position = position_jitterdodge(), aes(color=gene_class)) +
   coord_flip() +
   theme_minimal() +
   labs(color='MAG gene content', fill='MAG gene content') +
-  theme(strip.text.x =  element_markdown(),legend.text = element_markdown()) +
-  ylab('Count of MAGs')
+  theme(axis.text.y =  element_markdown(),legend.text = element_markdown()) +
+  ylab('Count of MAGs') + xlab('Species')
 
 ```
 
