@@ -79,7 +79,7 @@ plot_orders_gtdb <- function(amph_pos_tax, group_remainder = TRUE) {
     mutate(Sample_species = trunc_str(Sample_species)) |> 
     mutate(Sample_species = paste0('*', Sample_species, '*')) |> 
     mutate(order = str_replace_all(order, 'o__','')) |> 
-    count(order) 
+    count(order, .drop = FALSE) 
   if(group_remainder) {
     temp <- temp |> 
     mutate(counted_orders = case_when(n == 1 ~ 'Remainder',
@@ -355,3 +355,43 @@ genessplit |> filter(gene == 'acdS') |>
   #select(sample, MAG, Superkingdom:Species) |> 
   
 ```
+
+Let's chekc for nitrogen fixation genes (*nif*) - hypothesis is that Amphibolis roots contain more of these
+
+```{r}
+genessplit |> filter(str_detect(gene, 'nifH') | str_detect(gene, 'acdS') | str_detect(gene, 'sctC')) |> 
+  mutate(gene_class = case_when(str_detect(gene, 'nifH') ~ '*nifH*',
+                                str_detect(gene, 'acdS') ~ '*acdS*',
+                                str_detect(gene, 'sctC') ~ '*sctC*')) |>
+  #group_by(Sample_species, Tissue, Sample_replicate, MAG) |> 
+  #summarise(gene_class = paste0(sort(unique(gene_class)), collapse = ' & ')) |>
+  group_by(Sample_species, Tissue, Sample_replicate) |> 
+  count(gene_class) |> 
+  mutate(Sample_species = trunc_str(Sample_species)) |> 
+  mutate(Sample_species = paste0('*', Sample_species, '*')) |> 
+  ggplot(aes(x=Tissue, y=n, fill=gene_class)) + 
+  geom_boxplot(outlier.shape = NA) +
+  facet_wrap(~Sample_species) + 
+  geom_point(position = position_jitterdodge(), aes(color=gene_class)) +
+  coord_flip() +
+  theme_minimal() +
+  labs(color='MAG gene content', fill='MAG gene content') +
+  theme(strip.text.x =  element_markdown(),legend.text = element_markdown()) +
+  ylab('Count of MAGs')
+
+```
+
+Can we make a simple association test?
+
+```{r}
+tmp <- genessplit |> filter(str_detect(gene, 'nifH') | str_detect(gene, 'acdS') | str_detect(gene, 'sctC')) |> 
+  mutate(gene_class = case_when(str_detect(gene, 'nifH') ~ '*nifH*',
+                                str_detect(gene, 'acdS') ~ '*acdS*',
+                                str_detect(gene, 'sctC') ~ '*sctC*')) |> 
+  group_by(Sample_species, Sample_replicate, Tissue) |> 
+  count(gene_class) |> 
+  mutate(Sample_species = factor(Sample_species, levels = c('Posidonia australis', 'Amphibolis antarctica'))) 
+summary(lm(n ~ gene_class + Sample_species + Sample_replicate + Tissue, data=tmp))
+```
+
+OK! So we have an association with gene_class, which is obvious, but we also have an association with species (great!) and root-tissue (also great!)

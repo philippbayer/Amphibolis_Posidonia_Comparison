@@ -368,7 +368,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -379,8 +379,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -389,13 +389,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-11-20
+<strong>Last updated:</strong> 2023-11-21
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong>
@@ -419,18 +419,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -521,15 +524,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree3ae555e2b12fdc54ee84a670920b75f5529ec278targetblank3ae555ea">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree1d2eef4c03c33ac1451c53c5fe8b771386f32bfftargetblank1d2eef4a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/3ae555e2b12fdc54ee84a670920b75f5529ec278" target="_blank">3ae555e</a>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/1d2eef4c03c33ac1451c53c5fe8b771386f32bff" target="_blank">1d2eef4</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree3ae555e2b12fdc54ee84a670920b75f5529ec278targetblank3ae555ea"
+id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree1d2eef4c03c33ac1451c53c5fe8b771386f32bfftargetblank1d2eef4a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -539,7 +542,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/3ae555e2b12fdc54ee84a670920b75f5529ec278" target="_blank">3ae555e</a>.
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/1d2eef4c03c33ac1451c53c5fe8b771386f32bff" target="_blank">1d2eef4</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -557,6 +560,9 @@ Ignored files:
     Ignored:    .Rproj.user/
     Ignored:    renv/library/
     Ignored:    renv/staging/
+
+Unstaged changes:
+    Modified:   analysis/metagenome.Rmd
 
 </code></pre>
 <p>
@@ -602,6 +608,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/1d2eef4c03c33ac1451c53c5fe8b771386f32bff/docs/metagenome.html" target="_blank">1d2eef4</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-20
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -761,7 +784,7 @@ samples</p>
     mutate(Sample_species = trunc_str(Sample_species)) |&gt; 
     mutate(Sample_species = paste0(&#39;*&#39;, Sample_species, &#39;*&#39;)) |&gt; 
     mutate(order = str_replace_all(order, &#39;o__&#39;,&#39;&#39;)) |&gt; 
-    count(order) 
+    count(order, .drop = FALSE) 
   if(group_remainder) {
     temp &lt;- temp |&gt; 
     mutate(counted_orders = case_when(n == 1 ~ &#39;Remainder&#39;,
@@ -3094,6 +3117,65 @@ Philipp Bayer
 </div>
 </div>
 <pre class="r"><code>  #select(sample, MAG, Superkingdom:Species) |&gt; </code></pre>
+<p>Let’s chekc for nitrogen fixation genes (<em>nif</em>) - hypothesis
+is that Amphibolis roots contain more of these</p>
+<pre class="r"><code>genessplit |&gt; filter(str_detect(gene, &#39;nifH&#39;) | str_detect(gene, &#39;acdS&#39;) | str_detect(gene, &#39;sctC&#39;)) |&gt; 
+  mutate(gene_class = case_when(str_detect(gene, &#39;nifH&#39;) ~ &#39;*nifH*&#39;,
+                                str_detect(gene, &#39;acdS&#39;) ~ &#39;*acdS*&#39;,
+                                str_detect(gene, &#39;sctC&#39;) ~ &#39;*sctC*&#39;)) |&gt;
+  #group_by(Sample_species, Tissue, Sample_replicate, MAG) |&gt; 
+  #summarise(gene_class = paste0(sort(unique(gene_class)), collapse = &#39; &amp; &#39;)) |&gt;
+  group_by(Sample_species, Tissue, Sample_replicate) |&gt; 
+  count(gene_class) |&gt; 
+  mutate(Sample_species = trunc_str(Sample_species)) |&gt; 
+  mutate(Sample_species = paste0(&#39;*&#39;, Sample_species, &#39;*&#39;)) |&gt; 
+  ggplot(aes(x=Tissue, y=n, fill=gene_class)) + 
+  geom_boxplot(outlier.shape = NA) +
+  facet_wrap(~Sample_species) + 
+  geom_point(position = position_jitterdodge(), aes(color=gene_class)) +
+  coord_flip() +
+  theme_minimal() +
+  labs(color=&#39;MAG gene content&#39;, fill=&#39;MAG gene content&#39;) +
+  theme(strip.text.x =  element_markdown(),legend.text = element_markdown()) +
+  ylab(&#39;Count of MAGs&#39;)</code></pre>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Can we make a simple association test?</p>
+<pre class="r"><code>tmp &lt;- genessplit |&gt; filter(str_detect(gene, &#39;nifH&#39;) | str_detect(gene, &#39;acdS&#39;) | str_detect(gene, &#39;sctC&#39;)) |&gt; 
+  mutate(gene_class = case_when(str_detect(gene, &#39;nifH&#39;) ~ &#39;*nifH*&#39;,
+                                str_detect(gene, &#39;acdS&#39;) ~ &#39;*acdS*&#39;,
+                                str_detect(gene, &#39;sctC&#39;) ~ &#39;*sctC*&#39;)) |&gt; 
+  group_by(Sample_species, Sample_replicate, Tissue) |&gt; 
+  count(gene_class) |&gt; 
+  mutate(Sample_species = factor(Sample_species, levels = c(&#39;Posidonia australis&#39;, &#39;Amphibolis antarctica&#39;))) 
+summary(lm(n ~ gene_class + Sample_species + Sample_replicate + Tissue, data=tmp))</code></pre>
+<pre><code>
+Call:
+lm(formula = n ~ gene_class + Sample_species + Sample_replicate + 
+    Tissue, data = tmp)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-25.496  -7.571  -1.483   4.858  44.164 
+
+Coefficients:
+                                    Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                          -7.1173     6.5738  -1.083  0.28343    
+gene_class*nifH*                      8.7515     5.1233   1.708  0.09295 .  
+gene_class*sctC*                     20.1394     4.1926   4.804 1.14e-05 ***
+Sample_speciesAmphibolis antarctica  10.1763     3.5162   2.894  0.00535 ** 
+Sample_replicate                     -0.6348     1.5468  -0.410  0.68300    
+TissueRoot                           13.5423     4.3568   3.108  0.00291 ** 
+TissueShoot/Leaf                     -3.0185     5.0868  -0.593  0.55523    
+TissueShoot/Leaf Biofilm              5.2019     5.2435   0.992  0.32528    
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 13.59 on 58 degrees of freedom
+Multiple R-squared:  0.4475,    Adjusted R-squared:  0.3809 
+F-statistic: 6.712 on 7 and 58 DF,  p-value: 7.885e-06</code></pre>
+<p>OK! So we have an association with gene_class, which is obvious, but
+we also have an association with species (great!) and root-tissue (also
+great!)</p>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
