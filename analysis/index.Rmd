@@ -10,7 +10,8 @@ editor_options:
 
 This website collects comparisons of *Amphibolis* and *Posidonia* comparative analyses.
 
-[Repeat comparison plots](plot.html) - Comparing genome sizes and repeat/TE content
+# Results
+
 
 [Phylogenies](OTT.html) - plotting just phylogenies
 
@@ -24,8 +25,15 @@ This website collects comparisons of *Amphibolis* and *Posidonia* comparative an
 
 [GO and Ortho](GO_and_ortho.html) - merging plots from GO enrichment and Orthofinder analysis
 
+[Metagenomics](metagenome.html) - visualising metagenome differences across Posidonia/Amphibolis
+
+
+# Cutting floor
+
+Additional analyses that are not in the paper.
+
+[Repeat comparison plots](plot.html) - Comparing genome sizes and repeat/TE content
+
 [MSA visualisation](MSA.html) - visualising MSAs and phylogenies for gene clusters of interest (*SOS3*, *EIN3*)
 
 [3D structure](ThreeDStructure.html) - visualising the predicted 3D structure of *SOS3*/*EIN3*
-
-[Metagenomics](metagenome.html) - visualising metagenome differences across Posidonia/Amphibolis

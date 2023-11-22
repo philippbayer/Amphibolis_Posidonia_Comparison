@@ -415,8 +415,6 @@ genessplit |> filter(str_detect(gene, 'nifH') | str_detect(gene, 'acdS') | str_d
   mutate(gene_class = case_when(str_detect(gene, 'nifH') ~ '*nifH*',
                                 str_detect(gene, 'acdS') ~ '*acdS*',
                                 str_detect(gene, 'sctC') ~ '*sctC*')) |>
-  #group_by(Sample_species, Tissue, Sample_replicate, MAG) |> 
-  #summarise(gene_class = paste0(sort(unique(gene_class)), collapse = ' & ')) |>
   group_by(Sample_species, Tissue, Sample_replicate) |> 
   count(gene_class) |> 
   mutate(Sample_species = trunc_str(Sample_species)) |> 
@@ -427,10 +425,12 @@ genessplit |> filter(str_detect(gene, 'nifH') | str_detect(gene, 'acdS') | str_d
   geom_point(position = position_jitterdodge(), aes(color=Sample_species)) +
   coord_flip() +
   theme_minimal() +
-  labs(color='Species', fill='Species') +
-  theme(axis.text.y =  element_markdown(),legend.text = element_markdown(),
+  labs(color='Host species', fill='Host species') +
+  theme(axis.text.y = element_markdown(),
+        legend.text = element_markdown(),
         strip.text.x = element_markdown()) +
-  ylab('Count of MAGs') + xlab('Species')
+  ylab('Count of MAGs') + 
+  xlab('Tissue')
 ```
 I like this one more. The differences are stronger.
 

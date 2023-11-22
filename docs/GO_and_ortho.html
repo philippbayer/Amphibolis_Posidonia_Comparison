@@ -14,7 +14,7 @@
 
 <title>Visualising gene differences based on read alignments</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -36,10 +36,10 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/all.min.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-6.4.0/css/v4-shims.min.css" rel="stylesheet" />
 
-<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
 <!-- Add a small amount of space between sections. -->
 <style type="text/css">
 div.section {
@@ -76,6 +76,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -96,6 +97,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -153,11 +157,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -186,8 +194,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -195,16 +203,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -321,7 +322,7 @@ div.tocify {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -368,7 +369,7 @@ alignments</h1>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -379,8 +380,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -389,13 +390,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2022-04-26
+<strong>Last updated:</strong> 2023-11-22
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong>
@@ -405,10 +406,10 @@ title="This is the local directory in which the code in this file was executed."
 </span>
 </p>
 <p>
-This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a>
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
 analysis was created with <a
-  href="https://github.com/jdblischak/workflowr">workflowr</a> (version
-1.6.2). The <em>Checks</em> tab describes the reproducibility checks
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.1). The <em>Checks</em> tab describes the reproducibility checks
 that were applied when the results were created. The <em>Past
 versions</em> tab lists the development history.
 </p>
@@ -419,18 +420,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -521,15 +525,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree0e47209cb87014fb6e1f735656025c864deb4144targetblank0e47209a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreec347565f836c8a9116a634a1b22438ea1bccee89targetblankc347565a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/0e47209cb87014fb6e1f735656025c864deb4144" target="_blank">0e47209</a>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/c347565f836c8a9116a634a1b22438ea1bccee89" target="_blank">c347565</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree0e47209cb87014fb6e1f735656025c864deb4144targetblank0e47209a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreec347565f836c8a9116a634a1b22438ea1bccee89targetblankc347565a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -539,7 +543,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/0e47209cb87014fb6e1f735656025c864deb4144" target="_blank">0e47209</a>.
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/c347565f836c8a9116a634a1b22438ea1bccee89" target="_blank">c347565</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -554,17 +558,16 @@ were generated:
 </p>
 <pre><code>
 Ignored files:
-    Ignored:    .Rhistory
     Ignored:    .Rproj.user/
-    Ignored:    analysis/OTT.nb.html
-    Ignored:    analysis/plotRgenes.nb.html
+    Ignored:    analysis/figure/
+    Ignored:    renv/library/
+    Ignored:    renv/staging/
 
 Unstaged changes:
-    Deleted:    aln.fa
-    Modified:   data/Lost_present_gene_lists/Genes_lost_in_A_antarctica_not_other_seagrasses.txt
-    Modified:   data/Lost_present_gene_lists/Genes_lost_in_P_australis_not_other_seagrasses.txt
-    Modified:   data/Lost_present_gene_lists/Genes_lost_in_Z_marina_not_other_seagrasses.txt
-    Modified:   data/Lost_present_gene_lists/Genes_lost_in_Z_muelleri_not_other_seagrasses.txt
+    Modified:   analysis/GO_and_ortho.Rmd
+    Modified:   analysis/GOenrichment.Rmd
+    Modified:   analysis/index.Rmd
+    Modified:   analysis/metagenome.Rmd
     Modified:   data/Lost_present_gene_lists/Genes_only_in_Algae.txt
     Modified:   data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses.txt
     Modified:   data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses_and_Terrestrials.txt
@@ -577,18 +580,15 @@ Unstaged changes:
     Modified:   data/arabidopsis_gene_level_counts.xlsx
     Modified:   output/GO_results_genes_in_Algae_NOT_Duckweeds_NOT_Seagrasses_NOT_Terrestrials.csv.png
     Modified:   output/GO_results_genes_in_Aquatics_NOT_Seagrasses_NOT_Terrestrials.csv.png
-    Modified:   output/GO_results_genes_in_Aquatics_and_Seagrasses_NOT_Terrestrials.csv
     Modified:   output/GO_results_genes_in_Aquatics_and_Seagrasses_NOT_Terrestrials.csv.png
-    Modified:   output/GO_results_genes_in_Duckweeds_NOT_Algae_NOT_Seagrasses_NOT_Terrestrials.csv
     Modified:   output/GO_results_genes_in_Duckweeds_NOT_Algae_NOT_Seagrasses_NOT_Terrestrials.csv.png
-    Modified:   output/GO_results_genes_in_Seagrasses_NOT_Algae_NOT_Duckweeds_NOT_Terrestrials.csv
     Modified:   output/GO_results_genes_in_Seagrasses_NOT_Algae_NOT_Duckweeds_NOT_Terrestrials.csv.png
     Modified:   output/GO_results_genes_in_Seagrasses_NOT_Aquatics_NOT_Terrestrials.csv.png
-    Modified:   output/GO_results_genes_in_Terrestrials_NOT_Aquatics_NOT_Seagrasses.csv
     Modified:   output/GO_results_genes_in_Terrestrials_NOT_Aquatics_NOT_Seagrasses.csv.png
     Modified:   output/GO_results_genes_in_all_seagrasses_vs_backgroundAll_intersect.csv.png
     Modified:   output/GO_results_genes_in_all_seagrasses_vs_backgroundAll_union.csv.png
     Modified:   output/GO_results_genes_in_all_seagrasses_vs_seagrassesBackground_intersect.csv.png
+    Modified:   output/GO_results_genes_in_all_seagrasses_vs_seagrassesBackground_union.csv.png
     Modified:   output/GO_results_genes_lost_A_antarctica_not_other_seagrasses.csv.png
     Modified:   output/GO_results_genes_lost_P_australis_not_other_seagrasses.csv.png
     Modified:   output/GO_results_genes_lost_Z_marina_not_other_seagrasses.csv.png
@@ -596,7 +596,6 @@ Unstaged changes:
     Modified:   output/GO_results_genes_only_P_australis_not_other_seagrasses.csv.png
     Modified:   output/GO_results_genes_only_Z_marina_not_other_seagrasses.csv.png
     Modified:   output/GO_results_genes_only_Z_muelleri_not_other_seagrasses.csv.png
-    Modified:   output/GO_results_genes_union_Aquatics_and_Seagrasses_NOT_Terrestrials.csv
     Modified:   output/GO_results_genes_union_Aquatics_and_Seagrasses_NOT_Terrestrials.csv.png
     Modified:   output/GO_results_terrestrials_vs_union_aquatics_seagrasses.png
     Modified:   output/Lost_GO_terms_in_five_species.PlantSpecific.xlsx
@@ -604,6 +603,12 @@ Unstaged changes:
     Modified:   output/Seagrasses_shared_lost_genes.xlsx
     Modified:   output/all_GO_plots.Rdata
     Modified:   output/group_venn_image.Rdata
+    Modified:   output/seagrass_venn_image.Rdata
+
+Staged changes:
+    Modified:   output/patchwork_seagrass_gene_loss.png
+    Modified:   output/patchwork_terrestrials_gene_loss.png
+    New:        output/patchwork_terrestrials_seagrasses_gene_loss.png
 
 </code></pre>
 <p>
@@ -649,6 +654,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/cf53a438f3c8cf8c55119d71790d8210bb5ba75c/docs/GO_and_ortho.html" target="_blank">cf53a43</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-04-26
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -758,41 +780,221 @@ add more ifles
 </div>
 </div>
 </div>
-<pre class="r"><code>library(tidyverse)</code></pre>
-<pre><code>Warning: package &#39;tidyverse&#39; was built under R version 4.1.2</code></pre>
-<pre><code>Warning: package &#39;ggplot2&#39; was built under R version 4.1.1</code></pre>
-<pre><code>Warning: package &#39;tibble&#39; was built under R version 4.1.1</code></pre>
-<pre><code>Warning: package &#39;tidyr&#39; was built under R version 4.1.1</code></pre>
-<pre><code>Warning: package &#39;readr&#39; was built under R version 4.1.2</code></pre>
-<pre><code>Warning: package &#39;purrr&#39; was built under R version 4.1.1</code></pre>
-<pre><code>Warning: package &#39;dplyr&#39; was built under R version 4.1.1</code></pre>
-<pre><code>Warning: package &#39;stringr&#39; was built under R version 4.1.1</code></pre>
-<pre><code>Warning: package &#39;forcats&#39; was built under R version 4.1.1</code></pre>
-<pre class="r"><code>library(patchwork)</code></pre>
-<pre><code>Warning: package &#39;patchwork&#39; was built under R version 4.1.1</code></pre>
-<pre class="r"><code>knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())</code></pre>
+<pre class="r"><code>library(tidyverse)
+library(patchwork)
+library(wesanderson)
+library(RColorBrewer)
+library(UpSetR)
+library(kableExtra)
+library(ggVennDiagram)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())</code></pre>
 <p>In this one I just merge some plots from the Orthofinder and GO
 enrichment Rmds, which I have saved as Rdata objects.</p>
-<pre class="r"><code>load(&#39;output/all_GO_plots.Rdata&#39;)
-load(&#39;output/group_venn_image.Rdata&#39;)
+<pre class="r"><code>load(&#39;output/all_GO_plots.Rdata&#39;)</code></pre>
+<pre><code></code></pre>
+<pre class="r"><code>load(&#39;output/group_venn_image.Rdata&#39;)
 load(&#39;output/seagrass_venn_image.Rdata&#39;)</code></pre>
 <pre class="r"><code>group_venn</code></pre>
 <p><img src="figure/GO_and_ortho.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-2-1">
+Past versions of unnamed-chunk-2-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-2-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/cf53a438f3c8cf8c55119d71790d8210bb5ba75c/docs/figure/GO_and_ortho.Rmd/unnamed-chunk-2-1.png" target="_blank">cf53a43</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-04-26
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/aca07fd16cc85c47cdab8eb309feb40ce6ac468a/docs/figure/GO_and_ortho.Rmd/unnamed-chunk-2-1.png" target="_blank">aca07fd</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-03-10
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>seagrass_venn</code></pre>
-<p><img src="figure/GO_and_ortho.Rmd/unnamed-chunk-3-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p><img src="figure/GO_and_ortho.Rmd/unnamed-chunk-4-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-4-1">
+Past versions of unnamed-chunk-4-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-4-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/cf53a438f3c8cf8c55119d71790d8210bb5ba75c/docs/figure/GO_and_ortho.Rmd/unnamed-chunk-4-1.png" target="_blank">cf53a43</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-04-26
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/663dcbcabb39466029e030b29f090a2a31114e50/docs/figure/GO_and_ortho.Rmd/unnamed-chunk-4-1.png" target="_blank">663dcbc</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-03-10
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/aca07fd16cc85c47cdab8eb309feb40ce6ac468a/docs/figure/GO_and_ortho.Rmd/unnamed-chunk-4-1.png" target="_blank">aca07fd</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-03-10
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>OK now we can make patchworks with these Venn diagrams and their
 associated GO-terms</p>
 <pre class="r"><code>sum1 &lt;- group_venn / (plot_list$GO_results_genes_in_Terrestrials_NOT_Aquatics_NOT_Seagrasses.csv + theme(legend.position=&quot;bottom&quot;)) +  plot_annotation(tag_levels = &#39;A&#39;) +plot_layout(heights=c(1.5,1))
 sum1</code></pre>
-<pre><code>Warning: ggrepel: 1 unlabeled data points (too many overlaps). Consider
+<pre><code>Warning: ggrepel: 32 unlabeled data points (too many overlaps). Consider
 increasing max.overlaps</code></pre>
-<p><img src="figure/GO_and_ortho.Rmd/unnamed-chunk-4-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="figure/GO_and_ortho.Rmd/unnamed-chunk-5-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-5-1">
+Past versions of unnamed-chunk-5-1.png
+</button>
+</p>
+<div id="fig-unnamed-chunk-5-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/cf53a438f3c8cf8c55119d71790d8210bb5ba75c/docs/figure/GO_and_ortho.Rmd/unnamed-chunk-5-1.png" target="_blank">cf53a43</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-04-26
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/663dcbcabb39466029e030b29f090a2a31114e50/docs/figure/GO_and_ortho.Rmd/unnamed-chunk-5-1.png" target="_blank">663dcbc</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-03-10
+</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/aca07fd16cc85c47cdab8eb309feb40ce6ac468a/docs/figure/GO_and_ortho.Rmd/unnamed-chunk-5-1.png" target="_blank">aca07fd</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2022-03-10
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <pre class="r"><code>cowplot::save_plot(sum1, filename = &#39;output/patchwork_terrestrials_gene_loss.png&#39;, base_height = 10, base_width = 8)</code></pre>
-<pre><code>Warning: ggrepel: 1 unlabeled data points (too many overlaps). Consider
+<pre><code>Warning: ggrepel: 33 unlabeled data points (too many overlaps). Consider
 increasing max.overlaps</code></pre>
 <pre class="r"><code>sum2 &lt;- seagrass_venn / (plot_list$GO_results_genes_in_all_seagrasses_vs_seagrassesBackground_intersect.csv + theme(legend.position=&quot;bottom&quot;)) +  plot_annotation(tag_levels = &#39;A&#39;) +plot_layout(heights=c(1.5,1))
 sum2</code></pre>
-<p><img src="figure/GO_and_ortho.Rmd/unnamed-chunk-5-1.png" width="768" style="display: block; margin: auto;" /></p>
+<p><img src="figure/GO_and_ortho.Rmd/unnamed-chunk-6-1.png" width="768" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>cowplot::save_plot(sum2, filename = &#39;output/patchwork_seagrass_gene_loss.png&#39;, base_height = 10, base_width = 8)</code></pre>
+<pre class="r"><code>a &lt;- group_venn
+b &lt;- plot_list$GO_results_genes_in_Terrestrials_NOT_Aquatics_NOT_Seagrasses.csv
+c &lt;- seagrass_venn
+d &lt;- plot_list$GO_results_genes_in_all_seagrasses_vs_seagrassesBackground_intersect.csv
+sum3 &lt;- (a + c) / (b + d) +
+   plot_annotation(tag_levels = &#39;A&#39;) +
+  plot_layout(heights=c(1, 1.5))
+sum3</code></pre>
+<pre><code>Warning: ggrepel: 38 unlabeled data points (too many overlaps). Consider
+increasing max.overlaps</code></pre>
+<p><img src="figure/GO_and_ortho.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>cowplot::save_plot(sum3, filename = &#39;output/patchwork_terrestrials_seagrasses_gene_loss.png&#39;, base_height = 10)</code></pre>
+<pre><code>Warning: ggrepel: 25 unlabeled data points (too many overlaps). Consider
+increasing max.overlaps</code></pre>
+<pre class="r"><code>sum2 &lt;- seagrass_venn / (plot_list$GO_results_genes_in_all_seagrasses_vs_seagrassesBackground_intersect.csv + theme(legend.position=&quot;bottom&quot;)) +  plot_annotation(tag_levels = &#39;A&#39;) +plot_layout(heights=c(1.5,1))
+sum2</code></pre>
+<p><img src="figure/GO_and_ortho.Rmd/unnamed-chunk-8-1.png" width="768" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>cowplot::save_plot(sum2, filename = &#39;output/patchwork_seagrass_gene_loss.png&#39;, base_height = 10, base_width = 8)</code></pre>
 <br>
 <p>
@@ -803,51 +1005,84 @@ Session information
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
 <pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>R version 4.1.0 (2021-05-18)
-Platform: x86_64-w64-mingw32/x64 (64-bit)
-Running under: Windows 10 x64 (build 19042)
+<pre><code>R version 4.3.2 (2023-10-31)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Ubuntu 20.04.6 LTS
 
 Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0 
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
 
 locale:
-[1] LC_COLLATE=English_Australia.1252  LC_CTYPE=English_Australia.1252   
-[3] LC_MONETARY=English_Australia.1252 LC_NUMERIC=C                      
-[5] LC_TIME=English_Australia.1252    
+ [1] LC_CTYPE=en_AU.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_AU.UTF-8        LC_COLLATE=en_AU.UTF-8    
+ [5] LC_MONETARY=en_AU.UTF-8    LC_MESSAGES=en_AU.UTF-8   
+ [7] LC_PAPER=en_AU.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_AU.UTF-8 LC_IDENTIFICATION=C       
+
+time zone: Australia/Perth
+tzcode source: system (glibc)
 
 attached base packages:
-[1] stats     graphics  grDevices utils     datasets  methods   base     
+[1] stats     graphics  grDevices datasets  utils     methods   base     
 
 other attached packages:
- [1] patchwork_1.1.1 forcats_0.5.1   stringr_1.4.0   dplyr_1.0.7    
- [5] purrr_0.3.4     readr_2.1.2     tidyr_1.1.4     tibble_3.1.5   
- [9] ggplot2_3.3.5   tidyverse_1.3.1 workflowr_1.6.2
+ [1] ggVennDiagram_1.2.3 kableExtra_1.3.4    UpSetR_1.4.0       
+ [4] RColorBrewer_1.1-3  wesanderson_0.3.7   patchwork_1.1.2    
+ [7] lubridate_1.9.2     forcats_1.0.0       stringr_1.5.0      
+[10] dplyr_1.1.2         purrr_1.0.1         readr_2.1.4        
+[13] tidyr_1.3.0         tibble_3.2.1        ggplot2_3.4.2      
+[16] tidyverse_2.0.0     workflowr_1.7.1    
 
 loaded via a namespace (and not attached):
- [1] httr_1.4.2         sass_0.4.0         jsonlite_1.7.2     modelr_0.1.8      
- [5] bslib_0.3.1        assertthat_0.2.1   highr_0.9          cellranger_1.1.0  
- [9] yaml_2.2.1         ggrepel_0.9.1      pillar_1.6.4       backports_1.2.1   
-[13] glue_1.6.2         digest_0.6.28      promises_1.2.0.1   rvest_1.0.2       
-[17] colorspace_2.0-2   cowplot_1.1.1      htmltools_0.5.2    httpuv_1.6.3      
-[21] pkgconfig_2.0.3    broom_0.7.9        haven_2.4.3        scales_1.1.1      
-[25] whisker_0.4        later_1.3.0        tzdb_0.1.2         git2r_0.28.0      
-[29] proxy_0.4-26       generics_0.1.1     farver_2.1.0       ellipsis_0.3.2    
-[33] withr_2.5.0        cli_3.2.0          magrittr_2.0.1     crayon_1.4.1      
-[37] readxl_1.3.1       evaluate_0.14      fs_1.5.0           fansi_0.5.0       
-[41] xml2_1.3.2         class_7.3-19       tools_4.1.0        hms_1.1.1         
-[45] lifecycle_1.0.1    munsell_0.5.0      reprex_2.0.1       compiler_4.1.0    
-[49] jquerylib_0.1.4    e1071_1.7-9        rlang_0.4.12       classInt_0.4-3    
-[53] units_0.7-2        grid_4.1.0         rstudioapi_0.13    labeling_0.4.2    
-[57] rmarkdown_2.11     gtable_0.3.0       DBI_1.1.1          R6_2.5.1          
-[61] lubridate_1.8.0    knitr_1.36         fastmap_1.1.0      utf8_1.2.2        
-[65] rprojroot_2.0.2    KernSmooth_2.23-20 stringi_1.7.5      Rcpp_1.0.7        
-[69] vctrs_0.3.8        sf_1.0-5           dbplyr_2.1.1       tidyselect_1.1.1  
-[73] xfun_0.27         </code></pre>
+  [1] rstudioapi_0.14         jsonlite_1.8.4          umap_0.2.10.0          
+  [4] magrittr_2.0.3          farver_2.1.1            rmarkdown_2.21         
+  [7] ragg_1.2.5              fs_1.6.2                zlibbioc_1.46.0        
+ [10] vctrs_0.6.2             memoise_2.0.1           RCurl_1.98-1.12        
+ [13] askpass_1.1             webshot_0.5.5           htmltools_0.5.5        
+ [16] sass_0.4.6              KernSmooth_2.23-22      bslib_0.4.2            
+ [19] plyr_1.8.8              cachem_1.0.8            whisker_0.4.1          
+ [22] igraph_1.5.1            mime_0.12               lifecycle_1.0.3        
+ [25] pkgconfig_2.0.3         Matrix_1.6-2            R6_2.5.1               
+ [28] fastmap_1.1.1           GenomeInfoDbData_1.2.10 shiny_1.8.0            
+ [31] digest_0.6.31           colorspace_2.1-0        AnnotationDbi_1.62.2   
+ [34] S4Vectors_0.38.1        ps_1.7.5                rprojroot_2.0.3        
+ [37] RSpectra_0.16-1         textshaping_0.3.6       RSQLite_2.3.3          
+ [40] labeling_0.4.2          fansi_1.0.4             timechange_0.2.0       
+ [43] httr_1.4.6              compiler_4.3.2          proxy_0.4-27           
+ [46] bit64_4.0.5             withr_2.5.0             DBI_1.1.3              
+ [49] highr_0.10              openssl_2.0.6           classInt_0.4-10        
+ [52] units_0.8-4             tools_4.3.2             httpuv_1.6.11          
+ [55] glue_1.6.2              callr_3.7.3             GOSemSim_2.26.1        
+ [58] promises_1.2.0.1        grid_4.3.2              sf_1.0-14              
+ [61] getPass_0.2-2           gridBase_0.4-7          generics_0.1.3         
+ [64] gtable_0.3.3            tzdb_0.4.0              class_7.3-22           
+ [67] data.table_1.14.8       hms_1.1.3               xml2_1.3.4             
+ [70] utf8_1.2.3              XVector_0.40.0          BiocGenerics_0.46.0    
+ [73] ggrepel_0.9.4           pillar_1.9.0            later_1.3.1            
+ [76] lattice_0.22-5          renv_1.0.2              bit_4.0.5              
+ [79] tidyselect_1.2.0        GO.db_3.17.0            tm_0.7-11              
+ [82] Biostrings_2.68.1       knitr_1.42              git2r_0.32.0           
+ [85] gridExtra_2.3           NLP_0.2-1               IRanges_2.34.0         
+ [88] svglite_2.1.2           stats4_4.3.2            xfun_0.39              
+ [91] rrvgo_1.12.2            Biobase_2.60.0          pheatmap_1.0.12        
+ [94] stringi_1.7.12          yaml_2.3.7              evaluate_0.21          
+ [97] wordcloud_2.6           BiocManager_1.30.20     RVenn_1.1.0            
+[100] cli_3.6.1               xtable_1.8-4            reticulate_1.34.0      
+[103] systemfonts_1.0.4       munsell_0.5.0           processx_3.8.1         
+[106] jquerylib_0.1.4         treemap_2.4-4           Rcpp_1.0.10            
+[109] GenomeInfoDb_1.36.0     png_0.1-8               parallel_4.3.2         
+[112] ellipsis_0.3.2          blob_1.2.4              bitops_1.0-7           
+[115] viridisLite_0.4.2       slam_0.1-50             scales_1.2.1           
+[118] e1071_1.7-13            crayon_1.5.2            rlang_1.1.1            
+[121] cowplot_1.1.1           KEGGREST_1.40.1         rvest_1.0.3            </code></pre>
 </div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
 TeX fonts only; see
-http://docs.mathjax.org/en/latest/configuration.html.  This will make
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
 the presentation more consistent at the cost of the webpage sometimes
 taking slightly longer to load. Note that this only works because the
 footer is added to webpages before the MathJax javascript. -->

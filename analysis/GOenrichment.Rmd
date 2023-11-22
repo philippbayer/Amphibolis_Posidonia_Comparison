@@ -9,6 +9,7 @@ output: html_document
 library(topGO)
 library(tidyverse)
 library(rvest)
+library(rrvgo)
 library(wesanderson)
 library(httr)
 library(stringi)
@@ -142,6 +143,14 @@ Alright now we have all these different GO terms in all these files - we can sen
 
 # Revigo
 
+```{r}
+
+
+```
+
+
+
+
 This code is based on http://revigo.irb.hr/CodeExamples/revigo.R.txt
 
 
@@ -149,63 +158,89 @@ This code is based on http://revigo.irb.hr/CodeExamples/revigo.R.txt
 results_list <- list()
 
 for (f in list.files('./output/', pattern='*.csv')){
+  if(str_detect(f, '.png')) {
+    next
+  }
   filename <- paste('./output/', f, sep='')
   go_and_pvalues <- readChar(filename, file.info(filename)$size)
   go_and_pvalues <- gsub(',', ' ', go_and_pvalues)
+  temp <- read_delim(go_and_pvalues,show_col_types = FALSE)
+  if(nrow(temp) < 2) {next}
+  simMatrix <- calculateSimMatrix(temp$name,
+                                  orgdb="org.At.tair.db",
+                                  ont="BP",
+                                  method="Rel")
   
-  httr::POST(
-    url = "http://revigo.irb.hr/StartJob.aspx",
-    body = list(
-      cutoff = "0.7",
-      valueType = "pvalue",
-     # speciesTaxon = "4577", # zea mays
-     #speciesTaxon = '39947', # japonica
-     speciesTaxon = '3702', # arabidopsis
-      measure = "SIMREL",
-      goList = go_and_pvalues
-    ),
-    # application/x-www-form-urlencoded
-    encode = "form"
-  ) -> res
+  tmp <- temp$value
+  names(tmp) <- temp$name
+  reducedTerms <- reduceSimMatrix(simMatrix,
+                                  tmp,
+                                  threshold=0.7,
+                                  orgdb="org.At.tair.db")
+  results_list[[f]] <- list('simMatrix'=simMatrix, 'reducedTerms'=reducedTerms)
   
-  dat <- httr::content(res, encoding = "UTF-8")
-  
-  jobid <- jsonlite::fromJSON(dat,bigint_as_char=TRUE)$jobid
-  
-  # Check job status
-  running <- "1"
-  while (running != "0" ) {
-      httr::POST(
-        url = "http://revigo.irb.hr/QueryJobStatus.aspx",
-        query = list( jobid = jobid )
-      ) -> res2
-      dat2 <- httr::content(res2, encoding = "UTF-8")
-      running <- jsonlite::fromJSON(dat2)$running
-      Sys.sleep(1)
-  }
-  
-  # Fetch results
-  httr::POST(
-    url = "http://revigo.irb.hr/ExportJob.aspx",
-    query = list(
-      jobid = jobid, 
-      namespace = "1",
-      type = "CSVTable"
-    )
-  ) -> res3
-  
-  dat3 <- httr::content(res3, encoding = "UTF-8")
-  
-  dat3 <- stri_replace_all_fixed(dat3, "\r", "")
-  # Now we have a csv table in a string!
-
-  # read_csv does not like the ', ', it wants ','
-  dat <- read_csv(gsub(', ', ',', dat3), show_col_types = FALSE) 
-  
-  # do we even have results?
-  if(nrow(dat) == 0){next}
-  results_list[[f]] <- dat
-  
+  #httr::POST(
+  #  url = "http://revigo.irb.hr/StartJob",
+  #  body = list(
+  #    cutoff = "0.7",
+  #    valueType = "pvalue",
+  #   # speciesTaxon = "4577", # zea mays
+  #   #speciesTaxon = '39947', # japonica
+  #    speciesTaxon = '3702', # arabidopsis
+  #    measure = "SIMREL",
+  #    goList = go_and_pvalues
+  #  ),
+  #  # application/x-www-form-urlencoded
+  #  encode = "form"
+  #) -> res
+# 
+#   dat <- httr::content(res, encoding = "UTF-8")
+#   
+#   if(typeof(dat)!="list")
+#   {
+#     jobid <- jsonlite::fromJSON(dat,bigint_as_char=TRUE)$jobid
+#   } else {
+#     jobid <- dat$jobid
+#   }  
+#   # Check job status
+#   running <- "1"
+#   while (running != "0" ) {
+#       httr::GET(
+#         url = "http://revigo.irb.hr/QueryJob",
+#         query = list( jobid = jobid, type="jstatus" )
+#       ) -> res2
+#       dat2 <- httr::content(res2, encoding = "UTF-8")
+#       # fix when httr::content automatically converts json to list
+#       if(typeof(dat2)!="list")
+#       {
+#         running <- jsonlite::fromJSON(dat2)$running
+#       } else {
+#         running <- dat2$running
+#       }
+#       Sys.sleep(1)
+#   }
+#   
+#   # Fetch results
+#   httr::GET(
+#     url = "http://revigo.irb.hr/QueryJob",
+#     query = list(
+#       jobid = jobid, 
+#       namespace = "1",
+#       type = "table"
+#     )
+#   ) -> res3
+#   dat3 <- httr::content(res3, encoding = "UTF-8")
+#   
+#   dat3 <- stri_replace_all_fixed(dat3, "\r", "")
+#   # Now we have a csv table in a string!
+# 
+#   # read_csv does not like the ', ', it wants ','
+#   dat <- read_tsv(gsub(', ', ',', dat3), show_col_types = FALSE) 
+#   
+#   # do we even have results?
+#   if(nrow(dat) == 0){next}
+#   results_list[[f]] <- dat
+#   
 }
 ```
 
@@ -215,52 +250,59 @@ OK we have a list with all results in a big list. Now we can plot!
 # lots of warnings and messages here so I'm hiding these
 plot_list <- list()
 for (f in names(results_list)) {
-  dat <- results_list[[f]]
-  if(nrow(dat) == 0) {next}
   
-  names(dat) <- c("term_ID","description","frequency", 'plot_X', 'plot_Y', 'log_size', 'value', 'uniqueness', 'dispensability', 'eliminated', 'representative')
-  one.data <- dat
-  if (one.data[1,] == '<html>') {next} # some datasets result in error
-  one.data <- one.data [(one.data$plot_X != "null" & one.data$plot_Y != "null") & (! is.na(one.data$frequency)) & (one.data$value != 'null'), ];
-  one.data <- suppressMessages(type_convert(one.data)) # guess data types, but also: shush
-  top_ten_values <- one.data %>% arrange(value) %>% head(8) %>% pull(term_ID) 
-  
-  one.data <- one.data %>% mutate(description2 = case_when(
-    term_ID %in% top_ten_values ~ str_wrap(description, width=10), 
-    TRUE ~ ''))
-  p1 <-
-    ggplot(data = one.data, aes(plot_X, plot_Y, label = description2)) +
-    geom_point(aes(colour = value, size = log_size), alpha = I(0.6)) +
-    scale_size_area() +
-    scale_colour_gradientn(colours = rev(wes_palette("Zissou1", 100, type = "continuous")), 
-                           limits = c(min(one.data$value), 0)) +
-    geom_point(
-      aes(plot_X, plot_Y, size = log_size),
-      shape = 21,
-      fill = "transparent",
-      colour = I (alpha ("black", 0.6))
-    ) +
-    scale_size_area() +
-    geom_label_repel(max.overlaps=15,
-                     point.padding = 0,
-                     min.segment.length = 0, # draw all line segments
-                     aes(point.size=log_size), alpha=0.9) + 
-    theme_minimal() +
-    labs(color = 'log(p-value)',
-         size = 'Frequency') +
-    theme(
-      axis.text.x = element_blank(),
-      axis.ticks.x = element_blank(),
-      axis.text.y = element_blank(),
-      axis.ticks.y = element_blank(),
-      axis.title.x = element_blank(),
-      axis.title.y = element_blank()
-    ) +
-    NULL
-    #ggtitle(f)
-  
-  plot_list[[f]] <- p1
-  
+  tmp <- results_list[[f]]
+  simMatrix <- tmp[['simMatrix']]
+  reducedTerms <- tmp[['reducedTerms']]
+  if(nrow(reducedTerms) <= 2) {next}
+  plot_list[[f]] <- scatterPlot(simMatrix, reducedTerms, labelSize=3)
+  # old REVIGO code
+  # dat <- results_list[[f]]
+  # if(nrow(dat) == 0) {next}
+  # 
+  # names(dat) <- c("term_ID","description","frequency", 'plot_X', 'plot_Y', 'log_size', 'value', 'uniqueness')#, 'dispensability', 'eliminated', 'representative')
+  # one.data <- dat
+  # #if (one.data[1,] == '<html>') {next} # some datasets result in error
+  # #one.data <- one.data [(one.data$plot_X != "null" & one.data$plot_Y != "null") & (! is.na(one.data$frequency)) & (one.data$value != 'null'), ];
+  # #one.data <- suppressMessages(type_convert(one.data)) # guess data types, but also: shush
+  # top_ten_values <- one.data %>% arrange(value) %>% head(8) %>% pull(term_ID) 
+  # 
+  # one.data <- one.data %>% mutate(description2 = case_when(
+  #   term_ID %in% top_ten_values ~ str_wrap(description, width=10), 
+  #   TRUE ~ ''))
+  # p1 <-
+  #   ggplot(data = one.data, aes(plot_X, plot_Y, label = description2)) +
+  #   geom_point(aes(colour = value, size = log_size), alpha = I(0.6)) +
+  #   scale_size_area() +
+  #   scale_colour_gradientn(colours = rev(wes_palette("Zissou1", 100, type = "continuous")))+ #, 
+  #                          #limits = c(min(one.data$value), 0)) +
+  #   geom_point(
+  #     aes(plot_X, plot_Y, size = log_size),
+  #     shape = 21,
+  #     fill = "transparent",
+  #     colour = I (alpha ("black", 0.6))
+  #   ) +
+  #   scale_size_area() +
+  #   geom_label_repel(max.overlaps=15,
+  #                    point.padding = 0,
+  #                    min.segment.length = 0, # draw all line segments
+  #                    aes(point.size=log_size), alpha=0.9) + 
+  #   theme_minimal() +
+  #   labs(color = 'log(p-value)',
+  #        size = 'Frequency') +
+  #   theme(
+  #     axis.text.x = element_blank(),
+  #     axis.ticks.x = element_blank(),
+  #     axis.text.y = element_blank(),
+  #     axis.ticks.y = element_blank(),
+  #     axis.title.x = element_blank(),
+  #     axis.title.y = element_blank()
+  #   ) +
+  #   NULL
+  #   #ggtitle(f)
+  # 
+  # plot_list[[f]] <- p1
+  # 
 }
 ```
 
@@ -271,7 +313,8 @@ Let's also pull these terms out as tables. `Value` is the unadjusted p-value (-3
 ```{r results='asis'}
 for( i in names(results_list)) {
   print(i)
-  print(results_list[[i]] %>% dplyr::filter(Eliminated == FALSE) %>% dplyr::select(TermID, Name, Value) %>% arrange(Value) %>% kbl() %>%  kable_styling())
+  #print(results_list[[i]] %>% dplyr::select(TermID, Name, Value) %>% arrange(Value) %>% kbl() %>%  kable_styling())
+  print(results_list[[i]]$reducedTerms %>% dplyr::select(go, parent, score) %>% arrange(score) %>% kbl() %>%  kable_styling())
   cat("\n")
 }
 
@@ -312,15 +355,15 @@ Let's check which GO terms overlap between the 4 seagrasses!
 How many shared lost GO-terms are there? 
 
 ```{r}
-a <- list(`P. australis` = results_list$GO_results_genes_lost_P_australis_not_other_seagrasses.csv$Name,
-          `A. antarctica` = results_list$GO_results_genes_lost_A_antarctica_not_other_seagrasses.csv$Name,
-          `Z. marina` = results_list$GO_results_genes_lost_Z_marina_not_other_seagrasses.csv$Name,
-          `Z. muelleri` = results_list$GO_results_genes_lost_Z_muelleri_not_other_seagrasses.csv$Name)
+a <- list(`P. australis` = results_list$GO_results_genes_lost_P_australis_not_other_seagrasses.csv$reducedTerms$term,
+          `A. antarctica` = results_list$GO_results_genes_lost_A_antarctica_not_other_seagrasses.csv$reducedTerms$term,
+          `Z. marina` = results_list$GO_results_genes_lost_Z_marina_not_other_seagrasses.csv$reducedTerms$term,
+          `Z. muelleri` = results_list$GO_results_genes_lost_Z_muelleri_not_other_seagrasses.csv$reducedTerms$term)
 
-a_go_ids <- list(`P. australis` = results_list$GO_results_genes_lost_P_australis_not_other_seagrasses.csv$TermID,
-          `A. antarctica` = results_list$GO_results_genes_lost_A_antarctica_not_other_seagrasses.csv$TermID,
-          `Z. marina` = results_list$GO_results_genes_lost_Z_marina_not_other_seagrasses.csv$TermID,
-          `Z. muelleri` = results_list$GO_results_genes_lost_Z_muelleri_not_other_seagrasses.csv$TermID)
+a_go_ids <- list(`P. australis` = results_list$GO_results_genes_lost_P_australis_not_other_seagrasses.csv$reducedTerms$go,
+          `A. antarctica` = results_list$GO_results_genes_lost_A_antarctica_not_other_seagrasses.csv$reducedTerms$go,
+          `Z. marina` = results_list$GO_results_genes_lost_Z_marina_not_other_seagrasses.csv$reducedTerms$go,
+          `Z. muelleri` = results_list$GO_results_genes_lost_Z_muelleri_not_other_seagrasses.csv$reducedTerms$go)
 ```
 
 ```{r}
@@ -336,10 +379,10 @@ upset(fromList(a), order.by='freq', )
 ```
 
 ```{r}
-a_no_ara <- list(`P. australis` = results_list$missing_posi_vs_all_GO.txt$Name,
-          `A. antarctica` = results_list$missing_amphi_vs_all_GO.txt$Name,
-          `Z. marina` = results_list$missing_zmar_vs_all_GO.txt$Name,
-          `Z. muelleri` = results_list$missing_zmuel_vs_all_GO.txt$Name)
+a_no_ara <- list(`P. australis` = results_list$missing_posi_vs_all_GO.txt$reducedTerms$term,
+          `A. antarctica` = results_list$missing_amphi_vs_all_GO.txt$reducedTerms$term,
+          `Z. marina` = results_list$missing_zmar_vs_all_GO.txt$reducedTerms$term,
+          `Z. muelleri` = results_list$missing_zmuel_vs_all_GO.txt$reducedTerms$term)
 ```
 
 

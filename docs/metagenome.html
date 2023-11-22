@@ -376,7 +376,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -387,8 +387,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -397,13 +397,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-11-21
+<strong>Last updated:</strong> 2023-11-22
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong>
@@ -427,18 +427,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -529,15 +532,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree92291656eed208170f0df3ce1922a3606e62317dtargetblank9229165a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreec347565f836c8a9116a634a1b22438ea1bccee89targetblankc347565a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/92291656eed208170f0df3ce1922a3606e62317d" target="_blank">9229165</a>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/c347565f836c8a9116a634a1b22438ea1bccee89" target="_blank">c347565</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree92291656eed208170f0df3ce1922a3606e62317dtargetblank9229165a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreec347565f836c8a9116a634a1b22438ea1bccee89targetblankc347565a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -547,7 +550,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/92291656eed208170f0df3ce1922a3606e62317d" target="_blank">9229165</a>.
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/c347565f836c8a9116a634a1b22438ea1bccee89" target="_blank">c347565</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -565,6 +568,53 @@ Ignored files:
     Ignored:    .Rproj.user/
     Ignored:    renv/library/
     Ignored:    renv/staging/
+
+Unstaged changes:
+    Modified:   analysis/GO_and_ortho.Rmd
+    Modified:   analysis/GOenrichment.Rmd
+    Modified:   analysis/index.Rmd
+    Modified:   analysis/metagenome.Rmd
+    Modified:   data/Lost_present_gene_lists/Genes_only_in_Algae.txt
+    Modified:   data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses.txt
+    Modified:   data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses_and_Terrestrials.txt
+    Modified:   data/Lost_present_gene_lists/Genes_only_in_Duckweeds.txt
+    Modified:   data/Lost_present_gene_lists/Genes_only_in_Seagrasses.txt
+    Modified:   data/Lost_present_gene_lists/Genes_only_in_Terrestrials.txt
+    Modified:   data/Lost_present_gene_lists/Genes_union_of_Seagrass_and_Aquatics_union.txt
+    Modified:   data/arabidopsis_gene_level_comparison.xlsx
+    Modified:   data/arabidopsis_gene_level_comparison_only_losts.xlsx
+    Modified:   data/arabidopsis_gene_level_counts.xlsx
+    Modified:   output/GO_results_genes_in_Algae_NOT_Duckweeds_NOT_Seagrasses_NOT_Terrestrials.csv.png
+    Modified:   output/GO_results_genes_in_Aquatics_NOT_Seagrasses_NOT_Terrestrials.csv.png
+    Modified:   output/GO_results_genes_in_Aquatics_and_Seagrasses_NOT_Terrestrials.csv.png
+    Modified:   output/GO_results_genes_in_Duckweeds_NOT_Algae_NOT_Seagrasses_NOT_Terrestrials.csv.png
+    Modified:   output/GO_results_genes_in_Seagrasses_NOT_Algae_NOT_Duckweeds_NOT_Terrestrials.csv.png
+    Modified:   output/GO_results_genes_in_Seagrasses_NOT_Aquatics_NOT_Terrestrials.csv.png
+    Modified:   output/GO_results_genes_in_Terrestrials_NOT_Aquatics_NOT_Seagrasses.csv.png
+    Modified:   output/GO_results_genes_in_all_seagrasses_vs_backgroundAll_intersect.csv.png
+    Modified:   output/GO_results_genes_in_all_seagrasses_vs_backgroundAll_union.csv.png
+    Modified:   output/GO_results_genes_in_all_seagrasses_vs_seagrassesBackground_intersect.csv.png
+    Modified:   output/GO_results_genes_in_all_seagrasses_vs_seagrassesBackground_union.csv.png
+    Modified:   output/GO_results_genes_lost_A_antarctica_not_other_seagrasses.csv.png
+    Modified:   output/GO_results_genes_lost_P_australis_not_other_seagrasses.csv.png
+    Modified:   output/GO_results_genes_lost_Z_marina_not_other_seagrasses.csv.png
+    Modified:   output/GO_results_genes_lost_Z_muelleri_not_other_seagrasses.csv.png
+    Modified:   output/GO_results_genes_only_P_australis_not_other_seagrasses.csv.png
+    Modified:   output/GO_results_genes_only_Z_marina_not_other_seagrasses.csv.png
+    Modified:   output/GO_results_genes_only_Z_muelleri_not_other_seagrasses.csv.png
+    Modified:   output/GO_results_genes_union_Aquatics_and_Seagrasses_NOT_Terrestrials.csv.png
+    Modified:   output/GO_results_terrestrials_vs_union_aquatics_seagrasses.png
+    Modified:   output/Lost_GO_terms_in_five_species.PlantSpecific.xlsx
+    Modified:   output/Lost_GO_terms_in_five_species.xlsx
+    Modified:   output/Seagrasses_shared_lost_genes.xlsx
+    Modified:   output/all_GO_plots.Rdata
+    Modified:   output/group_venn_image.Rdata
+    Modified:   output/seagrass_venn_image.Rdata
+
+Staged changes:
+    Modified:   output/patchwork_seagrass_gene_loss.png
+    Modified:   output/patchwork_terrestrials_gene_loss.png
+    New:        output/patchwork_terrestrials_seagrasses_gene_loss.png
 
 </code></pre>
 <p>
@@ -610,6 +660,23 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/c347565f836c8a9116a634a1b22438ea1bccee89/docs/metagenome.html" target="_blank">c347565</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-21
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1103,6 +1170,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/c347565f836c8a9116a634a1b22438ea1bccee89/docs/figure/metagenome.Rmd/unnamed-chunk-8-1.png" target="_blank">c347565</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-21
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/19de970eb311be236e2571845f62532e663e27b4/docs/figure/metagenome.Rmd/unnamed-chunk-8-1.png" target="_blank">19de970</a>
 </td>
 <td>
@@ -1314,6 +1392,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/c347565f836c8a9116a634a1b22438ea1bccee89/docs/figure/metagenome.Rmd/unnamed-chunk-14-1.png" target="_blank">c347565</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-21
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/1adc975e8d8ce5661ca3eac1659f12716a418fcd/docs/figure/metagenome.Rmd/unnamed-chunk-14-1.png" target="_blank">1adc975</a>
@@ -1570,6 +1659,17 @@ Date
 <tbody>
 <tr>
 <td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/c347565f836c8a9116a634a1b22438ea1bccee89/docs/figure/metagenome.Rmd/unnamed-chunk-28-1.png" target="_blank">c347565</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-21
+</td>
+</tr>
+<tr>
+<td>
 <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/19de970eb311be236e2571845f62532e663e27b4/docs/figure/metagenome.Rmd/unnamed-chunk-28-1.png" target="_blank">19de970</a>
 </td>
 <td>
@@ -1628,6 +1728,17 @@ Date
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/c347565f836c8a9116a634a1b22438ea1bccee89/docs/figure/metagenome.Rmd/unnamed-chunk-29-1.png" target="_blank">c347565</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-21
+</td>
+</tr>
 <tr>
 <td>
 <a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/19de970eb311be236e2571845f62532e663e27b4/docs/figure/metagenome.Rmd/unnamed-chunk-29-1.png" target="_blank">19de970</a>
@@ -1740,8 +1851,6 @@ Philipp Bayer
   mutate(gene_class = case_when(str_detect(gene, &#39;nifH&#39;) ~ &#39;*nifH*&#39;,
                                 str_detect(gene, &#39;acdS&#39;) ~ &#39;*acdS*&#39;,
                                 str_detect(gene, &#39;sctC&#39;) ~ &#39;*sctC*&#39;)) |&gt;
-  #group_by(Sample_species, Tissue, Sample_replicate, MAG) |&gt; 
-  #summarise(gene_class = paste0(sort(unique(gene_class)), collapse = &#39; &amp; &#39;)) |&gt;
   group_by(Sample_species, Tissue, Sample_replicate) |&gt; 
   count(gene_class) |&gt; 
   mutate(Sample_species = trunc_str(Sample_species)) |&gt; 
@@ -1752,10 +1861,12 @@ Philipp Bayer
   geom_point(position = position_jitterdodge(), aes(color=Sample_species)) +
   coord_flip() +
   theme_minimal() +
-  labs(color=&#39;Species&#39;, fill=&#39;Species&#39;) +
-  theme(axis.text.y =  element_markdown(),legend.text = element_markdown(),
+  labs(color=&#39;Host species&#39;, fill=&#39;Host species&#39;) +
+  theme(axis.text.y = element_markdown(),
+        legend.text = element_markdown(),
         strip.text.x = element_markdown()) +
-  ylab(&#39;Count of MAGs&#39;) + xlab(&#39;Species&#39;)</code></pre>
+  ylab(&#39;Count of MAGs&#39;) + 
+  xlab(&#39;Tissue&#39;)</code></pre>
 <p><img src="figure/metagenome.Rmd/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>
 <button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-31-1">

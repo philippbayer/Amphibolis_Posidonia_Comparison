@@ -8,6 +8,11 @@ output: html_document
 ```{r setup, message=FALSE}
 library(tidyverse)
 library(patchwork)
+library(wesanderson)
+library(RColorBrewer)
+library(UpSetR)
+library(kableExtra)
+library(ggVennDiagram)
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 
 ```
@@ -21,6 +26,8 @@ load('output/seagrass_venn_image.Rdata')
 ```
 ```{r}
 group_venn
+```
+```{r}
 ```
 ```{r}
 seagrass_venn
@@ -38,3 +45,22 @@ sum2 <- seagrass_venn / (plot_list$GO_results_genes_in_all_seagrasses_vs_seagras
 sum2
 cowplot::save_plot(sum2, filename = 'output/patchwork_seagrass_gene_loss.png', base_height = 10, base_width = 8)
 ```
+
+```{r}
+a <- group_venn
+b <- plot_list$GO_results_genes_in_Terrestrials_NOT_Aquatics_NOT_Seagrasses.csv
+c <- seagrass_venn
+d <- plot_list$GO_results_genes_in_all_seagrasses_vs_seagrassesBackground_intersect.csv
+sum3 <- (a + c) / (b + d) +
+   plot_annotation(tag_levels = 'A') +
+  plot_layout(heights=c(1, 1.5))
+sum3
+cowplot::save_plot(sum3, filename = 'output/patchwork_terrestrials_seagrasses_gene_loss.png', base_height = 10)
+```
+
+```{r fig.width=8, fig.height=10}
+sum2 <- seagrass_venn / (plot_list$GO_results_genes_in_all_seagrasses_vs_seagrassesBackground_intersect.csv + theme(legend.position="bottom")) +  plot_annotation(tag_levels = 'A') +plot_layout(heights=c(1.5,1))
+sum2
+cowplot::save_plot(sum2, filename = 'output/patchwork_seagrass_gene_loss.png', base_height = 10, base_width = 8)
+```
+
