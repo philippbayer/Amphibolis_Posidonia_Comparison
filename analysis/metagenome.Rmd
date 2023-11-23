@@ -143,6 +143,56 @@ plot_orders_gtdb <- function(amph_pos_tax, group_remainder = TRUE, add_up=TRUE) 
 plot_orders_gtdb(amph_pos_tax)
 ```
 
+### GTDB order-level stats
+Some stats. How many MAGs on order level?
+
+```{r}
+amph_pos_tax |> filter(order != 'o__') |> count(order) |> nrow()
+```
+```{r}
+amph_pos_tax |> filter(order != 'o__') |> count(order) |> summarise(total = sum(n))
+```
+MAGs per species:
+
+```{r}
+amph_pos_tax |> group_by(Sample_species) |> filter(order != 'o__') |> count(order) |> summarise(total = sum(n))
+
+```
+
+
+How many of these are unique to either species?
+```{r}
+in_amph <- amph_pos_tax |> filter(Sample_species == 'Amphibolis antarctica') |> filter(order != 'o__') |> count(order)
+in_posi <- amph_pos_tax |> filter(Sample_species == 'Posidonia australis') |> filter(order != 'o__') |> count(order)
+```
+
+Unique orders in Amphibolis:
+```{r}
+in_amph |> nrow()
+```
+
+Unique orders in Posidonia:
+```{r}
+in_posi |> nrow()
+```
+
+In Amphibolis, not in Posidonia:
+```{r}
+setdiff(in_amph$order, in_posi$order) |> length()
+```
+```{r}
+in_amph |> filter(order %in% setdiff(in_amph$order, in_posi$order)) |> arrange(desc(n)) |> head(5)
+```
+
+In Posidonia, not in Amphibolis:
+
+```{r}
+setdiff(in_posi$order, in_amph$order) |> length()
+```
+```{r}
+in_posi |> filter(order %in% setdiff(in_posi$order, in_amph$order)) |> arrange(desc(n))
+```
+
 ## GTDB by family
 
 
@@ -254,6 +304,58 @@ plot_orders_cat <-
 plot_orders_cat(amph_pos_tax_cat)
 ```
 
+
+### CAT order-level stats
+
+Some more stats here too!
+
+
+```{r}
+amph_pos_tax_cat |> filter(!is.na(Order)) |> separate(Order, into=c('Order', 'Order_score'), sep=':') |> count(Order) |> nrow()
+```
+```{r}
+amph_pos_tax_cat |> filter(!is.na(Order)) |> separate(Order, into=c('Order', 'Order_score'), sep=':') |> count(Order) |> summarise(total = sum(n))
+```
+MAGs per species:
+
+```{r}
+amph_pos_tax_cat |> group_by(Sample_species)|> filter(!is.na(Order)) |> separate(Order, into=c('Order', 'Order_score'), sep=':') |> count(Order) |> summarise(total = sum(n))
+```
+
+
+How many of these are unique to either species?
+```{r}
+in_amph <- amph_pos_tax_cat |> filter(Sample_species == 'Amphibolis antarctica') |> filter(!is.na(Order)) |> separate(Order, into=c('Order', 'Order_score'), sep=':') |> count(Order)
+in_posi <- amph_pos_tax_cat |> filter(Sample_species == 'Posidonia australis') |> filter(!is.na(Order)) |> separate(Order, into=c('Order', 'Order_score'), sep=':') |> count(Order)
+```
+
+Unique orders in Amphibolis:
+```{r}
+in_amph |> nrow()
+```
+
+Unique orders in Posidonia:
+```{r}
+in_posi |> nrow()
+```
+
+In Amphibolis, not in Posidonia:
+```{r}
+setdiff(in_amph$Order, in_posi$Order) |> length()
+```
+```{r}
+in_amph |> filter(Order %in% setdiff(in_amph$Order, in_posi$Order)) |> arrange(desc(n)) |> head(5)
+```
+
+In Posidonia, not in Amphibolis:
+
+```{r}
+setdiff(in_posi$Order, in_amph$Order) |> length()
+```
+```{r}
+in_posi |> filter(Order %in% setdiff(in_posi$Order, in_amph$Order)) |> arrange(desc(n))
+```
+
 ## CAT by family
 
 ```{r}
@@ -293,6 +395,12 @@ Are these in the GTDB classification?
 amph_pos_tax |> filter(str_detect(family, 'Ectothiorhodospiraceae'))|> nrow()
 ```
 Nope!
+
+
+Let's write out the table for Supplementary:
+```{r}
+amph_pos_tax_cat |> full_join(amph_pos_tax, by =c('sample', 'MAG')) |> select(-c(Sample_replicate.y, Sample_species.y, Tissue.y, TotalMAGs.y)) |> writexl::write_xlsx('./output/seagrass_metagenome_taxonomy.xlsx')
+```
 
 # Gene comparison
 
