@@ -376,7 +376,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -387,8 +387,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -397,13 +397,13 @@ aria-hidden="true"></span> </a>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-11-22
+<strong>Last updated:</strong> 2023-11-23
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong>
@@ -427,21 +427,18 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
@@ -532,15 +529,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreec347565f836c8a9116a634a1b22438ea1bccee89targetblankc347565a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree04938161d7ca1ed9d747d8602277ef375c6ba6fdtargetblank0493816a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/c347565f836c8a9116a634a1b22438ea1bccee89" target="_blank">c347565</a>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/04938161d7ca1ed9d747d8602277ef375c6ba6fd" target="_blank">0493816</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontreec347565f836c8a9116a634a1b22438ea1bccee89targetblankc347565a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomphilippbayerAmphibolisPosidoniaComparisontree04938161d7ca1ed9d747d8602277ef375c6ba6fdtargetblank0493816a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -550,7 +547,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/c347565f836c8a9116a634a1b22438ea1bccee89" target="_blank">c347565</a>.
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/tree/04938161d7ca1ed9d747d8602277ef375c6ba6fd" target="_blank">0493816</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -566,55 +563,12 @@ were generated:
 <pre><code>
 Ignored files:
     Ignored:    .Rproj.user/
+    Ignored:    analysis/figure/
     Ignored:    renv/library/
     Ignored:    renv/staging/
 
-Unstaged changes:
-    Modified:   analysis/GO_and_ortho.Rmd
-    Modified:   analysis/GOenrichment.Rmd
-    Modified:   analysis/index.Rmd
-    Modified:   analysis/metagenome.Rmd
-    Modified:   data/Lost_present_gene_lists/Genes_only_in_Algae.txt
-    Modified:   data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses.txt
-    Modified:   data/Lost_present_gene_lists/Genes_only_in_Aquatics_and_Seagrasses_and_Terrestrials.txt
-    Modified:   data/Lost_present_gene_lists/Genes_only_in_Duckweeds.txt
-    Modified:   data/Lost_present_gene_lists/Genes_only_in_Seagrasses.txt
-    Modified:   data/Lost_present_gene_lists/Genes_only_in_Terrestrials.txt
-    Modified:   data/Lost_present_gene_lists/Genes_union_of_Seagrass_and_Aquatics_union.txt
-    Modified:   data/arabidopsis_gene_level_comparison.xlsx
-    Modified:   data/arabidopsis_gene_level_comparison_only_losts.xlsx
-    Modified:   data/arabidopsis_gene_level_counts.xlsx
-    Modified:   output/GO_results_genes_in_Algae_NOT_Duckweeds_NOT_Seagrasses_NOT_Terrestrials.csv.png
-    Modified:   output/GO_results_genes_in_Aquatics_NOT_Seagrasses_NOT_Terrestrials.csv.png
-    Modified:   output/GO_results_genes_in_Aquatics_and_Seagrasses_NOT_Terrestrials.csv.png
-    Modified:   output/GO_results_genes_in_Duckweeds_NOT_Algae_NOT_Seagrasses_NOT_Terrestrials.csv.png
-    Modified:   output/GO_results_genes_in_Seagrasses_NOT_Algae_NOT_Duckweeds_NOT_Terrestrials.csv.png
-    Modified:   output/GO_results_genes_in_Seagrasses_NOT_Aquatics_NOT_Terrestrials.csv.png
-    Modified:   output/GO_results_genes_in_Terrestrials_NOT_Aquatics_NOT_Seagrasses.csv.png
-    Modified:   output/GO_results_genes_in_all_seagrasses_vs_backgroundAll_intersect.csv.png
-    Modified:   output/GO_results_genes_in_all_seagrasses_vs_backgroundAll_union.csv.png
-    Modified:   output/GO_results_genes_in_all_seagrasses_vs_seagrassesBackground_intersect.csv.png
-    Modified:   output/GO_results_genes_in_all_seagrasses_vs_seagrassesBackground_union.csv.png
-    Modified:   output/GO_results_genes_lost_A_antarctica_not_other_seagrasses.csv.png
-    Modified:   output/GO_results_genes_lost_P_australis_not_other_seagrasses.csv.png
-    Modified:   output/GO_results_genes_lost_Z_marina_not_other_seagrasses.csv.png
-    Modified:   output/GO_results_genes_lost_Z_muelleri_not_other_seagrasses.csv.png
-    Modified:   output/GO_results_genes_only_P_australis_not_other_seagrasses.csv.png
-    Modified:   output/GO_results_genes_only_Z_marina_not_other_seagrasses.csv.png
-    Modified:   output/GO_results_genes_only_Z_muelleri_not_other_seagrasses.csv.png
-    Modified:   output/GO_results_genes_union_Aquatics_and_Seagrasses_NOT_Terrestrials.csv.png
-    Modified:   output/GO_results_terrestrials_vs_union_aquatics_seagrasses.png
-    Modified:   output/Lost_GO_terms_in_five_species.PlantSpecific.xlsx
-    Modified:   output/Lost_GO_terms_in_five_species.xlsx
-    Modified:   output/Seagrasses_shared_lost_genes.xlsx
-    Modified:   output/all_GO_plots.Rdata
-    Modified:   output/group_venn_image.Rdata
-    Modified:   output/seagrass_venn_image.Rdata
-
-Staged changes:
-    Modified:   output/patchwork_seagrass_gene_loss.png
-    Modified:   output/patchwork_terrestrials_gene_loss.png
-    New:        output/patchwork_terrestrials_seagrasses_gene_loss.png
+Untracked files:
+    Untracked:  output/seagrass_metagenome_taxonomy.xlsx
 
 </code></pre>
 <p>
@@ -660,6 +614,57 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/04938161d7ca1ed9d747d8602277ef375c6ba6fd/analysis/metagenome.Rmd" target="_blank">0493816</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-23
+</td>
+<td>
+another try
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/381f41c129937de39c303e9a813b4e23344f71c8/analysis/metagenome.Rmd" target="_blank">381f41c</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-22
+</td>
+<td>
+new Venn plots
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/philippbayer/Amphibolis_Posidonia_Comparison/381f41c129937de39c303e9a813b4e23344f71c8/docs/metagenome.html" target="_blank">381f41c</a>
+</td>
+<td>
+Philipp Bayer
+</td>
+<td>
+2023-11-22
+</td>
+<td>
+new Venn plots
+</td>
+</tr>
 <tr>
 <td>
 html
@@ -1205,6 +1210,58 @@ Philipp Bayer
 </table>
 </div>
 </div>
+<div id="gtdb-order-level-stats" class="section level3">
+<h3>GTDB order-level stats</h3>
+<p>Some stats. How many MAGs on order level?</p>
+<pre class="r"><code>amph_pos_tax |&gt; filter(order != &#39;o__&#39;) |&gt; count(order) |&gt; nrow()</code></pre>
+<pre><code>[1] 42</code></pre>
+<pre class="r"><code>amph_pos_tax |&gt; filter(order != &#39;o__&#39;) |&gt; count(order) |&gt; summarise(total = sum(n))</code></pre>
+<pre><code># A tibble: 1 × 1
+  total
+  &lt;int&gt;
+1   300</code></pre>
+<p>MAGs per species:</p>
+<pre class="r"><code>amph_pos_tax |&gt; group_by(Sample_species) |&gt; filter(order != &#39;o__&#39;) |&gt; count(order) |&gt; summarise(total = sum(n))</code></pre>
+<pre><code># A tibble: 2 × 2
+  Sample_species        total
+  &lt;chr&gt;                 &lt;int&gt;
+1 Amphibolis antarctica   211
+2 Posidonia australis      89</code></pre>
+<p>How many of these are unique to either species?</p>
+<pre class="r"><code>in_amph &lt;- amph_pos_tax |&gt; filter(Sample_species == &#39;Amphibolis antarctica&#39;) |&gt; filter(order != &#39;o__&#39;) |&gt; count(order)
+in_posi &lt;- amph_pos_tax |&gt; filter(Sample_species == &#39;Posidonia australis&#39;) |&gt; filter(order != &#39;o__&#39;) |&gt; count(order)</code></pre>
+<p>Unique orders in Amphibolis:</p>
+<pre class="r"><code>in_amph |&gt; nrow()</code></pre>
+<pre><code>[1] 36</code></pre>
+<p>Unique orders in Posidonia:</p>
+<pre class="r"><code>in_posi |&gt; nrow()</code></pre>
+<pre><code>[1] 16</code></pre>
+<p>In Amphibolis, not in Posidonia:</p>
+<pre class="r"><code>setdiff(in_amph$order, in_posi$order) |&gt; length()</code></pre>
+<pre><code>[1] 26</code></pre>
+<pre class="r"><code>in_amph |&gt; filter(order %in% setdiff(in_amph$order, in_posi$order)) |&gt; arrange(desc(n)) |&gt; head(5)</code></pre>
+<pre><code># A tibble: 5 × 2
+  order                        n
+  &lt;chr&gt;                    &lt;int&gt;
+1 o__Xanthomonadales           8
+2 o__Pseudomonadales           6
+3 o__UBA5794                   6
+4 o__Actinomycetales           5
+5 o__Ectothiorhodospirales     4</code></pre>
+<p>In Posidonia, not in Amphibolis:</p>
+<pre class="r"><code>setdiff(in_posi$order, in_amph$order) |&gt; length()</code></pre>
+<pre><code>[1] 6</code></pre>
+<pre class="r"><code>in_posi |&gt; filter(order %in% setdiff(in_posi$order, in_amph$order)) |&gt; arrange(desc(n))</code></pre>
+<pre><code># A tibble: 6 × 2
+  order                    n
+  &lt;chr&gt;                &lt;int&gt;
+1 o__Flavobacteriales      3
+2 o__Thiotrichales         2
+3 o__Campylobacterales     1
+4 o__SZUA-149              1
+5 o__SZUA-229              1
+6 o__UBA11236              1</code></pre>
+</div>
 </div>
 <div id="gtdb-by-family" class="section level2">
 <h2>GTDB by family</h2>
@@ -1220,55 +1277,7 @@ Philipp Bayer
   #theme(axis.text.x = element_text(angle = 90, hjust = 1)) + 
   facet_wrap(~Tissue) + coord_flip() + 
   ylab(&#39;Number of contigs&#39;) + xlab(&#39;Sample&#39;)</code></pre>
-<p><img src="figure/metagenome.Rmd/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-9-1">
-Past versions of unnamed-chunk-9-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-9-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/1adc975e8d8ce5661ca3eac1659f12716a418fcd/docs/figure/metagenome.Rmd/unnamed-chunk-9-1.png" target="_blank">1adc975</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-21
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/b5757aca73563d447eacd4fe551f766217368fc7/docs/figure/metagenome.Rmd/unnamed-chunk-9-1.png" target="_blank">b5757ac</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-20
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-19-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>amph_pos_tax |&gt; group_by(sample, species) |&gt; filter(species != &#39;s__&#39;) |&gt; 
   count(species)</code></pre>
 <pre><code># A tibble: 0 × 3
@@ -1369,54 +1378,59 @@ plot_orders_cat(amph_pos_tax_cat)</code></pre>
 <pre><code>`summarise()` has grouped output by &#39;sample&#39;, &#39;Tissue&#39;, &#39;Sample_species&#39;, &#39;n&#39;,
 &#39;counted_orders&#39;. You can override using the `.groups` argument.
 Joining with `by = join_by(sample)`</code></pre>
-<p><img src="figure/metagenome.Rmd/unnamed-chunk-14-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-14-1">
-Past versions of unnamed-chunk-14-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-14-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/c347565f836c8a9116a634a1b22438ea1bccee89/docs/figure/metagenome.Rmd/unnamed-chunk-14-1.png" target="_blank">c347565</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-21
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/1adc975e8d8ce5661ca3eac1659f12716a418fcd/docs/figure/metagenome.Rmd/unnamed-chunk-14-1.png" target="_blank">1adc975</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-21
-</td>
-</tr>
-</tbody>
-</table>
-</div>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-24-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div id="cat-order-level-stats" class="section level3">
+<h3>CAT order-level stats</h3>
+<p>Some more stats here too!</p>
+<pre class="r"><code>amph_pos_tax_cat |&gt; filter(!is.na(Order)) |&gt; separate(Order, into=c(&#39;Order&#39;, &#39;Order_score&#39;), sep=&#39;:&#39;) |&gt; count(Order) |&gt; nrow()</code></pre>
+<pre><code>[1] 35</code></pre>
+<pre class="r"><code>amph_pos_tax_cat |&gt; filter(!is.na(Order)) |&gt; separate(Order, into=c(&#39;Order&#39;, &#39;Order_score&#39;), sep=&#39;:&#39;) |&gt; count(Order) |&gt; summarise(total = sum(n))</code></pre>
+<pre><code># A tibble: 1 × 1
+  total
+  &lt;int&gt;
+1   345</code></pre>
+<p>MAGs per species:</p>
+<pre class="r"><code>amph_pos_tax_cat |&gt; group_by(Sample_species)|&gt; filter(!is.na(Order)) |&gt; separate(Order, into=c(&#39;Order&#39;, &#39;Order_score&#39;), sep=&#39;:&#39;) |&gt; count(Order) |&gt; summarise(total = sum(n))</code></pre>
+<pre><code># A tibble: 2 × 2
+  Sample_species        total
+  &lt;chr&gt;                 &lt;int&gt;
+1 Amphibolis antarctica   236
+2 Posidonia australis     109</code></pre>
+<p>How many of these are unique to either species?</p>
+<pre class="r"><code>in_amph &lt;- amph_pos_tax_cat |&gt; filter(Sample_species == &#39;Amphibolis antarctica&#39;) |&gt; filter(!is.na(Order)) |&gt; separate(Order, into=c(&#39;Order&#39;, &#39;Order_score&#39;), sep=&#39;:&#39;) |&gt; count(Order)
+in_posi &lt;- amph_pos_tax_cat |&gt; filter(Sample_species == &#39;Posidonia australis&#39;) |&gt; filter(!is.na(Order)) |&gt; separate(Order, into=c(&#39;Order&#39;, &#39;Order_score&#39;), sep=&#39;:&#39;) |&gt; count(Order)</code></pre>
+<p>Unique orders in Amphibolis:</p>
+<pre class="r"><code>in_amph |&gt; nrow()</code></pre>
+<pre><code>[1] 28</code></pre>
+<p>Unique orders in Posidonia:</p>
+<pre class="r"><code>in_posi |&gt; nrow()</code></pre>
+<pre><code>[1] 18</code></pre>
+<p>In Amphibolis, not in Posidonia:</p>
+<pre class="r"><code>setdiff(in_amph$Order, in_posi$Order) |&gt; length()</code></pre>
+<pre><code>[1] 17</code></pre>
+<pre class="r"><code>in_amph |&gt; filter(Order %in% setdiff(in_amph$Order, in_posi$Order)) |&gt; arrange(desc(n)) |&gt; head(5)</code></pre>
+<pre><code># A tibble: 5 × 2
+  Order                   n
+  &lt;chr&gt;               &lt;int&gt;
+1 Xanthomonadales         9
+2 Clostridiales           4
+3 Solirubrobacterales     4
+4 Chitinophagales         3
+5 Propionibacteriales     3</code></pre>
+<p>In Posidonia, not in Amphibolis:</p>
+<pre class="r"><code>setdiff(in_posi$Order, in_amph$Order) |&gt; length()</code></pre>
+<pre><code>[1] 7</code></pre>
+<pre class="r"><code>in_posi |&gt; filter(Order %in% setdiff(in_posi$Order, in_amph$Order)) |&gt; arrange(desc(n))</code></pre>
+<pre><code># A tibble: 7 × 2
+  Order                 n
+  &lt;chr&gt;             &lt;int&gt;
+1 Flavobacteriales      7
+2 Ceramiales            4
+3 Thiotrichales         3
+4 Fagales               2
+5 Bacteroidales         1
+6 Ericales              1
+7 Micromonosporales     1</code></pre>
 </div>
 </div>
 <div id="cat-by-family" class="section level2">
@@ -1435,55 +1449,7 @@ Philipp Bayer
   ylab(&#39;Number of contigs&#39;) + xlab(&#39;Sample&#39;)</code></pre>
 <pre><code>Warning: Expected 2 pieces. Additional pieces discarded in 178 rows [3, 4, 5, 26, 29,
 30, 33, 47, 56, 75, 79, 81, 82, 84, 88, 92, 93, 95, 97, 101, ...].</code></pre>
-<p><img src="figure/metagenome.Rmd/unnamed-chunk-15-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-15-1">
-Past versions of unnamed-chunk-15-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-15-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/1adc975e8d8ce5661ca3eac1659f12716a418fcd/docs/figure/metagenome.Rmd/unnamed-chunk-15-1.png" target="_blank">1adc975</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-21
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/b5757aca73563d447eacd4fe551f766217368fc7/docs/figure/metagenome.Rmd/unnamed-chunk-15-1.png" target="_blank">b5757ac</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-20
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-35-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>amph_pos_tax_cat |&gt; separate(Species, into = c(&#39;Species&#39;, &#39;Species_score&#39;), sep =&#39;:&#39;) |&gt; filter(!is.na(Species)) |&gt;  group_by(sample, Species) |&gt; 
   count(Species)</code></pre>
 <pre><code># A tibble: 68 × 3
@@ -1522,6 +1488,8 @@ Philipp Bayer
 <pre class="r"><code>amph_pos_tax |&gt; filter(str_detect(family, &#39;Ectothiorhodospiraceae&#39;))|&gt; nrow()</code></pre>
 <pre><code>[1] 0</code></pre>
 <p>Nope!</p>
+<p>Let’s write out the table for Supplementary:</p>
+<pre class="r"><code>amph_pos_tax_cat |&gt; full_join(amph_pos_tax, by =c(&#39;sample&#39;, &#39;MAG&#39;)) |&gt; select(-c(Sample_replicate.y, Sample_species.y, Tissue.y, TotalMAGs.y)) |&gt; writexl::write_xlsx(&#39;./output/seagrass_metagenome_taxonomy.xlsx&#39;)</code></pre>
 </div>
 </div>
 <div id="gene-comparison" class="section level1">
@@ -1581,44 +1549,7 @@ find ACC deaminases in the metagenomes (<em>acdS</em>).</p>
   theme(legend.position = &#39;none&#39;,
         strip.text.x =  element_markdown(),
         axis.title.x = element_markdown())</code></pre>
-<p><img src="figure/metagenome.Rmd/unnamed-chunk-26-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-26-1">
-Past versions of unnamed-chunk-26-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-26-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/1adc975e8d8ce5661ca3eac1659f12716a418fcd/docs/figure/metagenome.Rmd/unnamed-chunk-26-1.png" target="_blank">1adc975</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-21
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-47-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>What are those acdS-containing MAGs?</p>
 <pre class="r"><code>genessplit |&gt; filter(gene == &#39;acdS&#39;) |&gt; left_join(amph_pos_tax, by=c(&#39;sample&#39;, &#39;MAG&#39;), multiple = &#39;any&#39;) |&gt; datatable()</code></pre>
 <div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-2dbef91eac24555573ad" style="width:100%;height:auto;"></div>
@@ -1634,66 +1565,7 @@ Philipp Bayer
 You can override using the `.groups` argument.
 Adding missing grouping variables: `Tissue`, `Sample_species`
 Joining with `by = join_by(sample)`</code></pre>
-<p><img src="figure/metagenome.Rmd/unnamed-chunk-28-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-28-1">
-Past versions of unnamed-chunk-28-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-28-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/c347565f836c8a9116a634a1b22438ea1bccee89/docs/figure/metagenome.Rmd/unnamed-chunk-28-1.png" target="_blank">c347565</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-21
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/19de970eb311be236e2571845f62532e663e27b4/docs/figure/metagenome.Rmd/unnamed-chunk-28-1.png" target="_blank">19de970</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-21
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/1adc975e8d8ce5661ca3eac1659f12716a418fcd/docs/figure/metagenome.Rmd/unnamed-chunk-28-1.png" target="_blank">1adc975</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-21
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-49-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>  #select(sample, MAG, domain:species)</code></pre>
 <pre class="r"><code>genessplit |&gt; filter(gene == &#39;acdS&#39;) |&gt; 
   left_join(amph_pos_tax_cat, by=c(&#39;sample&#39;, &#39;MAG&#39;)) |&gt; 
@@ -1705,77 +1577,7 @@ Philipp Bayer
 <pre><code>`summarise()` has grouped output by &#39;sample&#39;, &#39;Tissue&#39;, &#39;Sample_species&#39;, &#39;n&#39;,
 &#39;counted_orders&#39;. You can override using the `.groups` argument.
 Joining with `by = join_by(sample)`</code></pre>
-<p><img src="figure/metagenome.Rmd/unnamed-chunk-29-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-29-1">
-Past versions of unnamed-chunk-29-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-29-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/c347565f836c8a9116a634a1b22438ea1bccee89/docs/figure/metagenome.Rmd/unnamed-chunk-29-1.png" target="_blank">c347565</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-21
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/19de970eb311be236e2571845f62532e663e27b4/docs/figure/metagenome.Rmd/unnamed-chunk-29-1.png" target="_blank">19de970</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-21
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/1adc975e8d8ce5661ca3eac1659f12716a418fcd/docs/figure/metagenome.Rmd/unnamed-chunk-29-1.png" target="_blank">1adc975</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-21
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/b5757aca73563d447eacd4fe551f766217368fc7/docs/figure/metagenome.Rmd/unnamed-chunk-29-1.png" target="_blank">b5757ac</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-20
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-50-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>  #select(sample, MAG, Superkingdom:Species) |&gt; </code></pre>
 <p>Let’s chekc for nitrogen fixation genes (<em>nif</em>) - hypothesis
 is that Amphibolis roots contain more of these</p>
@@ -1798,55 +1600,7 @@ is that Amphibolis roots contain more of these</p>
   labs(color=&#39;MAG gene content&#39;, fill=&#39;MAG gene content&#39;) +
   theme(axis.text.y =  element_markdown(),legend.text = element_markdown()) +
   ylab(&#39;Count of MAGs&#39;) + xlab(&#39;Species&#39;)</code></pre>
-<p><img src="figure/metagenome.Rmd/unnamed-chunk-30-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-30-1">
-Past versions of unnamed-chunk-30-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-30-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/1adc975e8d8ce5661ca3eac1659f12716a418fcd/docs/figure/metagenome.Rmd/unnamed-chunk-30-1.png" target="_blank">1adc975</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-21
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/b5757aca73563d447eacd4fe551f766217368fc7/docs/figure/metagenome.Rmd/unnamed-chunk-30-1.png" target="_blank">b5757ac</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-20
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-51-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre class="r"><code>genessplit |&gt; filter(str_detect(gene, &#39;nifH&#39;) | str_detect(gene, &#39;acdS&#39;) | str_detect(gene, &#39;sctC&#39;)) |&gt; 
   mutate(gene_class = case_when(str_detect(gene, &#39;nifH&#39;) ~ &#39;*nifH*&#39;,
                                 str_detect(gene, &#39;acdS&#39;) ~ &#39;*acdS*&#39;,
@@ -1867,67 +1621,8 @@ Philipp Bayer
         strip.text.x = element_markdown()) +
   ylab(&#39;Count of MAGs&#39;) + 
   xlab(&#39;Tissue&#39;)</code></pre>
-<p><img src="figure/metagenome.Rmd/unnamed-chunk-31-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>
-<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-unnamed-chunk-31-1">
-Past versions of unnamed-chunk-31-1.png
-</button>
-</p>
-<div id="fig-unnamed-chunk-31-1" class="collapse">
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/d151dcf98d0fe736e4fdf49ba6dc5d6562e3e5a3/docs/figure/metagenome.Rmd/unnamed-chunk-31-1.png" target="_blank">d151dcf</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-21
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/aa839e6748d519edbaf8fc8a4a9e88e68817369a/docs/figure/metagenome.Rmd/unnamed-chunk-31-1.png" target="_blank">aa839e6</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-21
-</td>
-</tr>
-<tr>
-<td>
-<a href="https://github.com/philippbayer/Amphibolis_Posidonia_Comparison/blob/920282de0009dadba09c0cfbbe9a0e5a626ba70f/docs/figure/metagenome.Rmd/unnamed-chunk-31-1.png" target="_blank">920282d</a>
-</td>
-<td>
-Philipp Bayer
-</td>
-<td>
-2023-11-21
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>I like this one more. The differences are stronger.</p>
+<p><img src="figure/metagenome.Rmd/unnamed-chunk-52-1.png" width="672" style="display: block; margin: auto;" />
+I like this one more. The differences are stronger.</p>
 </div>
 </div>
 <div id="statistic-test" class="section level1">
@@ -2082,13 +1777,14 @@ loaded via a namespace (and not attached):
 [40] rprojroot_2.0.3     fastmap_1.1.1       grid_4.3.2         
 [43] colorspace_2.1-0    cli_3.6.1           magrittr_2.0.3     
 [46] utf8_1.2.3          withr_2.5.0         promises_1.2.0.1   
-[49] bit64_4.0.5         timechange_0.2.0    rmarkdown_2.21     
-[52] httr_1.4.6          bit_4.0.5           hms_1.1.3          
-[55] evaluate_0.21       knitr_1.42          markdown_1.11      
-[58] rlang_1.1.1         gridtext_0.1.5      Rcpp_1.0.10        
-[61] glue_1.6.2          BiocManager_1.30.20 xml2_1.3.4         
-[64] renv_1.0.2          rstudioapi_0.14     vroom_1.6.3        
-[67] jsonlite_1.8.4      R6_2.5.1            fs_1.6.2           </code></pre>
+[49] writexl_1.4.2       bit64_4.0.5         timechange_0.2.0   
+[52] rmarkdown_2.21      httr_1.4.6          bit_4.0.5          
+[55] hms_1.1.3           evaluate_0.21       knitr_1.42         
+[58] markdown_1.11       rlang_1.1.1         gridtext_0.1.5     
+[61] Rcpp_1.0.10         glue_1.6.2          BiocManager_1.30.20
+[64] xml2_1.3.4          renv_1.0.2          rstudioapi_0.14    
+[67] vroom_1.6.3         jsonlite_1.8.4      R6_2.5.1           
+[70] fs_1.6.2           </code></pre>
 </div>
 </div>
 </div>
