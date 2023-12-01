@@ -80,3 +80,12 @@ reps %>% filter(Class=='Non-repetitive') %>% ggplot(aes(x=Assembly, fill=Class, 
 
 ```
 
+```{r}
+reps |> mutate(newclass = case_when(Class == 'Non-repetitive' | Class == 'Total CDS' ~ 'Non-repetitive',
+                                    TRUE ~ 'Repetitive')) |> 
+  group_by(Assembly,  newclass) |> 
+  summarise(BP=sum(BP),
+            Percent =sum(Percent)) |> 
+  mutate(Mbp = BP / 1000000)
+```
+
